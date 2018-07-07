@@ -11,7 +11,7 @@ public protocol ImageConsumer:AnyObject {
     var maximumInputs:UInt { get }
     var sources:SourceContainer { get }
     
-//    func newFramebufferAvailable(_ framebuffer:Framebuffer, fromSourceIndex:UInt)
+    func newTextureAvailable(_ texture:Texture, fromSourceIndex:UInt)
 }
 
 public protocol ImageProcessingOperation: ImageConsumer, ImageSource {
@@ -51,7 +51,7 @@ public extension ImageSource {
         targets.removeAll()
     }
     
-//    public func updateTargetsWithFramebuffer(_ framebuffer:Framebuffer) {
+    public func updateTargetsWithTexture(_ texture:Texture) {
 //        if targets.count == 0 { // Deal with the case where no targets are attached by immediately returning framebuffer to cache
 //            framebuffer.lock()
 //            framebuffer.unlock()
@@ -61,10 +61,10 @@ public extension ImageSource {
 //                framebuffer.lock()
 //            }
 //        }
-//        for (target, index) in targets {
-//            target.newFramebufferAvailable(framebuffer, fromSourceIndex:index)
-//        }
-//    }
+        for (target, index) in targets {
+            target.newTextureAvailable(texture, fromSourceIndex:index)
+        }
+    }
 }
 
 public extension ImageConsumer {
@@ -165,7 +165,7 @@ public class SourceContainer {
 }
 
 public class ImageRelay: ImageProcessingOperation {
-//    public var newImageCallback:((Framebuffer) -> ())?
+    public var newImageCallback:((Texture) -> ())?
     
     public let sources = SourceContainer()
     public let targets = TargetContainer()
@@ -179,23 +179,23 @@ public class ImageRelay: ImageProcessingOperation {
         sources.sources[0]?.transmitPreviousImage(to:self, atIndex:0)
     }
 
-//    public func newFramebufferAvailable(_ framebuffer:Framebuffer, fromSourceIndex:UInt) {
-//        if let newImageCallback = newImageCallback {
-//            newImageCallback(framebuffer)
-//        }
-//        if (!preventRelay) {
-//            relayFramebufferOnward(framebuffer)
-//        }
-//    }
-//    
-//    public func relayFramebufferOnward(_ framebuffer:Framebuffer) {
-//        // Need to override to guarantee a removal of the previously applied lock
+    public func newTextureAvailable(_ texture: Texture, fromSourceIndex: UInt) {
+        if let newImageCallback = newImageCallback {
+            newImageCallback(texture)
+        }
+        if (!preventRelay) {
+            relayTextureOnward(texture)
+        }
+    }
+    
+    public func relayTextureOnward(_ texture:Texture) {
+        // Need to override to guarantee a removal of the previously applied lock
 //        for _ in targets {
 //            framebuffer.lock()
 //        }
 //        framebuffer.unlock()
-//        for (target, index) in targets {
-//            target.newFramebufferAvailable(framebuffer, fromSourceIndex:index)
-//        }
-//    }
+        for (target, index) in targets {
+            target.newTextureAvailable(texture, fromSourceIndex:index)
+        }
+    }
 }
