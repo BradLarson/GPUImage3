@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		795B05D820F270FF00D1E759 /* MetalRendering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795B05D720F270FF00D1E759 /* MetalRendering.swift */; };
+		795B05D920F270FF00D1E759 /* MetalRendering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795B05D720F270FF00D1E759 /* MetalRendering.swift */; };
 		79E30E5F20ED6434005FA13C /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E30E5E20ED6434005FA13C /* Camera.swift */; };
 		79E30E6120ED64F9005FA13C /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E30E6020ED64F9005FA13C /* Camera.swift */; };
 		79E30E6320F10B6C005FA13C /* MetalRenderingDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E30E6220F10B6C005FA13C /* MetalRenderingDevice.swift */; };
@@ -36,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		795B05D720F270FF00D1E759 /* MetalRendering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MetalRendering.swift; path = Source/MetalRendering.swift; sourceTree = "<group>"; };
 		79E30E5E20ED6434005FA13C /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Camera.swift; path = Source/iOS/Camera.swift; sourceTree = "<group>"; };
 		79E30E6020ED64F9005FA13C /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Camera.swift; path = Source/Mac/Camera.swift; sourceTree = "<group>"; };
 		79E30E6220F10B6C005FA13C /* MetalRenderingDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MetalRenderingDevice.swift; path = Source/MetalRenderingDevice.swift; sourceTree = "<group>"; };
@@ -137,6 +140,7 @@
 				79E30E6220F10B6C005FA13C /* MetalRenderingDevice.swift */,
 				79E30E6E20F11989005FA13C /* Timestamp.swift */,
 				79E30E6B20F118CD005FA13C /* Texture.swift */,
+				795B05D720F270FF00D1E759 /* MetalRendering.swift */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -291,6 +295,7 @@
 				BCE0BEA220D6E3C80006E120 /* Position.swift in Sources */,
 				79E30E7420F11DD9005FA13C /* RenderView.swift in Sources */,
 				79E30E6F20F11989005FA13C /* Timestamp.swift in Sources */,
+				795B05D820F270FF00D1E759 /* MetalRendering.swift in Sources */,
 				79E30E6C20F118CD005FA13C /* Texture.swift in Sources */,
 				79E30E5F20ED6434005FA13C /* Camera.swift in Sources */,
 				79E30E6320F10B6C005FA13C /* MetalRenderingDevice.swift in Sources */,
@@ -311,6 +316,7 @@
 				BCE0BEA320D6E3C80006E120 /* Position.swift in Sources */,
 				79E30E7020F11989005FA13C /* Timestamp.swift in Sources */,
 				79E30E6D20F118CD005FA13C /* Texture.swift in Sources */,
+				795B05D920F270FF00D1E759 /* MetalRendering.swift in Sources */,
 				79E30E6120ED64F9005FA13C /* Camera.swift in Sources */,
 				79E30E6420F10B6C005FA13C /* MetalRenderingDevice.swift in Sources */,
 				79E30E6A20F10F9C005FA13C /* Passthrough.metal in Sources */,

@@ -23,6 +23,7 @@ public class RenderView: MTKView, ImageConsumer {
         framebufferOnly = false
         autoResizeDrawable = true
         contentMode = .scaleToFill
+        self.layer.transform = CATransform3DMakeScale(1.0, -1.0, 1.0)
         self.device = sharedMetalRenderingDevice.device
         
         enableSetNeedsDisplay = false
