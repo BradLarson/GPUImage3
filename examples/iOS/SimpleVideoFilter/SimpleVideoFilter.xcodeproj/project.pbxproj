@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC7BA27F20F2C865006B5F4B /* Assets-iOS.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC7BA27E20F2C865006B5F4B /* Assets-iOS.xcassets */; };
 		BCE0BEB720D6E8C20006E120 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE0BEB620D6E8C20006E120 /* AppDelegate.swift */; };
 		BCE0BEB920D6E8C20006E120 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE0BEB820D6E8C20006E120 /* ViewController.swift */; };
 		BCE0BEBC20D6E8C20006E120 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCE0BEBA20D6E8C20006E120 /* Main.storyboard */; };
-		BCE0BEBE20D6E8C40006E120 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCE0BEBD20D6E8C40006E120 /* Assets.xcassets */; };
 		BCE0BEC120D6E8C40006E120 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCE0BEBF20D6E8C40006E120 /* LaunchScreen.storyboard */; };
 		BCE0BED520D6E92E0006E120 /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BCE0BECF20D6E90F0006E120 /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -53,11 +53,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BC7BA27E20F2C865006B5F4B /* Assets-iOS.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Assets-iOS.xcassets"; path = "../../../SharedAssets/Assets-iOS.xcassets"; sourceTree = "<group>"; };
 		BCE0BEB320D6E8C20006E120 /* SimpleVideoFilter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleVideoFilter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCE0BEB620D6E8C20006E120 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCE0BEB820D6E8C20006E120 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BCE0BEBB20D6E8C20006E120 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BCE0BEBD20D6E8C40006E120 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BCE0BEC020D6E8C40006E120 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BCE0BEC220D6E8C40006E120 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCE0BEC920D6E90E0006E120 /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = ../../../framework/GPUImage.xcodeproj; sourceTree = "<group>"; };
@@ -97,7 +97,7 @@
 				BCE0BEB620D6E8C20006E120 /* AppDelegate.swift */,
 				BCE0BEB820D6E8C20006E120 /* ViewController.swift */,
 				BCE0BEBA20D6E8C20006E120 /* Main.storyboard */,
-				BCE0BEBD20D6E8C40006E120 /* Assets.xcassets */,
+				BC7BA27E20F2C865006B5F4B /* Assets-iOS.xcassets */,
 				BCE0BEBF20D6E8C40006E120 /* LaunchScreen.storyboard */,
 				BCE0BEC220D6E8C40006E120 /* Info.plist */,
 			);
@@ -204,8 +204,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC7BA27F20F2C865006B5F4B /* Assets-iOS.xcassets in Resources */,
 				BCE0BEC120D6E8C40006E120 /* LaunchScreen.storyboard in Resources */,
-				BCE0BEBE20D6E8C40006E120 /* Assets.xcassets in Resources */,
 				BCE0BEBC20D6E8C20006E120 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -370,8 +370,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R7QEZYD6L8;
+				DEVELOPMENT_TEAM = J2U2U9GBML;
 				INFOPLIST_FILE = SimpleVideoFilter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -388,8 +389,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R7QEZYD6L8;
+				DEVELOPMENT_TEAM = J2U2U9GBML;
 				INFOPLIST_FILE = SimpleVideoFilter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -23,6 +23,11 @@
 		79E30E7020F11989005FA13C /* Timestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E30E6E20F11989005FA13C /* Timestamp.swift */; };
 		79E30E7420F11DD9005FA13C /* RenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E30E7320F11DD9005FA13C /* RenderView.swift */; };
 		79E30E7720F11DED005FA13C /* RenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E30E7620F11DED005FA13C /* RenderView.swift */; };
+		BC7BA27420F2BD1E006B5F4B /* ShaderUniformSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7BA27320F2BD1E006B5F4B /* ShaderUniformSettings.swift */; };
+		BC7BA27720F2C269006B5F4B /* BrightnessAdjustment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7BA27620F2C269006B5F4B /* BrightnessAdjustment.swift */; };
+		BC7BA27920F2C2CF006B5F4B /* BrightnessAdjustment.metal in Sources */ = {isa = PBXBuildFile; fileRef = BC7BA27820F2C2CF006B5F4B /* BrightnessAdjustment.metal */; };
+		BC7BA27B20F2C5E8006B5F4B /* OperationShaderTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = BC7BA27A20F2C5E8006B5F4B /* OperationShaderTypes.h */; };
+		BC7BA27C20F2C5E8006B5F4B /* OperationShaderTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = BC7BA27A20F2C5E8006B5F4B /* OperationShaderTypes.h */; };
 		BCE0BE9E20D6E3C80006E120 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE0BE9820D6E3C80006E120 /* Color.swift */; };
 		BCE0BE9F20D6E3C80006E120 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE0BE9820D6E3C80006E120 /* Color.swift */; };
 		BCE0BEA020D6E3C80006E120 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE0BE9920D6E3C80006E120 /* Size.swift */; };
@@ -48,6 +53,10 @@
 		79E30E6E20F11989005FA13C /* Timestamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Timestamp.swift; path = Source/Timestamp.swift; sourceTree = "<group>"; };
 		79E30E7320F11DD9005FA13C /* RenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RenderView.swift; path = Source/iOS/RenderView.swift; sourceTree = "<group>"; };
 		79E30E7620F11DED005FA13C /* RenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RenderView.swift; path = Source/Mac/RenderView.swift; sourceTree = "<group>"; };
+		BC7BA27320F2BD1E006B5F4B /* ShaderUniformSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShaderUniformSettings.swift; path = Source/ShaderUniformSettings.swift; sourceTree = "<group>"; };
+		BC7BA27620F2C269006B5F4B /* BrightnessAdjustment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BrightnessAdjustment.swift; path = Source/Operations/BrightnessAdjustment.swift; sourceTree = "<group>"; };
+		BC7BA27820F2C2CF006B5F4B /* BrightnessAdjustment.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; name = BrightnessAdjustment.metal; path = Source/Operations/BrightnessAdjustment.metal; sourceTree = "<group>"; };
+		BC7BA27A20F2C5E8006B5F4B /* OperationShaderTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OperationShaderTypes.h; path = Source/Operations/OperationShaderTypes.h; sourceTree = "<group>"; };
 		BCE0BE7C20D6DE610006E120 /* GPUImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GPUImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCE0BE8C20D6E2B80006E120 /* GPUImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GPUImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCE0BE9820D6E3C80006E120 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Source/Color.swift; sourceTree = "<group>"; };
@@ -108,6 +117,15 @@
 			name = Mac;
 			sourceTree = "<group>";
 		};
+		BC7BA27520F2C20D006B5F4B /* Color processing */ = {
+			isa = PBXGroup;
+			children = (
+				BC7BA27620F2C269006B5F4B /* BrightnessAdjustment.swift */,
+				BC7BA27820F2C2CF006B5F4B /* BrightnessAdjustment.metal */,
+			);
+			name = "Color processing";
+			sourceTree = "<group>";
+		};
 		BCE0BE7220D6DE610006E120 = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +159,7 @@
 				79E30E6E20F11989005FA13C /* Timestamp.swift */,
 				79E30E6B20F118CD005FA13C /* Texture.swift */,
 				795B05D720F270FF00D1E759 /* MetalRendering.swift */,
+				BC7BA27320F2BD1E006B5F4B /* ShaderUniformSettings.swift */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -167,7 +186,9 @@
 			isa = PBXGroup;
 			children = (
 				79E30E6520F10F72005FA13C /* BasicOperation.swift */,
+				BC7BA27A20F2C5E8006B5F4B /* OperationShaderTypes.h */,
 				79E30E6820F10F9C005FA13C /* Passthrough.metal */,
+				BC7BA27520F2C20D006B5F4B /* Color processing */,
 			);
 			name = Operations;
 			sourceTree = "<group>";
@@ -179,6 +200,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC7BA27B20F2C5E8006B5F4B /* OperationShaderTypes.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,6 +208,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC7BA27C20F2C5E8006B5F4B /* OperationShaderTypes.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +322,9 @@
 				79E30E6C20F118CD005FA13C /* Texture.swift in Sources */,
 				79E30E5F20ED6434005FA13C /* Camera.swift in Sources */,
 				79E30E6320F10B6C005FA13C /* MetalRenderingDevice.swift in Sources */,
+				BC7BA27420F2BD1E006B5F4B /* ShaderUniformSettings.swift in Sources */,
+				BC7BA27920F2C2CF006B5F4B /* BrightnessAdjustment.metal in Sources */,
+				BC7BA27720F2C269006B5F4B /* BrightnessAdjustment.swift in Sources */,
 				79E30E6920F10F9C005FA13C /* Passthrough.metal in Sources */,
 				BCE0BEA420D6E3C80006E120 /* Pipeline.swift in Sources */,
 			);

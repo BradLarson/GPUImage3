@@ -1,11 +1,7 @@
 #include <metal_stdlib>
-using namespace metal;
+#include "OperationShaderTypes.h"
 
-struct SingleInputVertexIO
-{
-    float4 position [[position]];
-    float2 textureCoordinate [[user(texturecoord)]];
-};
+using namespace metal;
 
 vertex SingleInputVertexIO oneInputVertex(device packed_float2 *position [[buffer(0)]],
                                           device packed_float2 *texturecoord [[buffer(1)]],
@@ -24,7 +20,6 @@ fragment half4 passthroughFragment(SingleInputVertexIO fragmentInput [[stage_in]
 {
     constexpr sampler quadSampler;
     half4 color = inputTexture.sample(quadSampler, fragmentInput.textureCoordinate);
-//    half4 color = half4(0.0, 0.0, 1.0, 1.0);
     
     return color;
 }

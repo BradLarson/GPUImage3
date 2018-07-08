@@ -16,6 +16,8 @@ open class BasicOperation: ImageProcessingOperation {
     public let targets = TargetContainer()
     public let sources = SourceContainer()
     
+    public var uniformSettings = ShaderUniformSettings()
+
     let renderPipelineState: MTLRenderPipelineState
     let operationName: String
     
@@ -35,7 +37,7 @@ open class BasicOperation: ImageProcessingOperation {
         guard let fragmentFunction = sharedMetalRenderingDevice.shaderLibrary.makeFunction(name: fragmentFunctionName) else {
             fatalError("\(operationName): could not compile fragment function \(fragmentFunctionName)")
         }
-        
+                
         let descriptor = MTLRenderPipelineDescriptor()
         descriptor.colorAttachments[0].pixelFormat = MTLPixelFormat.bgra8Unorm
         descriptor.sampleCount = 1
@@ -105,6 +107,7 @@ open class BasicOperation: ImageProcessingOperation {
         renderEncoder.setRenderPipelineState(renderPipelineState)
         renderEncoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
         renderEncoder.setVertexBuffer(textureBuffer, offset: 0, index: 1)
+        uniformSettings.restoreShaderSettings(renderEncoder: renderEncoder)
         renderEncoder.setFragmentTexture(texture.texture, index: 0)
         renderEncoder.drawPrimitives(type: .triangleStrip, vertexStart: 0, vertexCount: 4)
         renderEncoder.endEncoding()
