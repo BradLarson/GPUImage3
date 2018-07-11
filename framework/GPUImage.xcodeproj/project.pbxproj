@@ -28,6 +28,11 @@
 		BC7BA27920F2C2CF006B5F4B /* BrightnessAdjustment.metal in Sources */ = {isa = PBXBuildFile; fileRef = BC7BA27820F2C2CF006B5F4B /* BrightnessAdjustment.metal */; };
 		BC7BA27B20F2C5E8006B5F4B /* OperationShaderTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = BC7BA27A20F2C5E8006B5F4B /* OperationShaderTypes.h */; };
 		BC7BA27C20F2C5E8006B5F4B /* OperationShaderTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = BC7BA27A20F2C5E8006B5F4B /* OperationShaderTypes.h */; };
+		BC7BA28120F599DD006B5F4B /* MonochromeFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7BA28020F599DD006B5F4B /* MonochromeFilter.swift */; };
+		BC7BA28220F599DD006B5F4B /* MonochromeFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7BA28020F599DD006B5F4B /* MonochromeFilter.swift */; };
+		BC7BA28420F59C8E006B5F4B /* MonochromeFilter.metal in Sources */ = {isa = PBXBuildFile; fileRef = BC7BA28320F59C8E006B5F4B /* MonochromeFilter.metal */; };
+		BC7BA28520F59C8E006B5F4B /* MonochromeFilter.metal in Sources */ = {isa = PBXBuildFile; fileRef = BC7BA28320F59C8E006B5F4B /* MonochromeFilter.metal */; };
+		BC7BA28F20F5A275006B5F4B /* PictureInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7BA28E20F5A275006B5F4B /* PictureInput.swift */; };
 		BCE0BE9E20D6E3C80006E120 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE0BE9820D6E3C80006E120 /* Color.swift */; };
 		BCE0BE9F20D6E3C80006E120 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE0BE9820D6E3C80006E120 /* Color.swift */; };
 		BCE0BEA020D6E3C80006E120 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE0BE9920D6E3C80006E120 /* Size.swift */; };
@@ -57,6 +62,9 @@
 		BC7BA27620F2C269006B5F4B /* BrightnessAdjustment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BrightnessAdjustment.swift; path = Source/Operations/BrightnessAdjustment.swift; sourceTree = "<group>"; };
 		BC7BA27820F2C2CF006B5F4B /* BrightnessAdjustment.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; name = BrightnessAdjustment.metal; path = Source/Operations/BrightnessAdjustment.metal; sourceTree = "<group>"; };
 		BC7BA27A20F2C5E8006B5F4B /* OperationShaderTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OperationShaderTypes.h; path = Source/Operations/OperationShaderTypes.h; sourceTree = "<group>"; };
+		BC7BA28020F599DD006B5F4B /* MonochromeFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MonochromeFilter.swift; path = Source/Operations/MonochromeFilter.swift; sourceTree = "<group>"; };
+		BC7BA28320F59C8E006B5F4B /* MonochromeFilter.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; name = MonochromeFilter.metal; path = Source/Operations/MonochromeFilter.metal; sourceTree = "<group>"; };
+		BC7BA28E20F5A275006B5F4B /* PictureInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PictureInput.swift; path = Source/iOS/PictureInput.swift; sourceTree = "<group>"; };
 		BCE0BE7C20D6DE610006E120 /* GPUImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GPUImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCE0BE8C20D6E2B80006E120 /* GPUImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GPUImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCE0BE9820D6E3C80006E120 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Source/Color.swift; sourceTree = "<group>"; };
@@ -89,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				79E30E5E20ED6434005FA13C /* Camera.swift */,
+				BC7BA28E20F5A275006B5F4B /* PictureInput.swift */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
@@ -122,6 +131,8 @@
 			children = (
 				BC7BA27620F2C269006B5F4B /* BrightnessAdjustment.swift */,
 				BC7BA27820F2C2CF006B5F4B /* BrightnessAdjustment.metal */,
+				BC7BA28020F599DD006B5F4B /* MonochromeFilter.swift */,
+				BC7BA28320F59C8E006B5F4B /* MonochromeFilter.metal */,
 			);
 			name = "Color processing";
 			sourceTree = "<group>";
@@ -310,6 +321,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC7BA28120F599DD006B5F4B /* MonochromeFilter.swift in Sources */,
 				BCE0BEA020D6E3C80006E120 /* Size.swift in Sources */,
 				BCE0BEA620D6E3C80006E120 /* Matrix.swift in Sources */,
 				79E30E6620F10F72005FA13C /* BasicOperation.swift in Sources */,
@@ -317,10 +329,12 @@
 				BCE0BE9E20D6E3C80006E120 /* Color.swift in Sources */,
 				BCE0BEA220D6E3C80006E120 /* Position.swift in Sources */,
 				79E30E7420F11DD9005FA13C /* RenderView.swift in Sources */,
+				BC7BA28420F59C8E006B5F4B /* MonochromeFilter.metal in Sources */,
 				79E30E6F20F11989005FA13C /* Timestamp.swift in Sources */,
 				795B05D820F270FF00D1E759 /* MetalRendering.swift in Sources */,
 				79E30E6C20F118CD005FA13C /* Texture.swift in Sources */,
 				79E30E5F20ED6434005FA13C /* Camera.swift in Sources */,
+				BC7BA28F20F5A275006B5F4B /* PictureInput.swift in Sources */,
 				79E30E6320F10B6C005FA13C /* MetalRenderingDevice.swift in Sources */,
 				BC7BA27420F2BD1E006B5F4B /* ShaderUniformSettings.swift in Sources */,
 				BC7BA27920F2C2CF006B5F4B /* BrightnessAdjustment.metal in Sources */,
@@ -337,6 +351,8 @@
 				BCE0BEA120D6E3C80006E120 /* Size.swift in Sources */,
 				BCE0BEA720D6E3C80006E120 /* Matrix.swift in Sources */,
 				79E30E6720F10F72005FA13C /* BasicOperation.swift in Sources */,
+				BC7BA28220F599DD006B5F4B /* MonochromeFilter.swift in Sources */,
+				BC7BA28520F59C8E006B5F4B /* MonochromeFilter.metal in Sources */,
 				BCE0BEA920D6E3C80006E120 /* ImageOrientation.swift in Sources */,
 				BCE0BE9F20D6E3C80006E120 /* Color.swift in Sources */,
 				BCE0BEA320D6E3C80006E120 /* Position.swift in Sources */,
@@ -406,7 +422,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -463,7 +479,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -544,7 +560,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.redqueencoder.GPUImage;
 				PRODUCT_NAME = GPUImage;
 				SDKROOT = macosx;
@@ -573,7 +589,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.redqueencoder.GPUImage;
 				PRODUCT_NAME = GPUImage;
 				SDKROOT = macosx;

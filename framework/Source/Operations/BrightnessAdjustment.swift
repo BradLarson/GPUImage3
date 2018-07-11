@@ -4,6 +4,6 @@ public class BrightnessAdjustment: BasicOperation {
     public init() {
         super.init(fragmentFunctionName:"brightnessFragment", numberOfInputs:1)
         
-        uniformSettings.appendUniform([0.0])
+        uniformSettings.appendUniform(0.0)
     }
 }
