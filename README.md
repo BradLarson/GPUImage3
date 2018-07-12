@@ -2,6 +2,12 @@
 
 <div style="float: right"><img src="http://sunsetlakesoftware.com/sites/default/files/GPUImageLogo.png" /></div>
 
+Janie Clayton
+
+http://redqueengraphics.com
+
+[@RedQueenCoder](https://twitter.com/RedQueenCoder)
+
 Brad Larson
 
 http://www.sunsetlakesoftware.com
@@ -10,17 +16,13 @@ http://www.sunsetlakesoftware.com
 
 contact@sunsetlakesoftware.com
 
-Janie Clayton
-
-http://redqueengraphics.com
-
-[@RedQueenCoder](https://twitter.com/RedQueenCoder)
-
 ## Overview ##
 
 GPUImage 3 is the third generation of the <a href="https://github.com/BradLarson/GPUImage">GPUImage framework</a>, an open source project for performing GPU-accelerated image and video processing on Mac and iOS. The original GPUImage framework was written in Objective-C and targeted Mac and iOS, the second iteration rewritten in Swift using OpenGL to target Mac, iOS, and Linux, and now this third generation is redesigned to use Metal in place of OpenGL.
 
-The objective of the framework is to make it as easy as possible to set up and perform realtime video processing or machine vision against image or video sources. [Something about Metal here]
+The objective of the framework is to make it as easy as possible to set up and perform realtime video processing or machine vision against image or video sources. Previous iterations of this framework wrapped OpenGL (ES), hiding much of the boilerplate code required to render images on the GPU using custom vertex and fragment shaders. This version of the framework replaces OpenGL (ES) with Metal. Largely driven by Apple's deprecation of OpenGL (ES) on their platforms in favor of Metal, it will allow for exploring performance optimizations over OpenGL and a tighter integration with Metal-based frameworks and operations.
+
+The API is a clone of that used in <a href="https://github.com/BradLarson/GPUImage2">GPUImage 2</a>, and is intended to be a drop-in replacement for that version of the framework. Swapping between Metal and OpenGL versions of the framework should be as simple as changing which framework your application is linked against. A few low-level interfaces, such as those around texture input and output, will necessarily be Metal- or OpenGL-specific, but everything else is designed to be compatible between the two.
 
 ## License ##
 
@@ -30,8 +32,8 @@ BSD-style, with the full license available with the framework in License.txt.
 
 - Swift 4
 - Xcode 9.0 on Mac or iOS
-- iOS: 8.0 or higher (Swift is supported on 7.0, but not Mac-style frameworks)
-- OSX: 10.9 or higher
+- iOS: 9.0 or higher
+- OSX: 10.11 or higher
 
 ## General architecture ##
 
@@ -65,7 +67,7 @@ To filter live video from a Mac or iOS camera, you can write code like the follo
 
 ```swift
 do {
-    camera = try Camera(sessionPreset:AVCaptureSessionPreset640x480)
+    camera = try Camera(sessionPreset:.vga640x480)
     filter = SaturationAdjustment()
     camera --> filter --> renderView
     camera.startCapture()
@@ -84,98 +86,15 @@ Functionality not completed.
 
 ### Capturing an image from video ###
 
-(Not currently available on Linux.)
-
-To capture a still image from live video, you need to set a callback to be performed on the next frame of video that is processed. The easiest way to do this is to use the convenience extension to capture, encode, and save a file to disk:
-
-```swift
-filter.saveNextFrameToURL(url, format:.PNG)
-```
-
-Under the hood, this creates a PictureOutput instance, attaches it as a target to your filter, sets the PictureOutput's encodedImageFormat to PNG files, and sets the encodedImageAvailableCallback to a closure that takes in the data for the filtered image and saves it to a URL.
-
-You can set this up manually to get the encoded image data (as NSData):
-
-```swift
-let pictureOutput = PictureOutput()
-pictureOutput.encodedImageFormat = .JPEG
-pictureOutput.encodedImageAvailableCallback = {imageData in
-    // Do something with the NSData
-}
-filter --> pictureOutput
-```
-
-You can also get the filtered image in a platform-native format (NSImage, UIImage) by setting the imageAvailableCallback:
-
-```swift
-let pictureOutput = PictureOutput()
-pictureOutput.encodedImageFormat = .JPEG
-pictureOutput.imageAvailableCallback = {image in
-    // Do something with the image
-}
-filter --> pictureOutput
-```
+Functionality not completed.
 
 ### Processing a still image ###
 
-(Not currently available on Linux.)
-
-There are a few different ways to approach filtering an image. The easiest are the convenience extensions to UIImage or NSImage that let you filter that image and return a UIImage or NSImage:
-
-```swift
-let testImage = UIImage(named:"WID-small.jpg")!
-let toonFilter = SmoothToonFilter()
-let filteredImage = testImage.filterWithOperation(toonFilter)
-```
-
-for a more complex pipeline:
-
-```swift
-let testImage = UIImage(named:"WID-small.jpg")!
-let toonFilter = SmoothToonFilter()
-let luminanceFilter = Luminance()
-let filteredImage = testImage.filterWithPipeline{input, output in
-    input --> toonFilter --> luminanceFilter --> output
-}
-```
-
-One caution: if you want to display an image to the screen or repeatedly filter an image, don't use these methods. Going to and from Core Graphics adds a lot of overhead. Instead, I recommend manually setting up a pipeline and directing it to a RenderView for display in order to keep everything on the GPU.
-
-Both of these convenience methods wrap several operations. To feed a picture into a filter pipeline, you instantiate a PictureInput. To capture a picture from the pipeline, you use a PictureOutput. To manually set up processing of an image, you can use something like the following:
-
-```swift
-let toonFilter = SmoothToonFilter()
-let testImage = UIImage(named:"WID-small.jpg")!
-let pictureInput = PictureInput(image:testImage)
-let pictureOutput = PictureOutput()
-pictureOutput.imageAvailableCallback = {image in
-    // Do something with image
-}
-pictureInput --> toonFilter --> pictureOutput
-pictureInput.processImage(synchronously:true)
-```
-
-In the above, the imageAvailableCallback will be triggered right at the processImage() line. If you want the image processing to be done asynchronously, leave out the synchronously argument in the above.
+Functionality not completed.
 
 ### Filtering and re-encoding a movie ###
 
-To filter an existing movie file, you can write code like the following:
-
-```swift
-
-do {
-	let bundleURL = Bundle.main.resourceURL!
-	let movieURL = URL(string:"sample_iPod.m4v", relativeTo:bundleURL)!
-	movie = try MovieInput(url:movieURL, playAtActualSpeed:true)
-    filter = SaturationAdjustment()
-    movie --> filter --> renderView
-    movie.start()
-} catch {
-    fatalError("Could not initialize rendering pipeline: \(error)")
-}
-```
-
-where renderView is an instance of RenderView that you've placed somewhere in your view hierarchy. The above loads a movie named "sample_iPod.m4v" from the application's bundle, creates a saturation filter, and directs movie frames to be processed through the saturation filter on their way to the screen. start() initiates the movie playback.
+Functionality not completed.
 
 ### Writing a custom image processing operation ###
 
@@ -186,14 +105,30 @@ Many common filters and other image processing operations can be described as su
 To build a simple, one-input filter, you may not even need to create a subclass of your own. All you need to do is supply a fragment shader and the number of inputs needed when instantiating a BasicOperation:
 
 ```swift
-let myFilter = BasicOperation(fragmentShaderFile:MyFilterFragmentShaderURL, numberOfInputs:1)
+let myFilter = BasicOperation(fragmentFunctionName:"myFilterFragmentFunction", numberOfInputs:1)
 ```
 
 A shader program is composed of matched vertex and fragment shaders that are compiled and linked together into one program. By default, the framework uses a series of stock vertex shaders based on the number of input images feeding into an operation. Usually, all you'll need to do is provide the custom fragment shader that is used to perform your filtering or other processing.
 
 Fragment shaders used by GPUImage look something like this:
 
-[TODO: Rework for Metal operations]
+```metal
+#include <metal_stdlib>
+#include "OperationShaderTypes.h"
+
+using namespace metal;
+
+fragment half4 passthroughFragment(SingleInputVertexIO fragmentInput [[stage_in]],
+                                   texture2d<half> inputTexture [[texture(0)]])
+{
+    constexpr sampler quadSampler;
+    half4 color = inputTexture.sample(quadSampler, fragmentInput.textureCoordinate);
+    
+    return color;
+}
+```
+
+and are saved within .metal files that are compiled at the same time as the framework / your project.
 
 ### Grouping operations ###
 
@@ -226,4 +161,32 @@ Matrices come in Matrix3x3 and Matrix4x4 varieties. These matrices can be build 
 
 ## Built-in operations ##
 
-[TODO: Fill in with operations as they are added]
+Operations are currently being ported over from GPUImage 2. Here are the ones that are currently functional:
+
+### Color adjustments ###
+
+- **BrightnessAdjustment**: Adjusts the brightness of the image
+  - *brightness*: The adjusted brightness (-1.0 - 1.0, with 0.0 as the default)
+
+- **ExposureAdjustment**: Adjusts the exposure of the image
+  - *exposure*: The adjusted exposure (-10.0 - 10.0, with 0.0 as the default)
+
+- **ContrastAdjustment**: Adjusts the contrast of the image
+  - *contrast*: The adjusted contrast (0.0 - 4.0, with 1.0 as the default)
+
+- **SaturationAdjustment**: Adjusts the saturation of an image
+  - *saturation*: The degree of saturation or desaturation to apply to the image (0.0 - 2.0, with 1.0 as the default)
+
+- **GammaAdjustment**: Adjusts the gamma of an image
+  - *gamma*: The gamma adjustment to apply (0.0 - 3.0, with 1.0 as the default)
+
+- **HueAdjustment**: Adjusts the hue of an image
+  - *hue*: The hue angle, in degrees. 90 degrees by default
+
+- **ColorInversion**: Inverts the colors of an image
+
+- **Luminance**: Reduces an image to just its luminance (greyscale).
+
+- **MonochromeFilter**: Converts the image to a single-color version, based on the luminance of each pixel
+  - *intensity*: The degree to which the specific color replaces the normal image color (0.0 - 1.0, with 1.0 as the default)
+  - *color*: The color to use as the basis for the effect, with (0.6, 0.45, 0.3, 1.0) as the default.

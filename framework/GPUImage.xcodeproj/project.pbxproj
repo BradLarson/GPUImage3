@@ -50,7 +50,7 @@
 		79E30E6F20F11989005FA13C /* Timestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E30E6E20F11989005FA13C /* Timestamp.swift */; };
 		79E30E7020F11989005FA13C /* Timestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E30E6E20F11989005FA13C /* Timestamp.swift */; };
 		79E30E7420F11DD9005FA13C /* RenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E30E7320F11DD9005FA13C /* RenderView.swift */; };
-		79E30E7720F11DED005FA13C /* RenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E30E7620F11DED005FA13C /* RenderView.swift */; };
+		BC67D91820F815B60046D2C4 /* RenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E30E7320F11DD9005FA13C /* RenderView.swift */; };
 		BC7BA27420F2BD1E006B5F4B /* ShaderUniformSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7BA27320F2BD1E006B5F4B /* ShaderUniformSettings.swift */; };
 		BC7BA27720F2C269006B5F4B /* BrightnessAdjustment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7BA27620F2C269006B5F4B /* BrightnessAdjustment.swift */; };
 		BC7BA27920F2C2CF006B5F4B /* BrightnessAdjustment.metal in Sources */ = {isa = PBXBuildFile; fileRef = BC7BA27820F2C2CF006B5F4B /* BrightnessAdjustment.metal */; };
@@ -102,8 +102,7 @@
 		79E30E6820F10F9C005FA13C /* Passthrough.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; name = Passthrough.metal; path = Source/Operations/Passthrough.metal; sourceTree = "<group>"; };
 		79E30E6B20F118CD005FA13C /* Texture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Texture.swift; path = Source/Texture.swift; sourceTree = "<group>"; };
 		79E30E6E20F11989005FA13C /* Timestamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Timestamp.swift; path = Source/Timestamp.swift; sourceTree = "<group>"; };
-		79E30E7320F11DD9005FA13C /* RenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RenderView.swift; path = Source/iOS/RenderView.swift; sourceTree = "<group>"; };
-		79E30E7620F11DED005FA13C /* RenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RenderView.swift; path = Source/Mac/RenderView.swift; sourceTree = "<group>"; };
+		79E30E7320F11DD9005FA13C /* RenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RenderView.swift; path = Source/RenderView.swift; sourceTree = "<group>"; };
 		BC7BA27320F2BD1E006B5F4B /* ShaderUniformSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShaderUniformSettings.swift; path = Source/ShaderUniformSettings.swift; sourceTree = "<group>"; };
 		BC7BA27620F2C269006B5F4B /* BrightnessAdjustment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BrightnessAdjustment.swift; path = Source/Operations/BrightnessAdjustment.swift; sourceTree = "<group>"; };
 		BC7BA27820F2C2CF006B5F4B /* BrightnessAdjustment.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; name = BrightnessAdjustment.metal; path = Source/Operations/BrightnessAdjustment.metal; sourceTree = "<group>"; };
@@ -161,7 +160,6 @@
 		79E30E7120F11DA4005FA13C /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				79E30E7320F11DD9005FA13C /* RenderView.swift */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
@@ -169,7 +167,6 @@
 		79E30E7220F11DAA005FA13C /* Mac */ = {
 			isa = PBXGroup;
 			children = (
-				79E30E7620F11DED005FA13C /* RenderView.swift */,
 			);
 			name = Mac;
 			sourceTree = "<group>";
@@ -249,6 +246,7 @@
 		BCE0BE9620D6E38F0006E120 /* Outputs */ = {
 			isa = PBXGroup;
 			children = (
+				79E30E7320F11DD9005FA13C /* RenderView.swift */,
 				79E30E7220F11DAA005FA13C /* Mac */,
 				79E30E7120F11DA4005FA13C /* iOS */,
 			);
@@ -428,6 +426,7 @@
 				793D932D20F66C66008A7A6E /* ColorInversion.metal in Sources */,
 				BCE0BEA720D6E3C80006E120 /* Matrix.swift in Sources */,
 				793D932620F66303008A7A6E /* Luminance.metal in Sources */,
+				BC67D91820F815B60046D2C4 /* RenderView.swift in Sources */,
 				793D934520F693B8008A7A6E /* GammaAdjustment.metal in Sources */,
 				79E30E6720F10F72005FA13C /* BasicOperation.swift in Sources */,
 				BC7BA28220F599DD006B5F4B /* MonochromeFilter.swift in Sources */,
@@ -456,7 +455,6 @@
 				793D934220F693AD008A7A6E /* GammaAdjustment.swift in Sources */,
 				79E30E6420F10B6C005FA13C /* MetalRenderingDevice.swift in Sources */,
 				79E30E6A20F10F9C005FA13C /* Passthrough.metal in Sources */,
-				79E30E7720F11DED005FA13C /* RenderView.swift in Sources */,
 				BCE0BEA520D6E3C80006E120 /* Pipeline.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

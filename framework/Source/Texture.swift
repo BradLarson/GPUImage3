@@ -32,6 +32,21 @@ public class Texture {
         self.orientation = orientation
         self.texture = texture
     }
+    
+    public init(device:MTLDevice, orientation: ImageOrientation, pixelFormat: MTLPixelFormat = .bgra8Unorm, width: Int, height: Int, mipmapped:Bool = false) {
+        let textureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .bgra8Unorm,
+                                                                         width: width,
+                                                                         height: height,
+                                                                         mipmapped: false)
+        textureDescriptor.usage = [.renderTarget, .shaderRead, .shaderWrite]
+        
+        guard let newTexture = sharedMetalRenderingDevice.device.makeTexture(descriptor: textureDescriptor) else {
+            fatalError("Could not create texture of size: (\(width), \(height))")
+        }
+
+        self.orientation = orientation
+        self.texture = newTexture
+    }
 }
 
 extension Rotation {
