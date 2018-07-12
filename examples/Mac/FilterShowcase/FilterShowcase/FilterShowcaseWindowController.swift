@@ -30,7 +30,7 @@ class FilterShowcaseWindowController: NSWindowController {
         super.windowDidLoad()
 
         do {
-            videoCamera = try Camera(sessionPreset:.hd1280x720)
+            videoCamera = try Camera(sessionPreset:.hd1280x720, location:.frontFacing)
             videoCamera.runBenchmark = true
             videoCamera.startCapture()
         } catch {
@@ -81,11 +81,11 @@ class FilterShowcaseWindowController: NSWindowController {
 // MARK: -
 // MARK: Table view delegate and datasource methods
     
-    func numberOfRowsInTableView(_ aTableView:NSTableView!) -> Int {
+    @objc func numberOfRowsInTableView(_ aTableView:NSTableView!) -> Int {
         return filterOperations.count
     }
     
-    func tableView(_ aTableView:NSTableView!, objectValueForTableColumn aTableColumn:NSTableColumn!, row rowIndex:Int) -> AnyObject! {
+    @objc func tableView(_ aTableView:NSTableView!, objectValueForTableColumn aTableColumn:NSTableColumn!, row rowIndex:Int) -> AnyObject! {
         let filterInList:FilterOperationInterface = filterOperations[rowIndex]
         return filterInList.listName as NSString
     }

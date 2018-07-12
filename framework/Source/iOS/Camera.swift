@@ -195,38 +195,6 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
 
             self.frameRenderingSemaphore.signal()
         }
-        
-//        sharedImageProcessingContext.runOperationAsynchronously{
-//            let cameraFramebuffer:Framebuffer
-//
-//            self.delegate?.didCaptureBuffer(sampleBuffer)
-//            CVPixelBufferUnlockBaseAddress(cameraFrame, CVPixelBufferLockFlags(rawValue:CVOptionFlags(0)))
-//            
-//            cameraFramebuffer.timingStyle = .videoFrame(timestamp:Timestamp(currentTime))
-//            self.updateTargetsWithFramebuffer(cameraFramebuffer)
-//            
-//            if self.runBenchmark {
-//                self.numberOfFramesCaptured += 1
-//                if (self.numberOfFramesCaptured > initialBenchmarkFramesToIgnore) {
-//                    let currentFrameTime = (CFAbsoluteTimeGetCurrent() - startTime)
-//                    self.totalFrameTimeDuringCapture += currentFrameTime
-//                    print("Average frame time : \(1000.0 * self.totalFrameTimeDuringCapture / Double(self.numberOfFramesCaptured - initialBenchmarkFramesToIgnore)) ms")
-//                    print("Current frame time : \(1000.0 * currentFrameTime) ms")
-//                }
-//            }
-//            
-//            if self.logFPS {
-//                if ((CFAbsoluteTimeGetCurrent() - self.lastCheckTime) > 1.0) {
-//                    self.lastCheckTime = CFAbsoluteTimeGetCurrent()
-//                    print("FPS: \(self.framesSinceLastCheck)")
-//                    self.framesSinceLastCheck = 0
-//                }
-//                
-//                self.framesSinceLastCheck += 1
-//            }
-//            
-//            self.frameRenderingSemaphore.signal()
-//        }
     }
     
     public func startCapture() {

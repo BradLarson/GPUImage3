@@ -22,14 +22,18 @@ public class RenderView: MTKView, ImageConsumer {
     private func commonInit() {
         framebufferOnly = false
         autoResizeDrawable = true
-        contentMode = .scaleToFill
+//        contentMode = .scaleToFill
+//        self.layer!.transform = CATransform3DMakeScale(1.0, -1.0, 1.0)
+        
+        self.device = sharedMetalRenderingDevice.device
         
         enableSetNeedsDisplay = false
         isPaused = true
     }
     
-    func newTextureAvailable(_ texture:Texture, fromSourceIndex:UInt) {
+    public func newTextureAvailable(_ texture:Texture, fromSourceIndex:UInt) {
         self.drawableSize = CGSize(width: texture.texture.width, height: texture.texture.height)
+        print("Drawable: \((self.layer as! CAMetalLayer).drawableSize)")
         currentTexture = texture
         self.draw()
     }
@@ -57,3 +61,4 @@ public class RenderView: MTKView, ImageConsumer {
     }
     
 }
+

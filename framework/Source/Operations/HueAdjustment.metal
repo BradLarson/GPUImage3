@@ -48,36 +48,3 @@ fragment half4 hueFragment(SingleInputVertexIO fragmentInput [[stage_in]],
     // Return result
     return color;
 }
-
-/*
-void main ()
- {
- // Sample the input pixel
- vec4 color   = texture2D(inputImageTexture, textureCoordinate);
- 
- // Convert to YIQ
- float   YPrime  = dot (color, kRGBToYPrime);
- float   I      = dot (color, kRGBToI);
- float   Q      = dot (color, kRGBToQ);
- 
- // Calculate the hue and chroma
- float   hue     = atan (Q, I);
- float   chroma  = sqrt (I * I + Q * Q);
- 
- // Make the user's adjustments
- hue += (-hueAdjust); //why negative rotation?
- 
- // Convert back to YIQ
- Q = chroma * sin (hue);
- I = chroma * cos (hue);
- 
- // Convert back to RGB
- vec4    yIQ   = vec4 (YPrime, I, Q, 0.0);
- color.r = dot (yIQ, kYIQToR);
- color.g = dot (yIQ, kYIQToG);
- color.b = dot (yIQ, kYIQToB);
- 
- // Save the result
- gl_FragColor = color;
- }
-*/
