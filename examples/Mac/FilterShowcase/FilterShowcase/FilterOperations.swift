@@ -2,26 +2,26 @@ import GPUImage
 import QuartzCore
 
 let filterOperations: Array<FilterOperationInterface> = [
-//    FilterOperation (
-//        filter:{SaturationAdjustment()},
-//        listName:"Saturation",
-//        titleName:"Saturation",
-//        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:2.0, initialValue:1.0),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.saturation = sliderValue
-//        },
-//        filterOperationType:.singleInput
-//    ),
-//    FilterOperation(
-//        filter:{ContrastAdjustment()},
-//        listName:"Contrast",
-//        titleName:"Contrast",
-//        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:4.0, initialValue:1.0),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.contrast = sliderValue
-//        },
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation (
+        filter:{SaturationAdjustment()},
+        listName:"Saturation",
+        titleName:"Saturation",
+        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:2.0, initialValue:1.0),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.saturation = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
+    FilterOperation(
+        filter:{ContrastAdjustment()},
+        listName:"Contrast",
+        titleName:"Contrast",
+        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:4.0, initialValue:1.0),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.contrast = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
     FilterOperation(
         filter:{BrightnessAdjustment()},
         listName:"Brightness",
@@ -46,16 +46,16 @@ let filterOperations: Array<FilterOperationInterface> = [
 //        },
 //        filterOperationType:.singleInput
 //    ),
-//    FilterOperation(
-//        filter:{ExposureAdjustment()},
-//        listName:"Exposure",
-//        titleName:"Exposure",
-//        sliderConfiguration:.enabled(minimumValue:-4.0, maximumValue:4.0, initialValue:0.0),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.exposure = sliderValue
-//        },
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{ExposureAdjustment()},
+        listName:"Exposure",
+        titleName:"Exposure",
+        sliderConfiguration:.enabled(minimumValue:-4.0, maximumValue:4.0, initialValue:0.0),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.exposure = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
 //    FilterOperation(
 //        filter:{RGBAdjustment()},
 //        listName:"RGB",
@@ -66,16 +66,16 @@ let filterOperations: Array<FilterOperationInterface> = [
 //        },
 //        filterOperationType:.singleInput
 //    ),
-//    FilterOperation(
-//        filter:{HueAdjustment()},
-//        listName:"Hue",
-//        titleName:"Hue",
-//        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:360.0, initialValue:90.0),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.hue = sliderValue
-//        },
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{HueAdjustment()},
+        listName:"Hue",
+        titleName:"Hue",
+        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:360.0, initialValue:90.0),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.hue = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
 //    FilterOperation(
 //        filter:{WhiteBalance()},
 //        listName:"White balance",
@@ -180,16 +180,16 @@ let filterOperations: Array<FilterOperationInterface> = [
 //            return nil
 //        })
 //    ),
-//    FilterOperation(
-//        filter:{GammaAdjustment()},
-//        listName:"Gamma",
-//        titleName:"Gamma",
-//        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:3.0, initialValue:1.0),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.gamma = sliderValue
-//        },
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{GammaAdjustment()},
+        listName:"Gamma",
+        titleName:"Gamma",
+        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:3.0, initialValue:1.0),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.gamma = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
 //// TODO : Tone curve
 //    FilterOperation(
 //        filter:{HighlightsAndShadows()},
@@ -245,14 +245,14 @@ let filterOperations: Array<FilterOperationInterface> = [
 //        sliderUpdateCallback: nil,
 //        filterOperationType:.singleInput
 //    ),
-//    FilterOperation(
-//        filter:{ColorInversion()},
-//        listName:"Color invert",
-//        titleName:"Color Invert",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback: nil,
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{ColorInversion()},
+        listName:"Color invert",
+        titleName:"Color Invert",
+        sliderConfiguration:.disabled,
+        sliderUpdateCallback: nil,
+        filterOperationType:.singleInput
+    ),
 //    FilterOperation(
 //        filter:{Solarize()},
 //        listName:"Solarize",
@@ -283,14 +283,14 @@ let filterOperations: Array<FilterOperationInterface> = [
 //        },
 //        filterOperationType:.singleInput
 //    ),
-//    FilterOperation (
-//        filter:{Luminance()},
-//        listName:"Luminance",
-//        titleName:"Luminance",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback:nil,
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation (
+        filter:{Luminance()},
+        listName:"Luminance",
+        titleName:"Luminance",
+        sliderConfiguration:.disabled,
+        sliderUpdateCallback:nil,
+        filterOperationType:.singleInput
+    ),
 //    FilterOperation(
 //        filter:{Histogram(type:.rgb)},
 //        listName:"Histogram",
