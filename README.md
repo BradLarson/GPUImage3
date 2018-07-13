@@ -47,7 +47,7 @@ Examples for usage of the framework in common applications are shown below.
 
 To add the GPUImage framework to your Mac or iOS application, either drag the GPUImage.xcodeproj project into your application's project or add it via File | Add Files To...
 
-After that, go to your project's Build Phases and add GPUImage_iOS or GPUImage_macOS as a Target Dependency. Add it to the Link Binary With Libraries phase. Add a new Copy Files build phase, set its destination to Frameworks, and add the upper GPUImage.framework (for Mac) or lower GPUImage.framework (for iOS) to that. That last step will make sure the framework is deployed in your application bundle. 
+After that, go to your project's Build Phases and add GPUImage_iOS or GPUImage_macOS as a Target Dependency. Add it to the Link Binary With Libraries phase. Add a new Copy Files build phase, set its destination to Frameworks, and add the upper GPUImage.framework (for iOS) or lower GPUImage.framework (for Mac) to that. That last step will make sure the framework is deployed in your application bundle.
 
 In any of your Swift files that reference GPUImage classes, simply add
 
@@ -123,7 +123,7 @@ fragment half4 passthroughFragment(SingleInputVertexIO fragmentInput [[stage_in]
 {
     constexpr sampler quadSampler;
     half4 color = inputTexture.sample(quadSampler, fragmentInput.textureCoordinate);
-    
+
     return color;
 }
 ```
