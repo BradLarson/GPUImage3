@@ -5,7 +5,7 @@ public class ShaderUniformSettings {
     private var uniformValues:[Float] = []
     private var uniformValueOffsets:[Int] = []
     public var colorUniformsUseAlpha:Bool = false
-    
+
     private func internalIndex(for index:Int) -> Int {
         if (index == 0) {
             return 0
@@ -13,7 +13,7 @@ public class ShaderUniformSettings {
             return uniformValueOffsets[index - 1]
         }
     }
-    
+
     public subscript(index:Int) -> Float {
         get { return uniformValues[internalIndex(for:index)]}
         set(newValue) { uniformValues[internalIndex(for:index)] = newValue }
@@ -62,7 +62,7 @@ public class ShaderUniformSettings {
 
     public func restoreShaderSettings(renderEncoder:MTLRenderCommandEncoder) {
         guard (uniformValues.count > 0) else { return }
-        
+
         let uniformBuffer = sharedMetalRenderingDevice.device.makeBuffer(bytes: uniformValues,
                                                                          length: uniformValues.count * MemoryLayout<Float>.size,
                                                                          options: [])!
@@ -79,7 +79,7 @@ extension Float:UniformConvertible {
     public func toFloatArray() -> [Float] {
         return [self]
     }
-    
+
     public func uniformSize() -> Int {
         return 1
     }
@@ -89,7 +89,7 @@ extension Double:UniformConvertible {
     public func toFloatArray() -> [Float] {
         return [Float(self)]
     }
-    
+
     public func uniformSize() -> Int {
         return 1
     }
@@ -113,7 +113,7 @@ extension Position:UniformConvertible {
             return 2
         }
     }
-    
+
     public func toFloatArray() -> [Float] {
         if let z = self.z {
             return [self.x, self.y, z]

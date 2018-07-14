@@ -4,14 +4,14 @@ import Metal
 public enum TextureTimingStyle {
     case stillImage
     case videoFrame(timestamp:Timestamp)
-    
+
     func isTransient() -> Bool {
         switch self {
         case .stillImage: return false
         case .videoFrame: return true
         }
     }
-    
+
     var timestamp:Timestamp? {
         get {
             switch self {
@@ -25,21 +25,21 @@ public enum TextureTimingStyle {
 public class Texture {
     public var timingStyle: TextureTimingStyle = .stillImage
     public var orientation: ImageOrientation
-    
+
     public let texture: MTLTexture
-    
+
     public init(orientation: ImageOrientation, texture: MTLTexture) {
         self.orientation = orientation
         self.texture = texture
     }
-    
+
     public init(device:MTLDevice, orientation: ImageOrientation, pixelFormat: MTLPixelFormat = .bgra8Unorm, width: Int, height: Int, mipmapped:Bool = false) {
         let textureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .bgra8Unorm,
                                                                          width: width,
                                                                          height: height,
                                                                          mipmapped: false)
         textureDescriptor.usage = [.renderTarget, .shaderRead, .shaderWrite]
-        
+
         guard let newTexture = sharedMetalRenderingDevice.device.makeTexture(descriptor: textureDescriptor) else {
             fatalError("Could not create texture of size: (\(width), \(height))")
         }
@@ -62,13 +62,13 @@ extension Rotation {
         case .rotateClockwiseAndFlipHorizontally: return [1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0]
         }
     }
-    
+
     func croppedTextureCoordinates(offsetFromOrigin:Position, cropSize:Size) -> [Float] {
         let minX = offsetFromOrigin.x
         let minY = offsetFromOrigin.y
         let maxX = offsetFromOrigin.x + cropSize.width
         let maxY = offsetFromOrigin.y + cropSize.height
-        
+
         switch self {
         case .noRotation: return [minX, minY, maxX, minY, minX, maxY, maxX, maxY]
         case .rotateCounterclockwise: return [minX, maxY, minX, minY, maxX, maxY, maxX, minY]

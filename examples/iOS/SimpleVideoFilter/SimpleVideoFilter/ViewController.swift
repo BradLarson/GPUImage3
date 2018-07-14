@@ -2,15 +2,15 @@ import UIKit
 import GPUImage
 
 class ViewController: UIViewController {
-    
+
     @IBOutlet weak var renderView: RenderView!
     var camera:Camera!
     var operation:BrightnessAdjustment!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+
         do {
 //            operation = BasicOperation(fragmentFunctionName: "passthroughFragment")
             operation = BrightnessAdjustment()
@@ -32,6 +32,6 @@ class ViewController: UIViewController {
         guard let slider = sender as? UISlider else { return }
         operation.brightness = slider.value
     }
-    
+
 }
 
