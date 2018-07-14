@@ -10,7 +10,7 @@ public protocol ImageSource {
 public protocol ImageConsumer:AnyObject {
     var maximumInputs:UInt { get }
     var sources:SourceContainer { get }
-    
+
     func newTextureAvailable(_ texture:Texture, fromSourceIndex:UInt)
 }
 
@@ -50,7 +50,7 @@ public extension ImageSource {
         }
         targets.removeAll()
     }
-    
+
     public func updateTargetsWithTexture(_ texture:Texture) {
 //        if targets.count == 0 { // Deal with the case where no targets are attached by immediately returning framebuffer to cache
 //            framebuffer.lock()
@@ -71,7 +71,7 @@ public extension ImageConsumer {
     public func addSource(_ source:ImageSource) -> UInt? {
         return sources.append(source, maximumInputs:maximumInputs)
     }
-    
+
     public func setSource(_ source:ImageSource, atIndex:UInt) {
         _ = sources.insert(source, atIndex:atIndex, maximumInputs:maximumInputs)
     }
@@ -97,36 +97,36 @@ public class TargetContainer:Sequence {
 
     public init() {
     }
-    
+
     public func append(_ target:ImageConsumer, indexAtTarget:UInt) {
         // TODO: Don't allow the addition of a target more than once
         dispatchQueue.async{
             self.targets.append(WeakImageConsumer(value:target, indexAtTarget:indexAtTarget))
         }
     }
-    
+
     public func makeIterator() -> AnyIterator<(ImageConsumer, UInt)> {
         var index = 0
-        
+
         return AnyIterator { () -> (ImageConsumer, UInt)? in
             return self.dispatchQueue.sync{
                 if (index >= self.targets.count) {
                     return nil
                 }
-                
+
                 while (self.targets[index].value == nil) {
                     self.targets.remove(at:index)
                     if (index >= self.targets.count) {
                         return nil
                     }
                 }
-                
+
                 index += 1
                 return (self.targets[index - 1].value!, self.targets[index - 1].indexAtTarget)
            }
         }
     }
-    
+
     public func removeAll() {
         dispatchQueue.async{
             self.targets.removeAll()
@@ -136,10 +136,10 @@ public class TargetContainer:Sequence {
 
 public class SourceContainer {
     var sources:[UInt:ImageSource] = [:]
-    
+
     public init() {
     }
-    
+
     public func append(_ source:ImageSource, maximumInputs:UInt) -> UInt? {
         var currentIndex:UInt = 0
         while currentIndex < maximumInputs {
@@ -149,16 +149,16 @@ public class SourceContainer {
             }
             currentIndex += 1
         }
-        
+
         return nil
     }
-    
+
     public func insert(_ source:ImageSource, atIndex:UInt, maximumInputs:UInt) -> UInt {
         guard (atIndex < maximumInputs) else { fatalError("ERROR: Attempted to set a source beyond the maximum number of inputs on this operation") }
         sources[atIndex] = source
         return atIndex
     }
-    
+
     public func removeAtIndex(_ index:UInt) {
         sources[index] = nil
     }
@@ -166,15 +166,15 @@ public class SourceContainer {
 
 public class ImageRelay: ImageProcessingOperation {
     public var newImageCallback:((Texture) -> ())?
-    
+
     public let sources = SourceContainer()
     public let targets = TargetContainer()
     public let maximumInputs:UInt = 1
     public var preventRelay:Bool = false
-    
+
     public init() {
     }
-    
+
     public func transmitPreviousImage(to target:ImageConsumer, atIndex:UInt) {
         sources.sources[0]?.transmitPreviousImage(to:self, atIndex:0)
     }
@@ -187,7 +187,7 @@ public class ImageRelay: ImageProcessingOperation {
             relayTextureOnward(texture)
         }
     }
-    
+
     public func relayTextureOnward(_ texture:Texture) {
         // Need to override to guarantee a removal of the previously applied lock
 //        for _ in targets {

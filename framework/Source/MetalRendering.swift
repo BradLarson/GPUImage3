@@ -9,20 +9,20 @@ extension MTLCommandBuffer {
                                                                         length: imageVertices.count * MemoryLayout<Float>.size,
                                                                         options: [])!
         vertexBuffer.label = "Vertices"
-        
+
         let firstInputRotation = inputTexture.orientation.rotationNeededForOrientation(outputOrientation)
         let firstInputTextureCoordinates = firstInputRotation.textureCoordinates()
         let textureBuffer = sharedMetalRenderingDevice.device.makeBuffer(bytes: firstInputTextureCoordinates,
                                                                          length: firstInputTextureCoordinates.count * MemoryLayout<Float>.size,
                                                                          options: [])!
         textureBuffer.label = "Texture Coordinates"
-        
+
         let renderPass = MTLRenderPassDescriptor()
         renderPass.colorAttachments[0].texture = outputTexture.texture
         renderPass.colorAttachments[0].clearColor = MTLClearColorMake(1, 0, 0, 1)
         renderPass.colorAttachments[0].storeAction = .store
         renderPass.colorAttachments[0].loadAction = .clear
-        
+
         guard let renderEncoder = self.makeRenderCommandEncoder(descriptor: renderPass) else {
             fatalError("Could not create render encoder")
         }
@@ -41,17 +41,17 @@ func generateRenderPipelineState(device:MetalRenderingDevice, vertexFunctionName
     guard let vertexFunction = device.shaderLibrary.makeFunction(name: vertexFunctionName) else {
         fatalError("\(operationName): could not compile vertex function \(vertexFunctionName)")
     }
-    
+
     guard let fragmentFunction = device.shaderLibrary.makeFunction(name: fragmentFunctionName) else {
         fatalError("\(operationName): could not compile fragment function \(fragmentFunctionName)")
     }
-    
+
     let descriptor = MTLRenderPipelineDescriptor()
     descriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
     descriptor.sampleCount = 1
     descriptor.vertexFunction = vertexFunction
     descriptor.fragmentFunction = fragmentFunction
-    
+
     do {
         return try device.device.makeRenderPipelineState(descriptor: descriptor)
     } catch {

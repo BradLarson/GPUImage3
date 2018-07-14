@@ -9,7 +9,7 @@ class FilterShowcaseWindowController: NSWindowController {
     @IBOutlet var filterView: RenderView!
 
     @IBOutlet weak var filterSlider: NSSlider!
-    
+
     @objc dynamic var currentSliderValue:Float = 0.5 {
         willSet(newSliderValue) {
             switch (currentFilterOperation!.sliderConfiguration) {
@@ -18,7 +18,7 @@ class FilterShowcaseWindowController: NSWindowController {
             }
         }
     }
-    
+
     var currentFilterOperation: FilterOperationInterface?
     var videoCamera:Camera!
     lazy var blendImage:PictureInput = {
@@ -38,17 +38,17 @@ class FilterShowcaseWindowController: NSWindowController {
         }
         self.changeSelectedRow(0)
     }
-    
+
     func changeSelectedRow(_ row:Int) {
         guard (currentlySelectedRow != row) else { return }
         currentlySelectedRow = row
-        
+
         // Clean up everything from the previous filter selection first
 //        videoCamera.stopCapture()
         videoCamera.removeAllTargets()
         currentFilterOperation?.filter.removeAllTargets()
         currentFilterOperation?.secondInput?.removeAllTargets()
-        
+
         currentFilterOperation = filterOperations[row]
         switch currentFilterOperation!.filterOperationType {
             case .singleInput:
@@ -63,7 +63,7 @@ class FilterShowcaseWindowController: NSWindowController {
             case let .custom(filterSetupFunction:setupFunction):
                 currentFilterOperation!.configureCustomFilter(setupFunction(videoCamera!, currentFilterOperation!.filter, filterView!))
         }
-        
+
         switch currentFilterOperation!.sliderConfiguration {
             case .disabled:
                 filterSlider.isEnabled = false
@@ -74,22 +74,22 @@ class FilterShowcaseWindowController: NSWindowController {
                 filterSlider.isEnabled = true
                 currentSliderValue = initialValue
         }
-        
+
         videoCamera.startCapture()
     }
 
 // MARK: -
 // MARK: Table view delegate and datasource methods
-    
+
     @objc func numberOfRowsInTableView(_ aTableView:NSTableView!) -> Int {
         return filterOperations.count
     }
-    
+
     @objc func tableView(_ aTableView:NSTableView!, objectValueForTableColumn aTableColumn:NSTableColumn!, row rowIndex:Int) -> AnyObject! {
         let filterInList:FilterOperationInterface = filterOperations[rowIndex]
         return filterInList.listName as NSString
     }
-    
+
     func tableViewSelectionDidChange(_ aNotification: Notification!) {
         if let currentTableView = aNotification.object as? NSTableView {
             let rowIndex = currentTableView.selectedRow
