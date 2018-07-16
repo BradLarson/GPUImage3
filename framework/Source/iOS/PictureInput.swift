@@ -35,7 +35,7 @@ public class PictureInput: ImageSource {
             let textureLoader = MTKTextureLoader(device: sharedMetalRenderingDevice.device)
             if synchronously {
                 do {
-                    let imageTexture = try textureLoader.newTexture(cgImage:internalImage!, options: nil)
+                    let imageTexture = try textureLoader.newTexture(cgImage:internalImage!, options: [MTKTextureLoader.Option.SRGB : false])
                     internalImage = nil
                     self.internalTexture = Texture(orientation: .portrait, texture: imageTexture)
                     self.updateTargetsWithTexture(self.internalTexture!)
@@ -44,7 +44,7 @@ public class PictureInput: ImageSource {
                     fatalError("Failed loading image texture")
                 }
             } else {
-                textureLoader.newTexture(cgImage: internalImage!, options: nil, completionHandler: { (possibleTexture, error) in
+                textureLoader.newTexture(cgImage: internalImage!, options: [MTKTextureLoader.Option.SRGB : false], completionHandler: { (possibleTexture, error) in
                     guard (error == nil) else { fatalError("Error in loading texture: \(error!)") }
                     guard let texture = possibleTexture else { fatalError("Nil texture received") }
                     self.internalImage = nil
