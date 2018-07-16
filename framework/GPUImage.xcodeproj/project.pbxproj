@@ -85,6 +85,10 @@
 		BCE0BEA720D6E3C80006E120 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE0BE9C20D6E3C80006E120 /* Matrix.swift */; };
 		BCE0BEA820D6E3C80006E120 /* ImageOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE0BE9D20D6E3C80006E120 /* ImageOrientation.swift */; };
 		BCE0BEA920D6E3C80006E120 /* ImageOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE0BE9D20D6E3C80006E120 /* ImageOrientation.swift */; };
+		BCFCD46520FCE83500560BC9 /* DissolveBlend.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFCD46420FCE83500560BC9 /* DissolveBlend.swift */; };
+		BCFCD46720FCE91200560BC9 /* DissolveBlend.metal in Sources */ = {isa = PBXBuildFile; fileRef = BCFCD46620FCE91200560BC9 /* DissolveBlend.metal */; };
+		BCFCD46820FCE91200560BC9 /* DissolveBlend.metal in Sources */ = {isa = PBXBuildFile; fileRef = BCFCD46620FCE91200560BC9 /* DissolveBlend.metal */; };
+		BCFCD46920FCE91800560BC9 /* DissolveBlend.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFCD46420FCE83500560BC9 /* DissolveBlend.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -131,6 +135,8 @@
 		BCE0BE9B20D6E3C80006E120 /* Pipeline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pipeline.swift; path = Source/Pipeline.swift; sourceTree = "<group>"; };
 		BCE0BE9C20D6E3C80006E120 /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Matrix.swift; path = Source/Matrix.swift; sourceTree = "<group>"; };
 		BCE0BE9D20D6E3C80006E120 /* ImageOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageOrientation.swift; path = Source/ImageOrientation.swift; sourceTree = "<group>"; };
+		BCFCD46420FCE83500560BC9 /* DissolveBlend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DissolveBlend.swift; path = Source/Operations/DissolveBlend.swift; sourceTree = "<group>"; };
+		BCFCD46620FCE91200560BC9 /* DissolveBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; name = DissolveBlend.metal; path = Source/Operations/DissolveBlend.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,8 +282,18 @@
 				BC7BA27A20F2C5E8006B5F4B /* OperationShaderTypes.h */,
 				79E30E6820F10F9C005FA13C /* Passthrough.metal */,
 				BC7BA27520F2C20D006B5F4B /* Color processing */,
+				BCFCD46320FCE77100560BC9 /* Blends */,
 			);
 			name = Operations;
+			sourceTree = "<group>";
+		};
+		BCFCD46320FCE77100560BC9 /* Blends */ = {
+			isa = PBXGroup;
+			children = (
+				BCFCD46420FCE83500560BC9 /* DissolveBlend.swift */,
+				BCFCD46620FCE91200560BC9 /* DissolveBlend.metal */,
+			);
+			name = Blends;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -407,6 +423,7 @@
 				BCE0BE9E20D6E3C80006E120 /* Color.swift in Sources */,
 				BCE0BEA220D6E3C80006E120 /* Position.swift in Sources */,
 				79E30E7420F11DD9005FA13C /* RenderView.swift in Sources */,
+				BCFCD46720FCE91200560BC9 /* DissolveBlend.metal in Sources */,
 				793D933220F68A32008A7A6E /* ExposureAdjustment.metal in Sources */,
 				7957437520FBF453001EAE0A /* Haze.swift in Sources */,
 				793D933820F68C70008A7A6E /* ContrastAdjustment.metal in Sources */,
@@ -424,6 +441,7 @@
 				BC7BA28F20F5A275006B5F4B /* PictureInput.swift in Sources */,
 				7957436F20FBED6A001EAE0A /* RGBAdjustment.swift in Sources */,
 				793D933E20F69098008A7A6E /* SaturationAdjustment.metal in Sources */,
+				BCFCD46520FCE83500560BC9 /* DissolveBlend.swift in Sources */,
 				79E30E6320F10B6C005FA13C /* MetalRenderingDevice.swift in Sources */,
 				793D932C20F66C66008A7A6E /* ColorInversion.metal in Sources */,
 				793D934420F693B8008A7A6E /* GammaAdjustment.metal in Sources */,
@@ -454,6 +472,7 @@
 				BC7BA28520F59C8E006B5F4B /* MonochromeFilter.metal in Sources */,
 				BCE0BEA920D6E3C80006E120 /* ImageOrientation.swift in Sources */,
 				7957437620FBF453001EAE0A /* Haze.swift in Sources */,
+				BCFCD46820FCE91200560BC9 /* DissolveBlend.metal in Sources */,
 				793D934B20F69A89008A7A6E /* HueAdjustment.metal in Sources */,
 				BCE0BE9F20D6E3C80006E120 /* Color.swift in Sources */,
 				793D932A20F66C5C008A7A6E /* ColorInversion.swift in Sources */,
@@ -477,6 +496,7 @@
 				BC7BA29520F6F2F4006B5F4B /* ShaderUniformSettings.swift in Sources */,
 				793D934220F693AD008A7A6E /* GammaAdjustment.swift in Sources */,
 				7957437220FBED78001EAE0A /* RGBAdjustment.metal in Sources */,
+				BCFCD46920FCE91800560BC9 /* DissolveBlend.swift in Sources */,
 				79E30E6420F10B6C005FA13C /* MetalRenderingDevice.swift in Sources */,
 				79E30E6A20F10F9C005FA13C /* Passthrough.metal in Sources */,
 				BCE0BEA520D6E3C80006E120 /* Pipeline.swift in Sources */,

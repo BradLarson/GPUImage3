@@ -13,4 +13,11 @@ struct SingleInputVertexIO
     float2 textureCoordinate [[user(texturecoord)]];
 };
 
+struct TwoInputVertexIO
+{
+    float4 position [[position]];
+    float2 textureCoordinate [[user(texturecoord)]];
+    float2 textureCoordinate2 [[user(texturecoord2)]];
+};
+
 #endif

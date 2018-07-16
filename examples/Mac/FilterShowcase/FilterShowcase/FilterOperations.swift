@@ -56,16 +56,16 @@ let filterOperations: Array<FilterOperationInterface> = [
         },
         filterOperationType:.singleInput
     ),
-//    FilterOperation(
-//        filter:{RGBAdjustment()},
-//        listName:"RGB",
-//        titleName:"RGB",
-//        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:2.0, initialValue:1.0),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.green = sliderValue
-//        },
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{RGBAdjustment()},
+        listName:"RGB",
+        titleName:"RGB",
+        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:2.0, initialValue:1.0),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.green = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
     FilterOperation(
         filter:{HueAdjustment()},
         listName:"Hue",
@@ -201,16 +201,16 @@ let filterOperations: Array<FilterOperationInterface> = [
 //        },
 //        filterOperationType:.singleInput
 //    ),
-//    FilterOperation(
-//        filter:{Haze()},
-//        listName:"Haze / UV",
-//        titleName:"Haze / UV",
-//        sliderConfiguration:.enabled(minimumValue:-0.2, maximumValue:0.2, initialValue:0.2),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.distance = sliderValue
-//        },
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{Haze()},
+        listName:"Haze / UV",
+        titleName:"Haze / UV",
+        sliderConfiguration:.enabled(minimumValue:-0.2, maximumValue:0.2, initialValue:0.2),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.distance = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
 //    FilterOperation(
 //        filter:{SepiaToneFilter()},
 //        listName:"Sepia tone",
@@ -979,16 +979,16 @@ let filterOperations: Array<FilterOperationInterface> = [
 //        sliderUpdateCallback:nil,
 //        filterOperationType:.singleInput
 //    ),
-//    FilterOperation(
-//        filter:{DissolveBlend()},
-//        listName:"Dissolve blend",
-//        titleName:"Dissolve Blend",
-//        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.0, initialValue:0.5),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.mix = sliderValue
-//        },
-//        filterOperationType:.blend
-//    ),
+    FilterOperation(
+        filter:{DissolveBlend()},
+        listName:"Dissolve blend",
+        titleName:"Dissolve Blend",
+        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.0, initialValue:0.5),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.mix = sliderValue
+        },
+        filterOperationType:.blend
+    ),
 //    FilterOperation(
 //        filter:{ChromaKeyBlend()},
 //        listName:"Chroma key blend (green)",
