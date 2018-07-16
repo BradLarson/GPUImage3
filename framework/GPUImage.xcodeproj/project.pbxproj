@@ -35,6 +35,14 @@
 		793D934820F69A7F008A7A6E /* HueAdjustment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793D934620F69A7F008A7A6E /* HueAdjustment.swift */; };
 		793D934A20F69A89008A7A6E /* HueAdjustment.metal in Sources */ = {isa = PBXBuildFile; fileRef = 793D934920F69A89008A7A6E /* HueAdjustment.metal */; };
 		793D934B20F69A89008A7A6E /* HueAdjustment.metal in Sources */ = {isa = PBXBuildFile; fileRef = 793D934920F69A89008A7A6E /* HueAdjustment.metal */; };
+		7957436F20FBED6A001EAE0A /* RGBAdjustment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7957436E20FBED6A001EAE0A /* RGBAdjustment.swift */; };
+		7957437120FBED78001EAE0A /* RGBAdjustment.metal in Sources */ = {isa = PBXBuildFile; fileRef = 7957437020FBED78001EAE0A /* RGBAdjustment.metal */; };
+		7957437220FBED78001EAE0A /* RGBAdjustment.metal in Sources */ = {isa = PBXBuildFile; fileRef = 7957437020FBED78001EAE0A /* RGBAdjustment.metal */; };
+		7957437320FBED7D001EAE0A /* RGBAdjustment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7957436E20FBED6A001EAE0A /* RGBAdjustment.swift */; };
+		7957437520FBF453001EAE0A /* Haze.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7957437420FBF453001EAE0A /* Haze.swift */; };
+		7957437620FBF453001EAE0A /* Haze.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7957437420FBF453001EAE0A /* Haze.swift */; };
+		7957437820FBF4E4001EAE0A /* Haze.metal in Sources */ = {isa = PBXBuildFile; fileRef = 7957437720FBF4E4001EAE0A /* Haze.metal */; };
+		7957437920FBF4E4001EAE0A /* Haze.metal in Sources */ = {isa = PBXBuildFile; fileRef = 7957437720FBF4E4001EAE0A /* Haze.metal */; };
 		795B05D820F270FF00D1E759 /* MetalRendering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795B05D720F270FF00D1E759 /* MetalRendering.swift */; };
 		795B05D920F270FF00D1E759 /* MetalRendering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795B05D720F270FF00D1E759 /* MetalRendering.swift */; };
 		79E30E5F20ED6434005FA13C /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E30E5E20ED6434005FA13C /* Camera.swift */; };
@@ -94,6 +102,10 @@
 		793D934320F693B8008A7A6E /* GammaAdjustment.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; name = GammaAdjustment.metal; path = Source/Operations/GammaAdjustment.metal; sourceTree = "<group>"; };
 		793D934620F69A7F008A7A6E /* HueAdjustment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HueAdjustment.swift; path = Source/Operations/HueAdjustment.swift; sourceTree = "<group>"; };
 		793D934920F69A89008A7A6E /* HueAdjustment.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; name = HueAdjustment.metal; path = Source/Operations/HueAdjustment.metal; sourceTree = "<group>"; };
+		7957436E20FBED6A001EAE0A /* RGBAdjustment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RGBAdjustment.swift; path = Source/Operations/RGBAdjustment.swift; sourceTree = "<group>"; };
+		7957437020FBED78001EAE0A /* RGBAdjustment.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; name = RGBAdjustment.metal; path = Source/Operations/RGBAdjustment.metal; sourceTree = "<group>"; };
+		7957437420FBF453001EAE0A /* Haze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Haze.swift; path = Source/Operations/Haze.swift; sourceTree = "<group>"; };
+		7957437720FBF4E4001EAE0A /* Haze.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; name = Haze.metal; path = Source/Operations/Haze.metal; sourceTree = "<group>"; };
 		795B05D720F270FF00D1E759 /* MetalRendering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MetalRendering.swift; path = Source/MetalRendering.swift; sourceTree = "<group>"; };
 		79E30E5E20ED6434005FA13C /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Camera.swift; path = Source/iOS/Camera.swift; sourceTree = "<group>"; };
 		79E30E6020ED64F9005FA13C /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Camera.swift; path = Source/Mac/Camera.swift; sourceTree = "<group>"; };
@@ -188,6 +200,10 @@
 				793D933D20F69098008A7A6E /* SaturationAdjustment.metal */,
 				793D934020F693AC008A7A6E /* GammaAdjustment.swift */,
 				793D934320F693B8008A7A6E /* GammaAdjustment.metal */,
+				7957437420FBF453001EAE0A /* Haze.swift */,
+				7957437720FBF4E4001EAE0A /* Haze.metal */,
+				7957436E20FBED6A001EAE0A /* RGBAdjustment.swift */,
+				7957437020FBED78001EAE0A /* RGBAdjustment.metal */,
 				793D934620F69A7F008A7A6E /* HueAdjustment.swift */,
 				793D934920F69A89008A7A6E /* HueAdjustment.metal */,
 				BC7BA28020F599DD006B5F4B /* MonochromeFilter.swift */,
@@ -387,15 +403,18 @@
 				BCE0BEA620D6E3C80006E120 /* Matrix.swift in Sources */,
 				79E30E6620F10F72005FA13C /* BasicOperation.swift in Sources */,
 				BCE0BEA820D6E3C80006E120 /* ImageOrientation.swift in Sources */,
+				7957437120FBED78001EAE0A /* RGBAdjustment.metal in Sources */,
 				BCE0BE9E20D6E3C80006E120 /* Color.swift in Sources */,
 				BCE0BEA220D6E3C80006E120 /* Position.swift in Sources */,
 				79E30E7420F11DD9005FA13C /* RenderView.swift in Sources */,
 				793D933220F68A32008A7A6E /* ExposureAdjustment.metal in Sources */,
+				7957437520FBF453001EAE0A /* Haze.swift in Sources */,
 				793D933820F68C70008A7A6E /* ContrastAdjustment.metal in Sources */,
 				BC7BA28420F59C8E006B5F4B /* MonochromeFilter.metal in Sources */,
 				793D932920F66C5C008A7A6E /* ColorInversion.swift in Sources */,
 				79E30E6F20F11989005FA13C /* Timestamp.swift in Sources */,
 				793D933520F68C1B008A7A6E /* ContrastAdjustment.swift in Sources */,
+				7957437820FBF4E4001EAE0A /* Haze.metal in Sources */,
 				793D934A20F69A89008A7A6E /* HueAdjustment.metal in Sources */,
 				795B05D820F270FF00D1E759 /* MetalRendering.swift in Sources */,
 				793D932F20F68A21008A7A6E /* ExposureAdjustment.swift in Sources */,
@@ -403,6 +422,7 @@
 				793D934120F693AD008A7A6E /* GammaAdjustment.swift in Sources */,
 				79E30E5F20ED6434005FA13C /* Camera.swift in Sources */,
 				BC7BA28F20F5A275006B5F4B /* PictureInput.swift in Sources */,
+				7957436F20FBED6A001EAE0A /* RGBAdjustment.swift in Sources */,
 				793D933E20F69098008A7A6E /* SaturationAdjustment.metal in Sources */,
 				79E30E6320F10B6C005FA13C /* MetalRenderingDevice.swift in Sources */,
 				793D932C20F66C66008A7A6E /* ColorInversion.metal in Sources */,
@@ -422,6 +442,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7957437320FBED7D001EAE0A /* RGBAdjustment.swift in Sources */,
 				BCE0BEA120D6E3C80006E120 /* Size.swift in Sources */,
 				793D932D20F66C66008A7A6E /* ColorInversion.metal in Sources */,
 				BCE0BEA720D6E3C80006E120 /* Matrix.swift in Sources */,
@@ -432,11 +453,13 @@
 				BC7BA28220F599DD006B5F4B /* MonochromeFilter.swift in Sources */,
 				BC7BA28520F59C8E006B5F4B /* MonochromeFilter.metal in Sources */,
 				BCE0BEA920D6E3C80006E120 /* ImageOrientation.swift in Sources */,
+				7957437620FBF453001EAE0A /* Haze.swift in Sources */,
 				793D934B20F69A89008A7A6E /* HueAdjustment.metal in Sources */,
 				BCE0BE9F20D6E3C80006E120 /* Color.swift in Sources */,
 				793D932A20F66C5C008A7A6E /* ColorInversion.swift in Sources */,
 				793D932720F6631B008A7A6E /* Luminance.swift in Sources */,
 				793D933320F68A32008A7A6E /* ExposureAdjustment.metal in Sources */,
+				7957437920FBF4E4001EAE0A /* Haze.metal in Sources */,
 				BCE0BEA320D6E3C80006E120 /* Position.swift in Sources */,
 				79E30E7020F11989005FA13C /* Timestamp.swift in Sources */,
 				793D933920F68C70008A7A6E /* ContrastAdjustment.metal in Sources */,
@@ -453,6 +476,7 @@
 				793D933C20F6908A008A7A6E /* SaturationAdjustment.swift in Sources */,
 				BC7BA29520F6F2F4006B5F4B /* ShaderUniformSettings.swift in Sources */,
 				793D934220F693AD008A7A6E /* GammaAdjustment.swift in Sources */,
+				7957437220FBED78001EAE0A /* RGBAdjustment.metal in Sources */,
 				79E30E6420F10B6C005FA13C /* MetalRenderingDevice.swift in Sources */,
 				79E30E6A20F10F9C005FA13C /* Passthrough.metal in Sources */,
 				BCE0BEA520D6E3C80006E120 /* Pipeline.swift in Sources */,
