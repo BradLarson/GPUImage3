@@ -32,20 +32,20 @@ let filterOperations: Array<FilterOperationInterface> = [
         },
         filterOperationType:.singleInput
     ),
-//    FilterOperation(
-//        filter:{LevelsAdjustment()},
-//        listName:"Levels",
-//        titleName:"Levels",
-//        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.0, initialValue:0.0),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.minimum = Color(red:Float(sliderValue), green:Float(sliderValue), blue:Float(sliderValue))
-//            filter.middle = Color(red:1.0, green:1.0, blue:1.0)
-//            filter.maximum = Color(red:1.0, green:1.0, blue:1.0)
-//            filter.minOutput = Color(red:0.0, green:0.0, blue:0.0)
-//            filter.maxOutput = Color(red:1.0, green:1.0, blue:1.0)
-//        },
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{LevelsAdjustment()},
+        listName:"Levels",
+        titleName:"Levels",
+        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.0, initialValue:0.0),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.minimum = Color(red:Float(sliderValue), green:Float(sliderValue), blue:Float(sliderValue))
+            filter.middle = Color(red:1.0, green:1.0, blue:1.0)
+            filter.maximum = Color(red:1.0, green:1.0, blue:1.0)
+            filter.minOutput = Color(red:0.0, green:0.0, blue:0.0)
+            filter.maxOutput = Color(red:1.0, green:1.0, blue:1.0)
+        },
+        filterOperationType:.singleInput
+    ),
     FilterOperation(
         filter:{ExposureAdjustment()},
         listName:"Exposure",
@@ -101,14 +101,14 @@ let filterOperations: Array<FilterOperationInterface> = [
             return nil
         })
     ),
-//    FilterOperation(
-//        filter:{FalseColor()},
-//        listName:"False color",
-//        titleName:"False Color",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback:nil,
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{FalseColor()},
+        listName:"False color",
+        titleName:"False Color",
+        sliderConfiguration:.disabled,
+        sliderUpdateCallback:nil,
+        filterOperationType:.singleInput
+    ),
 //    FilterOperation(
 //        filter:{Sharpen()},
 //        listName:"Sharpen",
@@ -191,16 +191,16 @@ let filterOperations: Array<FilterOperationInterface> = [
         filterOperationType:.singleInput
     ),
 //// TODO : Tone curve
-//    FilterOperation(
-//        filter:{HighlightsAndShadows()},
-//        listName:"Highlights and shadows",
-//        titleName:"Highlights and Shadows",
-//        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.0, initialValue:1.0),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.highlights = sliderValue
-//        },
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{HighlightsAndShadows()},
+        listName:"Highlights and shadows",
+        titleName:"Highlights and Shadows",
+        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.0, initialValue:1.0),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.highlights = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
 //    FilterOperation(
 //        filter:{Haze()},
 //        listName:"Haze / UV",
@@ -263,26 +263,26 @@ let filterOperations: Array<FilterOperationInterface> = [
 //        },
 //        filterOperationType:.singleInput
 //    ),
-//    FilterOperation(
-//        filter:{Vibrance()},
-//        listName:"Vibrance",
-//        titleName:"Vibrance",
-//        sliderConfiguration:.enabled(minimumValue:-1.2, maximumValue:1.2, initialValue:0.0),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.vibrance = sliderValue
-//        },
-//        filterOperationType:.singleInput
-//    ),
-//    FilterOperation(
-//        filter:{HighlightAndShadowTint()},
-//        listName:"Highlight and shadow tint",
-//        titleName:"Highlight / Shadow Tint",
-//        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.0, initialValue:0.0),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.shadowTintIntensity = sliderValue
-//        },
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{Vibrance()},
+        listName:"Vibrance",
+        titleName:"Vibrance",
+        sliderConfiguration:.enabled(minimumValue:-1.2, maximumValue:1.2, initialValue:0.0),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.vibrance = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
+    FilterOperation(
+        filter:{HighlightAndShadowTint()},
+        listName:"Highlight and shadow tint",
+        titleName:"Highlight / Shadow Tint",
+        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.0, initialValue:0.0),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.shadowTintIntensity = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
     FilterOperation (
         filter:{Luminance()},
         listName:"Luminance",
@@ -356,16 +356,16 @@ let filterOperations: Array<FilterOperationInterface> = [
 //            return colorGenerator
 //        })
 //    ),
-//    FilterOperation(
-//        filter:{LuminanceThreshold()},
-//        listName:"Luminance threshold",
-//        titleName:"Luminance Threshold",
-//        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.0, initialValue:0.5),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.threshold = sliderValue
-//        },
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{LuminanceThreshold()},
+        listName:"Luminance threshold",
+        titleName:"Luminance Threshold",
+        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.0, initialValue:0.5),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.threshold = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
 //    FilterOperation(
 //        filter:{AdaptiveThreshold()},
 //        listName:"Adaptive threshold",
