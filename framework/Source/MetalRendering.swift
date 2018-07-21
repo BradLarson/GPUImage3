@@ -4,18 +4,12 @@ import Metal
 public let standardImageVertices:[Float] = [-1.0, -1.0, 1.0, -1.0, -1.0, 1.0, 1.0, 1.0]
 
 extension MTLCommandBuffer {
-    func renderQuad(pipelineState:MTLRenderPipelineState, uniformSettings:ShaderUniformSettings? = nil, inputTexture:Texture, imageVertices:[Float] = standardImageVertices, outputTexture:Texture, outputOrientation:ImageOrientation = .portrait) {
+    func renderQuad(pipelineState:MTLRenderPipelineState, uniformSettings:ShaderUniformSettings? = nil, inputTextures:[UInt:Texture], imageVertices:[Float] = standardImageVertices, outputTexture:Texture, outputOrientation:ImageOrientation = .portrait) {
         let vertexBuffer = sharedMetalRenderingDevice.device.makeBuffer(bytes: imageVertices,
                                                                         length: imageVertices.count * MemoryLayout<Float>.size,
                                                                         options: [])!
         vertexBuffer.label = "Vertices"
         
-        let firstInputRotation = inputTexture.orientation.rotationNeededForOrientation(outputOrientation)
-        let firstInputTextureCoordinates = firstInputRotation.textureCoordinates()
-        let textureBuffer = sharedMetalRenderingDevice.device.makeBuffer(bytes: firstInputTextureCoordinates,
-                                                                         length: firstInputTextureCoordinates.count * MemoryLayout<Float>.size,
-                                                                         options: [])!
-        textureBuffer.label = "Texture Coordinates"
         
         let renderPass = MTLRenderPassDescriptor()
         renderPass.colorAttachments[0].texture = outputTexture.texture
@@ -29,9 +23,21 @@ extension MTLCommandBuffer {
         renderEncoder.setFrontFacing(.counterClockwise)
         renderEncoder.setRenderPipelineState(pipelineState)
         renderEncoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
-        renderEncoder.setVertexBuffer(textureBuffer, offset: 0, index: 1)
+        
+        for textureIndex in 0..<inputTextures.count {
+            let currentTexture = inputTextures[UInt(textureIndex)]!
+            
+            let inputRotation = currentTexture.orientation.rotationNeededForOrientation(outputOrientation)
+            let inputTextureCoordinates = inputRotation.textureCoordinates()
+            let textureBuffer = sharedMetalRenderingDevice.device.makeBuffer(bytes: inputTextureCoordinates,
+                                                                             length: inputTextureCoordinates.count * MemoryLayout<Float>.size,
+                                                                             options: [])!
+            textureBuffer.label = "Texture Coordinates"
+
+            renderEncoder.setVertexBuffer(textureBuffer, offset: 0, index: 1 + textureIndex)
+            renderEncoder.setFragmentTexture(currentTexture.texture, index: textureIndex)
+        }
         uniformSettings?.restoreShaderSettings(renderEncoder: renderEncoder)
-        renderEncoder.setFragmentTexture(inputTexture.texture, index: 0)
         renderEncoder.drawPrimitives(type: .triangleStrip, vertexStart: 0, vertexCount: 4)
         renderEncoder.endEncoding()
     }
@@ -48,13 +54,13 @@ func generateRenderPipelineState(device:MetalRenderingDevice, vertexFunctionName
     
     let descriptor = MTLRenderPipelineDescriptor()
     descriptor.colorAttachments[0].pixelFormat = MTLPixelFormat.bgra8Unorm
-    descriptor.sampleCount = 1
+    descriptor.rasterSampleCount = 1
     descriptor.vertexFunction = vertexFunction
     descriptor.fragmentFunction = fragmentFunction
     
     do {
         return try device.device.makeRenderPipelineState(descriptor: descriptor)
     } catch {
-        fatalError("\(operationName): could not create render pipeline state")
+        fatalError("Could not create render pipeline state for vertex:\(vertexFunctionName), fragment:\(fragmentFunctionName), error:\(error)")
     }
 }
