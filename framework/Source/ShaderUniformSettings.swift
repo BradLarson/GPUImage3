@@ -5,7 +5,11 @@ public class ShaderUniformSettings {
     private var uniformValues:[Float] = []
     private var uniformValueOffsets:[Int] = []
     public var colorUniformsUseAlpha:Bool = false
+    let shaderUniformSettingsQueue = DispatchQueue(
+        label: "com.sunsetlakesoftware.GPUImage.shaderUniformSettings",
+        attributes: [])
     
+
     private func internalIndex(for index:Int) -> Int {
         if (index == 0) {
             return 0
@@ -16,7 +20,11 @@ public class ShaderUniformSettings {
     
     public subscript(index:Int) -> Float {
         get { return uniformValues[internalIndex(for:index)]}
-        set(newValue) { uniformValues[internalIndex(for:index)] = newValue }
+        set(newValue) {
+            shaderUniformSettingsQueue.async {
+                self.uniformValues[self.internalIndex(for:index)] = newValue
+            }
+        }
     }
 
     public subscript(index:Int) -> Color {
@@ -25,19 +33,21 @@ public class ShaderUniformSettings {
             return Color(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
         }
         set(newValue) {
-            let floatArray:[Float]
-            let startingIndex = internalIndex(for:index)
-            if colorUniformsUseAlpha {
-                floatArray = newValue.toFloatArrayWithAlpha()
-                uniformValues[startingIndex] = floatArray[0]
-                uniformValues[startingIndex + 1] = floatArray[1]
-                uniformValues[startingIndex + 2] = floatArray[2]
-                uniformValues[startingIndex + 2] = floatArray[3]
-            } else {
-                floatArray = newValue.toFloatArray()
-                uniformValues[startingIndex] = floatArray[0]
-                uniformValues[startingIndex + 1] = floatArray[1]
-                uniformValues[startingIndex + 2] = floatArray[2]
+            shaderUniformSettingsQueue.async {
+                let floatArray:[Float]
+                let startingIndex = self.internalIndex(for:index)
+                if self.colorUniformsUseAlpha {
+                    floatArray = newValue.toFloatArrayWithAlpha()
+                    self.uniformValues[startingIndex] = floatArray[0]
+                    self.uniformValues[startingIndex + 1] = floatArray[1]
+                    self.uniformValues[startingIndex + 2] = floatArray[2]
+                    self.uniformValues[startingIndex + 2] = floatArray[3]
+                } else {
+                    floatArray = newValue.toFloatArray()
+                    self.uniformValues[startingIndex] = floatArray[0]
+                    self.uniformValues[startingIndex + 1] = floatArray[1]
+                    self.uniformValues[startingIndex + 2] = floatArray[2]
+                }
             }
         }
     }
@@ -61,12 +71,13 @@ public class ShaderUniformSettings {
     }
 
     public func restoreShaderSettings(renderEncoder:MTLRenderCommandEncoder) {
-        guard (uniformValues.count > 0) else { return }
-        
-        let uniformBuffer = sharedMetalRenderingDevice.device.makeBuffer(bytes: uniformValues,
-                                                                         length: uniformValues.count * MemoryLayout<Float>.size,
-                                                                         options: [])!
-        renderEncoder.setFragmentBuffer(uniformBuffer, offset: 0, index: 1)
+        shaderUniformSettingsQueue.sync {
+            guard (uniformValues.count > 0) else { return }
+            let uniformBuffer = sharedMetalRenderingDevice.device.makeBuffer(bytes: uniformValues,
+                                                                             length: uniformValues.count * MemoryLayout<Float>.size,
+                                                                             options: [])!
+            renderEncoder.setFragmentBuffer(uniformBuffer, offset: 0, index: 1)
+        }
     }
 }
 

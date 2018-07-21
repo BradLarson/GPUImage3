@@ -6,8 +6,8 @@ typedef struct
 {
     float shadowTintIntensity;
     float highlightTintIntensity;
-    float3 shadowTintColor;
-    float3 highlightTintColor;
+    packed_float3 shadowTintColor;
+    packed_float3 highlightTintColor;
 } HighlightShadowTintUniform;
 
 fragment half4 highlightShadowTintFragment(SingleInputVertexIO fragmentInput [[stage_in]],

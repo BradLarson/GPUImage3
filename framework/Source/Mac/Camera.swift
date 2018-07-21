@@ -142,7 +142,7 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
     
     public func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         
-//        guard (frameRenderingSemaphore.wait(timeout:DispatchTime.now()) == DispatchTimeoutResult.success) else { return }
+        guard (frameRenderingSemaphore.wait(timeout:DispatchTime.now()) == DispatchTimeoutResult.success) else { return }
         
         let startTime = CFAbsoluteTimeGetCurrent()
         
@@ -199,9 +199,12 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
     }
     
     public func startCapture() {
+
+        let _ = frameRenderingSemaphore.wait(timeout:DispatchTime.distantFuture)
         self.numberOfFramesCaptured = 0
         self.totalFrameTimeDuringCapture = 0
-        
+        self.frameRenderingSemaphore.signal()
+
         if (!captureSession.isRunning) {
             captureSession.startRunning()
         }
@@ -209,7 +212,10 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
     
     public func stopCapture() {
         if (captureSession.isRunning) {
+            let _ = frameRenderingSemaphore.wait(timeout:DispatchTime.distantFuture)
+
             captureSession.stopRunning()
+            self.frameRenderingSemaphore.signal()
         }
     }
     
