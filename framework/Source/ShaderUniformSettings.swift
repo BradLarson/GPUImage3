@@ -52,6 +52,57 @@ public class ShaderUniformSettings {
         }
     }
 
+    public subscript(index:Int) -> Position {
+        get {
+            // TODO: Fix this
+            return Position(0.0, 0.0)
+        }
+        set(newValue) {
+            shaderUniformSettingsQueue.async {
+                let floatArray = newValue.toFloatArray()
+                var currentIndex = self.internalIndex(for:index)
+                for floatValue in floatArray {
+                    self.uniformValues[currentIndex] = floatValue
+                    currentIndex += 1
+                }
+            }
+        }
+    }
+
+    public subscript(index:Int) -> Matrix3x3 {
+        get {
+            // TODO: Fix this
+            return Matrix3x3.identity
+        }
+        set(newValue) {
+            shaderUniformSettingsQueue.async {
+                let floatArray = newValue.toFloatArray()
+                var currentIndex = self.internalIndex(for:index)
+                for floatValue in floatArray {
+                    self.uniformValues[currentIndex] = floatValue
+                    currentIndex += 1
+                }
+            }
+        }
+    }
+
+    public subscript(index:Int) -> Matrix4x4 {
+        get {
+            // TODO: Fix this
+            return Matrix4x4.identity
+        }
+        set(newValue) {
+            shaderUniformSettingsQueue.async {
+                let floatArray = newValue.toFloatArray()
+                var currentIndex = self.internalIndex(for:index)
+                for floatValue in floatArray {
+                    self.uniformValues[currentIndex] = floatValue
+                    currentIndex += 1
+                }
+            }
+        }
+    }
+
     public func appendUniform(_ value:UniformConvertible) {
         uniformValues.append(contentsOf:value.toFloatArray())
         let lastOffset = uniformValueOffsets.last ?? 0
@@ -133,3 +184,26 @@ extension Position:UniformConvertible {
         }
     }
 }
+
+extension Matrix3x3:UniformConvertible {
+    public func uniformSize() -> Int {
+        return 9
+    }
+    
+    public func toFloatArray() -> [Float] {
+        // Row major
+        return [m11, m12, m13, m21, m22, m23, m31, m32, m33]
+    }
+}
+
+extension Matrix4x4:UniformConvertible {
+    public func uniformSize() -> Int {
+        return 16
+    }
+    
+    public func toFloatArray() -> [Float] {
+        // Row major
+        return [m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44]
+    }
+}
+
