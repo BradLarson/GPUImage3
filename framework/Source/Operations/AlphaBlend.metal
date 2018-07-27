@@ -19,4 +19,3 @@ fragment half4 alphaBlendFragment(TwoInputVertexIO fragmentInput [[stage_in]],
     
     return half4(mix(textureColor.rgb, textureColor2.rgb, textureColor2.a * half(uniform.mixturePercent)), textureColor.a);
 }
-// vec4(mix(textureColor.rgb, textureColor2.rgb, textureColor2.a * mixturePercent), textureColor.a);

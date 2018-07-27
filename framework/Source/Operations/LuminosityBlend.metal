@@ -3,7 +3,7 @@
 #include "BlendShaderTypes.h"
 using namespace metal;
 
-fragment half4 colorBlendFragment(TwoInputVertexIO fragmentInput [[stage_in]],
+fragment half4 luminosityBlendFragment(TwoInputVertexIO fragmentInput [[stage_in]],
                                 texture2d<half> inputTexture [[texture(0)]],
                                 texture2d<half> inputTexture2 [[texture(1)]])
 {
@@ -12,5 +12,5 @@ fragment half4 colorBlendFragment(TwoInputVertexIO fragmentInput [[stage_in]],
     constexpr sampler quadSampler2;
     half4 overlay = inputTexture2.sample(quadSampler, fragmentInput.textureCoordinate2);
     
-    return half4(base.rgb * (1.0h - overlay.a) + setlum(overlay.rgb, lum(base.rgb)) * overlay.a, base.a);
+    return half4(base.rgb * (1.0h - overlay.a) + setlum(base.rgb, lum(overlay.rgb)) * overlay.a, base.a);
 }

@@ -1,3 +1,8 @@
+/*
+ For a complete explanation behind the math of this shader, read this blog post:
+ http://redqueengraphics.com/2018/07/15/metal-shaders-color-inversion/
+*/
+
 #include <metal_stdlib>
 #include "OperationShaderTypes.h"
 using namespace metal;
