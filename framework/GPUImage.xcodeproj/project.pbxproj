@@ -203,6 +203,16 @@
 		BC9294A72105134E006C8E93 /* ColorMatrixFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A81C932100F56F00A3B43A /* ColorMatrixFilter.swift */; };
 		BC9294AA210513DF006C8E93 /* SepiaToneFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9294A9210513DF006C8E93 /* SepiaToneFilter.swift */; };
 		BC9294AB210513DF006C8E93 /* SepiaToneFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9294A9210513DF006C8E93 /* SepiaToneFilter.swift */; };
+		BCC6AB5F210E5E7900F9803A /* TextureSamplingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC6AB5E210E5E7900F9803A /* TextureSamplingOperation.swift */; };
+		BCC6AB60210E5E7900F9803A /* TextureSamplingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC6AB5E210E5E7900F9803A /* TextureSamplingOperation.swift */; };
+		BCC6AB62210E5ECE00F9803A /* NearbyTexelSampling.metal in Sources */ = {isa = PBXBuildFile; fileRef = BCC6AB61210E5ECE00F9803A /* NearbyTexelSampling.metal */; };
+		BCC6AB63210E5ECE00F9803A /* NearbyTexelSampling.metal in Sources */ = {isa = PBXBuildFile; fileRef = BCC6AB61210E5ECE00F9803A /* NearbyTexelSampling.metal */; };
+		BCC6AB65210E5FF600F9803A /* TexelSamplingTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = BCC6AB64210E5FF600F9803A /* TexelSamplingTypes.h */; };
+		BCC6AB66210E5FF600F9803A /* TexelSamplingTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = BCC6AB64210E5FF600F9803A /* TexelSamplingTypes.h */; };
+		BCC6AB69210E62EB00F9803A /* Convolution3x3.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC6AB68210E62EB00F9803A /* Convolution3x3.swift */; };
+		BCC6AB6A210E62EB00F9803A /* Convolution3x3.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC6AB68210E62EB00F9803A /* Convolution3x3.swift */; };
+		BCC6AB6C210E635B00F9803A /* Convolution3x3.metal in Sources */ = {isa = PBXBuildFile; fileRef = BCC6AB6B210E635B00F9803A /* Convolution3x3.metal */; };
+		BCC6AB6D210E635B00F9803A /* Convolution3x3.metal in Sources */ = {isa = PBXBuildFile; fileRef = BCC6AB6B210E635B00F9803A /* Convolution3x3.metal */; };
 		BCE0BE9E20D6E3C80006E120 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE0BE9820D6E3C80006E120 /* Color.swift */; };
 		BCE0BE9F20D6E3C80006E120 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE0BE9820D6E3C80006E120 /* Color.swift */; };
 		BCE0BEA020D6E3C80006E120 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE0BE9920D6E3C80006E120 /* Size.swift */; };
@@ -324,6 +334,11 @@
 		BC7BA28E20F5A275006B5F4B /* PictureInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PictureInput.swift; path = Source/iOS/PictureInput.swift; sourceTree = "<group>"; };
 		BC7BA29620F6F365006B5F4B /* PictureInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PictureInput.swift; path = Source/Mac/PictureInput.swift; sourceTree = "<group>"; };
 		BC9294A9210513DF006C8E93 /* SepiaToneFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SepiaToneFilter.swift; path = Source/Operations/SepiaToneFilter.swift; sourceTree = "<group>"; };
+		BCC6AB5E210E5E7900F9803A /* TextureSamplingOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TextureSamplingOperation.swift; path = Source/TextureSamplingOperation.swift; sourceTree = "<group>"; };
+		BCC6AB61210E5ECE00F9803A /* NearbyTexelSampling.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; name = NearbyTexelSampling.metal; path = Source/Operations/NearbyTexelSampling.metal; sourceTree = "<group>"; };
+		BCC6AB64210E5FF600F9803A /* TexelSamplingTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TexelSamplingTypes.h; path = Source/Operations/TexelSamplingTypes.h; sourceTree = "<group>"; };
+		BCC6AB68210E62EB00F9803A /* Convolution3x3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Convolution3x3.swift; path = Source/Operations/Convolution3x3.swift; sourceTree = "<group>"; };
+		BCC6AB6B210E635B00F9803A /* Convolution3x3.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; name = Convolution3x3.metal; path = Source/Operations/Convolution3x3.metal; sourceTree = "<group>"; };
 		BCE0BE7C20D6DE610006E120 /* GPUImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GPUImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCE0BE8C20D6E2B80006E120 /* GPUImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GPUImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCE0BE9820D6E3C80006E120 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Source/Color.swift; sourceTree = "<group>"; };
@@ -436,6 +451,15 @@
 			name = "Color processing";
 			sourceTree = "<group>";
 		};
+		BCC6AB67210E62C900F9803A /* Image processing */ = {
+			isa = PBXGroup;
+			children = (
+				BCC6AB68210E62EB00F9803A /* Convolution3x3.swift */,
+				BCC6AB6B210E635B00F9803A /* Convolution3x3.metal */,
+			);
+			name = "Image processing";
+			sourceTree = "<group>";
+		};
 		BCE0BE7220D6DE610006E120 = {
 			isa = PBXGroup;
 			children = (
@@ -501,8 +525,12 @@
 				79CB6E44210A55CB0042F87B /* BlendShaderTypes.h */,
 				79CB6E40210A53C90042F87B /* BlendShaderTypes.metal */,
 				79E30E6820F10F9C005FA13C /* Passthrough.metal */,
+				BCC6AB5E210E5E7900F9803A /* TextureSamplingOperation.swift */,
+				BCC6AB64210E5FF600F9803A /* TexelSamplingTypes.h */,
+				BCC6AB61210E5ECE00F9803A /* NearbyTexelSampling.metal */,
 				BC7BA27520F2C20D006B5F4B /* Color processing */,
 				BCFCD46320FCE77100560BC9 /* Blends */,
+				BCC6AB67210E62C900F9803A /* Image processing */,
 			);
 			name = Operations;
 			sourceTree = "<group>";
@@ -567,6 +595,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCC6AB65210E5FF600F9803A /* TexelSamplingTypes.h in Headers */,
 				BC7BA27B20F2C5E8006B5F4B /* OperationShaderTypes.h in Headers */,
 				79CB6E45210A55CB0042F87B /* BlendShaderTypes.h in Headers */,
 			);
@@ -576,6 +605,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCC6AB66210E5FF600F9803A /* TexelSamplingTypes.h in Headers */,
 				BC7BA27C20F2C5E8006B5F4B /* OperationShaderTypes.h in Headers */,
 				79CB6E46210A55CB0042F87B /* BlendShaderTypes.h in Headers */,
 			);
@@ -679,6 +709,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCC6AB69210E62EB00F9803A /* Convolution3x3.swift in Sources */,
 				BC7BA28120F599DD006B5F4B /* MonochromeFilter.swift in Sources */,
 				79A81CA9210126BB00A3B43A /* HighlightAndShadowTint.metal in Sources */,
 				79CB6DE72108CC4F0042F87B /* DivideBlend.metal in Sources */,
@@ -700,9 +731,12 @@
 				79CB6DD52108B4090042F87B /* ColorDodgeBlend.metal in Sources */,
 				79CB6DF02109270C0042F87B /* HardLightBlend.swift in Sources */,
 				7957437120FBED78001EAE0A /* RGBAdjustment.metal in Sources */,
+				BCC6AB5F210E5E7900F9803A /* TextureSamplingOperation.swift in Sources */,
 				79CB6DE12108C9200042F87B /* DifferenceBlend.metal in Sources */,
 				79CB6E0521092D7C0042F87B /* LinearBurnBlend.metal in Sources */,
+				BCC6AB62210E5ECE00F9803A /* NearbyTexelSampling.metal in Sources */,
 				BC9294A62105134E006C8E93 /* ColorMatrixFilter.swift in Sources */,
+				BCC6AB6C210E635B00F9803A /* Convolution3x3.metal in Sources */,
 				BCE0BE9E20D6E3C80006E120 /* Color.swift in Sources */,
 				7B72DB2B2103CED000A91156 /* AddBlend.metal in Sources */,
 				79CB6DD82108BC650042F87B /* DarkenBlend.swift in Sources */,
@@ -790,6 +824,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCC6AB6A210E62EB00F9803A /* Convolution3x3.swift in Sources */,
 				7957437320FBED7D001EAE0A /* RGBAdjustment.swift in Sources */,
 				79A81CAA210126BB00A3B43A /* HighlightAndShadowTint.metal in Sources */,
 				79CB6DE82108CC4F0042F87B /* DivideBlend.metal in Sources */,
@@ -811,9 +846,12 @@
 				79CB6DD62108B4090042F87B /* ColorDodgeBlend.metal in Sources */,
 				79CB6DF12109270C0042F87B /* HardLightBlend.swift in Sources */,
 				793D934520F693B8008A7A6E /* GammaAdjustment.metal in Sources */,
+				BCC6AB60210E5E7900F9803A /* TextureSamplingOperation.swift in Sources */,
 				79CB6DE22108C9200042F87B /* DifferenceBlend.metal in Sources */,
 				79CB6E0621092D7C0042F87B /* LinearBurnBlend.metal in Sources */,
+				BCC6AB63210E5ECE00F9803A /* NearbyTexelSampling.metal in Sources */,
 				BC9294A72105134E006C8E93 /* ColorMatrixFilter.swift in Sources */,
+				BCC6AB6D210E635B00F9803A /* Convolution3x3.metal in Sources */,
 				79E30E6720F10F72005FA13C /* BasicOperation.swift in Sources */,
 				7B72DB2C2103CED000A91156 /* AddBlend.metal in Sources */,
 				79CB6DD92108BC650042F87B /* DarkenBlend.swift in Sources */,

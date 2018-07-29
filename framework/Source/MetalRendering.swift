@@ -4,7 +4,7 @@ import Metal
 public let standardImageVertices:[Float] = [-1.0, -1.0, 1.0, -1.0, -1.0, 1.0, 1.0, 1.0]
 
 extension MTLCommandBuffer {
-    func renderQuad(pipelineState:MTLRenderPipelineState, uniformSettings:ShaderUniformSettings? = nil, inputTextures:[UInt:Texture], imageVertices:[Float] = standardImageVertices, outputTexture:Texture, outputOrientation:ImageOrientation = .portrait) {
+    func renderQuad(pipelineState:MTLRenderPipelineState, uniformSettings:ShaderUniformSettings? = nil, inputTextures:[UInt:Texture], useNormalizedTextureCoordinates:Bool = true, imageVertices:[Float] = standardImageVertices, outputTexture:Texture, outputOrientation:ImageOrientation = .portrait) {
         let vertexBuffer = sharedMetalRenderingDevice.device.makeBuffer(bytes: imageVertices,
                                                                         length: imageVertices.count * MemoryLayout<Float>.size,
                                                                         options: [])!
@@ -27,8 +27,7 @@ extension MTLCommandBuffer {
         for textureIndex in 0..<inputTextures.count {
             let currentTexture = inputTextures[UInt(textureIndex)]!
             
-            let inputRotation = currentTexture.orientation.rotationNeededForOrientation(outputOrientation)
-            let inputTextureCoordinates = inputRotation.textureCoordinates()
+            let inputTextureCoordinates = currentTexture.textureCoordinates(for:outputOrientation, normalized:useNormalizedTextureCoordinates)
             let textureBuffer = sharedMetalRenderingDevice.device.makeBuffer(bytes: inputTextureCoordinates,
                                                                              length: inputTextureCoordinates.count * MemoryLayout<Float>.size,
                                                                              options: [])!

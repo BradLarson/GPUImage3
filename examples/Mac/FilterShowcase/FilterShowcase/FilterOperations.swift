@@ -688,25 +688,25 @@ let filterOperations: Array<FilterOperationInterface> = [
 //        },
 //        filterOperationType:.singleInput
 //    ),
-//    FilterOperation(
-//        filter:{Convolution3x3()},
-//        listName:"3x3 convolution",
-//        titleName:"3x3 convolution",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback: nil,
-//        filterOperationType:.custom(filterSetupFunction:{(camera, filter, outputView) in
-//            let castFilter = filter as! Convolution3x3
-//
-//            castFilter.convolutionKernel = Matrix3x3(rowMajorValues:[
-//                -1.0, 0.0, 1.0,
-//                -2.0, 0.0, 2.0,
-//                -1.0, 0.0, 1.0])
-//            
-//            camera --> castFilter --> outputView
-//            
-//            return nil
-//        })
-//    ),
+    FilterOperation(
+        filter:{Convolution3x3()},
+        listName:"3x3 convolution",
+        titleName:"3x3 convolution",
+        sliderConfiguration:.disabled,
+        sliderUpdateCallback: nil,
+        filterOperationType:.custom(filterSetupFunction:{(camera, filter, outputView) in
+            let castFilter = filter as! Convolution3x3
+
+            castFilter.convolutionKernel = Matrix3x3(rowMajorValues:[
+                -1.0, 0.0, 1.0,
+                -2.0, 0.0, 2.0,
+                -1.0, 0.0, 1.0])
+            
+            camera --> castFilter --> outputView
+            
+            return nil
+        })
+    ),
 //    FilterOperation(
 //        filter:{EmbossFilter()},
 //        listName:"Emboss",

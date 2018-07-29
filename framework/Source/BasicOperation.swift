@@ -25,6 +25,7 @@ open class BasicOperation: ImageProcessingOperation {
     let operationName: String
     var inputTextures = [UInt:Texture]()
     let textureInputSemaphore = DispatchSemaphore(value:1)
+    var useNormalizedTextureCoordinates = true
 
     public init(vertexFunctionName: String? = nil,
                 fragmentFunctionName: String,
@@ -60,7 +61,7 @@ open class BasicOperation: ImageProcessingOperation {
             let outputHeight:Int
             
             let firstInputTexture = inputTextures[0]!
-            if firstInputTexture.orientation.rotationNeededForOrientation(.portrait).flipsDimensions() {
+            if firstInputTexture.orientation.rotationNeeded(for:.portrait).flipsDimensions() {
                 outputWidth = firstInputTexture.texture.height
                 outputHeight = firstInputTexture.texture.width
             } else {
@@ -72,7 +73,7 @@ open class BasicOperation: ImageProcessingOperation {
 
             let outputTexture = Texture(device:sharedMetalRenderingDevice.device, orientation: .portrait, width: outputWidth, height: outputHeight)
             
-            commandBuffer.renderQuad(pipelineState: renderPipelineState, uniformSettings: uniformSettings, inputTextures: inputTextures, outputTexture: outputTexture)
+            commandBuffer.renderQuad(pipelineState: renderPipelineState, uniformSettings: uniformSettings, inputTextures: inputTextures, useNormalizedTextureCoordinates: useNormalizedTextureCoordinates, outputTexture: outputTexture)
             commandBuffer.commit()
             
             updateTargetsWithTexture(outputTexture)
