@@ -90,7 +90,7 @@ class FilterShowcaseWindowController: NSWindowController {
         return filterInList.listName as NSString
     }
     
-    func tableViewSelectionDidChange(_ aNotification: Notification!) {
+    @objc func tableViewSelectionDidChange(_ aNotification: Notification!) {
         if let currentTableView = aNotification.object as? NSTableView {
             let rowIndex = currentTableView.selectedRow
             self.changeSelectedRow(rowIndex)

@@ -24,7 +24,8 @@ open class BasicOperation: ImageProcessingOperation {
     let renderPipelineState: MTLRenderPipelineState
     let operationName: String
     var inputTextures = [UInt:Texture]()
-    
+    let textureInputSemaphore = DispatchSemaphore(value:1)
+
     public init(vertexFunctionName: String? = nil,
                 fragmentFunctionName: String,
                 numberOfInputs: UInt = 1,
@@ -41,9 +42,12 @@ open class BasicOperation: ImageProcessingOperation {
     }
     
     public func newTextureAvailable(_ texture: Texture, fromSourceIndex: UInt) {
+        let _ = textureInputSemaphore.wait(timeout:DispatchTime.distantFuture)
+        defer {
+            textureInputSemaphore.signal()
+        }
+        
         inputTextures[fromSourceIndex] = texture
-
-        guard let commandBuffer = sharedMetalRenderingDevice.commandQueue.makeCommandBuffer() else {return}
 
         guard (!activatePassthroughOnNextFrame) else { // Use this to allow a bootstrap of cyclical processing, like with a low pass filter
             activatePassthroughOnNextFrame = false
@@ -64,6 +68,8 @@ open class BasicOperation: ImageProcessingOperation {
                 outputHeight = firstInputTexture.texture.height
             }
             
+            guard let commandBuffer = sharedMetalRenderingDevice.commandQueue.makeCommandBuffer() else {return}
+
             let outputTexture = Texture(device:sharedMetalRenderingDevice.device, orientation: .portrait, width: outputWidth, height: outputHeight)
             
             commandBuffer.renderQuad(pipelineState: renderPipelineState, uniformSettings: uniformSettings, inputTextures: inputTextures, outputTexture: outputTexture)

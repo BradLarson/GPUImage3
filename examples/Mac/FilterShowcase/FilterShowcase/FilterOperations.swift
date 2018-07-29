@@ -999,166 +999,166 @@ let filterOperations: Array<FilterOperationInterface> = [
 //        },
 //        filterOperationType:.blend
 //    ),
-//    FilterOperation(
-//        filter:{AddBlend()},
-//        listName:"Add blend",
-//        titleName:"Add Blend",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback: nil,
-//        filterOperationType:.blend
-//    ),
-//    FilterOperation(
-//        filter:{DivideBlend()},
-//        listName:"Divide blend",
-//        titleName:"Divide Blend",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback: nil,
-//        filterOperationType:.blend
-//    ),
-//    FilterOperation(
-//        filter:{MultiplyBlend()},
-//        listName:"Multiply blend",
-//        titleName:"Multiply Blend",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback: nil,
-//        filterOperationType:.blend
-//    ),
-//    FilterOperation(
-//        filter:{OverlayBlend()},
-//        listName:"Overlay blend",
-//        titleName:"Overlay Blend",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback: nil,
-//        filterOperationType:.blend
-//    ),
-//    FilterOperation(
-//        filter:{LightenBlend()},
-//        listName:"Lighten blend",
-//        titleName:"Lighten Blend",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback: nil,
-//        filterOperationType:.blend
-//    ),
-//    FilterOperation(
-//        filter:{DarkenBlend()},
-//        listName:"Darken blend",
-//        titleName:"Darken Blend",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback: nil,
-//        filterOperationType:.blend
-//    ),
-//    FilterOperation(
-//        filter:{ColorBurnBlend()},
-//        listName:"Color burn blend",
-//        titleName:"Color Burn Blend",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback: nil,
-//        filterOperationType:.blend
-//    ),
-//    FilterOperation(
-//        filter:{ColorDodgeBlend()},
-//        listName:"Color dodge blend",
-//        titleName:"Color Dodge Blend",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback: nil,
-//        filterOperationType:.blend
-//    ),
-//    FilterOperation(
-//        filter:{LinearBurnBlend()},
-//        listName:"Linear burn blend",
-//        titleName:"Linear Burn Blend",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback: nil,
-//        filterOperationType:.blend
-//    ),
-//    FilterOperation(
-//        filter:{ScreenBlend()},
-//        listName:"Screen blend",
-//        titleName:"Screen Blend",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback:nil,
-//        filterOperationType:.blend
-//    ),
-//    FilterOperation(
-//        filter:{DifferenceBlend()},
-//        listName:"Difference blend",
-//        titleName:"Difference Blend",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback:nil,
-//        filterOperationType:.blend
-//    ),
-//    FilterOperation(
-//        filter:{SubtractBlend()},
-//        listName:"Subtract blend",
-//        titleName:"Subtract Blend",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback:nil,
-//        filterOperationType:.blend
-//    ),
-//    FilterOperation(
-//        filter:{ExclusionBlend()},
-//        listName:"Exclusion blend",
-//        titleName:"Exclusion Blend",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback:nil,
-//        filterOperationType:.blend
-//    ),
-//    FilterOperation(
-//        filter:{HardLightBlend()},
-//        listName:"Hard light blend",
-//        titleName:"Hard Light Blend",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback:nil,
-//        filterOperationType:.blend
-//    ),
-//    FilterOperation(
-//        filter:{SoftLightBlend()},
-//        listName:"Soft light blend",
-//        titleName:"Soft Light Blend",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback:nil,
-//        filterOperationType:.blend
-//    ),
-//    FilterOperation(
-//        filter:{ColorBlend()},
-//        listName:"Color blend",
-//        titleName:"Color Blend",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback:nil,
-//        filterOperationType:.blend
-//    ),
-//    FilterOperation(
-//        filter:{HueBlend()},
-//        listName:"Hue blend",
-//        titleName:"Hue Blend",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback:nil,
-//        filterOperationType:.blend
-//    ),
-//    FilterOperation(
-//        filter:{SaturationBlend()},
-//        listName:"Saturation blend",
-//        titleName:"Saturation Blend",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback:nil,
-//        filterOperationType:.blend
-//    ),
-//    FilterOperation(
-//        filter:{LuminosityBlend()},
-//        listName:"Luminosity blend",
-//        titleName:"Luminosity Blend",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback:nil,
-//        filterOperationType:.blend
-//    ),
-//    FilterOperation(
-//        filter:{NormalBlend()},
-//        listName:"Normal blend",
-//        titleName:"Normal Blend",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback:nil,
-//        filterOperationType:.blend
-//    ),
+    FilterOperation(
+        filter:{AddBlend()},
+        listName:"Add blend",
+        titleName:"Add Blend",
+        sliderConfiguration:.disabled,
+        sliderUpdateCallback: nil,
+        filterOperationType:.blend
+    ),
+    FilterOperation(
+        filter:{DivideBlend()},
+        listName:"Divide blend",
+        titleName:"Divide Blend",
+        sliderConfiguration:.disabled,
+        sliderUpdateCallback: nil,
+        filterOperationType:.blend
+    ),
+    FilterOperation(
+        filter:{MultiplyBlend()},
+        listName:"Multiply blend",
+        titleName:"Multiply Blend",
+        sliderConfiguration:.disabled,
+        sliderUpdateCallback: nil,
+        filterOperationType:.blend
+    ),
+    FilterOperation(
+        filter:{OverlayBlend()},
+        listName:"Overlay blend",
+        titleName:"Overlay Blend",
+        sliderConfiguration:.disabled,
+        sliderUpdateCallback: nil,
+        filterOperationType:.blend
+    ),
+    FilterOperation(
+        filter:{LightenBlend()},
+        listName:"Lighten blend",
+        titleName:"Lighten Blend",
+        sliderConfiguration:.disabled,
+        sliderUpdateCallback: nil,
+        filterOperationType:.blend
+    ),
+    FilterOperation(
+        filter:{DarkenBlend()},
+        listName:"Darken blend",
+        titleName:"Darken Blend",
+        sliderConfiguration:.disabled,
+        sliderUpdateCallback: nil,
+        filterOperationType:.blend
+    ),
+    FilterOperation(
+        filter:{ColorBurnBlend()},
+        listName:"Color burn blend",
+        titleName:"Color Burn Blend",
+        sliderConfiguration:.disabled,
+        sliderUpdateCallback: nil,
+        filterOperationType:.blend
+    ),
+    FilterOperation(
+        filter:{ColorDodgeBlend()},
+        listName:"Color dodge blend",
+        titleName:"Color Dodge Blend",
+        sliderConfiguration:.disabled,
+        sliderUpdateCallback: nil,
+        filterOperationType:.blend
+    ),
+    FilterOperation(
+        filter:{LinearBurnBlend()},
+        listName:"Linear burn blend",
+        titleName:"Linear Burn Blend",
+        sliderConfiguration:.disabled,
+        sliderUpdateCallback: nil,
+        filterOperationType:.blend
+    ),
+    FilterOperation(
+        filter:{ScreenBlend()},
+        listName:"Screen blend",
+        titleName:"Screen Blend",
+        sliderConfiguration:.disabled,
+        sliderUpdateCallback:nil,
+        filterOperationType:.blend
+    ),
+    FilterOperation(
+        filter:{DifferenceBlend()},
+        listName:"Difference blend",
+        titleName:"Difference Blend",
+        sliderConfiguration:.disabled,
+        sliderUpdateCallback:nil,
+        filterOperationType:.blend
+    ),
+    FilterOperation(
+        filter:{SubtractBlend()},
+        listName:"Subtract blend",
+        titleName:"Subtract Blend",
+        sliderConfiguration:.disabled,
+        sliderUpdateCallback:nil,
+        filterOperationType:.blend
+    ),
+    FilterOperation(
+        filter:{ExclusionBlend()},
+        listName:"Exclusion blend",
+        titleName:"Exclusion Blend",
+        sliderConfiguration:.disabled,
+        sliderUpdateCallback:nil,
+        filterOperationType:.blend
+    ),
+    FilterOperation(
+        filter:{HardLightBlend()},
+        listName:"Hard light blend",
+        titleName:"Hard Light Blend",
+        sliderConfiguration:.disabled,
+        sliderUpdateCallback:nil,
+        filterOperationType:.blend
+    ),
+    FilterOperation(
+        filter:{SoftLightBlend()},
+        listName:"Soft light blend",
+        titleName:"Soft Light Blend",
+        sliderConfiguration:.disabled,
+        sliderUpdateCallback:nil,
+        filterOperationType:.blend
+    ),
+    FilterOperation(
+        filter:{ColorBlend()},
+        listName:"Color blend",
+        titleName:"Color Blend",
+        sliderConfiguration:.disabled,
+        sliderUpdateCallback:nil,
+        filterOperationType:.blend
+    ),
+    FilterOperation(
+        filter:{HueBlend()},
+        listName:"Hue blend",
+        titleName:"Hue Blend",
+        sliderConfiguration:.disabled,
+        sliderUpdateCallback:nil,
+        filterOperationType:.blend
+    ),
+    FilterOperation(
+        filter:{SaturationBlend()},
+        listName:"Saturation blend",
+        titleName:"Saturation Blend",
+        sliderConfiguration:.disabled,
+        sliderUpdateCallback:nil,
+        filterOperationType:.blend
+    ),
+    FilterOperation(
+        filter:{LuminosityBlend()},
+        listName:"Luminosity blend",
+        titleName:"Luminosity Blend",
+        sliderConfiguration:.disabled,
+        sliderUpdateCallback:nil,
+        filterOperationType:.blend
+    ),
+    FilterOperation(
+        filter:{NormalBlend()},
+        listName:"Normal blend",
+        titleName:"Normal Blend",
+        sliderConfiguration:.disabled,
+        sliderUpdateCallback:nil,
+        filterOperationType:.blend
+    ),
     
     // TODO: Poisson blend
 ]
