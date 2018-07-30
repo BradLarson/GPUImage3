@@ -4,11 +4,11 @@ using namespace metal;
 
 typedef struct
 {
-    packed_float3 minimum;
-    packed_float3 middle;
-    packed_float3 maximum;
-    packed_float3 minOutput;
-    packed_float3 maxOutput;
+    float3 minimum;
+    float3 middle;
+    float3 maximum;
+    float3 minOutput;
+    float3 maxOutput;
 } LevelAdjustmentUniform;
 
 // Possibly convert these to functions

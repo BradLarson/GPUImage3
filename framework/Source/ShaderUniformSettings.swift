@@ -102,23 +102,36 @@ public class ShaderUniformSettings {
             }
         }
     }
+    
+    func alignPackingForOffset(uniformSize:Int, lastOffset:Int) -> Int {
+        let floatAlignment = lastOffset % 4
+        if (uniformSize > 1) && (floatAlignment != 0) {
+            let paddingToAlignment = 4 - floatAlignment
+            uniformValues.append(contentsOf:[Float](repeating:0.0, count:paddingToAlignment))
+            uniformValueOffsets[uniformValueOffsets.count - 1] = lastOffset + paddingToAlignment
+            return lastOffset + paddingToAlignment
+        } else {
+            return lastOffset
+        }
+    }
 
     public func appendUniform(_ value:UniformConvertible) {
+        let lastOffset = alignPackingForOffset(uniformSize:value.uniformSize(), lastOffset:uniformValueOffsets.last ?? 0)
+        
         uniformValues.append(contentsOf:value.toFloatArray())
-        let lastOffset = uniformValueOffsets.last ?? 0
         uniformValueOffsets.append(lastOffset + value.uniformSize())
     }
 
     public func appendUniform(_ value:Color) {
-        let lastOffset = uniformValueOffsets.last ?? 0
+        let colorSize = 4
+        let lastOffset = alignPackingForOffset(uniformSize:colorSize, lastOffset:uniformValueOffsets.last ?? 0)
 
         if colorUniformsUseAlpha {
             uniformValues.append(contentsOf:value.toFloatArrayWithAlpha())
-            uniformValueOffsets.append(lastOffset + 4)
         } else {
             uniformValues.append(contentsOf:value.toFloatArray())
-            uniformValueOffsets.append(lastOffset + 3)
         }
+        uniformValueOffsets.append(lastOffset + colorSize)
     }
 
     public func restoreShaderSettings(renderEncoder:MTLRenderCommandEncoder) {
@@ -159,7 +172,7 @@ extension Double:UniformConvertible {
 
 extension Color {
     func toFloatArray() -> [Float] {
-        return [self.redComponent, self.greenComponent, self.blueComponent]
+        return [self.redComponent, self.greenComponent, self.blueComponent, 0.0]
     }
 
     func toFloatArrayWithAlpha() -> [Float] {
@@ -169,30 +182,26 @@ extension Color {
 
 extension Position:UniformConvertible {
     public func uniformSize() -> Int {
-        if (self.z != nil) {
-            return 3
-        } else {
-            return 2
-        }
+        return 4
     }
     
     public func toFloatArray() -> [Float] {
         if let z = self.z {
-            return [self.x, self.y, z]
+            return [self.x, self.y, z, 0.0]
         } else {
-            return [self.x, self.y]
+            return [self.x, self.y, 0.0, 0.0]
         }
     }
 }
 
 extension Matrix3x3:UniformConvertible {
     public func uniformSize() -> Int {
-        return 9
+        return 12
     }
     
     public func toFloatArray() -> [Float] {
-        // Row major
-        return [m11, m12, m13, m21, m22, m23, m31, m32, m33]
+        // Row major, with zero-padding
+        return [m11, m12, m13, 0.0, m21, m22, m23, 0.0, m31, m32, m33, 0.0]
 //        return [m11, m12, m13, m21, m22, m23, m31, m32, m33]
     }
 }
