@@ -209,6 +209,8 @@
 		BC7BA29420F6F2CB006B5F4B /* BrightnessAdjustment.metal in Sources */ = {isa = PBXBuildFile; fileRef = BC7BA27820F2C2CF006B5F4B /* BrightnessAdjustment.metal */; };
 		BC7BA29520F6F2F4006B5F4B /* ShaderUniformSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7BA27320F2BD1E006B5F4B /* ShaderUniformSettings.swift */; };
 		BC7BA29720F6F366006B5F4B /* PictureInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7BA29620F6F365006B5F4B /* PictureInput.swift */; };
+		BC7FC40C212B2B3800B37FB6 /* OperationGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FC40B212B2B3800B37FB6 /* OperationGroup.swift */; };
+		BC7FC40D212B2B3800B37FB6 /* OperationGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FC40B212B2B3800B37FB6 /* OperationGroup.swift */; };
 		BC9294A421051346006C8E93 /* ColorMatrixFilter.metal in Sources */ = {isa = PBXBuildFile; fileRef = 79A81C962100F57A00A3B43A /* ColorMatrixFilter.metal */; };
 		BC9294A521051347006C8E93 /* ColorMatrixFilter.metal in Sources */ = {isa = PBXBuildFile; fileRef = 79A81C962100F57A00A3B43A /* ColorMatrixFilter.metal */; };
 		BC9294A62105134E006C8E93 /* ColorMatrixFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A81C932100F56F00A3B43A /* ColorMatrixFilter.swift */; };
@@ -351,6 +353,7 @@
 		BC7BA28320F59C8E006B5F4B /* MonochromeFilter.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; name = MonochromeFilter.metal; path = Source/Operations/MonochromeFilter.metal; sourceTree = "<group>"; };
 		BC7BA28E20F5A275006B5F4B /* PictureInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PictureInput.swift; path = Source/iOS/PictureInput.swift; sourceTree = "<group>"; };
 		BC7BA29620F6F365006B5F4B /* PictureInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PictureInput.swift; path = Source/Mac/PictureInput.swift; sourceTree = "<group>"; };
+		BC7FC40B212B2B3800B37FB6 /* OperationGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OperationGroup.swift; path = Source/OperationGroup.swift; sourceTree = "<group>"; };
 		BC9294A9210513DF006C8E93 /* SepiaToneFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SepiaToneFilter.swift; path = Source/Operations/SepiaToneFilter.swift; sourceTree = "<group>"; };
 		BCC6AB5E210E5E7900F9803A /* TextureSamplingOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TextureSamplingOperation.swift; path = Source/TextureSamplingOperation.swift; sourceTree = "<group>"; };
 		BCC6AB61210E5ECE00F9803A /* NearbyTexelSampling.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; name = NearbyTexelSampling.metal; path = Source/Operations/NearbyTexelSampling.metal; sourceTree = "<group>"; };
@@ -550,6 +553,7 @@
 				BCC6AB5E210E5E7900F9803A /* TextureSamplingOperation.swift */,
 				BCC6AB64210E5FF600F9803A /* TexelSamplingTypes.h */,
 				BCC6AB61210E5ECE00F9803A /* NearbyTexelSampling.metal */,
+				BC7FC40B212B2B3800B37FB6 /* OperationGroup.swift */,
 				BC7BA27520F2C20D006B5F4B /* Color processing */,
 				BCFCD46320FCE77100560BC9 /* Blends */,
 				BCC6AB67210E62C900F9803A /* Image processing */,
@@ -795,6 +799,7 @@
 				79E30E6F20F11989005FA13C /* Timestamp.swift in Sources */,
 				79CB6E0E210931110042F87B /* MultiplyBlend.swift in Sources */,
 				7B72DB282103CEB900A91156 /* AddBlend.swift in Sources */,
+				BC7FC40C212B2B3800B37FB6 /* OperationGroup.swift in Sources */,
 				793D933520F68C1B008A7A6E /* ContrastAdjustment.swift in Sources */,
 				79A81CA321010A2E00A3B43A /* Vibrance.metal in Sources */,
 				79CB6DF3210927180042F87B /* HardLightBlend.metal in Sources */,
@@ -916,6 +921,7 @@
 				793D932720F6631B008A7A6E /* Luminance.swift in Sources */,
 				79CB6E0F210931110042F87B /* MultiplyBlend.swift in Sources */,
 				7B72DB292103CEB900A91156 /* AddBlend.swift in Sources */,
+				BC7FC40D212B2B3800B37FB6 /* OperationGroup.swift in Sources */,
 				793D933320F68A32008A7A6E /* ExposureAdjustment.metal in Sources */,
 				79A81CA421010A2E00A3B43A /* Vibrance.metal in Sources */,
 				79CB6DF4210927180042F87B /* HardLightBlend.metal in Sources */,
