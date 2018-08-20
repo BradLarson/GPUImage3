@@ -7,15 +7,13 @@ typedef struct
     float intensity;
 } IntensityUniform;
 
-fragment half4 lookupFragmentFragment(TwoInputVertexIO fragmentInput [[stage_in]],
+fragment half4 lookupFragment(TwoInputVertexIO fragmentInput [[stage_in]],
                                 texture2d<half> inputTexture [[texture(0)]],
                                 texture2d<half> inputTexture2 [[texture(1)]],
                                 constant IntensityUniform& uniform [[ buffer(1) ]])
 {
     constexpr sampler quadSampler;
     half4 base = inputTexture.sample(quadSampler, fragmentInput.textureCoordinate);
-    constexpr sampler quadSampler2;
-    half4 overlay = inputTexture2.sample(quadSampler, fragmentInput.textureCoordinate2);
     
     half blueColor = base.b * 63.0h;
     
@@ -36,9 +34,9 @@ fragment half4 lookupFragmentFragment(TwoInputVertexIO fragmentInput [[stage_in]
     texPos2.y = (quad2.y * 0.125) + 0.5/512.0 + ((0.125 - 1.0/512.0) * base.g);
     
     constexpr sampler quadSampler3;
-    half4 newColor1 = inputTexture.sample(quadSampler3, texPos1);
+    half4 newColor1 = inputTexture2.sample(quadSampler3, texPos1);
     constexpr sampler quadSampler4;
-    half4 newColor2 = inputTexture.sample(quadSampler4, texPos2);
+    half4 newColor2 = inputTexture2.sample(quadSampler4, texPos2);
     
     half4 newColor = mix(newColor1, newColor2, fract(blueColor));
     return half4(mix(base, half4(newColor.rgb, base.w), half(uniform.intensity)));

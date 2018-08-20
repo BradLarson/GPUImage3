@@ -221,22 +221,26 @@ let filterOperations: Array<FilterOperationInterface> = [
         },
         filterOperationType:.singleInput
     ),
-//    FilterOperation(
-//        filter:{AmatorkaFilter()},
-//        listName:"Amatorka (Lookup)",
-//        titleName:"Amatorka (Lookup)",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback: nil,
-//        filterOperationType:.singleInput
-//    ),
-//    FilterOperation(
-//        filter:{MissEtikateFilter()},
-//        listName:"Miss Etikate (Lookup)",
-//        titleName:"Miss Etikate (Lookup)",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback: nil,
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{AmatorkaFilter()},
+        listName:"Amatorka (Lookup)",
+        titleName:"Amatorka (Lookup)",
+        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.0, initialValue:1.0),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.intensity = sliderValue
+    },
+        filterOperationType:.singleInput
+    ),
+    FilterOperation(
+        filter:{MissEtikateFilter()},
+        listName:"Miss Etikate (Lookup)",
+        titleName:"Miss Etikate (Lookup)",
+        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.0, initialValue:1.0),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.intensity = sliderValue
+    },
+        filterOperationType:.singleInput
+    ),
 //    FilterOperation(
 //        filter:{SoftElegance()},
 //        listName:"Soft elegance (Lookup)",
@@ -989,16 +993,16 @@ let filterOperations: Array<FilterOperationInterface> = [
         },
         filterOperationType:.blend
     ),
-//    FilterOperation(
-//        filter:{ChromaKeyBlend()},
-//        listName:"Chroma key blend (green)",
-//        titleName:"Chroma Key (Green)",
-//        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.0, initialValue:0.4),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.thresholdSensitivity = sliderValue
-//        },
-//        filterOperationType:.blend
-//    ),
+    FilterOperation(
+        filter:{ChromaKeyBlend()},
+        listName:"Chroma key blend (green)",
+        titleName:"Chroma Key (Green)",
+        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.0, initialValue:0.4),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.thresholdSensitivity = sliderValue
+        },
+        filterOperationType:.blend
+    ),
     FilterOperation(
         filter:{AddBlend()},
         listName:"Add blend",
