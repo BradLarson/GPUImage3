@@ -18,14 +18,23 @@ open class BasicOperation: ImageProcessingOperation {
     public let targets = TargetContainer()
     public let sources = SourceContainer()
     
-    public var activatePassthroughOnNextFrame:Bool = false
+    public var activatePassthroughOnNextFrame: Bool = false
     public var uniformSettings = ShaderUniformSettings()
+    public var useMetalPerformanceShaders: Bool = false {
+        didSet {
+            if !sharedMetalRenderingDevice.metalPerformanceShadersAreSupported {
+                print("Warning: Metal Performance Shaders are not supported on this device")
+                useMetalPerformanceShaders = false
+            }
+        }
+    }
 
     let renderPipelineState: MTLRenderPipelineState
     let operationName: String
     var inputTextures = [UInt:Texture]()
     let textureInputSemaphore = DispatchSemaphore(value:1)
     var useNormalizedTextureCoordinates = true
+    var metalPerformanceShaderPathway: ((MTLCommandBuffer, [UInt:Texture], Texture) -> ())?
 
     public init(vertexFunctionName: String? = nil,
                 fragmentFunctionName: String,
@@ -73,7 +82,22 @@ open class BasicOperation: ImageProcessingOperation {
 
             let outputTexture = Texture(device:sharedMetalRenderingDevice.device, orientation: .portrait, width: outputWidth, height: outputHeight)
             
-            commandBuffer.renderQuad(pipelineState: renderPipelineState, uniformSettings: uniformSettings, inputTextures: inputTextures, useNormalizedTextureCoordinates: useNormalizedTextureCoordinates, outputTexture: outputTexture)
+            if let alternateRenderingFunction = metalPerformanceShaderPathway, useMetalPerformanceShaders {
+                var rotatedInputTextures: [UInt:Texture]
+                if (firstInputTexture.orientation.rotationNeeded(for:.portrait) != .noRotation) {
+                    let rotationOutputTexture = Texture(device:sharedMetalRenderingDevice.device, orientation: .portrait, width: outputWidth, height: outputHeight)
+                    guard let rotationCommandBuffer = sharedMetalRenderingDevice.commandQueue.makeCommandBuffer() else {return}
+                    rotationCommandBuffer.renderQuad(pipelineState: sharedMetalRenderingDevice.passthroughRenderState, uniformSettings: uniformSettings, inputTextures: inputTextures, useNormalizedTextureCoordinates: useNormalizedTextureCoordinates, outputTexture: rotationOutputTexture)
+                    rotationCommandBuffer.commit()
+                    rotatedInputTextures = inputTextures
+                    rotatedInputTextures[0] = rotationOutputTexture
+                } else {
+                    rotatedInputTextures = inputTextures
+                }
+                alternateRenderingFunction(commandBuffer, rotatedInputTextures, outputTexture)
+            } else {
+                commandBuffer.renderQuad(pipelineState: renderPipelineState, uniformSettings: uniformSettings, inputTextures: inputTextures, useNormalizedTextureCoordinates: useNormalizedTextureCoordinates, outputTexture: outputTexture)
+            }
             commandBuffer.commit()
             
             updateTargetsWithTexture(outputTexture)
