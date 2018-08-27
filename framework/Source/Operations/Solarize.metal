@@ -6,7 +6,7 @@ typedef struct {
     float threshold;
 } SolarizeUniform;
 
-fragment half4 solarizeFragment(TwoInputVertexIO fragmentInput [[stage_in]],
+fragment half4 solarizeFragment(SingleInputVertexIO fragmentInput [[stage_in]],
                                 texture2d<half> inputTexture [[texture(0)]],
                                 constant SolarizeUniform& uniform [[buffer(1)]])
 {
