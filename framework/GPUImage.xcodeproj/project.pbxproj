@@ -27,6 +27,10 @@
 		4CC48C0E2134E21500817C34 /* SwirlDistortion.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4CC48C0B2134E21500817C34 /* SwirlDistortion.metal */; };
 		4CC48C0F2134E21500817C34 /* SwirlDistortion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC48C0C2134E21500817C34 /* SwirlDistortion.swift */; };
 		4CC48C102134E21500817C34 /* SwirlDistortion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC48C0C2134E21500817C34 /* SwirlDistortion.swift */; };
+		4CC48C132134E40300817C34 /* ZoomBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC48C112134E40300817C34 /* ZoomBlur.swift */; };
+		4CC48C142134E40300817C34 /* ZoomBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC48C112134E40300817C34 /* ZoomBlur.swift */; };
+		4CC48C152134E40300817C34 /* ZoomBlur.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4CC48C122134E40300817C34 /* ZoomBlur.metal */; };
+		4CC48C162134E40300817C34 /* ZoomBlur.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4CC48C122134E40300817C34 /* ZoomBlur.metal */; };
 		793D932320F66236008A7A6E /* Luminance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793D932220F66236008A7A6E /* Luminance.swift */; };
 		793D932520F66303008A7A6E /* Luminance.metal in Sources */ = {isa = PBXBuildFile; fileRef = 793D932420F66303008A7A6E /* Luminance.metal */; };
 		793D932620F66303008A7A6E /* Luminance.metal in Sources */ = {isa = PBXBuildFile; fileRef = 793D932420F66303008A7A6E /* Luminance.metal */; };
@@ -276,6 +280,8 @@
 		4CC48C06213448EA00817C34 /* ToonFilter.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = ToonFilter.metal; path = Source/Operations/ToonFilter.metal; sourceTree = "<group>"; };
 		4CC48C0B2134E21500817C34 /* SwirlDistortion.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = SwirlDistortion.metal; path = Source/Operations/SwirlDistortion.metal; sourceTree = "<group>"; };
 		4CC48C0C2134E21500817C34 /* SwirlDistortion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwirlDistortion.swift; path = Source/Operations/SwirlDistortion.swift; sourceTree = "<group>"; };
+		4CC48C112134E40300817C34 /* ZoomBlur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZoomBlur.swift; path = Source/Operations/ZoomBlur.swift; sourceTree = "<group>"; };
+		4CC48C122134E40300817C34 /* ZoomBlur.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = ZoomBlur.metal; path = Source/Operations/ZoomBlur.metal; sourceTree = "<group>"; };
 		793D932220F66236008A7A6E /* Luminance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Luminance.swift; path = Source/Operations/Luminance.swift; sourceTree = "<group>"; };
 		793D932420F66303008A7A6E /* Luminance.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; name = Luminance.metal; path = Source/Operations/Luminance.metal; sourceTree = "<group>"; };
 		793D932820F66C5C008A7A6E /* ColorInversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorInversion.swift; path = Source/Operations/ColorInversion.swift; sourceTree = "<group>"; };
@@ -423,6 +429,8 @@
 		4C280F6E21342447001A985C /* Effects */ = {
 			isa = PBXGroup;
 			children = (
+				4CC48C122134E40300817C34 /* ZoomBlur.metal */,
+				4CC48C112134E40300817C34 /* ZoomBlur.swift */,
 				4CC48C0B2134E21500817C34 /* SwirlDistortion.metal */,
 				4CC48C0C2134E21500817C34 /* SwirlDistortion.swift */,
 				4CC48C06213448EA00817C34 /* ToonFilter.metal */,
@@ -808,6 +816,7 @@
 				79CB6DD52108B4090042F87B /* ColorDodgeBlend.metal in Sources */,
 				79CB6DF02109270C0042F87B /* HardLightBlend.swift in Sources */,
 				7957437120FBED78001EAE0A /* RGBAdjustment.metal in Sources */,
+				4CC48C132134E40300817C34 /* ZoomBlur.swift in Sources */,
 				BCC6AB5F210E5E7900F9803A /* TextureSamplingOperation.swift in Sources */,
 				79CB6DE12108C9200042F87B /* DifferenceBlend.metal in Sources */,
 				79CB6E0521092D7C0042F87B /* LinearBurnBlend.metal in Sources */,
@@ -885,6 +894,7 @@
 				4CC48C09213448EA00817C34 /* ToonFilter.metal in Sources */,
 				793D932C20F66C66008A7A6E /* ColorInversion.metal in Sources */,
 				793D934420F693B8008A7A6E /* GammaAdjustment.metal in Sources */,
+				4CC48C152134E40300817C34 /* ZoomBlur.metal in Sources */,
 				4CC48C012134440900817C34 /* Solarize.metal in Sources */,
 				7B25C0E92103D5DE000EC621 /* ColorBlend.swift in Sources */,
 				79CB6DF6210928B80042F87B /* HueBlend.swift in Sources */,
@@ -940,6 +950,7 @@
 				79CB6DD62108B4090042F87B /* ColorDodgeBlend.metal in Sources */,
 				79CB6DF12109270C0042F87B /* HardLightBlend.swift in Sources */,
 				793D934520F693B8008A7A6E /* GammaAdjustment.metal in Sources */,
+				4CC48C142134E40300817C34 /* ZoomBlur.swift in Sources */,
 				BCC6AB60210E5E7900F9803A /* TextureSamplingOperation.swift in Sources */,
 				79CB6DE22108C9200042F87B /* DifferenceBlend.metal in Sources */,
 				79CB6E0621092D7C0042F87B /* LinearBurnBlend.metal in Sources */,
@@ -1017,6 +1028,7 @@
 				4CC48C0A213448EA00817C34 /* ToonFilter.metal in Sources */,
 				79E30E6120ED64F9005FA13C /* Camera.swift in Sources */,
 				BC7BA29320F6F2C7006B5F4B /* BrightnessAdjustment.swift in Sources */,
+				4CC48C162134E40300817C34 /* ZoomBlur.metal in Sources */,
 				4CC48C022134440900817C34 /* Solarize.metal in Sources */,
 				7B25C0EA2103D5DE000EC621 /* ColorBlend.swift in Sources */,
 				79CB6DF7210928B80042F87B /* HueBlend.swift in Sources */,
