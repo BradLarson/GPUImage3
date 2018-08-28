@@ -24,6 +24,8 @@ The objective of the framework is to make it as easy as possible to set up and p
 
 The API is a clone of that used in <a href="https://github.com/BradLarson/GPUImage2">GPUImage 2</a>, and is intended to be a drop-in replacement for that version of the framework. Swapping between Metal and OpenGL versions of the framework should be as simple as changing which framework your application is linked against. A few low-level interfaces, such as those around texture input and output, will necessarily be Metal- or OpenGL-specific, but everything else is designed to be compatible between the two.
 
+As of this point, we are not approving enhancement requests from outside contributors. We are actively working to port all of the functionality between this version of GPUImage adn previous versions. Once this task has been completed we will be happy to take community contributions.
+
 ## License ##
 
 BSD-style, with the full license available with the framework in License.txt.
