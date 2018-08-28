@@ -31,6 +31,10 @@
 		4CC48C142134E40300817C34 /* ZoomBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC48C112134E40300817C34 /* ZoomBlur.swift */; };
 		4CC48C152134E40300817C34 /* ZoomBlur.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4CC48C122134E40300817C34 /* ZoomBlur.metal */; };
 		4CC48C162134E40300817C34 /* ZoomBlur.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4CC48C122134E40300817C34 /* ZoomBlur.metal */; };
+		4CC48C192134E71400817C34 /* Crosshatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC48C172134E71400817C34 /* Crosshatch.swift */; };
+		4CC48C1A2134E71400817C34 /* Crosshatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC48C172134E71400817C34 /* Crosshatch.swift */; };
+		4CC48C1B2134E71400817C34 /* Crosshatch.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4CC48C182134E71400817C34 /* Crosshatch.metal */; };
+		4CC48C1C2134E71400817C34 /* Crosshatch.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4CC48C182134E71400817C34 /* Crosshatch.metal */; };
 		793D932320F66236008A7A6E /* Luminance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793D932220F66236008A7A6E /* Luminance.swift */; };
 		793D932520F66303008A7A6E /* Luminance.metal in Sources */ = {isa = PBXBuildFile; fileRef = 793D932420F66303008A7A6E /* Luminance.metal */; };
 		793D932620F66303008A7A6E /* Luminance.metal in Sources */ = {isa = PBXBuildFile; fileRef = 793D932420F66303008A7A6E /* Luminance.metal */; };
@@ -282,6 +286,8 @@
 		4CC48C0C2134E21500817C34 /* SwirlDistortion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwirlDistortion.swift; path = Source/Operations/SwirlDistortion.swift; sourceTree = "<group>"; };
 		4CC48C112134E40300817C34 /* ZoomBlur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZoomBlur.swift; path = Source/Operations/ZoomBlur.swift; sourceTree = "<group>"; };
 		4CC48C122134E40300817C34 /* ZoomBlur.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = ZoomBlur.metal; path = Source/Operations/ZoomBlur.metal; sourceTree = "<group>"; };
+		4CC48C172134E71400817C34 /* Crosshatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Crosshatch.swift; path = Source/Operations/Crosshatch.swift; sourceTree = "<group>"; };
+		4CC48C182134E71400817C34 /* Crosshatch.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = Crosshatch.metal; path = Source/Operations/Crosshatch.metal; sourceTree = "<group>"; };
 		793D932220F66236008A7A6E /* Luminance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Luminance.swift; path = Source/Operations/Luminance.swift; sourceTree = "<group>"; };
 		793D932420F66303008A7A6E /* Luminance.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; name = Luminance.metal; path = Source/Operations/Luminance.metal; sourceTree = "<group>"; };
 		793D932820F66C5C008A7A6E /* ColorInversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorInversion.swift; path = Source/Operations/ColorInversion.swift; sourceTree = "<group>"; };
@@ -429,6 +435,8 @@
 		4C280F6E21342447001A985C /* Effects */ = {
 			isa = PBXGroup;
 			children = (
+				4CC48C182134E71400817C34 /* Crosshatch.metal */,
+				4CC48C172134E71400817C34 /* Crosshatch.swift */,
 				4CC48C122134E40300817C34 /* ZoomBlur.metal */,
 				4CC48C112134E40300817C34 /* ZoomBlur.swift */,
 				4CC48C0B2134E21500817C34 /* SwirlDistortion.metal */,
@@ -856,6 +864,7 @@
 				79CB6E1A210933A60042F87B /* OverlayBlend.swift in Sources */,
 				79EB1B7A2125CC360049135E /* MissEtikateFilter.swift in Sources */,
 				79CB6E17210931CD0042F87B /* NormalBlend.metal in Sources */,
+				4CC48C1B2134E71400817C34 /* Crosshatch.metal in Sources */,
 				79EB1B862125D7550049135E /* ChromaKeyBlend.swift in Sources */,
 				79E30E6F20F11989005FA13C /* Timestamp.swift in Sources */,
 				79CB6E0E210931110042F87B /* MultiplyBlend.swift in Sources */,
@@ -918,6 +927,7 @@
 				793D933B20F6908A008A7A6E /* SaturationAdjustment.swift in Sources */,
 				4CC48C0F2134E21500817C34 /* SwirlDistortion.swift in Sources */,
 				79A81C912100F0EE00A3B43A /* OpacityAdjustment.metal in Sources */,
+				4CC48C192134E71400817C34 /* Crosshatch.swift in Sources */,
 				79CB6DE42108CC460042F87B /* DivideBlend.swift in Sources */,
 				BCE0BEA420D6E3C80006E120 /* Pipeline.swift in Sources */,
 			);
@@ -990,6 +1000,7 @@
 				79CB6E1B210933A60042F87B /* OverlayBlend.swift in Sources */,
 				79EB1B7B2125CC360049135E /* MissEtikateFilter.swift in Sources */,
 				79CB6E18210931CD0042F87B /* NormalBlend.metal in Sources */,
+				4CC48C1C2134E71400817C34 /* Crosshatch.metal in Sources */,
 				79EB1B872125D7550049135E /* ChromaKeyBlend.swift in Sources */,
 				793D932720F6631B008A7A6E /* Luminance.swift in Sources */,
 				79CB6E0F210931110042F87B /* MultiplyBlend.swift in Sources */,
@@ -1052,6 +1063,7 @@
 				79E30E6A20F10F9C005FA13C /* Passthrough.metal in Sources */,
 				4CC48C102134E21500817C34 /* SwirlDistortion.swift in Sources */,
 				79A81C922100F0EE00A3B43A /* OpacityAdjustment.metal in Sources */,
+				4CC48C1A2134E71400817C34 /* Crosshatch.swift in Sources */,
 				79CB6DE52108CC460042F87B /* DivideBlend.swift in Sources */,
 				BCE0BEA520D6E3C80006E120 /* Pipeline.swift in Sources */,
 			);
