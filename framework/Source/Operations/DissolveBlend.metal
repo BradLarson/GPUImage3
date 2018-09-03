@@ -14,7 +14,6 @@ fragment half4 dissolveBlendFragment(TwoInputVertexIO fragmentInput [[stage_in]]
 {
     constexpr sampler quadSampler;
     half4 textureColor = inputTexture.sample(quadSampler, fragmentInput.textureCoordinate);
-    constexpr sampler quadSampler2;
     half4 textureColor2 = inputTexture2.sample(quadSampler, fragmentInput.textureCoordinate2);
 
     return mix(textureColor, textureColor2, half(uniform.mixturePercent));
