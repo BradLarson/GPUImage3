@@ -109,16 +109,16 @@ let filterOperations: Array<FilterOperationInterface> = [
         sliderUpdateCallback:nil,
         filterOperationType:.singleInput
     ),
-//    FilterOperation(
-//        filter:{Sharpen()},
-//        listName:"Sharpen",
-//        titleName:"Sharpen",
-//        sliderConfiguration:.enabled(minimumValue:-1.0, maximumValue:4.0, initialValue:0.0),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.sharpness = sliderValue
-//        },
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{Sharpen()},
+        listName:"Sharpen",
+        titleName:"Sharpen",
+        sliderConfiguration:.enabled(minimumValue:-1.0, maximumValue:4.0, initialValue:0.0),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.sharpness = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
 //    FilterOperation(
 //        filter:{UnsharpMask()},
 //        listName:"Unsharp mask",
@@ -1004,11 +1004,13 @@ let filterOperations: Array<FilterOperationInterface> = [
         filterOperationType:.blend
     ),
     FilterOperation(
-        filter:{AddBlend()},
-        listName:"Add blend",
-        titleName:"Add Blend",
-        sliderConfiguration:.disabled,
-        sliderUpdateCallback: nil,
+        filter:{AlphaBlend()},
+        listName:"Alpha blend",
+        titleName:"Alpha Blend",
+        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.0, initialValue:0.5),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.mix = sliderValue
+        },
         filterOperationType:.blend
     ),
     FilterOperation(
