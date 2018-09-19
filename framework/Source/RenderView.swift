@@ -9,7 +9,7 @@ public class RenderView: MTKView, ImageConsumer {
     var renderPipelineState:MTLRenderPipelineState!
     
     public override init(frame frameRect: CGRect, device: MTLDevice?) {
-        super.init(frame: frameRect, device: device)
+        super.init(frame: frameRect, device: sharedMetalRenderingDevice.device)
         
         commonInit()
     }
