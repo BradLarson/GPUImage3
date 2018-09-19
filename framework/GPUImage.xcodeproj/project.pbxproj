@@ -169,6 +169,14 @@
 		79CB6E42210A53CA0042F87B /* BlendShaderTypes.metal in Sources */ = {isa = PBXBuildFile; fileRef = 79CB6E40210A53C90042F87B /* BlendShaderTypes.metal */; };
 		79CB6E45210A55CB0042F87B /* BlendShaderTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 79CB6E44210A55CB0042F87B /* BlendShaderTypes.h */; };
 		79CB6E46210A55CB0042F87B /* BlendShaderTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 79CB6E44210A55CB0042F87B /* BlendShaderTypes.h */; };
+		79DD50C4213450BE004EF308 /* SwirlDistortion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD50C3213450BE004EF308 /* SwirlDistortion.swift */; };
+		79DD50C5213450BE004EF308 /* SwirlDistortion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD50C3213450BE004EF308 /* SwirlDistortion.swift */; };
+		79DD50C7213450CB004EF308 /* SwirlDistortion.metal in Sources */ = {isa = PBXBuildFile; fileRef = 79DD50C6213450CB004EF308 /* SwirlDistortion.metal */; };
+		79DD50C8213450CB004EF308 /* SwirlDistortion.metal in Sources */ = {isa = PBXBuildFile; fileRef = 79DD50C6213450CB004EF308 /* SwirlDistortion.metal */; };
+		79DD50CA21345492004EF308 /* Vignette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD50C921345492004EF308 /* Vignette.swift */; };
+		79DD50CB21345492004EF308 /* Vignette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD50C921345492004EF308 /* Vignette.swift */; };
+		79DD50CD213454A2004EF308 /* Vignette.metal in Sources */ = {isa = PBXBuildFile; fileRef = 79DD50CC213454A2004EF308 /* Vignette.metal */; };
+		79DD50CE213454A2004EF308 /* Vignette.metal in Sources */ = {isa = PBXBuildFile; fileRef = 79DD50CC213454A2004EF308 /* Vignette.metal */; };
 		79E30E5F20ED6434005FA13C /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E30E5E20ED6434005FA13C /* Camera.swift */; };
 		79E30E6120ED64F9005FA13C /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E30E6020ED64F9005FA13C /* Camera.swift */; };
 		79E30E6320F10B6C005FA13C /* MetalRenderingDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E30E6220F10B6C005FA13C /* MetalRenderingDevice.swift */; };
@@ -343,6 +351,16 @@
 		79CB6E3D210A106B0042F87B /* SubtractBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; name = SubtractBlend.metal; path = Source/Operations/SubtractBlend.metal; sourceTree = "<group>"; };
 		79CB6E40210A53C90042F87B /* BlendShaderTypes.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = BlendShaderTypes.metal; path = Source/Operations/BlendShaderTypes.metal; sourceTree = "<group>"; };
 		79CB6E44210A55CB0042F87B /* BlendShaderTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlendShaderTypes.h; path = Source/Operations/BlendShaderTypes.h; sourceTree = "<group>"; };
+		79DD50BD21344C28004EF308 /* BulgeDistortion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BulgeDistortion.swift; path = Source/Operations/BulgeDistortion.swift; sourceTree = "<group>"; };
+		79DD50C021344C38004EF308 /* BulgeDistortion.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; name = BulgeDistortion.metal; path = Source/Operations/BulgeDistortion.metal; sourceTree = "<group>"; };
+		79DD50C3213450BE004EF308 /* SwirlDistortion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SwirlDistortion.swift; path = Source/Operations/SwirlDistortion.swift; sourceTree = "<group>"; };
+		79DD50C6213450CB004EF308 /* SwirlDistortion.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; name = SwirlDistortion.metal; path = Source/Operations/SwirlDistortion.metal; sourceTree = "<group>"; };
+		79DD50C921345492004EF308 /* Vignette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Vignette.swift; path = Source/Operations/Vignette.swift; sourceTree = "<group>"; };
+		79DD50CC213454A2004EF308 /* Vignette.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; name = Vignette.metal; path = Source/Operations/Vignette.metal; sourceTree = "<group>"; };
+		79DD50CF213458A7004EF308 /* PolkaDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PolkaDot.swift; path = Source/Operations/PolkaDot.swift; sourceTree = "<group>"; };
+		79DD50D2213458BA004EF308 /* PolkaDot.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; name = PolkaDot.metal; path = Source/Operations/PolkaDot.metal; sourceTree = "<group>"; };
+		79DD50D521346075004EF308 /* Pixellate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Pixellate.swift; path = Source/Operations/Pixellate.swift; sourceTree = "<group>"; };
+		79DD50D82134607F004EF308 /* Pixellate.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; name = Pixellate.metal; path = Source/Operations/Pixellate.metal; sourceTree = "<group>"; };
 		79E30E5E20ED6434005FA13C /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Camera.swift; path = Source/iOS/Camera.swift; sourceTree = "<group>"; };
 		79E30E6020ED64F9005FA13C /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Camera.swift; path = Source/Mac/Camera.swift; sourceTree = "<group>"; };
 		79E30E6220F10B6C005FA13C /* MetalRenderingDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MetalRenderingDevice.swift; path = Source/MetalRenderingDevice.swift; sourceTree = "<group>"; };
@@ -411,12 +429,22 @@
 		4C280F6E21342447001A985C /* Effects */ = {
 			isa = PBXGroup;
 			children = (
-				4CC48BFF2134440900817C34 /* Solarize.metal */,
-				4CC48C002134440900817C34 /* Solarize.swift */,
 				4C280F75213426D6001A985C /* Posterize.swift */,
 				4C280F78213426EC001A985C /* Posterize.metal */,
-				4CC48BED213433CB00817C34 /* StretchDistortion.metal */,
+				79DD50C3213450BE004EF308 /* SwirlDistortion.swift */,
+				79DD50C6213450CB004EF308 /* SwirlDistortion.metal */,
 				4CC48BF0213433D900817C34 /* StretchDistortion.swift */,
+				4CC48BED213433CB00817C34 /* StretchDistortion.metal */,
+				79DD50C921345492004EF308 /* Vignette.swift */,
+				79DD50CC213454A2004EF308 /* Vignette.metal */,
+				79DD50CF213458A7004EF308 /* PolkaDot.swift */,
+				79DD50D2213458BA004EF308 /* PolkaDot.metal */,
+				79DD50D521346075004EF308 /* Pixellate.swift */,
+				79DD50D82134607F004EF308 /* Pixellate.metal */,
+				79DD50BD21344C28004EF308 /* BulgeDistortion.swift */,
+				79DD50C021344C38004EF308 /* BulgeDistortion.metal */,
+				4CC48C002134440900817C34 /* Solarize.swift */,
+				4CC48BFF2134440900817C34 /* Solarize.metal */,
 			);
 			name = Effects;
 			sourceTree = "<group>";
@@ -576,7 +604,6 @@
 		BCE0BE9720D6E39E0006E120 /* Operations */ = {
 			isa = PBXGroup;
 			children = (
-				4C280F6E21342447001A985C /* Effects */,
 				79E30E6520F10F72005FA13C /* BasicOperation.swift */,
 				BC7BA27A20F2C5E8006B5F4B /* OperationShaderTypes.h */,
 				79CB6E44210A55CB0042F87B /* BlendShaderTypes.h */,
@@ -588,6 +615,7 @@
 				BC7FC40B212B2B3800B37FB6 /* OperationGroup.swift */,
 				BC7BA27520F2C20D006B5F4B /* Color processing */,
 				BCFCD46320FCE77100560BC9 /* Blends */,
+				4C280F6E21342447001A985C /* Effects */,
 				BCC6AB67210E62C900F9803A /* Image processing */,
 			);
 			name = Operations;
@@ -787,6 +815,7 @@
 				79CB6E0821092E330042F87B /* LuminosityBlend.swift in Sources */,
 				7957438D20FE790E001EAE0A /* LuminanceRangeReduction.swift in Sources */,
 				79A81C882100E1B700A3B43A /* LevelsAdjustment.swift in Sources */,
+				79DD50C7213450CB004EF308 /* SwirlDistortion.metal in Sources */,
 				79E30E6620F10F72005FA13C /* BasicOperation.swift in Sources */,
 				BCE0BEA820D6E3C80006E120 /* ImageOrientation.swift in Sources */,
 				79CB6DD52108B4090042F87B /* ColorDodgeBlend.metal in Sources */,
@@ -807,7 +836,9 @@
 				79E30E7420F11DD9005FA13C /* RenderView.swift in Sources */,
 				7957439020FE794D001EAE0A /* LuminanceRangeReduction.metal in Sources */,
 				79CB6E35210A0ED00042F87B /* SourceOverBlend.swift in Sources */,
+				79DD50CD213454A2004EF308 /* Vignette.metal in Sources */,
 				BC9294AA210513DF006C8E93 /* SepiaToneFilter.swift in Sources */,
+				79DD50C4213450BE004EF308 /* SwirlDistortion.swift in Sources */,
 				4CC48C032134440900817C34 /* Solarize.swift in Sources */,
 				BCFCD46720FCE91200560BC9 /* DissolveBlend.metal in Sources */,
 				793D933220F68A32008A7A6E /* ExposureAdjustment.metal in Sources */,
@@ -835,6 +866,7 @@
 				79CB6E0E210931110042F87B /* MultiplyBlend.swift in Sources */,
 				7B72DB282103CEB900A91156 /* AddBlend.swift in Sources */,
 				BC7FC40C212B2B3800B37FB6 /* OperationGroup.swift in Sources */,
+				79DD50CA21345492004EF308 /* Vignette.swift in Sources */,
 				793D933520F68C1B008A7A6E /* ContrastAdjustment.swift in Sources */,
 				79A81CA321010A2E00A3B43A /* Vibrance.metal in Sources */,
 				79CB6DF3210927180042F87B /* HardLightBlend.metal in Sources */,
@@ -915,6 +947,7 @@
 				79CB6E0921092E330042F87B /* LuminosityBlend.swift in Sources */,
 				7957438E20FE790E001EAE0A /* LuminanceRangeReduction.swift in Sources */,
 				79A81C892100E1B700A3B43A /* LevelsAdjustment.swift in Sources */,
+				79DD50C8213450CB004EF308 /* SwirlDistortion.metal in Sources */,
 				793D932620F66303008A7A6E /* Luminance.metal in Sources */,
 				BC67D91820F815B60046D2C4 /* RenderView.swift in Sources */,
 				79CB6DD62108B4090042F87B /* ColorDodgeBlend.metal in Sources */,
@@ -935,7 +968,9 @@
 				BC7BA28520F59C8E006B5F4B /* MonochromeFilter.metal in Sources */,
 				7957439120FE794D001EAE0A /* LuminanceRangeReduction.metal in Sources */,
 				79CB6E36210A0ED00042F87B /* SourceOverBlend.swift in Sources */,
+				79DD50CE213454A2004EF308 /* Vignette.metal in Sources */,
 				BC9294AB210513DF006C8E93 /* SepiaToneFilter.swift in Sources */,
+				79DD50C5213450BE004EF308 /* SwirlDistortion.swift in Sources */,
 				4CC48C042134440900817C34 /* Solarize.swift in Sources */,
 				BCE0BEA920D6E3C80006E120 /* ImageOrientation.swift in Sources */,
 				7957437620FBF453001EAE0A /* Haze.swift in Sources */,
@@ -963,6 +998,7 @@
 				79CB6E0F210931110042F87B /* MultiplyBlend.swift in Sources */,
 				7B72DB292103CEB900A91156 /* AddBlend.swift in Sources */,
 				BC7FC40D212B2B3800B37FB6 /* OperationGroup.swift in Sources */,
+				79DD50CB21345492004EF308 /* Vignette.swift in Sources */,
 				793D933320F68A32008A7A6E /* ExposureAdjustment.metal in Sources */,
 				79A81CA421010A2E00A3B43A /* Vibrance.metal in Sources */,
 				79CB6DF4210927180042F87B /* HardLightBlend.metal in Sources */,
