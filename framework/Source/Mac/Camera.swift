@@ -25,14 +25,14 @@ public enum PhysicalCameraLocation {
     }
 
     func device() -> AVCaptureDevice? {
-        let devices = AVCaptureDevice.devices(for:AVMediaType.video)
+        let devices = AVCaptureDevice.devices(for: .video)
         for case let device in devices {
             if (device.position == self.captureDevicePosition()) {
                 return device
             }
         }
 
-        return AVCaptureDevice.default(for: AVMediaType.video)
+        return AVCaptureDevice.default(for: .video)
     }
 }
 
@@ -142,7 +142,7 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
 
     public func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
 
-        guard (frameRenderingSemaphore.wait(timeout:DispatchTime.now()) == DispatchTimeoutResult.success) else { return }
+        guard (frameRenderingSemaphore.wait(timeout:.now()) == .success) else { return }
 
         let startTime = CFAbsoluteTimeGetCurrent()
 
@@ -151,11 +151,11 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
         let bufferHeight = CVPixelBufferGetHeight(cameraFrame)
         let currentTime = CMSampleBufferGetPresentationTimeStamp(sampleBuffer)
 
-        CVPixelBufferLockBaseAddress(cameraFrame, CVPixelBufferLockFlags(rawValue:CVOptionFlags(0)))
+        CVPixelBufferLockBaseAddress(cameraFrame, [])
 
         cameraFrameProcessingQueue.async {
             self.delegate?.didCaptureBuffer(sampleBuffer)
-            CVPixelBufferUnlockBaseAddress(cameraFrame, CVPixelBufferLockFlags(rawValue:CVOptionFlags(0)))
+            CVPixelBufferUnlockBaseAddress(cameraFrame, [])
 
             var textureRef:CVMetalTexture? = nil
             let _ = CVMetalTextureCacheCreateTextureFromImage(kCFAllocatorDefault,
@@ -200,7 +200,7 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
 
     public func startCapture() {
 
-        let _ = frameRenderingSemaphore.wait(timeout:DispatchTime.distantFuture)
+        let _ = frameRenderingSemaphore.wait(timeout: .distantFuture)
         self.numberOfFramesCaptured = 0
         self.totalFrameTimeDuringCapture = 0
         self.frameRenderingSemaphore.signal()
@@ -212,7 +212,7 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
 
     public func stopCapture() {
         if (captureSession.isRunning) {
-            let _ = frameRenderingSemaphore.wait(timeout:DispatchTime.distantFuture)
+            let _ = frameRenderingSemaphore.wait(timeout: .distantFuture)
 
             captureSession.stopRunning()
             self.frameRenderingSemaphore.signal()
