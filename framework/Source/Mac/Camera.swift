@@ -10,7 +10,7 @@ public enum PhysicalCameraLocation {
     case backFacing
     case frontFacing
 
-    func imageOrientation() -> ImageOrientation {
+    var imageOrientation: ImageOrientation {
         switch self {
         case .backFacing: return .landscapeRight
         case .frontFacing: return .portrait
@@ -170,7 +170,7 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
 
             if let concreteTexture = textureRef,
                 let cameraTexture = CVMetalTextureGetTexture(concreteTexture) {
-                let texture = Texture(orientation: self.location.imageOrientation(), texture: cameraTexture)
+                let texture = Texture(orientation: self.location.imageOrientation, texture: cameraTexture)
                 self.updateTargetsWithTexture(texture)
             }
 
