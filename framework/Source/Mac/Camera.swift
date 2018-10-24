@@ -25,14 +25,9 @@ public enum PhysicalCameraLocation {
     }
 
     func device() -> AVCaptureDevice? {
-        let devices = AVCaptureDevice.devices(for: .video)
-        for case let device in devices {
-            if (device.position == self.captureDevicePosition) {
-                return device
-            }
-        }
-
-        return AVCaptureDevice.default(for: .video)
+        return AVCaptureDevice.devices(for: .video).first {
+            $0.position == self.captureDevicePosition
+        } ?? AVCaptureDevice.default(for: .video)
     }
 }
 
@@ -115,7 +110,7 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
         videoOutput.videoSettings = [kCVPixelBufferMetalCompatibilityKey as String: true,
                                      kCVPixelBufferPixelFormatTypeKey as String:NSNumber(value:Int32(kCVPixelFormatType_32BGRA))]
 
-        if (captureSession.canAddOutput(videoOutput)) {
+        if captureSession.canAddOutput(videoOutput) {
             captureSession.addOutput(videoOutput)
         }
 
