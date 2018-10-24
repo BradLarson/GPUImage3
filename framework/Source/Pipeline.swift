@@ -110,7 +110,7 @@ public class TargetContainer:Sequence {
 
         return AnyIterator { () -> (ImageConsumer, UInt)? in
             return self.dispatchQueue.sync{
-                if (index >= self.targets.count) {
+                if index >= self.targets.count {
                     return nil
                 }
 

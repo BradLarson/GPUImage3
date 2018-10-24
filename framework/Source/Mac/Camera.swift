@@ -142,7 +142,7 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
 
     public func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
 
-        guard (frameRenderingSemaphore.wait(timeout:.now()) == .success) else { return }
+        guard frameRenderingSemaphore.wait(timeout:.now()) == .success else { return }
 
         let startTime = CFAbsoluteTimeGetCurrent()
 
@@ -176,8 +176,8 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
 
             if self.runBenchmark {
                 self.numberOfFramesCaptured += 1
-                if (self.numberOfFramesCaptured > initialBenchmarkFramesToIgnore) {
-                    let currentFrameTime = (CFAbsoluteTimeGetCurrent() - startTime)
+                if self.numberOfFramesCaptured > initialBenchmarkFramesToIgnore {
+                    let currentFrameTime = CFAbsoluteTimeGetCurrent() - startTime
                     self.totalFrameTimeDuringCapture += currentFrameTime
                     print("Average frame time : \(1000.0 * self.totalFrameTimeDuringCapture / Double(self.numberOfFramesCaptured - initialBenchmarkFramesToIgnore)) ms")
                     print("Current frame time : \(1000.0 * currentFrameTime) ms")
@@ -185,7 +185,7 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
             }
 
             if self.logFPS {
-                if ((CFAbsoluteTimeGetCurrent() - self.lastCheckTime) > 1.0) {
+                if (CFAbsoluteTimeGetCurrent() - self.lastCheckTime) > 1.0 {
                     self.lastCheckTime = CFAbsoluteTimeGetCurrent()
                     print("FPS: \(self.framesSinceLastCheck)")
                     self.framesSinceLastCheck = 0
@@ -211,7 +211,7 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
     }
 
     public func stopCapture() {
-        if (captureSession.isRunning) {
+        if captureSession.isRunning {
             let _ = frameRenderingSemaphore.wait(timeout: .distantFuture)
 
             captureSession.stopRunning()

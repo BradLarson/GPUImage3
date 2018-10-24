@@ -28,48 +28,48 @@ public struct Timestamp: Comparable {
     func seconds() -> Double {
         return Double(value) / Double(timescale)
     }
-}
 
-public func ==(x:Timestamp, y:Timestamp) -> Bool {
-    // TODO: Fix this
-//    if (x.flags.contains(TimestampFlags.PositiveInfinity) && y.flags.contains(TimestampFlags.PositiveInfinity)) {
-//        return true
-//    } else if (x.flags.contains(TimestampFlags.NegativeInfinity) && y.flags.contains(TimestampFlags.NegativeInfinity)) {
-//        return true
-//    } else if (x.flags.contains(TimestampFlags.Indefinite) || y.flags.contains(TimestampFlags.Indefinite) || x.flags.contains(TimestampFlags.NegativeInfinity) || y.flags.contains(TimestampFlags.NegativeInfinity) || x.flags.contains(TimestampFlags.PositiveInfinity) && y.flags.contains(TimestampFlags.PositiveInfinity)) {
-//        return false
-//    }
+    public static func ==(x:Timestamp, y:Timestamp) -> Bool {
+        // TODO: Fix this
+        //    if (x.flags.contains(TimestampFlags.PositiveInfinity) && y.flags.contains(TimestampFlags.PositiveInfinity)) {
+        //        return true
+        //    } else if (x.flags.contains(TimestampFlags.NegativeInfinity) && y.flags.contains(TimestampFlags.NegativeInfinity)) {
+        //        return true
+        //    } else if (x.flags.contains(TimestampFlags.Indefinite) || y.flags.contains(TimestampFlags.Indefinite) || x.flags.contains(TimestampFlags.NegativeInfinity) || y.flags.contains(TimestampFlags.NegativeInfinity) || x.flags.contains(TimestampFlags.PositiveInfinity) && y.flags.contains(TimestampFlags.PositiveInfinity)) {
+        //        return false
+        //    }
 
-    let correctedYValue:Int64
-    if (x.timescale != y.timescale) {
-        correctedYValue = Int64(round(Double(y.value) * Double(x.timescale) / Double(y.timescale)))
-    } else {
-        correctedYValue = y.value
+        let correctedYValue:Int64
+        if (x.timescale != y.timescale) {
+            correctedYValue = Int64(round(Double(y.value) * Double(x.timescale) / Double(y.timescale)))
+        } else {
+            correctedYValue = y.value
+        }
+
+        return ((x.value == correctedYValue) && (x.epoch == y.epoch))
     }
 
-    return ((x.value == correctedYValue) && (x.epoch == y.epoch))
-}
+    public static func <(x:Timestamp, y:Timestamp) -> Bool {
+        // TODO: Fix this
+        //    if (x.flags.contains(TimestampFlags.PositiveInfinity) || y.flags.contains(TimestampFlags.NegativeInfinity)) {
+        //        return false
+        //    } else if (x.flags.contains(TimestampFlags.NegativeInfinity) || y.flags.contains(TimestampFlags.PositiveInfinity)) {
+        //        return true
+        //    }
 
-public func <(x:Timestamp, y:Timestamp) -> Bool {
-    // TODO: Fix this
-//    if (x.flags.contains(TimestampFlags.PositiveInfinity) || y.flags.contains(TimestampFlags.NegativeInfinity)) {
-//        return false
-//    } else if (x.flags.contains(TimestampFlags.NegativeInfinity) || y.flags.contains(TimestampFlags.PositiveInfinity)) {
-//        return true
-//    }
+        if (x.epoch < y.epoch) {
+            return true
+        } else if (x.epoch > y.epoch) {
+            return false
+        }
 
-    if (x.epoch < y.epoch) {
-        return true
-    } else if (x.epoch > y.epoch) {
-        return false
+        let correctedYValue:Int64
+        if (x.timescale != y.timescale) {
+            correctedYValue = Int64(round(Double(y.value) * Double(x.timescale) / Double(y.timescale)))
+        } else {
+            correctedYValue = y.value
+        }
+
+        return (x.value < correctedYValue)
     }
-
-    let correctedYValue:Int64
-    if (x.timescale != y.timescale) {
-        correctedYValue = Int64(round(Double(y.value) * Double(x.timescale) / Double(y.timescale)))
-    } else {
-        correctedYValue = y.value
-    }
-
-    return (x.value < correctedYValue)
 }
