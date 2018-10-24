@@ -17,7 +17,7 @@ public enum PhysicalCameraLocation {
         }
     }
 
-    func captureDevicePosition() -> AVCaptureDevice.Position {
+    var captureDevicePosition: AVCaptureDevice.Position {
         switch self {
         case .backFacing: return .back
         case .frontFacing: return .front
@@ -27,7 +27,7 @@ public enum PhysicalCameraLocation {
     func device() -> AVCaptureDevice? {
         let devices = AVCaptureDevice.devices(for: .video)
         for case let device in devices {
-            if (device.position == self.captureDevicePosition()) {
+            if device.position == self.captureDevicePosition {
                 return device
             }
         }

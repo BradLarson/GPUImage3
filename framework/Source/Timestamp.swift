@@ -46,7 +46,7 @@ public struct Timestamp: Comparable {
             correctedYValue = y.value
         }
 
-        return ((x.value == correctedYValue) && (x.epoch == y.epoch))
+        return x.value == correctedYValue && x.epoch == y.epoch
     }
 
     public static func <(x:Timestamp, y:Timestamp) -> Bool {
@@ -70,6 +70,6 @@ public struct Timestamp: Comparable {
             correctedYValue = y.value
         }
 
-        return (x.value < correctedYValue)
+        return x.value < correctedYValue
     }
 }

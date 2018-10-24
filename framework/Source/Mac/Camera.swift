@@ -17,7 +17,7 @@ public enum PhysicalCameraLocation {
         }
     }
 
-    func captureDevicePosition() -> AVCaptureDevice.Position {
+    var captureDevicePosition: AVCaptureDevice.Position {
         switch self {
         case .backFacing: return .back
         case .frontFacing: return .front
@@ -27,7 +27,7 @@ public enum PhysicalCameraLocation {
     func device() -> AVCaptureDevice? {
         let devices = AVCaptureDevice.devices(for: .video)
         for case let device in devices {
-            if (device.position == self.captureDevicePosition()) {
+            if (device.position == self.captureDevicePosition) {
                 return device
             }
         }
@@ -104,7 +104,7 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
             throw error
         }
 
-        if (captureSession.canAddInput(videoInput)) {
+        if captureSession.canAddInput(videoInput) {
             captureSession.addInput(videoInput)
         }
 
@@ -205,7 +205,7 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
         self.totalFrameTimeDuringCapture = 0
         self.frameRenderingSemaphore.signal()
 
-        if (!captureSession.isRunning) {
+        if !captureSession.isRunning {
             captureSession.startRunning()
         }
     }
