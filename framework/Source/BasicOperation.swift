@@ -52,7 +52,7 @@ open class BasicOperation: ImageProcessingOperation {
     }
 
     public func newTextureAvailable(_ texture: Texture, fromSourceIndex: UInt) {
-        let _ = textureInputSemaphore.wait(timeout:DispatchTime.distantFuture)
+        let _ = textureInputSemaphore.wait(timeout: .distantFuture)
         defer {
             textureInputSemaphore.signal()
         }

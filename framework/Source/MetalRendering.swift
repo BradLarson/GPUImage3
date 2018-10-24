@@ -52,7 +52,7 @@ func generateRenderPipelineState(device:MetalRenderingDevice, vertexFunctionName
     }
 
     let descriptor = MTLRenderPipelineDescriptor()
-    descriptor.colorAttachments[0].pixelFormat = MTLPixelFormat.bgra8Unorm
+    descriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
     descriptor.rasterSampleCount = 1
     descriptor.vertexFunction = vertexFunction
     descriptor.fragmentFunction = fragmentFunction
