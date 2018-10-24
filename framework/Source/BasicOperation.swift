@@ -59,13 +59,13 @@ open class BasicOperation: ImageProcessingOperation {
 
         inputTextures[fromSourceIndex] = texture
 
-        guard (!activatePassthroughOnNextFrame) else { // Use this to allow a bootstrap of cyclical processing, like with a low pass filter
+        guard !activatePassthroughOnNextFrame else { // Use this to allow a bootstrap of cyclical processing, like with a low pass filter
             activatePassthroughOnNextFrame = false
             //            updateTargetsWithTexture(outputTexture) // TODO: Fix this
             return
         }
 
-        if (UInt(inputTextures.count) >= maximumInputs) {
+        if UInt(inputTextures.count) >= maximumInputs {
             let outputWidth:Int
             let outputHeight:Int
 
@@ -84,7 +84,7 @@ open class BasicOperation: ImageProcessingOperation {
 
             if let alternateRenderingFunction = metalPerformanceShaderPathway, useMetalPerformanceShaders {
                 var rotatedInputTextures: [UInt:Texture]
-                if (firstInputTexture.orientation.rotationNeeded(for:.portrait) != .noRotation) {
+                if firstInputTexture.orientation.rotationNeeded(for:.portrait) != .noRotation {
                     let rotationOutputTexture = Texture(device:sharedMetalRenderingDevice.device, orientation: .portrait, width: outputWidth, height: outputHeight)
                     guard let rotationCommandBuffer = sharedMetalRenderingDevice.commandQueue.makeCommandBuffer() else {return}
                     rotationCommandBuffer.renderQuad(pipelineState: sharedMetalRenderingDevice.passthroughRenderState, uniformSettings: uniformSettings, inputTextures: inputTextures, useNormalizedTextureCoordinates: useNormalizedTextureCoordinates, outputTexture: rotationOutputTexture)

@@ -99,7 +99,7 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
             throw error
         }
 
-        if (captureSession.canAddInput(videoInput)) {
+        if captureSession.canAddInput(videoInput) {
             captureSession.addInput(videoInput)
         }
 
@@ -109,7 +109,7 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
 
         videoOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String:NSNumber(value:Int32(kCVPixelFormatType_32BGRA))]
 
-        if (captureSession.canAddOutput(videoOutput)) {
+        if captureSession.canAddOutput(videoOutput) {
             captureSession.addOutput(videoOutput)
         }
 
@@ -170,7 +170,7 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
 
             if self.runBenchmark {
                 self.numberOfFramesCaptured += 1
-                if (self.numberOfFramesCaptured > initialBenchmarkFramesToIgnore) {
+                if self.numberOfFramesCaptured > initialBenchmarkFramesToIgnore {
                     let currentFrameTime = (CFAbsoluteTimeGetCurrent() - startTime)
                     self.totalFrameTimeDuringCapture += currentFrameTime
                     print("Average frame time : \(1000.0 * self.totalFrameTimeDuringCapture / Double(self.numberOfFramesCaptured - initialBenchmarkFramesToIgnore)) ms")
@@ -179,7 +179,7 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
             }
 
             if self.logFPS {
-                if ((CFAbsoluteTimeGetCurrent() - self.lastCheckTime) > 1.0) {
+                if (CFAbsoluteTimeGetCurrent() - self.lastCheckTime) > 1.0 {
                     self.lastCheckTime = CFAbsoluteTimeGetCurrent()
                     print("FPS: \(self.framesSinceLastCheck)")
                     self.framesSinceLastCheck = 0
@@ -196,13 +196,13 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
         self.numberOfFramesCaptured = 0
         self.totalFrameTimeDuringCapture = 0
 
-        if (!captureSession.isRunning) {
+        if !captureSession.isRunning {
             captureSession.startRunning()
         }
     }
 
     public func stopCapture() {
-        if (captureSession.isRunning) {
+        if captureSession.isRunning {
             captureSession.stopRunning()
         }
     }

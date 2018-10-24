@@ -40,7 +40,7 @@ public struct Timestamp: Comparable {
         //    }
 
         let correctedYValue:Int64
-        if (x.timescale != y.timescale) {
+        if x.timescale != y.timescale {
             correctedYValue = Int64(round(Double(y.value) * Double(x.timescale) / Double(y.timescale)))
         } else {
             correctedYValue = y.value
@@ -57,14 +57,14 @@ public struct Timestamp: Comparable {
         //        return true
         //    }
 
-        if (x.epoch < y.epoch) {
+        if x.epoch < y.epoch {
             return true
-        } else if (x.epoch > y.epoch) {
+        } else if x.epoch > y.epoch {
             return false
         }
 
         let correctedYValue:Int64
-        if (x.timescale != y.timescale) {
+        if x.timescale != y.timescale {
             correctedYValue = Int64(round(Double(y.value) * Double(x.timescale) / Double(y.timescale)))
         } else {
             correctedYValue = y.value

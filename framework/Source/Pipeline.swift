@@ -116,7 +116,7 @@ public class TargetContainer:Sequence {
 
                 while (self.targets[index].value == nil) {
                     self.targets.remove(at:index)
-                    if (index >= self.targets.count) {
+                    if index >= self.targets.count {
                         return nil
                     }
                 }
@@ -143,7 +143,7 @@ public class SourceContainer {
     public func append(_ source:ImageSource, maximumInputs:UInt) -> UInt? {
         var currentIndex:UInt = 0
         while currentIndex < maximumInputs {
-            if (sources[currentIndex] == nil) {
+            if sources[currentIndex] == nil {
                 sources[currentIndex] = source
                 return currentIndex
             }
@@ -183,7 +183,7 @@ public class ImageRelay: ImageProcessingOperation {
         if let newImageCallback = newImageCallback {
             newImageCallback(texture)
         }
-        if (!preventRelay) {
+        if !preventRelay {
             relayTextureOnward(texture)
         }
     }

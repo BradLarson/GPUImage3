@@ -105,7 +105,7 @@ public class ShaderUniformSettings {
 
     func alignPackingForOffset(uniformSize:Int, lastOffset:Int) -> Int {
         let floatAlignment = lastOffset % 4
-        if (uniformSize > 1) && (floatAlignment != 0) {
+        if uniformSize > 1 && floatAlignment != 0 {
             let paddingToAlignment = 4 - floatAlignment
             uniformValues.append(contentsOf:[Float](repeating:0.0, count:paddingToAlignment))
             uniformValueOffsets[uniformValueOffsets.count - 1] = lastOffset + paddingToAlignment

@@ -75,7 +75,7 @@ func orthographicMatrix(_ left:Float, right:Float, bottom:Float, top:Float, near
     let tz = -(far + near) / (far - near)
 
     let scale:Float
-    if (anchorTopLeft) {
+    if anchorTopLeft {
         scale = 4.0
         tx = -1.0
         ty = -1.0
