@@ -6,11 +6,11 @@ public class PictureInput: ImageSource {
     var internalTexture:Texture?
     var hasProcessedImage:Bool = false
     var internalImage:CGImage?
-    
+
     public init(image:CGImage, smoothlyScaleOutput:Bool = false, orientation:ImageOrientation = .portrait) {
         internalImage = image
     }
-    
+
     public convenience init(image:NSImage, smoothlyScaleOutput:Bool = false, orientation:ImageOrientation = .portrait) {
         self.init(image:image.cgImage(forProposedRect:nil, context:nil, hints:nil)!, smoothlyScaleOutput:smoothlyScaleOutput, orientation:orientation)
     }
@@ -58,7 +58,7 @@ public class PictureInput: ImageSource {
             }
         }
     }
-    
+
     public func transmitPreviousImage(to target:ImageConsumer, atIndex:UInt) {
         if hasProcessedImage {
             target.newTextureAvailable(self.internalTexture!, fromSourceIndex:atIndex)

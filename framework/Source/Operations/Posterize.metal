@@ -12,7 +12,7 @@ fragment half4 posterizeFragment(SingleInputVertexIO fragmentInput [[stage_in]],
 {
     constexpr sampler quadSampler;
     half4 color = inputTexture.sample(quadSampler, fragmentInput.textureCoordinate);
-    
+
     half colorLevels = half(uniform.colorLevels);
     return floor((color * colorLevels) + half4(0.5)) / colorLevels;
 }

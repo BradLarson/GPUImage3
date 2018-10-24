@@ -10,6 +10,6 @@ fragment half4 lightenBlendFragment(TwoInputVertexIO fragmentInput [[stage_in]],
     half4 textureColor = inputTexture.sample(quadSampler, fragmentInput.textureCoordinate);
     constexpr sampler quadSampler2;
     half4 textureColor2 = inputTexture2.sample(quadSampler, fragmentInput.textureCoordinate2);
-    
+
     return max(textureColor, textureColor2);
 }

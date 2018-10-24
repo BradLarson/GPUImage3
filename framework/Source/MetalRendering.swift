@@ -9,24 +9,24 @@ extension MTLCommandBuffer {
                                                                         length: imageVertices.count * MemoryLayout<Float>.size,
                                                                         options: [])!
         vertexBuffer.label = "Vertices"
-        
-        
+
+
         let renderPass = MTLRenderPassDescriptor()
         renderPass.colorAttachments[0].texture = outputTexture.texture
         renderPass.colorAttachments[0].clearColor = MTLClearColorMake(1, 0, 0, 1)
         renderPass.colorAttachments[0].storeAction = .store
         renderPass.colorAttachments[0].loadAction = .clear
-        
+
         guard let renderEncoder = self.makeRenderCommandEncoder(descriptor: renderPass) else {
             fatalError("Could not create render encoder")
         }
         renderEncoder.setFrontFacing(.counterClockwise)
         renderEncoder.setRenderPipelineState(pipelineState)
         renderEncoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
-        
+
         for textureIndex in 0..<inputTextures.count {
             let currentTexture = inputTextures[UInt(textureIndex)]!
-            
+
             let inputTextureCoordinates = currentTexture.textureCoordinates(for:outputOrientation, normalized:useNormalizedTextureCoordinates)
             let textureBuffer = sharedMetalRenderingDevice.device.makeBuffer(bytes: inputTextureCoordinates,
                                                                              length: inputTextureCoordinates.count * MemoryLayout<Float>.size,
@@ -46,17 +46,17 @@ func generateRenderPipelineState(device:MetalRenderingDevice, vertexFunctionName
     guard let vertexFunction = device.shaderLibrary.makeFunction(name: vertexFunctionName) else {
         fatalError("\(operationName): could not compile vertex function \(vertexFunctionName)")
     }
-    
+
     guard let fragmentFunction = device.shaderLibrary.makeFunction(name: fragmentFunctionName) else {
         fatalError("\(operationName): could not compile fragment function \(fragmentFunctionName)")
     }
-    
+
     let descriptor = MTLRenderPipelineDescriptor()
     descriptor.colorAttachments[0].pixelFormat = MTLPixelFormat.bgra8Unorm
     descriptor.rasterSampleCount = 1
     descriptor.vertexFunction = vertexFunction
     descriptor.fragmentFunction = fragmentFunction
-    
+
     do {
         return try device.device.makeRenderPipelineState(descriptor: descriptor)
     } catch {

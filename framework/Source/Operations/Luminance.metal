@@ -13,6 +13,6 @@ fragment half4 luminanceFragment(SingleInputVertexIO fragmentInput [[stage_in]],
     constexpr sampler quadSampler;
     half4 color = inputTexture.sample(quadSampler, fragmentInput.textureCoordinate);
     half luminance = dot(color.rgb, luminanceWeighting);
-    
+
     return half4(half3(luminance), color.a);
 }

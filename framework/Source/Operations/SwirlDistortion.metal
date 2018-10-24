@@ -14,10 +14,10 @@ fragment half4 swirlFragment(SingleInputVertexIO fragmentInput [[stage_in]],
 {
     constexpr sampler quadSampler;
     half4 color = inputTexture.sample(quadSampler, fragmentInput.textureCoordinate);
-    
+
     float2 textureCoordinateToUse = fragmentInput.textureCoordinate;
     half dist = distance(uniform.center, fragmentInput.textureCoordinate);
-    
+
     if (dist < uniform.radius)
     {
         textureCoordinateToUse -= uniform.center;
@@ -28,6 +28,6 @@ fragment half4 swirlFragment(SingleInputVertexIO fragmentInput [[stage_in]],
         textureCoordinateToUse = dot(textureCoordinateToUse, (c, -s)), dot(textureCoordinateToUse, (s, c));
         textureCoordinateToUse += uniform.center;
     }
-    
+
     return inputTexture.sample(quadSampler, textureCoordinateToUse);
 }

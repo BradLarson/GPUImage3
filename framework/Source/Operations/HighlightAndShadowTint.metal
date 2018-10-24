@@ -16,11 +16,11 @@ fragment half4 highlightShadowTintFragment(SingleInputVertexIO fragmentInput [[s
 {
     constexpr sampler quadSampler;
     half4 color = inputTexture.sample(quadSampler, fragmentInput.textureCoordinate);
-    
+
     half luminance = dot(color.rgb, luminanceWeighting);
-    
+
     half4 shadowResult = mix(color, max(color, half4( mix(half3(uniform.shadowTintColor), color.rgb, luminance), color.a)), half(uniform.shadowTintIntensity));
     half4 highlightResult = mix(color, min(shadowResult, half4( mix(shadowResult.rgb, half3(uniform.highlightTintColor), luminance), color.a)), half(uniform.highlightTintIntensity));
-    
+
     return half4(mix(shadowResult.rgb, highlightResult.rgb, luminance), color.a);
 }

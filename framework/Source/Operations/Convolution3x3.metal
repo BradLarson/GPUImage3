@@ -22,10 +22,10 @@ fragment half4 convolution3x3(NearbyTexelVertexIO fragmentInput [[stage_in]],
     half3 topColor = inputTexture.sample(quadSampler, fragmentInput.topTextureCoordinate).rgb;
     half3 topRightColor = inputTexture.sample(quadSampler, fragmentInput.topRightTextureCoordinate).rgb;
     half3 topLeftColor = inputTexture.sample(quadSampler, fragmentInput.topLeftTextureCoordinate).rgb;
-    
+
     half3 resultColor = topLeftColor * uniform.convolutionKernel[0][0] + topColor * uniform.convolutionKernel[0][1] + topRightColor * uniform.convolutionKernel[0][2];
     resultColor += leftColor * uniform.convolutionKernel[1][0] + centerColor.rgb * uniform.convolutionKernel[1][1] + rightColor * uniform.convolutionKernel[1][2];
     resultColor += bottomLeftColor * uniform.convolutionKernel[2][0] + bottomColor * uniform.convolutionKernel[2][1] + bottomRightColor * uniform.convolutionKernel[2][2];
-    
+
     return half4(resultColor, centerColor.a);
 }

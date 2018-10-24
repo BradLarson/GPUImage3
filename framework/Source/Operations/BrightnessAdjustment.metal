@@ -14,6 +14,6 @@ fragment half4 brightnessFragment(SingleInputVertexIO fragmentInput [[stage_in]]
 {
     constexpr sampler quadSampler;
     half4 color = inputTexture.sample(quadSampler, fragmentInput.textureCoordinate);
-    
+
     return half4(color.rgb + uniform.brightness, color.a);
 }

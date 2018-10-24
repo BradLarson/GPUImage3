@@ -13,11 +13,11 @@ public func defaultVertexFunctionNameForInputs(_ inputCount:UInt) -> String {
 }
 
 open class BasicOperation: ImageProcessingOperation {
-    
+
     public let maximumInputs: UInt
     public let targets = TargetContainer()
     public let sources = SourceContainer()
-    
+
     public var activatePassthroughOnNextFrame: Bool = false
     public var uniformSettings = ShaderUniformSettings()
     public var useMetalPerformanceShaders: Bool = false {
@@ -42,21 +42,21 @@ open class BasicOperation: ImageProcessingOperation {
                 operationName: String = #file) {
         self.maximumInputs = numberOfInputs
         self.operationName = operationName
-        
+
         let concreteVertexFunctionName = vertexFunctionName ?? defaultVertexFunctionNameForInputs(numberOfInputs)
         renderPipelineState = generateRenderPipelineState(device:sharedMetalRenderingDevice, vertexFunctionName:concreteVertexFunctionName, fragmentFunctionName:fragmentFunctionName, operationName:operationName)
     }
-    
+
     public func transmitPreviousImage(to target: ImageConsumer, atIndex: UInt) {
         // TODO: Finish implementation later
     }
-    
+
     public func newTextureAvailable(_ texture: Texture, fromSourceIndex: UInt) {
         let _ = textureInputSemaphore.wait(timeout:DispatchTime.distantFuture)
         defer {
             textureInputSemaphore.signal()
         }
-        
+
         inputTextures[fromSourceIndex] = texture
 
         guard (!activatePassthroughOnNextFrame) else { // Use this to allow a bootstrap of cyclical processing, like with a low pass filter
@@ -64,11 +64,11 @@ open class BasicOperation: ImageProcessingOperation {
             //            updateTargetsWithTexture(outputTexture) // TODO: Fix this
             return
         }
-        
+
         if (UInt(inputTextures.count) >= maximumInputs) {
             let outputWidth:Int
             let outputHeight:Int
-            
+
             let firstInputTexture = inputTextures[0]!
             if firstInputTexture.orientation.rotationNeeded(for:.portrait).flipsDimensions() {
                 outputWidth = firstInputTexture.texture.height
@@ -77,11 +77,11 @@ open class BasicOperation: ImageProcessingOperation {
                 outputWidth = firstInputTexture.texture.width
                 outputHeight = firstInputTexture.texture.height
             }
-            
+
             guard let commandBuffer = sharedMetalRenderingDevice.commandQueue.makeCommandBuffer() else {return}
 
             let outputTexture = Texture(device:sharedMetalRenderingDevice.device, orientation: .portrait, width: outputWidth, height: outputHeight)
-            
+
             if let alternateRenderingFunction = metalPerformanceShaderPathway, useMetalPerformanceShaders {
                 var rotatedInputTextures: [UInt:Texture]
                 if (firstInputTexture.orientation.rotationNeeded(for:.portrait) != .noRotation) {
@@ -99,7 +99,7 @@ open class BasicOperation: ImageProcessingOperation {
                 commandBuffer.renderQuad(pipelineState: renderPipelineState, uniformSettings: uniformSettings, inputTextures: inputTextures, useNormalizedTextureCoordinates: useNormalizedTextureCoordinates, outputTexture: outputTexture)
             }
             commandBuffer.commit()
-            
+
             updateTargetsWithTexture(outputTexture)
         }
     }

@@ -15,7 +15,7 @@ fragment half4 vignetteFragment(SingleInputVertexIO fragmentInput [[stage_in]],
 {
     constexpr sampler quadSampler;
     half4 color = inputTexture.sample(quadSampler, fragmentInput.textureCoordinate);
-    
+
     float d = distance(fragmentInput.textureCoordinate, (uniform.vignetteCenter.x, uniform.vignetteCenter.y));
     float percent = smoothstep(uniform.vignetteStart, uniform.vignetteEnd, d);
     return half4(mix(color.rgb, half3(uniform.vignetteColor), half(percent)), color.a);

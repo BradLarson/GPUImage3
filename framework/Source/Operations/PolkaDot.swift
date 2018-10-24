@@ -5,10 +5,10 @@ public class PolkaDot: BasicOperation {
             uniformSettings[1] = max(fractionalWidthOfAPixel, 0.01)
         }
     }
-    
+
     public init() {
         super.init(fragmentFunctionName:"polkaDotFragment", numberOfInputs:1)
-        
+
         uniformSettings.appendUniform(0.01)
         uniformSettings.appendUniform(0.90)
     }

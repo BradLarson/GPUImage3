@@ -8,7 +8,7 @@ class FilterDisplayViewController: UIViewController, UISplitViewControllerDelega
 
     @IBOutlet var filterSlider: UISlider?
     @IBOutlet var filterView: RenderView?
-    
+
     let videoCamera:Camera?
     var blendImage:PictureInput?
 
@@ -24,9 +24,9 @@ class FilterDisplayViewController: UIViewController, UISplitViewControllerDelega
 
         super.init(coder: aDecoder)!
     }
-    
+
     var filterOperation: FilterOperationInterface?
-    
+
     func configureView() {
         guard let videoCamera = videoCamera else {
             let errorAlertController = UIAlertController(title: NSLocalizedString("Error", comment: "Error"), message: "Couldn't initialize camera", preferredStyle: .alert)
@@ -36,7 +36,7 @@ class FilterDisplayViewController: UIViewController, UISplitViewControllerDelega
         }
         if let currentFilterConfiguration = self.filterOperation {
             self.title = currentFilterConfiguration.titleName
-            
+
             // Configure the filter chain, ending with the view
             if let view = self.filterView {
                 switch currentFilterConfiguration.filterOperationType {
@@ -52,7 +52,7 @@ class FilterDisplayViewController: UIViewController, UISplitViewControllerDelega
                 case let .custom(filterSetupFunction:setupFunction):
                     currentFilterConfiguration.configureCustomFilter(setupFunction(videoCamera, currentFilterConfiguration.filter, view))
                 }
-                
+
                 videoCamera.startCapture()
             }
 
@@ -70,10 +70,10 @@ class FilterDisplayViewController: UIViewController, UISplitViewControllerDelega
                     self.updateSliderValue()
                 }
             }
-            
+
         }
     }
-    
+
     @IBAction func updateSliderValue() {
         if let currentFilterConfiguration = self.filterOperation {
             switch (currentFilterConfiguration.sliderConfiguration) {
@@ -94,10 +94,10 @@ class FilterDisplayViewController: UIViewController, UISplitViewControllerDelega
             videoCamera.removeAllTargets()
             blendImage?.removeAllTargets()
         }
-        
+
         super.viewWillDisappear(animated)
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -10,16 +10,16 @@ public class PictureInput: ImageSource {
     public init(image:CGImage, smoothlyScaleOutput:Bool = false, orientation:ImageOrientation = .portrait) {
         internalImage = image
     }
-    
+
     public convenience init(image:UIImage, smoothlyScaleOutput:Bool = false, orientation:ImageOrientation = .portrait) {
         self.init(image: image.cgImage!, smoothlyScaleOutput: smoothlyScaleOutput, orientation: orientation)
     }
-    
+
     public convenience init(imageName:String, smoothlyScaleOutput:Bool = false, orientation:ImageOrientation = .portrait) {
         guard let image = UIImage(named:imageName) else { fatalError("No such image named: \(imageName) in your application bundle") }
         self.init(image:image, smoothlyScaleOutput:smoothlyScaleOutput, orientation:orientation)
     }
-    
+
     public func processImage(synchronously:Bool = false) {
         if let texture = internalTexture {
             if synchronously {
@@ -57,7 +57,7 @@ public class PictureInput: ImageSource {
             }
         }
     }
-    
+
     public func transmitPreviousImage(to target:ImageConsumer, atIndex:UInt) {
         if hasProcessedImage {
             target.newTextureAvailable(self.internalTexture!, fromSourceIndex:atIndex)

@@ -13,6 +13,6 @@ fragment half4 exposureFragment(SingleInputVertexIO fragmentInput [[stage_in]],
 {
     constexpr sampler quadSampler;
     half4 color = inputTexture.sample(quadSampler, fragmentInput.textureCoordinate);
-    
+
     return half4((color.rgb * pow(2.0, uniform.exposure)), color.a);
 }

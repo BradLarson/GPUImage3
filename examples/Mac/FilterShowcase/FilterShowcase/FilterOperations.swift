@@ -311,7 +311,7 @@ let filterOperations: Array<FilterOperationInterface> = [
 //            blendFilter.mix = 0.75
 //            camera --> blendFilter
 //            camera --> castFilter --> histogramGraph --> blendFilter --> outputView
-//            
+//
 //            return blendFilter
 //        })
 //    ),
@@ -332,7 +332,7 @@ let filterOperations: Array<FilterOperationInterface> = [
 //        filterOperationType:.custom(filterSetupFunction:{(camera, filter, outputView) in
 //            let castFilter = filter as! AverageColorExtractor
 //            let colorGenerator = SolidColorGenerator(size:outputView.sizeInPixels)
-//            
+//
 //            castFilter.extractedColorCallback = {color in
 //                colorGenerator.renderColor(color)
 //            }
@@ -350,11 +350,11 @@ let filterOperations: Array<FilterOperationInterface> = [
 //        filterOperationType:.custom(filterSetupFunction:{(camera, filter, outputView) in
 //            let castFilter = filter as! AverageLuminanceExtractor
 //            let colorGenerator = SolidColorGenerator(size:outputView.sizeInPixels)
-//            
+//
 //            castFilter.extractedLuminanceCallback = {luminosity in
 //                colorGenerator.renderColor(Color(red:luminosity, green:luminosity, blue:luminosity))
 //            }
-//            
+//
 //            camera --> castFilter
 //            colorGenerator --> outputView
 //            return colorGenerator
@@ -518,17 +518,17 @@ let filterOperations: Array<FilterOperationInterface> = [
 //            let crosshairGenerator = CrosshairGenerator(size:Size(width:1280, height:720))
 //#endif
 //            crosshairGenerator.crosshairWidth = 15.0
-//            
+//
 //            castFilter.cornersDetectedCallback = { corners in
 //                crosshairGenerator.renderCrosshairs(corners)
 //            }
 //
 //            camera --> castFilter
-//            
+//
 //            let blendFilter = AlphaBlend()
 //            camera --> blendFilter --> outputView
 //            crosshairGenerator --> blendFilter
-//        
+//
 //            return blendFilter
 //        })
 //    ),
@@ -549,17 +549,17 @@ let filterOperations: Array<FilterOperationInterface> = [
 //                let crosshairGenerator = CrosshairGenerator(size:Size(width:1280, height:720))
 //#endif
 //            crosshairGenerator.crosshairWidth = 15.0
-//            
+//
 //            castFilter.cornersDetectedCallback = { corners in
 //                crosshairGenerator.renderCrosshairs(corners)
 //            }
-//            
+//
 //            camera --> castFilter
-//            
+//
 //            let blendFilter = AlphaBlend()
 //            camera --> blendFilter --> outputView
 //            crosshairGenerator --> blendFilter
-//            
+//
 //            return blendFilter
 //        })
 //    ),
@@ -580,17 +580,17 @@ let filterOperations: Array<FilterOperationInterface> = [
 //                let crosshairGenerator = CrosshairGenerator(size:Size(width:1280, height:720))
 //#endif
 //            crosshairGenerator.crosshairWidth = 15.0
-//            
+//
 //            castFilter.cornersDetectedCallback = { corners in
 //                crosshairGenerator.renderCrosshairs(corners)
 //            }
-//            
+//
 //            camera --> castFilter
-//            
+//
 //            let blendFilter = AlphaBlend()
 //            camera --> blendFilter --> outputView
 //            crosshairGenerator --> blendFilter
-//            
+//
 //            return blendFilter
 //        })
 //    ),
@@ -705,9 +705,9 @@ let filterOperations: Array<FilterOperationInterface> = [
                 -1.0, 0.0, 1.0,
                 -2.0, 0.0, 2.0,
                 -1.0, 0.0, 1.0])
-            
+
             camera --> castFilter --> outputView
-            
+
             return nil
         })
     ),
@@ -739,12 +739,12 @@ let filterOperations: Array<FilterOperationInterface> = [
 //        },
 //        filterOperationType:.custom(filterSetupFunction:{(camera, filter, outputView) in
 //            let castFilter = filter as! ChromaKeying
-//            
+//
 //            let blendFilter = AlphaBlend()
 //            blendFilter.mix = 1.0
-//            
+//
 //            let inputImage = PictureInput(imageName:blendImageName)
-//            
+//
 //            inputImage --> blendFilter
 //            camera --> castFilter --> blendFilter --> outputView
 //            inputImage.processImage()
@@ -886,17 +886,17 @@ let filterOperations: Array<FilterOperationInterface> = [
 //        },
 //        filterOperationType:.custom(filterSetupFunction:{(camera, filter, outputView) in
 //            let castFilter = filter as! SphereRefraction
-//            
+//
 //            // Provide a blurred image for a cool-looking background
 //            let gaussianBlur = GaussianBlur()
 //            gaussianBlur.blurRadiusInPixels = 5.0
-//            
+//
 //            let blendFilter = AlphaBlend()
 //            blendFilter.mix = 1.0
-//            
+//
 //            camera --> gaussianBlur --> blendFilter --> outputView
 //            camera --> castFilter --> blendFilter
-//            
+//
 //            return blendFilter
 //        })
 //    ),
@@ -910,17 +910,17 @@ let filterOperations: Array<FilterOperationInterface> = [
 //        },
 //        filterOperationType:.custom(filterSetupFunction:{(camera, filter, outputView) in
 //            let castFilter = filter as! GlassSphereRefraction
-//            
+//
 //            // Provide a blurred image for a cool-looking background
 //            let gaussianBlur = GaussianBlur()
 //            gaussianBlur.blurRadiusInPixels = 5.0
-//            
+//
 //            let blendFilter = AlphaBlend()
 //            blendFilter.mix = 1.0
-//            
+//
 //            camera --> gaussianBlur --> blendFilter --> outputView
 //            camera --> castFilter --> blendFilter
-//            
+//
 //            return blendFilter
 //        })
 //    ),
@@ -1163,6 +1163,6 @@ let filterOperations: Array<FilterOperationInterface> = [
         sliderUpdateCallback:nil,
         filterOperationType:.blend
     ),
-    
+
     // TODO: Poisson blend
 ]

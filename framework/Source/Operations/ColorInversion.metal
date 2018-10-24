@@ -12,6 +12,6 @@ fragment half4 colorInversionFragment(SingleInputVertexIO fragmentInput [[stage_
 {
     constexpr sampler quadSampler;
     half4 color = inputTexture.sample(quadSampler, fragmentInput.textureCoordinate);
-    
+
     return half4((1.0 - color.rgb), color.a);
 }

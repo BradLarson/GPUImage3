@@ -14,11 +14,11 @@ fragment half4 hazeFragment(SingleInputVertexIO fragmentInput [[stage_in]],
 {
     constexpr sampler quadSampler;
     half4 white = half4(1.0);
-    
+
     half d = fragmentInput.textureCoordinate.y * uniform.slope + uniform.hazeDistance;
-    
+
     half4 color = inputTexture.sample(quadSampler, fragmentInput.textureCoordinate);
     color = (color - d * white) / (1.0 - d);
-    
+
     return color;
 }

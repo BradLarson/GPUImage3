@@ -15,10 +15,10 @@ fragment half4 monochromeFragment(SingleInputVertexIO fragmentInput [[stage_in]]
 {
     constexpr sampler quadSampler;
     half4 color = inputTexture.sample(quadSampler, fragmentInput.textureCoordinate);
-    
+
     float luminance = dot(color.rgb, luminanceWeighting);
     half4 desat = half4(half3(luminance), 1.0);
-    
+
     half3 filterColor = half3(uniform.filterColor);
     half4 outputColor = half4(
                             (desat.r < 0.5 ? (2.0 * desat.r * filterColor.r) : (1.0 - 2.0 * (1.0 - desat.r) * (1.0 - filterColor.r))),

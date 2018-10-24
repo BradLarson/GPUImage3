@@ -19,15 +19,15 @@ fragment half4 whiteBalanceFragmentShader(SingleInputVertexIO fragmentInput [[st
 {
     constexpr sampler quadSampler;
     half4 color = inputTexture.sample(quadSampler, fragmentInput.textureCoordinate);
-    
+
     half3 yiq = RGBtoYIQ * color.rgb; //adjusting tint
     yiq.b = clamp(yiq.b + uniform.tint*0.5226*0.1, -0.5226, 0.5226);
     half3 rgb = YIQtoRGB * yiq;
-    
+
     half3 processed = half3(
                           (rgb.r < 0.5 ? (2.0 * rgb.r * warmFilter.r) : (1.0 - 2.0 * (1.0 - rgb.r) * (1.0 - warmFilter.r))), //adjusting temperature
                           (rgb.g < 0.5 ? (2.0 * rgb.g * warmFilter.g) : (1.0 - 2.0 * (1.0 - rgb.g) * (1.0 - warmFilter.g))),
                           (rgb.b < 0.5 ? (2.0 * rgb.b * warmFilter.b) : (1.0 - 2.0 * (1.0 - rgb.b) * (1.0 - warmFilter.b))));
-    
+
     return half4(mix(rgb, processed, uniform.temperature), color.a);
 }

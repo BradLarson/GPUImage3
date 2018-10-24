@@ -45,7 +45,7 @@ class FilterOperation<FilterClass: ImageProcessingOperation>: FilterOperationInt
         self.sliderUpdateCallback = sliderUpdateCallback
         self.filterCreationFunction = filter
     }
-    
+
     var filter: ImageProcessingOperation {
         return internalFilter
     }

@@ -10,7 +10,7 @@ half3 clipcolor(half3 c) {
     half l = lum(c);
     half n = min(min(c.r, c.g), c.b);
     half x = max(max(c.r, c.g), c.b);
-    
+
     if (n < 0.0h) {
         c.r = l + ((c.r - l) * l) / (l - n);
         c.g = l + ((c.g - l) * l) / (l - n);
@@ -21,7 +21,7 @@ half3 clipcolor(half3 c) {
         c.g = l + ((c.g - l) * (1.0h - l)) / (x - l);
         c.b = l + ((c.b - l) * (1.0h - l)) / (x - l);
     }
-    
+
     return c;
 }
 

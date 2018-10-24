@@ -7,7 +7,7 @@ vertex NearbyTexelVertexIO nearbyTexelSampling(device packed_float2 *position [[
                                                uint vid [[vertex_id]])
 {
     NearbyTexelVertexIO outputVertices;
-    
+
     outputVertices.position = float4(position[vid], 0, 1.0);
 
     float2 widthStep = float2(1.0, 0.0);
@@ -18,11 +18,11 @@ vertex NearbyTexelVertexIO nearbyTexelSampling(device packed_float2 *position [[
     outputVertices.textureCoordinate = textureCoordinate[vid];
     outputVertices.leftTextureCoordinate = textureCoordinate[vid] - widthStep;
     outputVertices.rightTextureCoordinate = textureCoordinate[vid] + widthStep;
-    
+
     outputVertices.topTextureCoordinate = textureCoordinate[vid] - heightStep;
     outputVertices.topLeftTextureCoordinate = textureCoordinate[vid] - widthHeightStep;
     outputVertices.topRightTextureCoordinate = textureCoordinate[vid] + widthNegativeHeightStep;
-    
+
     outputVertices.bottomTextureCoordinate = textureCoordinate[vid] + heightStep;
     outputVertices.bottomLeftTextureCoordinate = textureCoordinate[vid] - widthNegativeHeightStep;
     outputVertices.bottomRightTextureCoordinate = textureCoordinate[vid] + widthHeightStep;

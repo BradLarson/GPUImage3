@@ -22,29 +22,29 @@ fragment half4 hueFragment(SingleInputVertexIO fragmentInput [[stage_in]],
 {
     constexpr sampler quadSampler;
     half4 color = inputTexture.sample(quadSampler, fragmentInput.textureCoordinate);
-    
+
     // Convert to YIQ
     float YPrime = dot (color, kRGBToYPrime);
     float I = dot (color, kRGBToI);
     float Q = dot (color, kRGBToQ);
-    
+
     // Calculate the hue and chroma
     float hue = atan2(Q, I);
     float chroma = sqrt(I * I + Q * Q);
-    
+
     // Make the user's adjustments
     hue += (-uniform.hue); //why negative rotation?
-    
+
     // Convert back to YIQ
     Q = chroma * sin (hue);
     I = chroma * cos (hue);
-    
+
     // Convert back to RGB
     half4 yIQ = half4(YPrime, I, Q, 0.0);
     color.r = dot(yIQ, kYIQToR);
     color.g = dot(yIQ, kYIQToG);
     color.b = dot(yIQ, kYIQToB);
-    
+
     // Return result
     return color;
 }

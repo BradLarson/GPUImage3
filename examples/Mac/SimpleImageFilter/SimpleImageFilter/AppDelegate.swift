@@ -16,13 +16,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             image.processImage()
         }
     }
-    
+
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         let inputImage = NSImage(named:NSImage.Name(rawValue: "Lambeau.jpg"))!
         image = PictureInput(image:inputImage)
-        
+
         filter = SaturationAdjustment()
-        
+
         image --> filter --> renderView
         image.processImage()
     }

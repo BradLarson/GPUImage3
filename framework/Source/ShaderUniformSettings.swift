@@ -8,7 +8,7 @@ public class ShaderUniformSettings {
     let shaderUniformSettingsQueue = DispatchQueue(
         label: "com.sunsetlakesoftware.GPUImage.shaderUniformSettings",
         attributes: [])
-    
+
 
     private func internalIndex(for index:Int) -> Int {
         if (index == 0) {
@@ -17,7 +17,7 @@ public class ShaderUniformSettings {
             return uniformValueOffsets[index - 1]
         }
     }
-    
+
     public subscript(index:Int) -> Float {
         get { return uniformValues[internalIndex(for:index)]}
         set(newValue) {
@@ -102,7 +102,7 @@ public class ShaderUniformSettings {
             }
         }
     }
-    
+
     func alignPackingForOffset(uniformSize:Int, lastOffset:Int) -> Int {
         let floatAlignment = lastOffset % 4
         if (uniformSize > 1) && (floatAlignment != 0) {
@@ -117,7 +117,7 @@ public class ShaderUniformSettings {
 
     public func appendUniform(_ value:UniformConvertible) {
         let lastOffset = alignPackingForOffset(uniformSize:value.uniformSize(), lastOffset:uniformValueOffsets.last ?? 0)
-        
+
         uniformValues.append(contentsOf:value.toFloatArray())
         uniformValueOffsets.append(lastOffset + value.uniformSize())
     }
@@ -154,7 +154,7 @@ extension Float:UniformConvertible {
     public func toFloatArray() -> [Float] {
         return [self]
     }
-    
+
     public func uniformSize() -> Int {
         return 1
     }
@@ -164,7 +164,7 @@ extension Double:UniformConvertible {
     public func toFloatArray() -> [Float] {
         return [Float(self)]
     }
-    
+
     public func uniformSize() -> Int {
         return 1
     }
@@ -184,7 +184,7 @@ extension Position:UniformConvertible {
     public func uniformSize() -> Int {
         return 4
     }
-    
+
     public func toFloatArray() -> [Float] {
         if let z = self.z {
             return [self.x, self.y, z, 0.0]
@@ -198,7 +198,7 @@ extension Matrix3x3:UniformConvertible {
     public func uniformSize() -> Int {
         return 12
     }
-    
+
     public func toFloatArray() -> [Float] {
         // Row major, with zero-padding
         return [m11, m12, m13, 0.0, m21, m22, m23, 0.0, m31, m32, m33, 0.0]
@@ -210,7 +210,7 @@ extension Matrix4x4:UniformConvertible {
     public func uniformSize() -> Int {
         return 16
     }
-    
+
     public func toFloatArray() -> [Float] {
         // Row major
         return [m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44]

@@ -23,7 +23,7 @@ typedef struct
  */
 #define GammaCorrection(color, gamma)  pow(color, 1.0 / gamma)
 
- 
+
 /*
  ** Levels control (input (+gamma), output)
  ** Details: http://blog.mouaif.org/2009/01/28/levels-control-shader/
@@ -35,6 +35,6 @@ fragment half4 levelsFragment(SingleInputVertexIO fragmentInput [[stage_in]],
 {
     constexpr sampler quadSampler;
     half4 color = inputTexture.sample(quadSampler, fragmentInput.textureCoordinate);
-    
+
     return half4(LevelsControl(color.rgb, half3(uniform.minimum), half3(uniform.middle), half3(uniform.maximum), half3(uniform.minOutput), half3(uniform.maxOutput)), color.a);
 }

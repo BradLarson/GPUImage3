@@ -15,7 +15,7 @@ fragment half4 rgbAdjustmentFragment(SingleInputVertexIO fragmentInput [[stage_i
 {
     constexpr sampler quadSampler;
     half4 color = inputTexture.sample(quadSampler, fragmentInput.textureCoordinate);
-    
+
     return half4(color.r * uniform.redAdjustment,
                  color.g * uniform.greenAdjustment,
                  color.b * uniform.blueAdjustment,

@@ -11,6 +11,6 @@ fragment half4 colorBurnBlendFragment(TwoInputVertexIO fragmentInput [[stage_in]
     constexpr sampler quadSampler2;
     half4 textureColor2 = inputTexture2.sample(quadSampler, fragmentInput.textureCoordinate2);
     half4 whiteColor = half4(1.0);
-    
+
     return whiteColor - (whiteColor - textureColor) / textureColor2;
 }

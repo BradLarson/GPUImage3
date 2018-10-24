@@ -6,10 +6,10 @@ public class LookupFilter: BasicOperation {
             lookupImage?.processImage()
         }
     }
-    
+
     public init() {
         super.init(fragmentFunctionName:"lookupFragment", numberOfInputs:2)
-        
+
         uniformSettings.appendUniform(1.0)
     }
 }
