@@ -154,7 +154,7 @@ public class SourceContainer {
     }
 
     public func insert(_ source:ImageSource, atIndex:UInt, maximumInputs:UInt) -> UInt {
-        guard (atIndex < maximumInputs) else { fatalError("ERROR: Attempted to set a source beyond the maximum number of inputs on this operation") }
+        guard atIndex < maximumInputs else { fatalError("ERROR: Attempted to set a source beyond the maximum number of inputs on this operation") }
         sources[atIndex] = source
         return atIndex
     }

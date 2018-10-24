@@ -136,7 +136,7 @@ public class ShaderUniformSettings {
 
     public func restoreShaderSettings(renderEncoder:MTLRenderCommandEncoder) {
         shaderUniformSettingsQueue.sync {
-            guard (uniformValues.count > 0) else { return }
+            guard uniformValues.count > 0 else { return }
             let uniformBuffer = sharedMetalRenderingDevice.device.makeBuffer(bytes: uniformValues,
                                                                              length: uniformValues.count * MemoryLayout<Float>.size,
                                                                              options: [])!

@@ -44,8 +44,8 @@ public class PictureInput: ImageSource {
                     fatalError("Failed loading image texture")
                 }
             } else {
-                textureLoader.newTexture(cgImage: internalImage!, options: [MTKTextureLoader.Option.SRGB : false], completionHandler: { (possibleTexture, error) in
-                    guard (error == nil) else { fatalError("Error in loading texture: \(error!)") }
+                textureLoader.newTexture(cgImage: internalImage!, options: [MTKTextureLoader.Option.SRGB : false]) { (possibleTexture, error) in
+                    guard error == nil else { fatalError("Error in loading texture: \(error!)") }
                     guard let texture = possibleTexture else { fatalError("Nil texture received") }
                     self.internalImage = nil
                     self.internalTexture = Texture(orientation: .portrait, texture: texture)
@@ -53,7 +53,7 @@ public class PictureInput: ImageSource {
                         self.updateTargetsWithTexture(self.internalTexture!)
                         self.hasProcessedImage = true
                     }
-                })
+                }
             }
         }
     }

@@ -136,7 +136,7 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
 
     public func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
 
-        guard (frameRenderingSemaphore.wait(timeout: .now()) == .success) else { return }
+        guard frameRenderingSemaphore.wait(timeout: .now()) == .success else { return }
 
         let startTime = CFAbsoluteTimeGetCurrent()
 
