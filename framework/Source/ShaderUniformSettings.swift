@@ -11,7 +11,7 @@ public class ShaderUniformSettings {
 
 
     private func internalIndex(for index:Int) -> Int {
-        if (index == 0) {
+        if index == 0 {
             return 0
         } else {
             return uniformValueOffsets[index - 1]
@@ -20,7 +20,7 @@ public class ShaderUniformSettings {
 
     public subscript(index:Int) -> Float {
         get { return uniformValues[internalIndex(for:index)]}
-        set(newValue) {
+        set {
             shaderUniformSettingsQueue.async {
                 self.uniformValues[self.internalIndex(for:index)] = newValue
             }
@@ -32,7 +32,7 @@ public class ShaderUniformSettings {
             // TODO: Fix this
             return Color(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
         }
-        set(newValue) {
+        set {
             shaderUniformSettingsQueue.async {
                 let floatArray:[Float]
                 let startingIndex = self.internalIndex(for:index)
@@ -57,7 +57,7 @@ public class ShaderUniformSettings {
             // TODO: Fix this
             return Position(0.0, 0.0)
         }
-        set(newValue) {
+        set {
             shaderUniformSettingsQueue.async {
                 let floatArray = newValue.toFloatArray()
                 var currentIndex = self.internalIndex(for:index)
@@ -72,9 +72,9 @@ public class ShaderUniformSettings {
     public subscript(index:Int) -> Matrix3x3 {
         get {
             // TODO: Fix this
-            return Matrix3x3.identity
+            return .identity
         }
-        set(newValue) {
+        set {
             shaderUniformSettingsQueue.async {
                 let floatArray = newValue.toFloatArray()
                 var currentIndex = self.internalIndex(for:index)
@@ -89,9 +89,9 @@ public class ShaderUniformSettings {
     public subscript(index:Int) -> Matrix4x4 {
         get {
             // TODO: Fix this
-            return Matrix4x4.identity
+            return .identity
         }
-        set(newValue) {
+        set {
             shaderUniformSettingsQueue.async {
                 let floatArray = newValue.toFloatArray()
                 var currentIndex = self.internalIndex(for:index)

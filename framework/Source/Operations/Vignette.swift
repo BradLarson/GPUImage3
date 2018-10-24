@@ -1,5 +1,5 @@
 public class Vignette: BasicOperation {
-    public var center:Position = Position.center { didSet { uniformSettings[0] = center } }
+    public var center:Position = .center { didSet { uniformSettings[0] = center } }
     public var color:Color = Color.black { didSet { uniformSettings[1] = color } }
     public var start:Float = 0.3 { didSet { uniformSettings[2] = start } }
     public var end:Float = 0.75 { didSet { uniformSettings[3] = end } }
