@@ -80,3 +80,13 @@ half3 setsat(half3 c, half s) {
     }
     return c;
 }
+
+float mod(float x, float y)
+{
+    return x - y * floor(x / y);
+}
+
+float2 mod(float2 x, float2 y)
+{
+    return x - y * floor(x / y);
+}

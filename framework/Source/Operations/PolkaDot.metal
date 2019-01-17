@@ -1,5 +1,6 @@
 #include <metal_stdlib>
 #include "OperationShaderTypes.h"
+#include "BlendShaderTypes.h"
 using namespace metal;
 
 typedef struct {
@@ -15,13 +16,13 @@ fragment half4 polkaDotFragment(SingleInputVertexIO fragmentInput [[stage_in]],
     constexpr sampler quadSampler;
     half4 color = inputTexture.sample(quadSampler, fragmentInput.textureCoordinate);
     
-    half2 sampleDivisor = half2(uniform.fractionalWidthOfPixel, uniform.fractionalWidthOfPixel / uniform.aspectRatio); // TODO: Figure out aspect ratio
+    float2 sampleDivisor = float2(uniform.fractionalWidthOfPixel, uniform.fractionalWidthOfPixel / uniform.aspectRatio); // TODO: Figure out aspect ratio
     
-    half2 samplePos = fragmentInput.textureCoordinate - mod(fragmentInput.textureCoordinate, sampleDivisor) + 0.5h * sampleDivisor;
-    half2 textureCoordinateToUse = half2(fragmentInput.textureCoordinate.x, (fragmentInput.textureCoordinate.y * uniform.aspectRatio + 0.5h - 0.5h * uniform.aspectRatio)); // TODO: Figure out aspect ratio
-    half2 adjustedSamplePos = half2(samplePos.x, (samplePos.y * uniform.aspectRatio + 0.5 - 0.5 * uniform.aspectRatio)); // TODO: Figure out aspect ratio
-    half distanceFromSamplePoint = distance(adjustedSamplePos, textureCoordinateToUse);
-    half checkForPresenceWithinDot = step(distanceFromSamplePoint, (half(uniform.fractionalWidthOfPixel) * 0.5) * half(uniform.dotScaling));
+    float2 samplePos = fragmentInput.textureCoordinate - mod(fragmentInput.textureCoordinate, sampleDivisor) + 0.5 * sampleDivisor;
+    float2 textureCoordinateToUse = float2(fragmentInput.textureCoordinate.x, (fragmentInput.textureCoordinate.y * uniform.aspectRatio + 0.5h - 0.5h * uniform.aspectRatio)); // TODO: Figure out aspect ratio
+    float2 adjustedSamplePos = float2(samplePos.x, (samplePos.y * uniform.aspectRatio + 0.5 - 0.5 * uniform.aspectRatio)); // TODO: Figure out aspect ratio
+    float distanceFromSamplePoint = distance(adjustedSamplePos, textureCoordinateToUse);
+    float checkForPresenceWithinDot = step(distanceFromSamplePoint, (uniform.fractionalWidthOfPixel * 0.5) * uniform.dotScaling);
     
     return half4(color.rgb * checkForPresenceWithinDot, color.a);
 }

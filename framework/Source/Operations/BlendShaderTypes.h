@@ -13,4 +13,9 @@ half mid(half cmin, half cmid, half cmax, half s);
 
 half3 setsat(half3 c, half s);
 
+float mod(float x, float y);
+
+float2 mod(float2 x, float2 y);
+
+
 #endif 

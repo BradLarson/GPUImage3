@@ -1,5 +1,6 @@
 #include <metal_stdlib>
 #include "OperationShaderTypes.h"
+#include "BlendShaderTypes.h"
 using namespace metal;
 
 typedef struct {
@@ -11,13 +12,14 @@ fragment half4 pixellateFragment(SingleInputVertexIO fragmentInput [[stage_in]],
                                 constant PixellateUniform& uniform [[buffer(1)]])
 {
     constexpr sampler quadSampler;
+    float aspectRatio = 1.0; // TODO: Remove this
     half4 color = inputTexture.sample(quadSampler, fragmentInput.textureCoordinate);
     
-    half2 sampleDivisor = half2(uniform.fractionalWidthOfPixel, uniform.fractionalWidthOfPixel / aspectRatio); // TODO: Figure out aspect ratio
+    float2 sampleDivisor = float2(uniform.fractionalWidthOfPixel, uniform.fractionalWidthOfPixel / aspectRatio); // TODO: Figure out aspect ratio
     
-    half2 samplePos = fragmentInput.textureCoordinate - mod(fragmentInput.textureCoordinate, sampleDivisor) + 0.5 * sampleDivisor;
+    float2 samplePos = fragmentInput.textureCoordinate - mod(fragmentInput.textureCoordinate, sampleDivisor) + 0.5 * sampleDivisor;
     
-    return inputTexture.sample(quadSampler, fragmentInput.textureCoordinate);
+    return inputTexture.sample(quadSampler, samplePos);
 }
 
 
