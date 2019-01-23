@@ -3,6 +3,7 @@ public class Posterize: BasicOperation {
     
     public init() {
         super.init(fragmentFunctionName: "posterizeFragment", numberOfInputs: 1)
+        
         uniformSettings.appendUniform(10.0)
     }
 }

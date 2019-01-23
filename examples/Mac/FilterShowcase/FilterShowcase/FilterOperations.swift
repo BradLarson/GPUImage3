@@ -257,16 +257,16 @@ let filterOperations: Array<FilterOperationInterface> = [
         sliderUpdateCallback: nil,
         filterOperationType:.singleInput
     ),
-//    FilterOperation(
-//        filter:{Solarize()},
-//        listName:"Solarize",
-//        titleName:"Solarize",
-//        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.0, initialValue:0.5),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.threshold = sliderValue
-//        },
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{Solarize()},
+        listName:"Solarize",
+        titleName:"Solarize",
+        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.0, initialValue:0.5),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.threshold = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
     FilterOperation(
         filter:{Vibrance()},
         listName:"Vibrance",
@@ -451,26 +451,26 @@ let filterOperations: Array<FilterOperationInterface> = [
 //        },
 //        filterOperationType:.singleInput
 //    ),
-//    FilterOperation(
-//        filter:{Crosshatch()},
-//        listName:"Crosshatch",
-//        titleName:"Crosshatch",
-//        sliderConfiguration:.enabled(minimumValue:0.01, maximumValue:0.06, initialValue:0.03),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.crossHatchSpacing = sliderValue
-//        },
-//        filterOperationType:.singleInput
-//    ),
-//    FilterOperation(
-//        filter:{SobelEdgeDetection()},
-//        listName:"Sobel edge detection",
-//        titleName:"Sobel Edge Detection",
-//        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.0, initialValue:0.25),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.edgeStrength = sliderValue
-//        },
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{Crosshatch()},
+        listName:"Crosshatch",
+        titleName:"Crosshatch",
+        sliderConfiguration:.enabled(minimumValue:0.01, maximumValue:0.06, initialValue:0.03),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.crossHatchSpacing = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
+    FilterOperation(
+        filter:{SobelEdgeDetection()},
+        listName:"Sobel edge detection",
+        titleName:"Sobel Edge Detection",
+        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.0, initialValue:0.25),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.edgeStrength = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
 //    FilterOperation(
 //        filter:{PrewittEdgeDetection()},
 //        listName:"Prewitt edge detection",
@@ -491,16 +491,16 @@ let filterOperations: Array<FilterOperationInterface> = [
 //        },
 //        filterOperationType:.singleInput
 //    ),
-//    FilterOperation(
-//        filter:{ThresholdSobelEdgeDetection()},
-//        listName:"Threshold edge detection",
-//        titleName:"Threshold Edge Detection",
-//        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.0, initialValue:0.25),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.threshold = sliderValue
-//        },
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{ThresholdSobelEdgeDetection()},
+        listName:"Threshold edge detection",
+        titleName:"Threshold Edge Detection",
+        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.0, initialValue:0.25),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.threshold = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
 //    FilterOperation(
 //        filter:{HarrisCornerDetector()},
 //        listName:"Harris corner detector",
@@ -625,34 +625,34 @@ let filterOperations: Array<FilterOperationInterface> = [
 //    ),
 //    // TODO: Motion detector
 //
-//    FilterOperation(
-//        filter:{SketchFilter()},
-//        listName:"Sketch",
-//        titleName:"Sketch",
-//        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.0, initialValue:0.5),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.edgeStrength = sliderValue
-//        },
-//        filterOperationType:.singleInput
-//    ),
-//    FilterOperation(
-//        filter:{ThresholdSketchFilter()},
-//        listName:"Threshold Sketch",
-//        titleName:"Threshold Sketch",
-//        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.0, initialValue:0.25),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.threshold = sliderValue
-//        },
-//        filterOperationType:.singleInput
-//    ),
-//    FilterOperation(
-//        filter:{ToonFilter()},
-//        listName:"Toon",
-//        titleName:"Toon",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback: nil,
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{SketchFilter()},
+        listName:"Sketch",
+        titleName:"Sketch",
+        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.0, initialValue:0.5),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.edgeStrength = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
+    FilterOperation(
+        filter:{ThresholdSketchFilter()},
+        listName:"Threshold Sketch",
+        titleName:"Threshold Sketch",
+        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.0, initialValue:0.25),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.threshold = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
+    FilterOperation(
+        filter:{ToonFilter()},
+        listName:"Toon",
+        titleName:"Toon",
+        sliderConfiguration:.disabled,
+        sliderUpdateCallback: nil,
+        filterOperationType:.singleInput
+    ),
 //    FilterOperation(
 //        filter:{SmoothToonFilter()},
 //        listName:"Smooth toon",
@@ -674,21 +674,22 @@ let filterOperations: Array<FilterOperationInterface> = [
 //        },
 //        filterOperationType:.singleInput
 //    ),
+    FilterOperation(
+        filter:{CGAColorspaceFilter()},
+        listName:"CGA colorspace",
+        titleName:"CGA Colorspace",
+        sliderConfiguration:.disabled,
+        sliderUpdateCallback: nil,
+        filterOperationType:.singleInput
+    ),
 //    FilterOperation(
-//        filter:{CGAColorspaceFilter()},
-//        listName:"CGA colorspace",
-//        titleName:"CGA Colorspace",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback: nil,
-//        filterOperationType:.singleInput
-//    ),
-//    FilterOperation(
-//        filter:{Posterize()},
+//        filter:{() -> GPUImage.Posterize in
+//            return GPUImage.Posterize()},
 //        listName:"Posterize",
 //        titleName:"Posterize",
 //        sliderConfiguration:.enabled(minimumValue:1.0, maximumValue:20.0, initialValue:10.0),
 //        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.colorLevels = round(sliderValue)
+//            (filter as! GPUImage.Posterize).colorLevels = round(Float(sliderValue))
 //        },
 //        filterOperationType:.singleInput
 //    ),
@@ -721,36 +722,36 @@ let filterOperations: Array<FilterOperationInterface> = [
 //        },
 //        filterOperationType:.singleInput
 //    ),
-//    FilterOperation(
-//        filter:{Laplacian()},
-//        listName:"Laplacian",
-//        titleName:"Laplacian",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback: nil,
-//        filterOperationType:.singleInput
-//    ),
-//    FilterOperation(
-//        filter:{ChromaKeying()},
-//        listName:"Chroma key",
-//        titleName:"Chroma Key",
-//        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.00, initialValue:0.40),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.thresholdSensitivity = sliderValue
-//        },
-//        filterOperationType:.custom(filterSetupFunction:{(camera, filter, outputView) in
-//            let castFilter = filter as! ChromaKeying
-//            
-//            let blendFilter = AlphaBlend()
-//            blendFilter.mix = 1.0
-//            
-//            let inputImage = PictureInput(imageName:blendImageName)
-//            
-//            inputImage --> blendFilter
-//            camera --> castFilter --> blendFilter --> outputView
-//            inputImage.processImage()
-//            return blendFilter
-//        })
-//    ),
+    FilterOperation(
+        filter:{Laplacian()},
+        listName:"Laplacian",
+        titleName:"Laplacian",
+        sliderConfiguration:.disabled,
+        sliderUpdateCallback: nil,
+        filterOperationType:.singleInput
+    ),
+    FilterOperation(
+        filter:{ChromaKeying()},
+        listName:"Chroma key",
+        titleName:"Chroma Key",
+        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.00, initialValue:0.40),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.thresholdSensitivity = sliderValue
+        },
+        filterOperationType:.custom(filterSetupFunction:{(camera, filter, outputView) in
+            let castFilter = filter as! ChromaKeying
+            
+            let blendFilter = AlphaBlend()
+            blendFilter.mix = 1.0
+            
+            let inputImage = PictureInput(imageName:blendImageName)
+            
+            inputImage --> blendFilter
+            camera --> castFilter --> blendFilter --> outputView
+            inputImage.processImage()
+            return blendFilter
+        })
+    ),
 //    FilterOperation(
 //        filter:{KuwaharaFilter()},
 //        listName:"Kuwahara",
@@ -827,16 +828,16 @@ let filterOperations: Array<FilterOperationInterface> = [
 //        },
 //        filterOperationType:.singleInput
 //    ),
-//    FilterOperation(
-//        filter:{ZoomBlur()},
-//        listName:"Zoom blur",
-//        titleName:"Zoom Blur",
-//        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:2.5, initialValue:1.0),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.blurSize = sliderValue
-//        },
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{ZoomBlur()},
+        listName:"Zoom blur",
+        titleName:"Zoom Blur",
+        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:2.5, initialValue:1.0),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.blurSize = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
 //    FilterOperation( // TODO: Make this only partially applied to the view
 //        filter:{iOSBlur()},
 //        listName:"iOS 7 blur",
@@ -845,16 +846,16 @@ let filterOperations: Array<FilterOperationInterface> = [
 //        sliderUpdateCallback: nil,
 //        filterOperationType:.singleInput
 //    ),
-//    FilterOperation(
-//        filter:{SwirlDistortion()},
-//        listName:"Swirl",
-//        titleName:"Swirl",
-//        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:2.0, initialValue:1.0),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.angle = sliderValue
-//        },
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{SwirlDistortion()},
+        listName:"Swirl",
+        titleName:"Swirl",
+        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:2.0, initialValue:1.0),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.angle = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
 //    FilterOperation(
 //        filter:{BulgeDistortion()},
 //        listName:"Bulge",
@@ -924,14 +925,14 @@ let filterOperations: Array<FilterOperationInterface> = [
 //            return blendFilter
 //        })
 //    ),
-//    FilterOperation (
-//        filter:{StretchDistortion()},
-//        listName:"Stretch",
-//        titleName:"Stretch",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback: nil,
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation (
+        filter:{StretchDistortion()},
+        listName:"Stretch",
+        titleName:"Stretch",
+        sliderConfiguration:.disabled,
+        sliderUpdateCallback: nil,
+        filterOperationType:.singleInput
+    ),
 //    FilterOperation(
 //        filter:{Dilation()},
 //        listName:"Dilation",
@@ -967,22 +968,22 @@ let filterOperations: Array<FilterOperationInterface> = [
 //    // TODO: Perlin noise
 //    // TODO: JFAVoronoi
 //    // TODO: Mosaic
-//    FilterOperation(
-//        filter:{LocalBinaryPattern()},
-//        listName:"Local binary pattern",
-//        titleName:"Local Binary Pattern",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback:nil,
-//        filterOperationType:.singleInput
-//    ),
-//    FilterOperation(
-//        filter:{ColorLocalBinaryPattern()},
-//        listName:"Local binary pattern (color)",
-//        titleName:"Local Binary Pattern (Color)",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback:nil,
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{LocalBinaryPattern()},
+        listName:"Local binary pattern",
+        titleName:"Local Binary Pattern",
+        sliderConfiguration:.disabled,
+        sliderUpdateCallback:nil,
+        filterOperationType:.singleInput
+    ),
+    FilterOperation(
+        filter:{ColorLocalBinaryPattern()},
+        listName:"Local binary pattern (color)",
+        titleName:"Local Binary Pattern (Color)",
+        sliderConfiguration:.disabled,
+        sliderUpdateCallback:nil,
+        filterOperationType:.singleInput
+    ),
     FilterOperation(
         filter:{DissolveBlend()},
         listName:"Dissolve blend",

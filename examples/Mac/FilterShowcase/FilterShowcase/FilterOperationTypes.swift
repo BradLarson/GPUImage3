@@ -26,7 +26,7 @@ protocol FilterOperationInterface {
     func updateBasedOnSliderValue(_ sliderValue:Float)
 }
 
-class FilterOperation<FilterClass: ImageProcessingOperation>: FilterOperationInterface {
+class FilterOperation<FilterClass: GPUImage.ImageProcessingOperation>: FilterOperationInterface {
     lazy var internalFilter:FilterClass = {
         return self.filterCreationFunction()
     }()
