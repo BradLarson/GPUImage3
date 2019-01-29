@@ -19,7 +19,7 @@ open class BasicOperation: ImageProcessingOperation {
     public let sources = SourceContainer()
     
     public var activatePassthroughOnNextFrame: Bool = false
-    public var uniformSettings = ShaderUniformSettings()
+    public var uniformSettings:ShaderUniformSettings
     public var useMetalPerformanceShaders: Bool = false {
         didSet {
             if !sharedMetalRenderingDevice.metalPerformanceShadersAreSupported {
@@ -44,7 +44,9 @@ open class BasicOperation: ImageProcessingOperation {
         self.operationName = operationName
         
         let concreteVertexFunctionName = vertexFunctionName ?? defaultVertexFunctionNameForInputs(numberOfInputs)
-        renderPipelineState = generateRenderPipelineState(device:sharedMetalRenderingDevice, vertexFunctionName:concreteVertexFunctionName, fragmentFunctionName:fragmentFunctionName, operationName:operationName)
+        let (pipelineState, lookupTable) = generateRenderPipelineState(device:sharedMetalRenderingDevice, vertexFunctionName:concreteVertexFunctionName, fragmentFunctionName:fragmentFunctionName, operationName:operationName)
+        self.renderPipelineState = pipelineState
+        self.uniformSettings = ShaderUniformSettings(uniformLookupTable:lookupTable)
     }
     
     public func transmitPreviousImage(to target: ImageConsumer, atIndex: UInt) {

@@ -26,7 +26,8 @@ public class RenderView: MTKView, ImageConsumer {
         
         self.device = sharedMetalRenderingDevice.device
         
-        renderPipelineState = generateRenderPipelineState(device:sharedMetalRenderingDevice, vertexFunctionName:"oneInputVertex", fragmentFunctionName:"passthroughFragment", operationName:"RenderView")
+        let (pipelineState, _) = generateRenderPipelineState(device:sharedMetalRenderingDevice, vertexFunctionName:"oneInputVertex", fragmentFunctionName:"passthroughFragment", operationName:"RenderView")
+        self.renderPipelineState = pipelineState
         
         enableSetNeedsDisplay = false
         isPaused = true

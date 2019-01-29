@@ -14,7 +14,8 @@ public class MetalRenderingDevice {
     public let metalPerformanceShadersAreSupported: Bool
     
     lazy var passthroughRenderState: MTLRenderPipelineState = {
-        generateRenderPipelineState(device:self, vertexFunctionName:"oneInputVertex", fragmentFunctionName:"passthroughFragment", operationName:"Passthrough")
+        let (pipelineState, _) = generateRenderPipelineState(device:self, vertexFunctionName:"oneInputVertex", fragmentFunctionName:"passthroughFragment", operationName:"Passthrough")
+        return pipelineState
     }()
     
     init() {

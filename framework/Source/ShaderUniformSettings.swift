@@ -8,8 +8,12 @@ public class ShaderUniformSettings {
     let shaderUniformSettingsQueue = DispatchQueue(
         label: "com.sunsetlakesoftware.GPUImage.shaderUniformSettings",
         attributes: [])
-    
+    let uniformLookupTable:[String:Int]
 
+    public init(uniformLookupTable:[String:Int]) {
+        self.uniformLookupTable = uniformLookupTable
+    }
+    
     private func internalIndex(for index:Int) -> Int {
         if (index == 0) {
             return 0
@@ -41,7 +45,7 @@ public class ShaderUniformSettings {
                     self.uniformValues[startingIndex] = floatArray[0]
                     self.uniformValues[startingIndex + 1] = floatArray[1]
                     self.uniformValues[startingIndex + 2] = floatArray[2]
-                    self.uniformValues[startingIndex + 2] = floatArray[3]
+                    self.uniformValues[startingIndex + 3] = floatArray[3]
                 } else {
                     floatArray = newValue.toFloatArray()
                     self.uniformValues[startingIndex] = floatArray[0]
