@@ -58,7 +58,23 @@ func generateRenderPipelineState(device:MetalRenderingDevice, vertexFunctionName
     descriptor.fragmentFunction = fragmentFunction
     
     do {
-        return try device.device.makeRenderPipelineState(descriptor: descriptor)
+        var reflection:MTLAutoreleasedRenderPipelineReflection?
+        let pipelineState = try device.device.makeRenderPipelineState(descriptor: descriptor, options: [.bufferTypeInfo, .argumentInfo], reflection: &reflection)
+
+        var uniformLookupTable:[String:Int] = [:]
+        if let fragmentArguments = reflection?.fragmentArguments {
+            for fragmentArgument in fragmentArguments where fragmentArgument.type == .buffer {
+                if (fragmentArgument.bufferDataType == .struct) {
+                    for (index, uniform) in fragmentArgument.bufferStructType.members.enumerated() {
+//                        uniformLookupTable[uniform.name] = uniform.offset
+                        uniformLookupTable[uniform.name] = index
+                    }
+                }
+            }
+        }
+        print("Uniform lookup: \(uniformLookupTable)")
+        
+        return pipelineState
     } catch {
         fatalError("Could not create render pipeline state for vertex:\(vertexFunctionName), fragment:\(fragmentFunctionName), error:\(error)")
     }
