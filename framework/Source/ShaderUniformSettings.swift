@@ -104,8 +104,9 @@ public class ShaderUniformSettings {
     }
     
     func alignPackingForOffset(uniformSize:Int, lastOffset:Int) -> Int {
-        let floatAlignment = lastOffset % 4
-        if (uniformSize > 1) && (floatAlignment != 0) {
+        let floatAlignment = (lastOffset + uniformSize) % 4
+        let previousFloatAlignment = lastOffset % 4
+        if (uniformSize > 1) && (floatAlignment != 0) && (previousFloatAlignment != 0){
             let paddingToAlignment = 4 - floatAlignment
             uniformValues.append(contentsOf:[Float](repeating:0.0, count:paddingToAlignment))
             uniformValueOffsets[uniformValueOffsets.count - 1] = lastOffset + paddingToAlignment
@@ -117,7 +118,6 @@ public class ShaderUniformSettings {
 
     public func appendUniform(_ value:UniformConvertible) {
         let lastOffset = alignPackingForOffset(uniformSize:value.uniformSize(), lastOffset:uniformValueOffsets.last ?? 0)
-        
         uniformValues.append(contentsOf:value.toFloatArray())
         uniformValueOffsets.append(lastOffset + value.uniformSize())
     }
@@ -137,6 +137,7 @@ public class ShaderUniformSettings {
     public func restoreShaderSettings(renderEncoder:MTLRenderCommandEncoder) {
         shaderUniformSettingsQueue.sync {
             guard (uniformValues.count > 0) else { return }
+            
             let uniformBuffer = sharedMetalRenderingDevice.device.makeBuffer(bytes: uniformValues,
                                                                              length: uniformValues.count * MemoryLayout<Float>.size,
                                                                              options: [])!
@@ -182,14 +183,18 @@ extension Color {
 
 extension Position:UniformConvertible {
     public func uniformSize() -> Int {
-        return 4
+        if (z != nil) {
+            return 4
+        } else {
+            return 2
+        }
     }
     
     public func toFloatArray() -> [Float] {
         if let z = self.z {
             return [self.x, self.y, z, 0.0]
         } else {
-            return [self.x, self.y, 0.0, 0.0]
+            return [self.x, self.y]
         }
     }
 }

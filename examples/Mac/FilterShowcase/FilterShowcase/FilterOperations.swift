@@ -800,14 +800,14 @@ let filterOperations: Array<FilterOperationInterface> = [
 //        },
 //        filterOperationType:.singleInput
 //    ),
-//    FilterOperation(
-//        filter:{MedianFilter()},
-//        listName:"Median",
-//        titleName:"Median",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback: nil,
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{MedianFilter()},
+        listName:"Median",
+        titleName:"Median",
+        sliderConfiguration:.disabled,
+        sliderUpdateCallback: nil,
+        filterOperationType:.singleInput
+    ),
 //    FilterOperation(
 //        filter:{BilateralBlur()},
 //        listName:"Bilateral blur",

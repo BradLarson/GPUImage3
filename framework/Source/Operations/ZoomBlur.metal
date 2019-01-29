@@ -3,8 +3,8 @@
 using namespace metal;
 
 typedef struct {
-    float size;
     float2 center;
+    float size;
 } ZoomBlurUniform;
 
 
@@ -28,30 +28,3 @@ fragment half4 zoomBlurFragment(SingleInputVertexIO fragmentInput [[stage_in]],
 
     return color;
 }
-
-/*
- varying vec2 textureCoordinate;
- 
- uniform sampler2D inputImageTexture;
- 
- uniform vec2 blurCenter;
- uniform float blurSize;
- 
- void main()
- {
- // TODO: Do a more intelligent scaling based on resolution here
- vec2 samplingOffset = 1.0/100.0 * (blurCenter - textureCoordinate) * blurSize;
- 
- vec4 fragmentColor = texture2D(inputImageTexture, textureCoordinate) * 0.18;
- fragmentColor += texture2D(inputImageTexture, textureCoordinate + samplingOffset) * 0.15;
- fragmentColor += texture2D(inputImageTexture, textureCoordinate + (2.0 * samplingOffset)) *  0.12;
- fragmentColor += texture2D(inputImageTexture, textureCoordinate + (3.0 * samplingOffset)) * 0.09;
- fragmentColor += texture2D(inputImageTexture, textureCoordinate + (4.0 * samplingOffset)) * 0.05;
- fragmentColor += texture2D(inputImageTexture, textureCoordinate - samplingOffset) * 0.15;
- fragmentColor += texture2D(inputImageTexture, textureCoordinate - (2.0 * samplingOffset)) *  0.12;
- fragmentColor += texture2D(inputImageTexture, textureCoordinate - (3.0 * samplingOffset)) * 0.09;
- fragmentColor += texture2D(inputImageTexture, textureCoordinate - (4.0 * samplingOffset)) * 0.05;
- 
- gl_FragColor = fragmentColor;
- }
- */
