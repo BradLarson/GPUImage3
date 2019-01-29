@@ -400,16 +400,16 @@ let filterOperations: Array<FilterOperationInterface> = [
 //        },
 //        filterOperationType:.singleInput
 //    ),
-//    FilterOperation(
-//        filter:{PolarPixellate()},
-//        listName:"Polar pixellate",
-//        titleName:"Polar Pixellate",
-//        sliderConfiguration:.enabled(minimumValue:-0.1, maximumValue:0.1, initialValue:0.05),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.pixelSize = Size(width:sliderValue, height:sliderValue)
-//        },
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{PolarPixellate()},
+        listName:"Polar pixellate",
+        titleName:"Polar Pixellate",
+        sliderConfiguration:.enabled(minimumValue:-0.1, maximumValue:0.1, initialValue:0.05),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.pixelSize = Size(width:sliderValue, height:sliderValue)
+        },
+        filterOperationType:.singleInput
+    ),
 //    FilterOperation(
 //        filter:{Pixellate()},
 //        listName:"Masked Pixellate",
@@ -770,16 +770,16 @@ let filterOperations: Array<FilterOperationInterface> = [
 //        sliderUpdateCallback: nil,
 //        filterOperationType:.singleInput
 //    ),
-//    FilterOperation(
-//        filter:{Vignette()},
-//        listName:"Vignette",
-//        titleName:"Vignette",
-//        sliderConfiguration:.enabled(minimumValue:0.5, maximumValue:0.9, initialValue:0.75),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.end = sliderValue
-//        },
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{Vignette()},
+        listName:"Vignette",
+        titleName:"Vignette",
+        sliderConfiguration:.enabled(minimumValue:0.5, maximumValue:0.9, initialValue:0.75),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.end = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
 //    FilterOperation(
 //        filter:{GaussianBlur()},
 //        listName:"Gaussian blur",

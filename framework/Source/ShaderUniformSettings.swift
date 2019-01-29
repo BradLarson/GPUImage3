@@ -69,6 +69,23 @@ public class ShaderUniformSettings {
         }
     }
 
+    public subscript(index:Int) -> Size {
+        get {
+            // TODO: Fix this
+            return Size(width:0.0, height:0.0)
+        }
+        set(newValue) {
+            shaderUniformSettingsQueue.async {
+                let floatArray = newValue.toFloatArray()
+                var currentIndex = self.internalIndex(for:index)
+                for floatValue in floatArray {
+                    self.uniformValues[currentIndex] = floatValue
+                    currentIndex += 1
+                }
+            }
+        }
+    }
+
     public subscript(index:Int) -> Matrix3x3 {
         get {
             // TODO: Fix this
@@ -220,6 +237,16 @@ extension Matrix4x4:UniformConvertible {
         // Row major
         return [m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44]
 //        return [m11, m21, m31, m41, m12, m22, m32, m42, m13, m23, m33, m43, m14, m24, m34, m44]
+    }
+}
+
+extension Size:UniformConvertible {
+    public func uniformSize() -> Int {
+        return 2
+    }
+    
+    public func toFloatArray() -> [Float] {
+        return [self.width, self.height]
     }
 }
 
