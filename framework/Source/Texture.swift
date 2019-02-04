@@ -75,6 +75,15 @@ extension Texture {
         }
     }
     
+    func aspectRatio(for rotation:Rotation) -> Float {
+        if rotation.flipsDimensions() {
+            return Float(self.texture.width) / Float(self.texture.height)
+        } else {
+            return Float(self.texture.height) / Float(self.texture.width)
+        }
+    }
+
+    
 //    func croppedTextureCoordinates(offsetFromOrigin:Position, cropSize:Size) -> [Float] {
 //        let minX = offsetFromOrigin.x
 //        let minY = offsetFromOrigin.y

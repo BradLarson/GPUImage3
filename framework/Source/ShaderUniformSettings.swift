@@ -14,6 +14,8 @@ public class ShaderUniformSettings {
         self.uniformLookupTable = uniformLookupTable
     }
     
+    public var usesAspectRatio:Bool { get { return self.uniformLookupTable["aspectRatio"] != nil } }
+    
     private func internalIndex(for index:Int) -> Int {
         if (index == 0) {
             return 0
@@ -22,16 +24,23 @@ public class ShaderUniformSettings {
         }
     }
     
-    public subscript(index:Int) -> Float {
-        get { return uniformValues[internalIndex(for:index)]}
+    // MARK: -
+    // MARK: Subscript access
+    
+    public subscript(key:String) -> Float {
+        get {
+            guard let index = uniformLookupTable[key] else {fatalError("Tried to access value of missing uniform: \(key), make sure this is present and used in your shader.")}
+            return uniformValues[internalIndex(for:index)]
+        }
         set(newValue) {
             shaderUniformSettingsQueue.async {
+                guard let index = self.uniformLookupTable[key] else {fatalError("Tried to access value of missing uniform: \(key), make sure this is present and used in your shader.")}
                 self.uniformValues[self.internalIndex(for:index)] = newValue
             }
         }
     }
 
-    public subscript(index:Int) -> Color {
+    public subscript(key:String) -> Color {
         get {
             // TODO: Fix this
             return Color(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
@@ -39,6 +48,7 @@ public class ShaderUniformSettings {
         set(newValue) {
             shaderUniformSettingsQueue.async {
                 let floatArray:[Float]
+                guard let index = self.uniformLookupTable[key] else {fatalError("Tried to access value of missing uniform: \(key), make sure this is present and used in your shader.")}
                 let startingIndex = self.internalIndex(for:index)
                 if self.colorUniformsUseAlpha {
                     floatArray = newValue.toFloatArrayWithAlpha()
@@ -56,7 +66,7 @@ public class ShaderUniformSettings {
         }
     }
 
-    public subscript(index:Int) -> Position {
+    public subscript(key:String) -> Position {
         get {
             // TODO: Fix this
             return Position(0.0, 0.0)
@@ -64,6 +74,7 @@ public class ShaderUniformSettings {
         set(newValue) {
             shaderUniformSettingsQueue.async {
                 let floatArray = newValue.toFloatArray()
+                guard let index = self.uniformLookupTable[key] else {fatalError("Tried to access value of missing uniform: \(key), make sure this is present and used in your shader.")}
                 var currentIndex = self.internalIndex(for:index)
                 for floatValue in floatArray {
                     self.uniformValues[currentIndex] = floatValue
@@ -73,7 +84,7 @@ public class ShaderUniformSettings {
         }
     }
 
-    public subscript(index:Int) -> Size {
+    public subscript(key:String) -> Size {
         get {
             // TODO: Fix this
             return Size(width:0.0, height:0.0)
@@ -81,6 +92,7 @@ public class ShaderUniformSettings {
         set(newValue) {
             shaderUniformSettingsQueue.async {
                 let floatArray = newValue.toFloatArray()
+                guard let index = self.uniformLookupTable[key] else {fatalError("Tried to access value of missing uniform: \(key), make sure this is present and used in your shader.")}
                 var currentIndex = self.internalIndex(for:index)
                 for floatValue in floatArray {
                     self.uniformValues[currentIndex] = floatValue
@@ -90,7 +102,7 @@ public class ShaderUniformSettings {
         }
     }
 
-    public subscript(index:Int) -> Matrix3x3 {
+    public subscript(key:String) -> Matrix3x3 {
         get {
             // TODO: Fix this
             return Matrix3x3.identity
@@ -98,6 +110,7 @@ public class ShaderUniformSettings {
         set(newValue) {
             shaderUniformSettingsQueue.async {
                 let floatArray = newValue.toFloatArray()
+                guard let index = self.uniformLookupTable[key] else {fatalError("Tried to access value of missing uniform: \(key), make sure this is present and used in your shader.")}
                 var currentIndex = self.internalIndex(for:index)
                 for floatValue in floatArray {
                     self.uniformValues[currentIndex] = floatValue
@@ -107,7 +120,7 @@ public class ShaderUniformSettings {
         }
     }
 
-    public subscript(index:Int) -> Matrix4x4 {
+    public subscript(key:String) -> Matrix4x4 {
         get {
             // TODO: Fix this
             return Matrix4x4.identity
@@ -115,6 +128,7 @@ public class ShaderUniformSettings {
         set(newValue) {
             shaderUniformSettingsQueue.async {
                 let floatArray = newValue.toFloatArray()
+                guard let index = self.uniformLookupTable[key] else {fatalError("Tried to access value of missing uniform: \(key), make sure this is present and used in your shader.")}
                 var currentIndex = self.internalIndex(for:index)
                 for floatValue in floatArray {
                     self.uniformValues[currentIndex] = floatValue

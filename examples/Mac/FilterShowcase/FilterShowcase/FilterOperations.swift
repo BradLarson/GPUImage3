@@ -390,16 +390,16 @@ let filterOperations: Array<FilterOperationInterface> = [
 //        },
 //        filterOperationType:.singleInput
 //    ),
-//    FilterOperation(
-//        filter:{Pixellate()},
-//        listName:"Pixellate",
-//        titleName:"Pixellate",
-//        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:0.3, initialValue:0.05),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.fractionalWidthOfAPixel = sliderValue
-//        },
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{Pixellate()},
+        listName:"Pixellate",
+        titleName:"Pixellate",
+        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:0.3, initialValue:0.05),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.fractionalWidthOfAPixel = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
     FilterOperation(
         filter:{PolarPixellate()},
         listName:"Polar pixellate",

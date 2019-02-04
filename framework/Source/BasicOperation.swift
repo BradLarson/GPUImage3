@@ -79,6 +79,11 @@ open class BasicOperation: ImageProcessingOperation {
                 outputWidth = firstInputTexture.texture.width
                 outputHeight = firstInputTexture.texture.height
             }
+
+            if uniformSettings.usesAspectRatio {
+                let outputRotation = firstInputTexture.orientation.rotationNeeded(for:.portrait)
+                uniformSettings["aspectRatio"] = firstInputTexture.aspectRatio(for: outputRotation)
+            }
             
             guard let commandBuffer = sharedMetalRenderingDevice.commandQueue.makeCommandBuffer() else {return}
 

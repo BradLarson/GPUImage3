@@ -5,21 +5,19 @@ using namespace metal;
 
 typedef struct {
     float fractionalWidthOfPixel;
+    float aspectRatio;
 } PixellateUniform;
 
 fragment half4 pixellateFragment(SingleInputVertexIO fragmentInput [[stage_in]],
                                 texture2d<half> inputTexture [[texture(0)]],
                                 constant PixellateUniform& uniform [[buffer(1)]])
 {
+    float2 sampleDivisor = float2(uniform.fractionalWidthOfPixel, uniform.fractionalWidthOfPixel / uniform.aspectRatio);
+    
+    float2 samplePos = fragmentInput.textureCoordinate - mod(fragmentInput.textureCoordinate, sampleDivisor) + float2(0.5) * sampleDivisor;
+    
     constexpr sampler quadSampler;
-    float aspectRatio = 1.0; // TODO: Remove this
-    half4 color = inputTexture.sample(quadSampler, fragmentInput.textureCoordinate);
-    
-    float2 sampleDivisor = float2(uniform.fractionalWidthOfPixel, uniform.fractionalWidthOfPixel / aspectRatio); // TODO: Figure out aspect ratio
-    
-    float2 samplePos = fragmentInput.textureCoordinate - mod(fragmentInput.textureCoordinate, sampleDivisor) + 0.5 * sampleDivisor;
-    
-    return inputTexture.sample(quadSampler, samplePos);
+    return half4(inputTexture.sample(quadSampler, samplePos));
 }
 
 

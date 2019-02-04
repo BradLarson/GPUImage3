@@ -1,8 +1,8 @@
 public class PolkaDot: BasicOperation {
-    public var dotScaling:Float = 0.90 { didSet { uniformSettings[0] = dotScaling } }
+    public var dotScaling:Float = 0.90 { didSet { uniformSettings["dotScaling"] = dotScaling } }
     public var fractionalWidthOfAPixel:Float = 0.01 {
         didSet {
-            uniformSettings[1] = max(fractionalWidthOfAPixel, 0.01)
+            uniformSettings["fractionalWidthOfPixel"] = max(fractionalWidthOfAPixel, 0.01)
         }
     }
     
