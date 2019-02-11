@@ -8,20 +8,24 @@ public class ShaderUniformSettings {
     let shaderUniformSettingsQueue = DispatchQueue(
         label: "com.sunsetlakesoftware.GPUImage.shaderUniformSettings",
         attributes: [])
-    var uniformLookupTable:[String:Int] = [:]
+    let uniformLookupTable:[String:Int]
 
     public init(uniformLookupTable:[String:(Int, MTLDataType)]) {
         var convertedLookupTable:[String:Int] = [:]
         
-        shaderUniformSettingsQueue.sync {
-            for (key, value) in uniformLookupTable {
-                let (index, dataType) = value
-                convertedLookupTable[key] = index
-                self.appendBufferSpace(for:dataType)
-            }
+        var orderedDatatypes = [MTLDataType](repeating:.float, count:uniformLookupTable.count)
+        
+        for (key, value) in uniformLookupTable {
+            let (index, dataType) = value
+            convertedLookupTable[key] = index
+            orderedDatatypes[index] = dataType
         }
         
         self.uniformLookupTable = convertedLookupTable
+
+        for dataType in orderedDatatypes {
+            self.appendBufferSpace(for:dataType)
+        }
     }
     
     public var usesAspectRatio:Bool { get { return self.uniformLookupTable["aspectRatio"] != nil } }
@@ -156,7 +160,7 @@ public class ShaderUniformSettings {
         switch dataType {
             case .float: uniformSize = 1
             case .float2: uniformSize = 2
-            case .float3: uniformSize = 3
+            case .float3: uniformSize = 4 // Hack to fix alignment issues
             case .float4: uniformSize = 4
             case .float3x3: uniformSize = 12
             case .float4x4: uniformSize = 16
@@ -167,8 +171,6 @@ public class ShaderUniformSettings {
         let lastOffset = alignPackingForOffset(uniformSize:uniformSize, lastOffset:uniformValueOffsets.last ?? 0)
         uniformValues.append(contentsOf:blankValues)
         uniformValueOffsets.append(lastOffset + uniformSize)
-        
-//        print("Uniform values: \(uniformValues)")
     }
     
     func alignPackingForOffset(uniformSize:Int, lastOffset:Int) -> Int {

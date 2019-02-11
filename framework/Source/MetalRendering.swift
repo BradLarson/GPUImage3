@@ -71,7 +71,6 @@ func generateRenderPipelineState(device:MetalRenderingDevice, vertexFunctionName
                 }
             }
         }
-        print("Uniform lookup: \(uniformLookupTable)")
         
         return (pipelineState, uniformLookupTable)
     } catch {
