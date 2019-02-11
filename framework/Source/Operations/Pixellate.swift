@@ -8,7 +8,6 @@ public class Pixellate: BasicOperation {
     public init() {
         super.init(fragmentFunctionName:"pixellateFragment", numberOfInputs:1)
         
-        uniformSettings.appendUniform(0.01)
-        uniformSettings.appendUniform(1.0) // TODO: Remove this aspectRatio hack
+        ({fractionalWidthOfAPixel = 0.01})()
     }
 }

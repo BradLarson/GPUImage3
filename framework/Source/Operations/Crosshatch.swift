@@ -5,7 +5,7 @@ public class Crosshatch: BasicOperation {
     public init() {
         super.init(fragmentFunctionName:"crosshatchFragment", numberOfInputs:1)
         
-        uniformSettings.appendUniform(0.03)
-        uniformSettings.appendUniform(0.003)
+        ({crossHatchSpacing = 0.03})()
+        ({lineWidth = 0.003})()
     }
 }

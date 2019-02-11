@@ -3,6 +3,7 @@ public class Solarize: BasicOperation {
     
     public init() {
         super.init(fragmentFunctionName: "solarizeFragment", numberOfInputs:1)
-        uniformSettings.appendUniform(0.5)
+
+        ({threshold = 0.5})()
     }
 }

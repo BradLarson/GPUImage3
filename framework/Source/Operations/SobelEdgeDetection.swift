@@ -4,6 +4,6 @@ public class SobelEdgeDetection: TextureSamplingOperation {
     public init() {
         super.init(fragmentFunctionName:"sobelEdgeDetectionFragment", numberOfInputs:1)
         
-        uniformSettings.appendUniform(1.0)
+        ({edgeStrength = 1.0})()
     }
 }

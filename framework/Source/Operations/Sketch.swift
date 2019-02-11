@@ -4,6 +4,6 @@ public class SketchFilter: TextureSamplingOperation {
     public init() {
         super.init(fragmentFunctionName:"sketchFragment", numberOfInputs:1)
         
-        uniformSettings.appendUniform(1.0)
+        ({edgeStrength = 1.0})()
     }
 }

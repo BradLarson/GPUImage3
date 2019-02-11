@@ -5,7 +5,7 @@ public class HighlightsAndShadows: BasicOperation {
     public init() {
         super.init(fragmentFunctionName:"highlightShadowFragment", numberOfInputs:1)
         
-        uniformSettings.appendUniform(0.0)
-        uniformSettings.appendUniform(1.0)
+        ({shadows = 0.0})()
+        ({highlights = 1.0})()
     }
 }

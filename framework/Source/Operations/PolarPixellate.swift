@@ -6,7 +6,7 @@ public class PolarPixellate: BasicOperation {
     public init() {
         super.init(fragmentFunctionName:"polarPixellateFragment", numberOfInputs:1)
         
-        uniformSettings.appendUniform(pixelSize)
-        uniformSettings.appendUniform(center)
+        ({pixelSize = Size(width:0.05, height:0.05)})()
+        ({center = Position.center})()
     }
 }

@@ -4,6 +4,6 @@ public class ContrastAdjustment: BasicOperation {
     public init() {
         super.init(fragmentFunctionName:"contrastFragment", numberOfInputs:1)
         
-        uniformSettings.appendUniform(1.0)
+        ({contrast = 1.0})()
     }
 }

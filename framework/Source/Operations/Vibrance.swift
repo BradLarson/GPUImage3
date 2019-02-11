@@ -4,6 +4,6 @@ public class Vibrance: BasicOperation {
     public init() {
         super.init(fragmentFunctionName:"vibranceFragment", numberOfInputs:1)
         
-        uniformSettings.appendUniform(0.0)
+        ({vibrance = 0.0})()
     }
 }

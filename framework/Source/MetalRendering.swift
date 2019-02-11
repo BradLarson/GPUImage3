@@ -42,7 +42,7 @@ extension MTLCommandBuffer {
     }
 }
 
-func generateRenderPipelineState(device:MetalRenderingDevice, vertexFunctionName:String, fragmentFunctionName:String, operationName:String) -> (MTLRenderPipelineState, [String:Int]) {
+func generateRenderPipelineState(device:MetalRenderingDevice, vertexFunctionName:String, fragmentFunctionName:String, operationName:String) -> (MTLRenderPipelineState, [String:(Int, MTLDataType)]) {
     guard let vertexFunction = device.shaderLibrary.makeFunction(name: vertexFunctionName) else {
         fatalError("\(operationName): could not compile vertex function \(vertexFunctionName)")
     }
@@ -61,13 +61,12 @@ func generateRenderPipelineState(device:MetalRenderingDevice, vertexFunctionName
         var reflection:MTLAutoreleasedRenderPipelineReflection?
         let pipelineState = try device.device.makeRenderPipelineState(descriptor: descriptor, options: [.bufferTypeInfo, .argumentInfo], reflection: &reflection)
 
-        var uniformLookupTable:[String:Int] = [:]
+        var uniformLookupTable:[String:(Int, MTLDataType)] = [:]
         if let fragmentArguments = reflection?.fragmentArguments {
             for fragmentArgument in fragmentArguments where fragmentArgument.type == .buffer {
                 if (fragmentArgument.bufferDataType == .struct) {
                     for (index, uniform) in fragmentArgument.bufferStructType.members.enumerated() {
-//                        uniformLookupTable[uniform.name] = uniform.offset
-                        uniformLookupTable[uniform.name] = index
+                        uniformLookupTable[uniform.name] = (index, uniform.dataType)
                     }
                 }
             }

@@ -7,9 +7,9 @@ public class HighlightAndShadowTint: BasicOperation {
     public init() {
         super.init(fragmentFunctionName:"highlightShadowTintFragment", numberOfInputs:1)
         
-        uniformSettings.appendUniform(0.0)
-        uniformSettings.appendUniform(0.0)
-        uniformSettings.appendUniform(Color.red)
-        uniformSettings.appendUniform(Color.blue)
+        ({shadowTintIntensity = 0.0})()
+        ({highlightTintIntensity = 0.0})()
+        ({shadowTintColor = Color.red})()
+        ({highlightTintColor = Color.blue})()
     }
 }

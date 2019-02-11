@@ -4,6 +4,6 @@ public class LuminanceRangeReduction: BasicOperation {
     public init() {
         super.init(fragmentFunctionName: "luminanceRangeFragment", numberOfInputs: 1)
         
-        uniformSettings.appendUniform(0.6)
+        ({rangeReductionFactor = 0.6})()
     }
 }

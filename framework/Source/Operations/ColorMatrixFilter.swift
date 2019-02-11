@@ -6,7 +6,7 @@ public class ColorMatrixFilter: BasicOperation {
         
         super.init(fragmentFunctionName:"colorMatrixFragment", numberOfInputs:1)
         
-        uniformSettings.appendUniform(1.0)
-        uniformSettings.appendUniform(Matrix4x4.identity)
+        ({intensity = 1.0})()
+        ({colorMatrix = Matrix4x4.identity})()
     }
 }

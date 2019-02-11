@@ -5,7 +5,7 @@ public class ThresholdSketchFilter: TextureSamplingOperation {
     public init() {
         super.init(fragmentFunctionName:"thresholdSketchFragment", numberOfInputs:1)
         
-        uniformSettings.appendUniform(1.0)
-        uniformSettings.appendUniform(0.25)
+        ({edgeStrength = 1.0})()
+        ({threshold = 0.25})()
     }
 }

@@ -10,10 +10,10 @@ public class LevelsAdjustment: BasicOperation {
     public init() {
         super.init(fragmentFunctionName: "levelsFragment", numberOfInputs: 1)
         
-        uniformSettings.appendUniform(Color(red:0.0, green:0.0, blue:0.0))
-        uniformSettings.appendUniform(Color(red:1.0, green:1.0, blue:1.0))
-        uniformSettings.appendUniform(Color(red:1.0, green:1.0, blue:1.0))
-        uniformSettings.appendUniform(Color(red:0.0, green:0.0, blue:0.0))
-        uniformSettings.appendUniform(Color(red:1.0, green:1.0, blue:1.0))
+        ({minimum = Color(red:0.0, green:0.0, blue:0.0)})()
+        ({middle = Color(red:1.0, green:1.0, blue:1.0)})()
+        ({maximum = Color(red:1.0, green:1.0, blue:1.0)})()
+        ({minOutput = Color(red:0.0, green:0.0, blue:0.0)})()
+        ({maxOutput = Color(red:1.0, green:1.0, blue:1.0)})()
     }
 }

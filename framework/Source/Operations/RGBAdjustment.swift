@@ -6,8 +6,8 @@ public class RGBAdjustment: BasicOperation {
     public init() {
         super.init(fragmentFunctionName:"rgbAdjustmentFragment", numberOfInputs:1)
         
-        uniformSettings.appendUniform(1.0)
-        uniformSettings.appendUniform(1.0)
-        uniformSettings.appendUniform(1.0)
+        ({red = 1.0})()
+        ({blue = 1.0})()
+        ({green = 1.0})()
     }
 }

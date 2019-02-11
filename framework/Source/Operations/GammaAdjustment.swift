@@ -4,6 +4,6 @@ public class GammaAdjustment: BasicOperation {
     public init() {
         super.init(fragmentFunctionName:"gammaFragment", numberOfInputs:1)
         
-        uniformSettings.appendUniform(1.0)
+        ({gamma = 1.0})()
     }
 }

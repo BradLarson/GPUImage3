@@ -5,7 +5,7 @@ public class ToonFilter: TextureSamplingOperation {
     public init() {
         super.init(fragmentFunctionName:"toonFragment", numberOfInputs:1)
         
-        uniformSettings.appendUniform(0.2)
-        uniformSettings.appendUniform(10.0)
+        ({threshold = 0.2})()
+        ({quantizationLevels = 10.0})()
     }
 }

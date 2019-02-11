@@ -4,6 +4,6 @@ public class SaturationAdjustment: BasicOperation {
     public init() {
         super.init(fragmentFunctionName:"saturationFragment", numberOfInputs:1)
         
-        uniformSettings.appendUniform(1.0)
+        ({saturation = 1.0})()
     }
 }

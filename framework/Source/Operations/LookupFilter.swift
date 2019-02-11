@@ -10,6 +10,6 @@ public class LookupFilter: BasicOperation {
     public init() {
         super.init(fragmentFunctionName:"lookupFragment", numberOfInputs:2)
         
-        uniformSettings.appendUniform(1.0)
+        ({intensity = 1.0})()
     }
 }

@@ -5,7 +5,7 @@ public class ZoomBlur: BasicOperation {
     public init() {
         super.init(fragmentFunctionName:"zoomBlurFragment", numberOfInputs:1)
         
-        uniformSettings.appendUniform(Position.center)
-        uniformSettings.appendUniform(1.0)
+        ({blurSize = 1.0})()
+        ({blurCenter = Position.center})()
     }
 }

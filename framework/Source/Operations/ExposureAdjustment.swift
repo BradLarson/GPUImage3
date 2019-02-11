@@ -4,6 +4,6 @@ public class ExposureAdjustment: BasicOperation {
     public init() {
         super.init(fragmentFunctionName:"exposureFragment", numberOfInputs:1)
         
-        uniformSettings.appendUniform(0.0)
+        ({exposure = 0.0})()
     }
 }

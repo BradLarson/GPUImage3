@@ -3,6 +3,7 @@ public class StretchDistortion: BasicOperation {
     
     public init() {
         super.init(fragmentFunctionName:"stretchDistortionFragment", numberOfInputs:1)
-        uniformSettings.appendUniform(Position.center)
+
+        ({center = Position.center})()
     }
 }

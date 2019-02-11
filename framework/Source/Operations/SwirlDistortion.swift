@@ -6,8 +6,8 @@ public class SwirlDistortion: BasicOperation {
     public init() {
         super.init(fragmentFunctionName:"swirlFragment", numberOfInputs:1)
         
-        uniformSettings.appendUniform(0.5)
-        uniformSettings.appendUniform(1.0)
-        uniformSettings.appendUniform(Position.center)
+        ({radius = 0.5})()
+        ({angle = 1.0})()
+        ({center = Position.center})()
     }
 }

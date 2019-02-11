@@ -4,6 +4,6 @@ public class AlphaBlend: BasicOperation {
     public init() {
         super.init(fragmentFunctionName:"alphaBlendFragment", numberOfInputs:2)
         
-        uniformSettings.appendUniform(0.5)
+        ({mix = 0.5})()
     }
 }

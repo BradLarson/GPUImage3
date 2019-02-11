@@ -5,8 +5,8 @@ public class MonochromeFilter: BasicOperation {
     public init() {
         super.init(fragmentFunctionName:"monochromeFragment", numberOfInputs:1)
         
-        uniformSettings.appendUniform(1.0)
-        uniformSettings.appendUniform(Color(red:0.6, green:0.45, blue:0.3, alpha:1.0))
+        ({intensity = 1.0})()
+        ({color = Color(red:0.6, green:0.45, blue:0.3, alpha:1.0)})()
     }
 }
 

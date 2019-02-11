@@ -4,6 +4,6 @@ public class OpacityAdjustment: BasicOperation {
     public init() {        
         super.init(fragmentFunctionName:"opacityFragment", numberOfInputs:1)
         
-        uniformSettings.appendUniform(0.0)
+        ({opacity = 0.0})()
     }
 }

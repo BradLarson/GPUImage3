@@ -4,6 +4,6 @@ public class HueAdjustment: BasicOperation {
     public init() {
         super.init(fragmentFunctionName:"hueFragment", numberOfInputs:1)
         
-        uniformSettings.appendUniform(90.0)
+        ({hue = 90.0})()
     }
 }

@@ -8,10 +8,20 @@ public class ShaderUniformSettings {
     let shaderUniformSettingsQueue = DispatchQueue(
         label: "com.sunsetlakesoftware.GPUImage.shaderUniformSettings",
         attributes: [])
-    let uniformLookupTable:[String:Int]
+    var uniformLookupTable:[String:Int] = [:]
 
-    public init(uniformLookupTable:[String:Int]) {
-        self.uniformLookupTable = uniformLookupTable
+    public init(uniformLookupTable:[String:(Int, MTLDataType)]) {
+        var convertedLookupTable:[String:Int] = [:]
+        
+        shaderUniformSettingsQueue.sync {
+            for (key, value) in uniformLookupTable {
+                let (index, dataType) = value
+                convertedLookupTable[key] = index
+                self.appendBufferSpace(for:dataType)
+            }
+        }
+        
+        self.uniformLookupTable = convertedLookupTable
     }
     
     public var usesAspectRatio:Bool { get { return self.uniformLookupTable["aspectRatio"] != nil } }
@@ -138,6 +148,29 @@ public class ShaderUniformSettings {
         }
     }
     
+    // MARK: -
+    // MARK: Uniform buffer memory management
+    
+    func appendBufferSpace(for dataType:MTLDataType) {
+        let uniformSize:Int
+        switch dataType {
+            case .float: uniformSize = 1
+            case .float2: uniformSize = 2
+            case .float3: uniformSize = 3
+            case .float4: uniformSize = 4
+            case .float3x3: uniformSize = 12
+            case .float4x4: uniformSize = 16
+            default: fatalError("Uniform data type of value: \(dataType.rawValue) not supported")
+        }
+        let blankValues = [Float](repeating:0.0, count:uniformSize)
+
+        let lastOffset = alignPackingForOffset(uniformSize:uniformSize, lastOffset:uniformValueOffsets.last ?? 0)
+        uniformValues.append(contentsOf:blankValues)
+        uniformValueOffsets.append(lastOffset + uniformSize)
+        
+//        print("Uniform values: \(uniformValues)")
+    }
+    
     func alignPackingForOffset(uniformSize:Int, lastOffset:Int) -> Int {
         let floatAlignment = (lastOffset + uniformSize) % 4
         let previousFloatAlignment = lastOffset % 4
@@ -149,24 +182,6 @@ public class ShaderUniformSettings {
         } else {
             return lastOffset
         }
-    }
-
-    public func appendUniform(_ value:UniformConvertible) {
-        let lastOffset = alignPackingForOffset(uniformSize:value.uniformSize(), lastOffset:uniformValueOffsets.last ?? 0)
-        uniformValues.append(contentsOf:value.toFloatArray())
-        uniformValueOffsets.append(lastOffset + value.uniformSize())
-    }
-
-    public func appendUniform(_ value:Color) {
-        let colorSize = 4
-        let lastOffset = alignPackingForOffset(uniformSize:colorSize, lastOffset:uniformValueOffsets.last ?? 0)
-
-        if colorUniformsUseAlpha {
-            uniformValues.append(contentsOf:value.toFloatArrayWithAlpha())
-        } else {
-            uniformValues.append(contentsOf:value.toFloatArray())
-        }
-        uniformValueOffsets.append(lastOffset + colorSize)
     }
 
     public func restoreShaderSettings(renderEncoder:MTLRenderCommandEncoder) {
@@ -183,26 +198,17 @@ public class ShaderUniformSettings {
 
 public protocol UniformConvertible {
     func toFloatArray() -> [Float]
-    func uniformSize() -> Int
 }
 
 extension Float:UniformConvertible {
     public func toFloatArray() -> [Float] {
         return [self]
     }
-    
-    public func uniformSize() -> Int {
-        return 1
-    }
 }
 
 extension Double:UniformConvertible {
     public func toFloatArray() -> [Float] {
         return [Float(self)]
-    }
-    
-    public func uniformSize() -> Int {
-        return 1
     }
 }
 
@@ -217,14 +223,6 @@ extension Color {
 }
 
 extension Position:UniformConvertible {
-    public func uniformSize() -> Int {
-        if (z != nil) {
-            return 4
-        } else {
-            return 2
-        }
-    }
-    
     public func toFloatArray() -> [Float] {
         if let z = self.z {
             return [self.x, self.y, z, 0.0]
@@ -235,10 +233,6 @@ extension Position:UniformConvertible {
 }
 
 extension Matrix3x3:UniformConvertible {
-    public func uniformSize() -> Int {
-        return 12
-    }
-    
     public func toFloatArray() -> [Float] {
         // Row major, with zero-padding
         return [m11, m12, m13, 0.0, m21, m22, m23, 0.0, m31, m32, m33, 0.0]
@@ -247,10 +241,6 @@ extension Matrix3x3:UniformConvertible {
 }
 
 extension Matrix4x4:UniformConvertible {
-    public func uniformSize() -> Int {
-        return 16
-    }
-    
     public func toFloatArray() -> [Float] {
         // Row major
         return [m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44]
@@ -259,10 +249,6 @@ extension Matrix4x4:UniformConvertible {
 }
 
 extension Size:UniformConvertible {
-    public func uniformSize() -> Int {
-        return 2
-    }
-    
     public func toFloatArray() -> [Float] {
         return [self.width, self.height]
     }

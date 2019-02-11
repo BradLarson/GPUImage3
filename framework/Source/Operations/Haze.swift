@@ -5,7 +5,7 @@ public class Haze: BasicOperation {
     public init() {
         super.init(fragmentFunctionName:"hazeFragment", numberOfInputs:1)
         
-        uniformSettings.appendUniform(0.2)
-        uniformSettings.appendUniform(0.0)
+        ({distance = 0.2})()
+        ({slope = 0.0})()
     }
 }

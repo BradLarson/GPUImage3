@@ -6,8 +6,8 @@ public class ChromaKeying: BasicOperation {
     public init() {
         super.init(fragmentFunctionName:"ChromaKeyFragment", numberOfInputs:1)
         
-        uniformSettings.appendUniform(0.04)
-        uniformSettings.appendUniform(0.01)
-        uniformSettings.appendUniform(Color.green)
+        ({thresholdSensitivity = 0.4})()
+        ({smoothing = 0.1})()
+        ({colorToReplace = Color.green})()
     }
 }

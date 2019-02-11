@@ -7,9 +7,9 @@ public class Vignette: BasicOperation {
     public init() {
         super.init(fragmentFunctionName:"vignetteFragment", numberOfInputs:1)
         
-        uniformSettings.appendUniform(Position.center)
-        uniformSettings.appendUniform(Color.black)
-        uniformSettings.appendUniform(0.3)
-        uniformSettings.appendUniform(0.75)
+        ({center = Position.center})()
+        ({color = Color.black})()
+        ({start = 0.3})()
+        ({end = 0.75})()
     }
 }
