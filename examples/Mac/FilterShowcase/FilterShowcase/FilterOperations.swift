@@ -856,17 +856,17 @@ let filterOperations: Array<FilterOperationInterface> = [
         },
         filterOperationType:.singleInput
     ),
-//    FilterOperation(
-//        filter:{BulgeDistortion()},
-//        listName:"Bulge",
-//        titleName:"Bulge",
-//        sliderConfiguration:.enabled(minimumValue:-1.0, maximumValue:1.0, initialValue:0.5),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            //            filter.scale = sliderValue
-//            filter.center = Position(0.5, sliderValue)
-//        },
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{BulgeDistortion()},
+        listName:"Bulge",
+        titleName:"Bulge",
+        sliderConfiguration:.enabled(minimumValue:-1.0, maximumValue:1.0, initialValue:0.5),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            //            filter.scale = sliderValue
+            filter.center = Position(0.5, sliderValue)
+        },
+        filterOperationType:.singleInput
+    ),
 //    FilterOperation(
 //        filter:{PinchDistortion()},
 //        listName:"Pinch",

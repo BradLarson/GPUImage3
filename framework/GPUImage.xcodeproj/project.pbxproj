@@ -321,6 +321,10 @@
 		BCE0BEA720D6E3C80006E120 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE0BE9C20D6E3C80006E120 /* Matrix.swift */; };
 		BCE0BEA820D6E3C80006E120 /* ImageOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE0BE9D20D6E3C80006E120 /* ImageOrientation.swift */; };
 		BCE0BEA920D6E3C80006E120 /* ImageOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE0BE9D20D6E3C80006E120 /* ImageOrientation.swift */; };
+		BCF119A52211FA9C00C4A579 /* BulgeDistortion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD50BD21344C28004EF308 /* BulgeDistortion.swift */; };
+		BCF119A62211FA9C00C4A579 /* BulgeDistortion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD50BD21344C28004EF308 /* BulgeDistortion.swift */; };
+		BCF119A72211FAA000C4A579 /* BulgeDistortion.metal in Sources */ = {isa = PBXBuildFile; fileRef = 79DD50C021344C38004EF308 /* BulgeDistortion.metal */; };
+		BCF119A82211FAA000C4A579 /* BulgeDistortion.metal in Sources */ = {isa = PBXBuildFile; fileRef = 79DD50C021344C38004EF308 /* BulgeDistortion.metal */; };
 		BCFCD46520FCE83500560BC9 /* DissolveBlend.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFCD46420FCE83500560BC9 /* DissolveBlend.swift */; };
 		BCFCD46720FCE91200560BC9 /* DissolveBlend.metal in Sources */ = {isa = PBXBuildFile; fileRef = BCFCD46620FCE91200560BC9 /* DissolveBlend.metal */; };
 		BCFCD46820FCE91200560BC9 /* DissolveBlend.metal in Sources */ = {isa = PBXBuildFile; fileRef = BCFCD46620FCE91200560BC9 /* DissolveBlend.metal */; };
@@ -1054,6 +1058,7 @@
 				BC7BA27720F2C269006B5F4B /* BrightnessAdjustment.swift in Sources */,
 				79CB6DCC2108B1B10042F87B /* ColorBurnBlend.swift in Sources */,
 				79CB6DF9210928C90042F87B /* HueBlend.metal in Sources */,
+				BCF119A52211FA9C00C4A579 /* BulgeDistortion.swift in Sources */,
 				7957437E20FE2A81001EAE0A /* LuminanceThreshold.metal in Sources */,
 				79CB6E32210A0D8D0042F87B /* SoftLightBlend.metal in Sources */,
 				7957437B20FE2A6C001EAE0A /* LuminanceThreshold.swift in Sources */,
@@ -1064,6 +1069,7 @@
 				79EB1B892125D7630049135E /* ChromaKeyBlend.metal in Sources */,
 				795ECA8621E91B38000EF927 /* CGAColorspace.swift in Sources */,
 				79A81C8E2100F0E300A3B43A /* OpacityAdjustment.swift in Sources */,
+				BCF119A72211FAA000C4A579 /* BulgeDistortion.metal in Sources */,
 				793D934720F69A7F008A7A6E /* HueAdjustment.swift in Sources */,
 				793D933B20F6908A008A7A6E /* SaturationAdjustment.swift in Sources */,
 				79A81C912100F0EE00A3B43A /* OpacityAdjustment.metal in Sources */,
@@ -1217,6 +1223,7 @@
 				7957437F20FE2A81001EAE0A /* LuminanceThreshold.metal in Sources */,
 				79CB6DCD2108B1B10042F87B /* ColorBurnBlend.swift in Sources */,
 				79CB6DFA210928C90042F87B /* HueBlend.metal in Sources */,
+				BCF119A62211FA9C00C4A579 /* BulgeDistortion.swift in Sources */,
 				7957437C20FE2A6C001EAE0A /* LuminanceThreshold.swift in Sources */,
 				79CB6E33210A0D8D0042F87B /* SoftLightBlend.metal in Sources */,
 				7957438220FE2D97001EAE0A /* FalseColor.swift in Sources */,
@@ -1227,6 +1234,7 @@
 				79EB1B8A2125D7630049135E /* ChromaKeyBlend.metal in Sources */,
 				795ECA8721E91B38000EF927 /* CGAColorspace.swift in Sources */,
 				BCFCD46920FCE91800560BC9 /* DissolveBlend.swift in Sources */,
+				BCF119A82211FAA000C4A579 /* BulgeDistortion.metal in Sources */,
 				79E30E6420F10B6C005FA13C /* MetalRenderingDevice.swift in Sources */,
 				79E30E6A20F10F9C005FA13C /* Passthrough.metal in Sources */,
 				79A81C922100F0EE00A3B43A /* OpacityAdjustment.metal in Sources */,

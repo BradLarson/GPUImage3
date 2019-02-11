@@ -6,8 +6,8 @@ public class BulgeDistortion: BasicOperation {
     public init() {
         super.init(fragmentFunctionName:"bulgeDistortionFragment", numberOfInputs:1)
         
-        uniformSettings.appendUniform(0.25)
-        uniformSettings.appendUniform(0.5)
-        uniformSettings.appendUniform(Position.center)
+        ({radius = 0.25})()
+        ({scale = 0.5})()
+        ({center = Position.center})()
     }
 }
