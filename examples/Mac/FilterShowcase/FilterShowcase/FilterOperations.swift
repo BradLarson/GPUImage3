@@ -431,26 +431,26 @@ let filterOperations: Array<FilterOperationInterface> = [
 //            return nil
 //        })
 //    ),
-//    FilterOperation(
-//        filter:{PolkaDot()},
-//        listName:"Polka dot",
-//        titleName:"Polka Dot",
-//        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:0.3, initialValue:0.05),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.fractionalWidthOfAPixel = sliderValue
-//        },
-//        filterOperationType:.singleInput
-//    ),
-//    FilterOperation(
-//        filter:{Halftone()},
-//        listName:"Halftone",
-//        titleName:"Halftone",
-//        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:0.05, initialValue:0.01),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.fractionalWidthOfAPixel = sliderValue
-//        },
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{PolkaDot()},
+        listName:"Polka dot",
+        titleName:"Polka Dot",
+        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:0.3, initialValue:0.05),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.fractionalWidthOfAPixel = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
+    FilterOperation(
+        filter:{Halftone()},
+        listName:"Halftone",
+        titleName:"Halftone",
+        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:0.05, initialValue:0.01),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.fractionalWidthOfAPixel = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
     FilterOperation(
         filter:{Crosshatch()},
         listName:"Crosshatch",
@@ -471,16 +471,16 @@ let filterOperations: Array<FilterOperationInterface> = [
         },
         filterOperationType:.singleInput
     ),
-//    FilterOperation(
-//        filter:{PrewittEdgeDetection()},
-//        listName:"Prewitt edge detection",
-//        titleName:"Prewitt Edge Detection",
-//        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.0, initialValue:1.0),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.edgeStrength = sliderValue
-//        },
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{PrewittEdgeDetection()},
+        listName:"Prewitt edge detection",
+        titleName:"Prewitt Edge Detection",
+        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.0, initialValue:1.0),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.edgeStrength = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
 //    FilterOperation(
 //        filter:{CannyEdgeDetection()},
 //        listName:"Canny edge detection",
@@ -867,16 +867,16 @@ let filterOperations: Array<FilterOperationInterface> = [
         },
         filterOperationType:.singleInput
     ),
-//    FilterOperation(
-//        filter:{PinchDistortion()},
-//        listName:"Pinch",
-//        titleName:"Pinch",
-//        sliderConfiguration:.enabled(minimumValue:-2.0, maximumValue:2.0, initialValue:0.5),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.scale = sliderValue
-//        },
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{PinchDistortion()},
+        listName:"Pinch",
+        titleName:"Pinch",
+        sliderConfiguration:.enabled(minimumValue:-2.0, maximumValue:2.0, initialValue:0.5),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.scale = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
 //    FilterOperation(
 //        filter:{SphereRefraction()},
 //        listName:"Sphere refraction",

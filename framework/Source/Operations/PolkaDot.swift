@@ -1,6 +1,6 @@
 public class PolkaDot: BasicOperation {
     public var dotScaling:Float = 0.90 { didSet { uniformSettings["dotScaling"] = dotScaling } }
-    public var fractionalWidthOfAPixel:Float = 0.01 {
+    public var fractionalWidthOfAPixel:Float = 0.01{
         didSet {
             uniformSettings["fractionalWidthOfPixel"] = max(fractionalWidthOfAPixel, 0.01)
         }
@@ -9,7 +9,7 @@ public class PolkaDot: BasicOperation {
     public init() {
         super.init(fragmentFunctionName:"polkaDotFragment", numberOfInputs:1)
         
-        uniformSettings.appendUniform(0.01)
-        uniformSettings.appendUniform(0.90)
+        ({fractionalWidthOfAPixel = 0.01})()
+        ({dotScaling = 0.90})()
     }
 }
