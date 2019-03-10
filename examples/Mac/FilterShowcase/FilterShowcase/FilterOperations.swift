@@ -712,16 +712,16 @@ let filterOperations: Array<FilterOperationInterface> = [
             return nil
         })
     ),
-//    FilterOperation(
-//        filter:{EmbossFilter()},
-//        listName:"Emboss",
-//        titleName:"Emboss",
-//        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:5.0, initialValue:1.0),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.intensity = sliderValue
-//        },
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{EmbossFilter()},
+        listName:"Emboss",
+        titleName:"Emboss",
+        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:5.0, initialValue:1.0),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.intensity = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
     FilterOperation(
         filter:{Laplacian()},
         listName:"Laplacian",
@@ -762,14 +762,14 @@ let filterOperations: Array<FilterOperationInterface> = [
 //        },
 //        filterOperationType:.singleInput
 //    ),
-//    FilterOperation(
-//        filter:{KuwaharaRadius3Filter()},
-//        listName:"Kuwahara (radius 3)",
-//        titleName:"Kuwahara (Radius 3)",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback: nil,
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{KuwaharaRadius3Filter()},
+        listName:"Kuwahara (radius 3)",
+        titleName:"Kuwahara (Radius 3)",
+        sliderConfiguration:.disabled,
+        sliderUpdateCallback: nil,
+        filterOperationType:.singleInput
+    ),
     FilterOperation(
         filter:{Vignette()},
         listName:"Vignette",
