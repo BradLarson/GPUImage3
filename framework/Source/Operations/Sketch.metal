@@ -11,7 +11,6 @@ fragment half4 sketchFragment(NearbyTexelVertexIO fragmentInput [[stage_in]],
                              constant SketchUniform& uniform [[buffer(1)]])
 {
     constexpr sampler quadSampler(coord::pixel);
-    half4 textureColor = inputTexture.sample(quadSampler, fragmentInput.textureCoordinate);
     
     half bottomLeftIntensity = inputTexture.sample(quadSampler, fragmentInput.bottomTextureCoordinate).r;
     half bottomRightIntensity = inputTexture.sample(quadSampler, fragmentInput.bottomRightTextureCoordinate).r;

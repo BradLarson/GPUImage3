@@ -40,8 +40,7 @@ public class RenderView: MTKView, ImageConsumer {
     }
     
     public override func draw(_ rect:CGRect) {
-        if let currentDrawable = self.currentDrawable,
-            let imageTexture = currentTexture {
+        if let currentDrawable = self.currentDrawable, let imageTexture = currentTexture {
             let commandBuffer = sharedMetalRenderingDevice.commandQueue.makeCommandBuffer()
             
             let outputTexture = Texture(orientation: .portrait, texture: currentDrawable.texture)

@@ -36,10 +36,7 @@ open class BasicOperation: ImageProcessingOperation {
     var useNormalizedTextureCoordinates = true
     var metalPerformanceShaderPathway: ((MTLCommandBuffer, [UInt:Texture], Texture) -> ())?
 
-    public init(vertexFunctionName: String? = nil,
-                fragmentFunctionName: String,
-                numberOfInputs: UInt = 1,
-                operationName: String = #file) {
+    public init(vertexFunctionName: String? = nil, fragmentFunctionName: String, numberOfInputs: UInt = 1, operationName: String = #file) {
         self.maximumInputs = numberOfInputs
         self.operationName = operationName
         

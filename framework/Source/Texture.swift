@@ -26,17 +26,18 @@ public enum TextureTimingStyle {
 }
 
 public class Texture {
-    public var timingStyle: TextureTimingStyle = .stillImage
+    public var timingStyle: TextureTimingStyle
     public var orientation: ImageOrientation
     
     public let texture: MTLTexture
     
-    public init(orientation: ImageOrientation, texture: MTLTexture) {
+    public init(orientation: ImageOrientation, texture: MTLTexture, timingStyle: TextureTimingStyle  = .stillImage) {
         self.orientation = orientation
         self.texture = texture
+        self.timingStyle = timingStyle
     }
     
-    public init(device:MTLDevice, orientation: ImageOrientation, pixelFormat: MTLPixelFormat = .bgra8Unorm, width: Int, height: Int, mipmapped:Bool = false) {
+    public init(device:MTLDevice, orientation: ImageOrientation, pixelFormat: MTLPixelFormat = .bgra8Unorm, width: Int, height: Int, mipmapped:Bool = false, timingStyle: TextureTimingStyle  = .stillImage) {
         let textureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .bgra8Unorm,
                                                                          width: width,
                                                                          height: height,
@@ -49,6 +50,7 @@ public class Texture {
 
         self.orientation = orientation
         self.texture = newTexture
+        self.timingStyle = timingStyle
     }
 }
 

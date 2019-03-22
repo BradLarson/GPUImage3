@@ -41,7 +41,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         image = PictureInput(image:inputImage)
         
         filter = SaturationAdjustment()
-        
+
         image --> filter --> renderView
         image.processImage()
     }

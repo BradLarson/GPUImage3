@@ -15,7 +15,6 @@ fragment half4 thresholdSketchFragment(NearbyTexelVertexIO fragmentInput [[stage
     half3 bottomColor = inputTexture.sample(quadSampler, fragmentInput.bottomTextureCoordinate).rgb;
     half3 bottomLeftColor = inputTexture.sample(quadSampler, fragmentInput.bottomLeftTextureCoordinate).rgb;
     half3 bottomRightColor = inputTexture.sample(quadSampler, fragmentInput.bottomRightTextureCoordinate).rgb;
-    half4 centerColor = inputTexture.sample(quadSampler, fragmentInput.textureCoordinate);
     half3 leftColor = inputTexture.sample(quadSampler, fragmentInput.leftTextureCoordinate).rgb;
     half3 rightColor = inputTexture.sample(quadSampler, fragmentInput.rightTextureCoordinate).rgb;
     half3 topColor = inputTexture.sample(quadSampler, fragmentInput.topTextureCoordinate).rgb;

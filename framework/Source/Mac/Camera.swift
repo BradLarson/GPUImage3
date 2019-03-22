@@ -60,6 +60,11 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
     let videoOutput:AVCaptureVideoDataOutput!
     var videoTextureCache: CVMetalTextureCache?
     
+    var supportsFullYUVRange:Bool = false
+    let captureAsYUV:Bool
+    let yuvConversionRenderPipelineState:MTLRenderPipelineState?
+    var yuvLookupTable:[String:(Int, MTLDataType)] = [:]
+
     let frameRenderingSemaphore = DispatchSemaphore(value:1)
     let cameraProcessingQueue = DispatchQueue.global()
     let cameraFrameProcessingQueue = DispatchQueue(
@@ -72,15 +77,14 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
     var framesSinceLastCheck = 0
     var lastCheckTime = CFAbsoluteTimeGetCurrent()
     
-    public init(sessionPreset:AVCaptureSession.Preset,
-                cameraDevice:AVCaptureDevice? = nil,
-                location:PhysicalCameraLocation = .backFacing,
-                captureAsYUV:Bool = false) throws {
+    public init(sessionPreset:AVCaptureSession.Preset, cameraDevice:AVCaptureDevice? = nil, location:PhysicalCameraLocation = .backFacing, captureAsYUV:Bool = true) throws {
         self.location = location
         
         self.captureSession = AVCaptureSession()
         self.captureSession.beginConfiguration()
         
+        self.captureAsYUV = captureAsYUV
+
         if let cameraDevice = cameraDevice {
             self.inputCamera = cameraDevice
         } else {
@@ -90,6 +94,7 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
                 self.videoInput = nil
                 self.videoOutput = nil
                 self.inputCamera = nil
+                self.yuvConversionRenderPipelineState = nil
                 super.init()
                 throw CameraError()
             }
@@ -100,6 +105,7 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
         } catch {
             self.videoInput = nil
             self.videoOutput = nil
+            self.yuvConversionRenderPipelineState = nil
             super.init()
             throw error
         }
@@ -112,8 +118,32 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
         videoOutput = AVCaptureVideoDataOutput()
         videoOutput.alwaysDiscardsLateVideoFrames = false
         
-        videoOutput.videoSettings = [kCVPixelBufferMetalCompatibilityKey as String: true,
-                                     kCVPixelBufferPixelFormatTypeKey as String:NSNumber(value:Int32(kCVPixelFormatType_32BGRA))]
+        if captureAsYUV {
+            supportsFullYUVRange = false
+            let supportedPixelFormats = videoOutput.availableVideoPixelFormatTypes
+            for currentPixelFormat in supportedPixelFormats {
+                if ((currentPixelFormat as NSNumber).int32Value == Int32(kCVPixelFormatType_420YpCbCr8BiPlanarFullRange)) {
+                    supportsFullYUVRange = true
+                }
+            }
+            if (supportsFullYUVRange) {
+                let (pipelineState, lookupTable) = generateRenderPipelineState(device:sharedMetalRenderingDevice, vertexFunctionName:"twoInputVertex", fragmentFunctionName:"yuvConversionFullRangeFragment", operationName:"YUVToRGB")
+                self.yuvConversionRenderPipelineState = pipelineState
+                self.yuvLookupTable = lookupTable
+                videoOutput.videoSettings = [kCVPixelBufferMetalCompatibilityKey as String: true,
+                                             kCVPixelBufferPixelFormatTypeKey as String:NSNumber(value:Int32(kCVPixelFormatType_420YpCbCr8BiPlanarFullRange))]
+            } else {
+                let (pipelineState, lookupTable) = generateRenderPipelineState(device:sharedMetalRenderingDevice, vertexFunctionName:"twoInputVertex", fragmentFunctionName:"yuvConversionVideoRangeFragment", operationName:"YUVToRGB")
+                self.yuvConversionRenderPipelineState = pipelineState
+                self.yuvLookupTable = lookupTable
+                videoOutput.videoSettings = [kCVPixelBufferMetalCompatibilityKey as String: true,
+                                             kCVPixelBufferPixelFormatTypeKey as String:NSNumber(value:Int32(kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange))]
+            }
+        } else {
+            self.yuvConversionRenderPipelineState = nil
+            videoOutput.videoSettings = [kCVPixelBufferMetalCompatibilityKey as String: true,
+                                         kCVPixelBufferPixelFormatTypeKey as String:NSNumber(value:Int32(kCVPixelFormatType_32BGRA))]
+        }
         
         if (captureSession.canAddOutput(videoOutput)) {
             captureSession.addOutput(videoOutput)
@@ -124,11 +154,7 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
         
         super.init()
         
-        let _ = CVMetalTextureCacheCreate(kCFAllocatorDefault,
-                                          nil,
-                                          sharedMetalRenderingDevice.device,
-                                          nil,
-                                          &videoTextureCache)
+        let _ = CVMetalTextureCacheCreate(kCFAllocatorDefault, nil, sharedMetalRenderingDevice.device, nil, &videoTextureCache)
         
         videoOutput.setSampleBufferDelegate(self, queue:cameraProcessingQueue)
     }
@@ -157,23 +183,48 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
             self.delegate?.didCaptureBuffer(sampleBuffer)
             CVPixelBufferUnlockBaseAddress(cameraFrame, CVPixelBufferLockFlags(rawValue:CVOptionFlags(0)))
             
-            var textureRef:CVMetalTexture? = nil
-            let _ = CVMetalTextureCacheCreateTextureFromImage(kCFAllocatorDefault,
-                                                              self.videoTextureCache!,
-                                                              cameraFrame,
-                                                              nil,
-                                                              .bgra8Unorm,
-                                                              bufferWidth,
-                                                              bufferHeight,
-                                                              0,
-                                                              &textureRef)
-            
-            if let concreteTexture = textureRef,
-                let cameraTexture = CVMetalTextureGetTexture(concreteTexture) {
-                let texture = Texture(orientation: self.location.imageOrientation(), texture: cameraTexture)
-                self.updateTargetsWithTexture(texture)
+            let texture:Texture?
+            if self.captureAsYUV {
+                var luminanceTextureRef:CVMetalTexture? = nil
+                var chrominanceTextureRef:CVMetalTexture? = nil
+                // Luminance plane
+                let _ = CVMetalTextureCacheCreateTextureFromImage(kCFAllocatorDefault, self.videoTextureCache!, cameraFrame, nil, .r8Unorm, bufferWidth, bufferHeight, 0, &luminanceTextureRef)
+                // Chrominance plane
+                let _ = CVMetalTextureCacheCreateTextureFromImage(kCFAllocatorDefault, self.videoTextureCache!, cameraFrame, nil, .rg8Unorm, bufferWidth / 2, bufferHeight / 2, 1, &chrominanceTextureRef)
+
+                if let concreteLuminanceTextureRef = luminanceTextureRef, let concreteChrominanceTextureRef = chrominanceTextureRef,
+                    let luminanceTexture = CVMetalTextureGetTexture(concreteLuminanceTextureRef), let chrominanceTexture = CVMetalTextureGetTexture(concreteChrominanceTextureRef) {
+                    let outputTexture = Texture(device:sharedMetalRenderingDevice.device, orientation:self.location.imageOrientation(), width:bufferWidth, height:bufferHeight)
+                    
+                    let conversionMatrix:Matrix3x3
+                    if (self.supportsFullYUVRange) {
+                        conversionMatrix = colorConversionMatrix601FullRangeDefault
+                    } else {
+                        conversionMatrix = colorConversionMatrix601Default
+                    }
+                    
+                    convertYUVToRGB(pipelineState:self.yuvConversionRenderPipelineState!, lookupTable:self.yuvLookupTable,
+                                    luminanceTexture:Texture(orientation: self.location.imageOrientation(), texture:luminanceTexture),
+                                    chrominanceTexture:Texture(orientation: self.location.imageOrientation(), texture:chrominanceTexture),
+                                    resultTexture:outputTexture, colorConversionMatrix:conversionMatrix)
+                    texture = outputTexture
+                } else {
+                    texture = nil
+                }
+            } else {
+                var textureRef:CVMetalTexture? = nil
+                let _ = CVMetalTextureCacheCreateTextureFromImage(kCFAllocatorDefault, self.videoTextureCache!, cameraFrame, nil, .bgra8Unorm, bufferWidth, bufferHeight, 0, &textureRef)
+                if let concreteTexture = textureRef, let cameraTexture = CVMetalTextureGetTexture(concreteTexture) {
+                    texture = Texture(orientation: self.location.imageOrientation(), texture: cameraTexture)
+                } else {
+                    texture = nil
+                }
             }
             
+            if texture != nil {
+                self.updateTargetsWithTexture(texture!)
+            }
+
             if self.runBenchmark {
                 self.numberOfFramesCaptured += 1
                 if (self.numberOfFramesCaptured > initialBenchmarkFramesToIgnore) {

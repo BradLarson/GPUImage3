@@ -308,6 +308,12 @@
 		BC101EAC22454CE00020D74D /* PictureOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC101EAB22454CE00020D74D /* PictureOutput.swift */; };
 		BC101EB42245650F0020D74D /* ColorSwizzle.metal in Sources */ = {isa = PBXBuildFile; fileRef = BC101EB32245650F0020D74D /* ColorSwizzle.metal */; };
 		BC101EB52245650F0020D74D /* ColorSwizzle.metal in Sources */ = {isa = PBXBuildFile; fileRef = BC101EB32245650F0020D74D /* ColorSwizzle.metal */; };
+		BC101EC0224571D40020D74D /* YUVToRGBConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC101EBF224571D40020D74D /* YUVToRGBConversion.swift */; };
+		BC101EC1224571D40020D74D /* YUVToRGBConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC101EBF224571D40020D74D /* YUVToRGBConversion.swift */; };
+		BC101EC422457E610020D74D /* YUVToRGBConversion.metal in Sources */ = {isa = PBXBuildFile; fileRef = BC101EC322457E610020D74D /* YUVToRGBConversion.metal */; };
+		BC101EC522457E610020D74D /* YUVToRGBConversion.metal in Sources */ = {isa = PBXBuildFile; fileRef = BC101EC322457E610020D74D /* YUVToRGBConversion.metal */; };
+		BC101ECB22458B7B0020D74D /* MovieInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC101EBA22456BDB0020D74D /* MovieInput.swift */; };
+		BC101ECC22458B7C0020D74D /* MovieInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC101EBA22456BDB0020D74D /* MovieInput.swift */; };
 		BC5193B12208F2CA00DD18F6 /* Pixellate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD50D521346075004EF308 /* Pixellate.swift */; };
 		BC5193B22208F2CA00DD18F6 /* Pixellate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD50D521346075004EF308 /* Pixellate.swift */; };
 		BC5193B42208F2CE00DD18F6 /* Pixellate.metal in Sources */ = {isa = PBXBuildFile; fileRef = 79DD50D82134607F004EF308 /* Pixellate.metal */; };
@@ -531,6 +537,9 @@
 		BC101EA922454CD20020D74D /* PictureOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PictureOutput.swift; path = Source/Mac/PictureOutput.swift; sourceTree = "<group>"; };
 		BC101EAB22454CE00020D74D /* PictureOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PictureOutput.swift; path = Source/iOS/PictureOutput.swift; sourceTree = "<group>"; };
 		BC101EB32245650F0020D74D /* ColorSwizzle.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = ColorSwizzle.metal; path = Source/Operations/ColorSwizzle.metal; sourceTree = "<group>"; };
+		BC101EBA22456BDB0020D74D /* MovieInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieInput.swift; path = Source/MovieInput.swift; sourceTree = "<group>"; };
+		BC101EBF224571D40020D74D /* YUVToRGBConversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YUVToRGBConversion.swift; path = Source/YUVToRGBConversion.swift; sourceTree = "<group>"; };
+		BC101EC322457E610020D74D /* YUVToRGBConversion.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = YUVToRGBConversion.metal; path = Source/YUVToRGBConversion.metal; sourceTree = "<group>"; };
 		BC7BA27320F2BD1E006B5F4B /* ShaderUniformSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShaderUniformSettings.swift; path = Source/ShaderUniformSettings.swift; sourceTree = "<group>"; };
 		BC7BA27620F2C269006B5F4B /* BrightnessAdjustment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BrightnessAdjustment.swift; path = Source/Operations/BrightnessAdjustment.swift; sourceTree = "<group>"; };
 		BC7BA27820F2C2CF006B5F4B /* BrightnessAdjustment.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; name = BrightnessAdjustment.metal; path = Source/Operations/BrightnessAdjustment.metal; sourceTree = "<group>"; };
@@ -782,6 +791,9 @@
 		BCE0BE9520D6E3830006E120 /* Inputs */ = {
 			isa = PBXGroup;
 			children = (
+				BC101EBA22456BDB0020D74D /* MovieInput.swift */,
+				BC101EBF224571D40020D74D /* YUVToRGBConversion.swift */,
+				BC101EC322457E610020D74D /* YUVToRGBConversion.metal */,
 				79E30E5C20ED6411005FA13C /* iOS */,
 				79E30E5D20ED641C005FA13C /* Mac */,
 			);
@@ -1061,6 +1073,7 @@
 				BCFCD46720FCE91200560BC9 /* DissolveBlend.metal in Sources */,
 				795ECAAB21ED2975000EF927 /* Sketch.metal in Sources */,
 				793D933220F68A32008A7A6E /* ExposureAdjustment.metal in Sources */,
+				BC101ECB22458B7B0020D74D /* MovieInput.swift in Sources */,
 				79CB6DED210926300042F87B /* ExclusionBlend.metal in Sources */,
 				7999997D2226EC05007404F2 /* KuwaharaFilter.swift in Sources */,
 				795ECA7721E903F1000EF927 /* Toon.metal in Sources */,
@@ -1104,6 +1117,7 @@
 				793D934A20F69A89008A7A6E /* HueAdjustment.metal in Sources */,
 				7B25C0EC2103D5E9000EC621 /* ColorBlend.metal in Sources */,
 				795ECA8921E91B47000EF927 /* CGAColorspace.metal in Sources */,
+				BC101EC422457E610020D74D /* YUVToRGBConversion.metal in Sources */,
 				795B05D820F270FF00D1E759 /* MetalRendering.swift in Sources */,
 				4C280F79213426EC001A985C /* Posterize.metal in Sources */,
 				793D932F20F68A21008A7A6E /* ExposureAdjustment.swift in Sources */,
@@ -1123,6 +1137,7 @@
 				793D933E20F69098008A7A6E /* SaturationAdjustment.metal in Sources */,
 				BCFCD46520FCE83500560BC9 /* DissolveBlend.swift in Sources */,
 				79E30E6320F10B6C005FA13C /* MetalRenderingDevice.swift in Sources */,
+				BC101EC0224571D40020D74D /* YUVToRGBConversion.swift in Sources */,
 				7B25C0E62103D334000EC621 /* AlphaBlend.metal in Sources */,
 				795ECA8321E91434000EF927 /* Crosshatch.metal in Sources */,
 				799999802226EC17007404F2 /* KuwaharaFilter.metal in Sources */,
@@ -1244,6 +1259,7 @@
 				BCE0BEA920D6E3C80006E120 /* ImageOrientation.swift in Sources */,
 				795ECAAC21ED2975000EF927 /* Sketch.metal in Sources */,
 				7957437620FBF453001EAE0A /* Haze.swift in Sources */,
+				BC101ECC22458B7C0020D74D /* MovieInput.swift in Sources */,
 				79CB6DEE210926300042F87B /* ExclusionBlend.metal in Sources */,
 				7999997E2226EC05007404F2 /* KuwaharaFilter.swift in Sources */,
 				795ECA7821E903F1000EF927 /* Toon.metal in Sources */,
@@ -1287,6 +1303,7 @@
 				7957437920FBF4E4001EAE0A /* Haze.metal in Sources */,
 				BCE0BEA320D6E3C80006E120 /* Position.swift in Sources */,
 				7B25C0ED2103D5E9000EC621 /* ColorBlend.metal in Sources */,
+				BC101EC522457E610020D74D /* YUVToRGBConversion.metal in Sources */,
 				795ECA8A21E91B47000EF927 /* CGAColorspace.metal in Sources */,
 				79E30E7020F11989005FA13C /* Timestamp.swift in Sources */,
 				4C280F7A213426EC001A985C /* Posterize.metal in Sources */,
@@ -1306,6 +1323,7 @@
 				BC7BA29720F6F366006B5F4B /* PictureInput.swift in Sources */,
 				793D933F20F69098008A7A6E /* SaturationAdjustment.metal in Sources */,
 				793D933020F68A21008A7A6E /* ExposureAdjustment.swift in Sources */,
+				BC101EC1224571D40020D74D /* YUVToRGBConversion.swift in Sources */,
 				793D934820F69A7F008A7A6E /* HueAdjustment.swift in Sources */,
 				7B25C0E72103D334000EC621 /* AlphaBlend.metal in Sources */,
 				799999812226EC17007404F2 /* KuwaharaFilter.metal in Sources */,
