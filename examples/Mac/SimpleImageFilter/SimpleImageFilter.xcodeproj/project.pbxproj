@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC101EB2224552780020D74D /* WID-small.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BC101EB0224552780020D74D /* WID-small.jpg */; };
 		BC1E130C1C9F5DB9008F844F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E130B1C9F5DB9008F844F /* AppDelegate.swift */; };
 		BC1E13111C9F5DB9008F844F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC1E130F1C9F5DB9008F844F /* MainMenu.xib */; };
 		BC1E132F1C9F7C7B008F844F /* Lambeau.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BC1E132E1C9F7C7B008F844F /* Lambeau.jpg */; };
@@ -22,13 +23,6 @@
 			remoteGlobalIDString = BC6E7CAB1C39A9D8006DF678;
 			remoteInfo = GPUImage_macOS;
 		};
-		BC9E36021E5258F800B8604F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC9E35F91E5258F800B8604F /* GPUImage.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BC6E7CB51C39A9D8006DF678;
-			remoteInfo = GPUImageTests_macOS;
-		};
 		BC9E36041E5258F800B8604F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BC9E35F91E5258F800B8604F /* GPUImage.xcodeproj */;
@@ -36,18 +30,11 @@
 			remoteGlobalIDString = BC9E34E91E524A2200B8604F;
 			remoteInfo = GPUImage_iOS;
 		};
-		BC9E36061E5258F800B8604F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC9E35F91E5258F800B8604F /* GPUImage.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BC9E34F11E524A2200B8604F;
-			remoteInfo = GPUImageTests_iOS;
-		};
 		BC9E36081E52590000B8604F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BC9E35F91E5258F800B8604F /* GPUImage.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = BC6E7CAA1C39A9D8006DF678;
+			remoteGlobalIDString = BCE0BE8B20D6E2B80006E120;
 			remoteInfo = GPUImage_macOS;
 		};
 /* End PBXContainerItemProxy section */
@@ -66,6 +53,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BC101EB0224552780020D74D /* WID-small.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "WID-small.jpg"; path = "../../../SharedAssets/WID-small.jpg"; sourceTree = "<group>"; };
 		BC1E13081C9F5DB9008F844F /* SimpleImageFilter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleImageFilter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC1E130B1C9F5DB9008F844F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC1E13101C9F5DB9008F844F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -117,6 +105,7 @@
 		BC7F5B621CBE9FD900C39D33 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BC101EB0224552780020D74D /* WID-small.jpg */,
 				BC1E13121C9F5DB9008F844F /* Info.plist */,
 				BC7F5B601CBE9D4400C39D33 /* Assets.xcassets */,
 				BC1E132E1C9F7C7B008F844F /* Lambeau.jpg */,
@@ -128,10 +117,8 @@
 		BC9E35FA1E5258F800B8604F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BC9E36011E5258F800B8604F /* GPUImage.framework */,
-				BC9E36031E5258F800B8604F /* GPUImageTests_macOS.xctest */,
 				BC9E36051E5258F800B8604F /* GPUImage.framework */,
-				BC9E36071E5258F800B8604F /* GPUImageTests_iOS.xctest */,
+				BC9E36011E5258F800B8604F /* GPUImage.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -206,25 +193,11 @@
 			remoteRef = BC9E36001E5258F800B8604F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		BC9E36031E5258F800B8604F /* GPUImageTests_macOS.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = GPUImageTests_macOS.xctest;
-			remoteRef = BC9E36021E5258F800B8604F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		BC9E36051E5258F800B8604F /* GPUImage.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = GPUImage.framework;
 			remoteRef = BC9E36041E5258F800B8604F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		BC9E36071E5258F800B8604F /* GPUImageTests_iOS.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = GPUImageTests_iOS.xctest;
-			remoteRef = BC9E36061E5258F800B8604F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -236,6 +209,7 @@
 			files = (
 				BC1E132F1C9F7C7B008F844F /* Lambeau.jpg in Resources */,
 				BC7F5B611CBE9D4400C39D33 /* Assets.xcassets in Resources */,
+				BC101EB2224552780020D74D /* WID-small.jpg in Resources */,
 				BC1E13111C9F5DB9008F844F /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
