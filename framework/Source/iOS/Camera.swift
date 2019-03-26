@@ -194,7 +194,6 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
                 
                 if let concreteLuminanceTextureRef = luminanceTextureRef, let concreteChrominanceTextureRef = chrominanceTextureRef,
                     let luminanceTexture = CVMetalTextureGetTexture(concreteLuminanceTextureRef), let chrominanceTexture = CVMetalTextureGetTexture(concreteChrominanceTextureRef) {
-                    let outputTexture = Texture(device:sharedMetalRenderingDevice.device, orientation:self.location.imageOrientation(), width:bufferWidth, height:bufferHeight)
                     
                     let conversionMatrix:Matrix3x3
                     if (self.supportsFullYUVRange) {
@@ -202,6 +201,17 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
                     } else {
                         conversionMatrix = colorConversionMatrix601Default
                     }
+                    
+                    let outputWidth:Int
+                    let outputHeight:Int
+                    if self.location.imageOrientation().rotationNeeded(for:.portrait).flipsDimensions() {
+                        outputWidth = bufferHeight
+                        outputHeight = bufferWidth
+                    } else {
+                        outputWidth = bufferWidth
+                        outputHeight = bufferHeight
+                    }
+                    let outputTexture = Texture(device:sharedMetalRenderingDevice.device, orientation:.portrait, width:outputWidth, height:outputHeight)
                     
                     convertYUVToRGB(pipelineState:self.yuvConversionRenderPipelineState!, lookupTable:self.yuvLookupTable,
                                     luminanceTexture:Texture(orientation: self.location.imageOrientation(), texture:luminanceTexture),

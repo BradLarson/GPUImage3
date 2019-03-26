@@ -81,11 +81,13 @@ extension Texture {
     }
     
     func aspectRatio(for rotation:Rotation) -> Float {
-        if rotation.flipsDimensions() {
-            return Float(self.texture.width) / Float(self.texture.height)
-        } else {
-            return Float(self.texture.height) / Float(self.texture.width)
-        }
+        // TODO: Figure out why my logic was failing on this
+        return Float(self.texture.height) / Float(self.texture.width)
+//        if rotation.flipsDimensions() {
+//            return Float(self.texture.width) / Float(self.texture.height)
+//        } else {
+//            return Float(self.texture.height) / Float(self.texture.width)
+//        }
     }
 
     

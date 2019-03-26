@@ -27,6 +27,6 @@ fragment half4 bulgeDistortionFragment(SingleInputVertexIO fragmentInput [[stage
         textureCoordinateToUse += uniform.center;
     }
     
-    constexpr sampler quadSampler;
+    constexpr sampler quadSampler(mag_filter::linear, min_filter::linear);
     return inputTexture.sample(quadSampler, textureCoordinateToUse);
 }
