@@ -1,5 +1,11 @@
-import Metal
+#if canImport(UIKit)
+import UIKit
+public typealias PlatformImageType = UIImage
+#else
 import Cocoa
+public typealias PlatformImageType = NSImage
+#endif
+import Metal
 
 public enum PictureFileFormat {
     case png
@@ -9,8 +15,10 @@ public enum PictureFileFormat {
 public class PictureOutput: ImageConsumer {
     public var encodedImageAvailableCallback:((Data) -> ())?
     public var encodedImageFormat:PictureFileFormat = .png
-    public var imageAvailableCallback:((NSImage) -> ())?
+    public var imageAvailableCallback:((PlatformImageType) -> ())?
     public var onlyCaptureNextFrame:Bool = true
+    public var keepImageAroundForSynchronousCapture:Bool = false
+    var storedTexture:Texture?
     
     public let sources = SourceContainer()
     public let maximumInputs:UInt = 1
@@ -21,7 +29,7 @@ public class PictureOutput: ImageConsumer {
     
     deinit {
     }
-
+    
     public func saveNextFrameToURL(_ url:URL, format:PictureFileFormat) {
         onlyCaptureNextFrame = true
         encodedImageFormat = format
@@ -35,13 +43,23 @@ public class PictureOutput: ImageConsumer {
             }
         }
     }
-
     
     public func newTextureAvailable(_ texture:Texture, fromSourceIndex:UInt) {
+        if keepImageAroundForSynchronousCapture {
+//            storedTexture?.unlock()
+            storedTexture = texture
+        }
+        
         if let imageCallback = imageAvailableCallback {
             let cgImageFromBytes = texture.cgImage()
-            let image = NSImage(cgImage:cgImageFromBytes, size:NSZeroSize)
             
+            // TODO: Let people specify orientations
+#if canImport(UIKit)
+            let image = UIImage(cgImage:cgImageFromBytes, scale:1.0, orientation:.up)
+#else
+            let image = NSImage(cgImage:cgImageFromBytes, size:NSZeroSize)
+#endif
+
             imageCallback(image)
             
             if onlyCaptureNextFrame {
@@ -51,13 +69,21 @@ public class PictureOutput: ImageConsumer {
         
         if let imageCallback = encodedImageAvailableCallback {
             let cgImageFromBytes = texture.cgImage()
-            let bitmapRepresentation = NSBitmapImageRep(cgImage:cgImageFromBytes)
+            
             let imageData:Data
+#if canImport(UIKit)
+            let image = UIImage(cgImage:cgImageFromBytes, scale:1.0, orientation:.up)
+            switch encodedImageFormat {
+                case .png: imageData = UIImagePNGRepresentation(image)! // TODO: Better error handling here
+                case .jpeg: imageData = UIImageJPEGRepresentation(image, 0.8)! // TODO: Be able to set image quality
+            }
+#else
+            let bitmapRepresentation = NSBitmapImageRep(cgImage:cgImageFromBytes)
             switch encodedImageFormat {
                 case .png: imageData = bitmapRepresentation.representation(using: .png, properties: [NSBitmapImageRep.PropertyKey(rawValue: ""):""])!
                 case .jpeg: imageData = bitmapRepresentation.representation(using: .jpeg, properties: [NSBitmapImageRep.PropertyKey(rawValue: ""):""])!
             }
-
+#endif
             imageCallback(imageData)
             
             if onlyCaptureNextFrame {
@@ -65,6 +91,18 @@ public class PictureOutput: ImageConsumer {
             }
         }
     }
+    
+//    public func synchronousImageCapture() -> UIImage {
+//        var outputImage:UIImage!
+//        sharedImageProcessingContext.runOperationSynchronously{
+//            guard let currentFramebuffer = storedFramebuffer else { fatalError("Synchronous access requires keepImageAroundForSynchronousCapture to be set to true") }
+//            
+//            let cgImageFromBytes = cgImageFromFramebuffer(currentFramebuffer)
+//            outputImage = UIImage(cgImage:cgImageFromBytes, scale:1.0, orientation:.up)
+//        }
+//        
+//        return outputImage
+//    }
 }
 
 public extension ImageSource {
@@ -75,16 +113,16 @@ public extension ImageSource {
     }
 }
 
-public extension NSImage {
-    public func filterWithOperation<T:ImageProcessingOperation>(_ operation:T) -> NSImage {
+public extension PlatformImageType {
+    public func filterWithOperation<T:ImageProcessingOperation>(_ operation:T) -> PlatformImageType {
         return filterWithPipeline{input, output in
             input --> operation --> output
         }
     }
-
-    public func filterWithPipeline(_ pipeline:(PictureInput, PictureOutput) -> ()) -> NSImage {
+    
+    public func filterWithPipeline(_ pipeline:(PictureInput, PictureOutput) -> ()) -> PlatformImageType {
         let picture = PictureInput(image:self)
-        var outputImage:NSImage?
+        var outputImage:PlatformImageType?
         let pictureOutput = PictureOutput()
         pictureOutput.onlyCaptureNextFrame = true
         pictureOutput.imageAvailableCallback = {image in

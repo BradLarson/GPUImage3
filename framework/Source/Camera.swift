@@ -12,8 +12,12 @@ public enum PhysicalCameraLocation {
     
     func imageOrientation() -> ImageOrientation {
         switch self {
-        case .backFacing: return .landscapeRight
-        case .frontFacing: return .portrait
+            case .backFacing: return .landscapeRight
+#if os(iOS)
+            case .frontFacing: return .landscapeLeft
+#else
+            case .frontFacing: return .portrait
+#endif
         }
     }
     
@@ -43,7 +47,7 @@ let initialBenchmarkFramesToIgnore = 5
 
 
 public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBufferDelegate {
-    
+
     public var location:PhysicalCameraLocation {
         didSet {
             // TODO: Swap the camera locations, framebuffers as needed
@@ -64,7 +68,7 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
     let captureAsYUV:Bool
     let yuvConversionRenderPipelineState:MTLRenderPipelineState?
     var yuvLookupTable:[String:(Int, MTLDataType)] = [:]
-
+    
     let frameRenderingSemaphore = DispatchSemaphore(value:1)
     let cameraProcessingQueue = DispatchQueue.global()
     let cameraFrameProcessingQueue = DispatchQueue(
@@ -84,7 +88,7 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
         self.captureSession.beginConfiguration()
         
         self.captureAsYUV = captureAsYUV
-
+        
         if let cameraDevice = cameraDevice {
             self.inputCamera = cameraDevice
         } else {
@@ -144,7 +148,7 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
             videoOutput.videoSettings = [kCVPixelBufferMetalCompatibilityKey as String: true,
                                          kCVPixelBufferPixelFormatTypeKey as String:NSNumber(value:Int32(kCVPixelFormatType_32BGRA))]
         }
-        
+
         if (captureSession.canAddOutput(videoOutput)) {
             captureSession.addOutput(videoOutput)
         }
@@ -155,7 +159,7 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
         super.init()
         
         let _ = CVMetalTextureCacheCreate(kCFAllocatorDefault, nil, sharedMetalRenderingDevice.device, nil, &videoTextureCache)
-        
+
         videoOutput.setSampleBufferDelegate(self, queue:cameraProcessingQueue)
     }
     
@@ -191,10 +195,9 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
                 let _ = CVMetalTextureCacheCreateTextureFromImage(kCFAllocatorDefault, self.videoTextureCache!, cameraFrame, nil, .r8Unorm, bufferWidth, bufferHeight, 0, &luminanceTextureRef)
                 // Chrominance plane
                 let _ = CVMetalTextureCacheCreateTextureFromImage(kCFAllocatorDefault, self.videoTextureCache!, cameraFrame, nil, .rg8Unorm, bufferWidth / 2, bufferHeight / 2, 1, &chrominanceTextureRef)
-
+                
                 if let concreteLuminanceTextureRef = luminanceTextureRef, let concreteChrominanceTextureRef = chrominanceTextureRef,
                     let luminanceTexture = CVMetalTextureGetTexture(concreteLuminanceTextureRef), let chrominanceTexture = CVMetalTextureGetTexture(concreteChrominanceTextureRef) {
-                    let outputTexture = Texture(device:sharedMetalRenderingDevice.device, orientation:self.location.imageOrientation(), width:bufferWidth, height:bufferHeight)
                     
                     let conversionMatrix:Matrix3x3
                     if (self.supportsFullYUVRange) {
@@ -202,6 +205,17 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
                     } else {
                         conversionMatrix = colorConversionMatrix601Default
                     }
+                    
+                    let outputWidth:Int
+                    let outputHeight:Int
+                    if self.location.imageOrientation().rotationNeeded(for:.portrait).flipsDimensions() {
+                        outputWidth = bufferHeight
+                        outputHeight = bufferWidth
+                    } else {
+                        outputWidth = bufferWidth
+                        outputHeight = bufferHeight
+                    }
+                    let outputTexture = Texture(device:sharedMetalRenderingDevice.device, orientation:.portrait, width:outputWidth, height:outputHeight)
                     
                     convertYUVToRGB(pipelineState:self.yuvConversionRenderPipelineState!, lookupTable:self.yuvLookupTable,
                                     luminanceTexture:Texture(orientation: self.location.imageOrientation(), texture:luminanceTexture),
@@ -234,28 +248,28 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
                     print("Current frame time : \(1000.0 * currentFrameTime) ms")
                 }
             }
-            
+
             if self.logFPS {
                 if ((CFAbsoluteTimeGetCurrent() - self.lastCheckTime) > 1.0) {
                     self.lastCheckTime = CFAbsoluteTimeGetCurrent()
                     print("FPS: \(self.framesSinceLastCheck)")
                     self.framesSinceLastCheck = 0
                 }
-                
+
                 self.framesSinceLastCheck += 1
             }
-            
+
             self.frameRenderingSemaphore.signal()
         }
     }
     
     public func startCapture() {
-
+        
         let _ = frameRenderingSemaphore.wait(timeout:DispatchTime.distantFuture)
         self.numberOfFramesCaptured = 0
         self.totalFrameTimeDuringCapture = 0
         self.frameRenderingSemaphore.signal()
-
+        
         if (!captureSession.isRunning) {
             captureSession.startRunning()
         }
@@ -264,12 +278,12 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
     public func stopCapture() {
         if (captureSession.isRunning) {
             let _ = frameRenderingSemaphore.wait(timeout:DispatchTime.distantFuture)
-
+            
             captureSession.stopRunning()
             self.frameRenderingSemaphore.signal()
         }
     }
-    
+
     public func transmitPreviousImage(to target: ImageConsumer, atIndex: UInt) {
         // Not needed for camera
     }

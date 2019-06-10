@@ -1,4 +1,8 @@
+#if canImport(UIKit)
 import UIKit
+#else
+import Cocoa
+#endif
 import MetalKit
 
 public class PictureInput: ImageSource {
@@ -11,6 +15,7 @@ public class PictureInput: ImageSource {
         internalImage = image
     }
     
+    #if canImport(UIKit)
     public convenience init(image:UIImage, smoothlyScaleOutput:Bool = false, orientation:ImageOrientation = .portrait) {
         self.init(image: image.cgImage!, smoothlyScaleOutput: smoothlyScaleOutput, orientation: orientation)
     }
@@ -19,6 +24,17 @@ public class PictureInput: ImageSource {
         guard let image = UIImage(named:imageName) else { fatalError("No such image named: \(imageName) in your application bundle") }
         self.init(image:image, smoothlyScaleOutput:smoothlyScaleOutput, orientation:orientation)
     }
+    #else
+    public convenience init(image:NSImage, smoothlyScaleOutput:Bool = false, orientation:ImageOrientation = .portrait) {
+        self.init(image:image.cgImage(forProposedRect:nil, context:nil, hints:nil)!, smoothlyScaleOutput:smoothlyScaleOutput, orientation:orientation)
+    }
+    
+    public convenience init(imageName:String, smoothlyScaleOutput:Bool = false, orientation:ImageOrientation = .portrait) {
+        let imageName = NSImage.Name(rawValue: imageName)
+        guard let image = NSImage(named:imageName) else { fatalError("No such image named: \(imageName) in your application bundle") }
+        self.init(image:image.cgImage(forProposedRect:nil, context:nil, hints:nil)!, smoothlyScaleOutput:smoothlyScaleOutput, orientation:orientation)
+    }
+    #endif
     
     public func processImage(synchronously:Bool = false) {
         if let texture = internalTexture {
