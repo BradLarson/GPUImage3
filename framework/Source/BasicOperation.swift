@@ -100,11 +100,15 @@ open class BasicOperation: ImageProcessingOperation {
                 }
                 alternateRenderingFunction(commandBuffer, rotatedInputTextures, outputTexture)
             } else {
-                commandBuffer.renderQuad(pipelineState: renderPipelineState, uniformSettings: uniformSettings, inputTextures: inputTextures, useNormalizedTextureCoordinates: useNormalizedTextureCoordinates, outputTexture: outputTexture)
+                internalRenderFunction(commandBuffer: commandBuffer, outputTexture: outputTexture)
             }
             commandBuffer.commit()
             
             updateTargetsWithTexture(outputTexture)
         }
+    }
+    
+    func internalRenderFunction(commandBuffer: MTLCommandBuffer, outputTexture: Texture) {
+        commandBuffer.renderQuad(pipelineState: renderPipelineState, uniformSettings: uniformSettings, inputTextures: inputTextures, useNormalizedTextureCoordinates: useNormalizedTextureCoordinates, outputTexture: outputTexture)
     }
 }
