@@ -780,16 +780,16 @@ let filterOperations: Array<FilterOperationInterface> = [
         },
         filterOperationType:.singleInput
     ),
-//    FilterOperation(
-//        filter:{GaussianBlur()},
-//        listName:"Gaussian blur",
-//        titleName:"Gaussian Blur",
-//        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:40.0, initialValue:2.0),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.blurRadiusInPixels = sliderValue
-//        },
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{GaussianBlur()},
+        listName:"Gaussian blur",
+        titleName:"Gaussian Blur",
+        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:40.0, initialValue:2.0),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.blurRadiusInPixels = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
 //    FilterOperation(
 //        filter:{BoxBlur()},
 //        listName:"Box blur",

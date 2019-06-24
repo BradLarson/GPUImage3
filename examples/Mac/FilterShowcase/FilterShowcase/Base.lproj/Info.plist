@@ -25,11 +25,13 @@
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
 	<key>NSCameraUsageDescription</key>
-	<string>This application uses the camera to display a filtered video feed.</string>
+	<string>FilterShowcase uses the camera to display a filtered video feed.</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2016 Sunset Lake Software LLC. All rights reserved.</string>
+	<string>Copyright © 2019 Sunset Lake Software LLC. All rights reserved.</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>FilterShowcase uses the camera to display a filtered video feed.</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 </dict>

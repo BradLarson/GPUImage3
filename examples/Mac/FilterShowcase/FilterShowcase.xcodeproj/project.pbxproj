@@ -14,6 +14,7 @@
 		BC1E135E1C9F8419008F844F /* FilterOperationTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E135A1C9F8419008F844F /* FilterOperationTypes.swift */; };
 		BC1E135F1C9F8419008F844F /* FilterShowcaseWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E135B1C9F8419008F844F /* FilterShowcaseWindowController.swift */; };
 		BC1E13601C9F8419008F844F /* FilterShowcaseWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC1E135C1C9F8419008F844F /* FilterShowcaseWindowController.xib */; };
+		BC25F89622C14CC500CBBD15 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC25F89422C14CC500CBBD15 /* InfoPlist.strings */; };
 		BC2966BA1CBDDB2F0067B9E1 /* Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BC2966B91CBDDB2F0067B9E1 /* Mask.png */; };
 		BC2966BC1CBDDB3E0067B9E1 /* WID-small.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BC2966BB1CBDDB3E0067B9E1 /* WID-small.jpg */; };
 		BC3592D41CBDDF6600DF8ACA /* lookup_amatorka.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3592D01CBDDF6600DF8ACA /* lookup_amatorka.png */; };
@@ -66,11 +67,12 @@
 		BC1E133E1C9F82B4008F844F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC1E13401C9F82B4008F844F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../SharedAssets/Assets.xcassets; sourceTree = "<group>"; };
 		BC1E13431C9F82B4008F844F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		BC1E13451C9F82B4008F844F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = FilterShowcase/Info.plist; sourceTree = "<group>"; };
 		BC1E13591C9F8419008F844F /* FilterOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterOperations.swift; sourceTree = "<group>"; };
 		BC1E135A1C9F8419008F844F /* FilterOperationTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterOperationTypes.swift; sourceTree = "<group>"; };
 		BC1E135B1C9F8419008F844F /* FilterShowcaseWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterShowcaseWindowController.swift; sourceTree = "<group>"; };
 		BC1E135C1C9F8419008F844F /* FilterShowcaseWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterShowcaseWindowController.xib; sourceTree = "<group>"; };
+		BC25F89122BD7CA800CBBD15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/Info.plist; sourceTree = "<group>"; };
+		BC25F89522C14CC500CBBD15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = FilterShowcase/Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BC2966B91CBDDB2F0067B9E1 /* Mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Mask.png; path = ../../SharedAssets/Mask.png; sourceTree = "<group>"; };
 		BC2966BB1CBDDB3E0067B9E1 /* WID-small.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "WID-small.jpg"; path = "../../SharedAssets/WID-small.jpg"; sourceTree = "<group>"; };
 		BC3592D01CBDDF6600DF8ACA /* lookup_amatorka.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lookup_amatorka.png; path = ../../../framework/Source/Operations/LookupImages/lookup_amatorka.png; sourceTree = "<group>"; };
@@ -134,7 +136,8 @@
 				BC2966BB1CBDDB3E0067B9E1 /* WID-small.jpg */,
 				BC2966B91CBDDB2F0067B9E1 /* Mask.png */,
 				BC1E13401C9F82B4008F844F /* Assets.xcassets */,
-				BC1E13451C9F82B4008F844F /* Info.plist */,
+				BC25F89222BD7CA800CBBD15 /* Info.plist */,
+				BC25F89422C14CC500CBBD15 /* InfoPlist.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -259,6 +263,7 @@
 				BC3592D71CBDDF6600DF8ACA /* lookup_soft_elegance_2.png in Resources */,
 				BC3592D61CBDDF6600DF8ACA /* lookup_soft_elegance_1.png in Resources */,
 				BC2966BC1CBDDB3E0067B9E1 /* WID-small.jpg in Resources */,
+				BC25F89622C14CC500CBBD15 /* InfoPlist.strings in Resources */,
 				BC3592D51CBDDF6600DF8ACA /* lookup_miss_etikate.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,6 +299,23 @@
 				BC1E13431C9F82B4008F844F /* Base */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		BC25F89222BD7CA800CBBD15 /* Info.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BC25F89122BD7CA800CBBD15 /* Base */,
+			);
+			name = Info.plist;
+			path = FilterShowcase;
+			sourceTree = "<group>";
+		};
+		BC25F89422C14CC500CBBD15 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BC25F89522C14CC500CBBD15 /* Base */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -404,7 +426,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = FilterShowcase/Info.plist;
+				INFOPLIST_FILE = FilterShowcase/Base.lproj/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.redqueencoder.FilterShowcase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -418,7 +440,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = FilterShowcase/Info.plist;
+				INFOPLIST_FILE = FilterShowcase/Base.lproj/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.redqueencoder.FilterShowcase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
