@@ -310,6 +310,8 @@
 		BC101EC522457E610020D74D /* YUVToRGBConversion.metal in Sources */ = {isa = PBXBuildFile; fileRef = BC101EC322457E610020D74D /* YUVToRGBConversion.metal */; };
 		BC101ECB22458B7B0020D74D /* MovieInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC101EBA22456BDB0020D74D /* MovieInput.swift */; };
 		BC101ECC22458B7C0020D74D /* MovieInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC101EBA22456BDB0020D74D /* MovieInput.swift */; };
+		BC25F89A22C158E600CBBD15 /* BoxBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC25F89922C158E600CBBD15 /* BoxBlur.swift */; };
+		BC25F89B22C158E600CBBD15 /* BoxBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC25F89922C158E600CBBD15 /* BoxBlur.swift */; };
 		BC5193B12208F2CA00DD18F6 /* Pixellate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD50D521346075004EF308 /* Pixellate.swift */; };
 		BC5193B22208F2CA00DD18F6 /* Pixellate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD50D521346075004EF308 /* Pixellate.swift */; };
 		BC5193B42208F2CE00DD18F6 /* Pixellate.metal in Sources */ = {isa = PBXBuildFile; fileRef = 79DD50D82134607F004EF308 /* Pixellate.metal */; };
@@ -542,6 +544,7 @@
 		BC101EBA22456BDB0020D74D /* MovieInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieInput.swift; path = Source/MovieInput.swift; sourceTree = "<group>"; };
 		BC101EBF224571D40020D74D /* YUVToRGBConversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YUVToRGBConversion.swift; path = Source/YUVToRGBConversion.swift; sourceTree = "<group>"; };
 		BC101EC322457E610020D74D /* YUVToRGBConversion.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = YUVToRGBConversion.metal; path = Source/YUVToRGBConversion.metal; sourceTree = "<group>"; };
+		BC25F89922C158E600CBBD15 /* BoxBlur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BoxBlur.swift; path = Source/Operations/BoxBlur.swift; sourceTree = "<group>"; };
 		BC7BA27320F2BD1E006B5F4B /* ShaderUniformSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShaderUniformSettings.swift; path = Source/ShaderUniformSettings.swift; sourceTree = "<group>"; };
 		BC7BA27620F2C269006B5F4B /* BrightnessAdjustment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BrightnessAdjustment.swift; path = Source/Operations/BrightnessAdjustment.swift; sourceTree = "<group>"; };
 		BC7BA27820F2C2CF006B5F4B /* BrightnessAdjustment.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; name = BrightnessAdjustment.metal; path = Source/Operations/BrightnessAdjustment.metal; sourceTree = "<group>"; };
@@ -719,6 +722,7 @@
 				7954BF5D2214CBD5008402A6 /* PrewittEdgeDetection.swift */,
 				7954BF602214CBE6008402A6 /* PrewittEdgeDetection.metal */,
 				BCA0C1F522BD5DFD000F3F74 /* GaussianBlur.swift */,
+				BC25F89922C158E600CBBD15 /* BoxBlur.swift */,
 			);
 			name = "Image processing";
 			sourceTree = "<group>";
@@ -1004,6 +1008,7 @@
 				79CB6E2F210A0D800042F87B /* SoftLightBlend.swift in Sources */,
 				795ECAAE21ED2E48000EF927 /* ThresholdSketch.swift in Sources */,
 				79CB6E14210931BE0042F87B /* NormalBlend.swift in Sources */,
+				BC25F89A22C158E600CBBD15 /* BoxBlur.swift in Sources */,
 				79CB6E0821092E330042F87B /* LuminosityBlend.swift in Sources */,
 				7957438D20FE790E001EAE0A /* LuminanceRangeReduction.swift in Sources */,
 				79A81C882100E1B700A3B43A /* LevelsAdjustment.swift in Sources */,
@@ -1193,6 +1198,7 @@
 				795ECAAF21ED2E48000EF927 /* ThresholdSketch.swift in Sources */,
 				79CB6E15210931BE0042F87B /* NormalBlend.swift in Sources */,
 				79CB6E0921092E330042F87B /* LuminosityBlend.swift in Sources */,
+				BC25F89B22C158E600CBBD15 /* BoxBlur.swift in Sources */,
 				7957438E20FE790E001EAE0A /* LuminanceRangeReduction.swift in Sources */,
 				79A81C892100E1B700A3B43A /* LevelsAdjustment.swift in Sources */,
 				96F24FF222007D6D0042E78D /* MedianFilter.swift in Sources */,

@@ -790,16 +790,16 @@ let filterOperations: Array<FilterOperationInterface> = [
         },
         filterOperationType:.singleInput
     ),
-//    FilterOperation(
-//        filter:{BoxBlur()},
-//        listName:"Box blur",
-//        titleName:"Box Blur",
-//        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:40.0, initialValue:2.0),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.blurRadiusInPixels = sliderValue
-//        },
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{BoxBlur()},
+        listName:"Box blur",
+        titleName:"Box Blur",
+        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:40.0, initialValue:2.0),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.blurRadiusInPixels = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
     FilterOperation(
         filter:{MedianFilter()},
         listName:"Median",
