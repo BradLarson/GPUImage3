@@ -241,14 +241,14 @@ let filterOperations: Array<FilterOperationInterface> = [
     },
         filterOperationType:.singleInput
     ),
-//    FilterOperation(
-//        filter:{SoftElegance()},
-//        listName:"Soft elegance (Lookup)",
-//        titleName:"Soft Elegance (Lookup)",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback: nil,
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{SoftElegance()},
+        listName:"Soft elegance (Lookup)",
+        titleName:"Soft Elegance (Lookup)",
+        sliderConfiguration:.disabled,
+        sliderUpdateCallback: nil,
+        filterOperationType:.singleInput
+    ),
     FilterOperation(
         filter:{ColorInversion()},
         listName:"Color invert",
@@ -653,16 +653,16 @@ let filterOperations: Array<FilterOperationInterface> = [
         sliderUpdateCallback: nil,
         filterOperationType:.singleInput
     ),
-//    FilterOperation(
-//        filter:{SmoothToonFilter()},
-//        listName:"Smooth toon",
-//        titleName:"Smooth Toon",
-//        sliderConfiguration:.enabled(minimumValue:1.0, maximumValue:6.0, initialValue:1.0),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.blurRadiusInPixels = sliderValue
-//        },
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{SmoothToonFilter()},
+        listName:"Smooth toon",
+        titleName:"Smooth Toon",
+        sliderConfiguration:.enabled(minimumValue:1.0, maximumValue:6.0, initialValue:1.0),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.blurRadiusInPixels = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
 //    FilterOperation(
 //        filter:{TiltShift()},
 //        listName:"Tilt shift",
@@ -838,14 +838,14 @@ let filterOperations: Array<FilterOperationInterface> = [
         },
         filterOperationType:.singleInput
     ),
-//    FilterOperation( // TODO: Make this only partially applied to the view
-//        filter:{iOSBlur()},
-//        listName:"iOS 7 blur",
-//        titleName:"iOS 7 Blur",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback: nil,
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation( // TODO: Make this only partially applied to the view
+        filter:{iOSBlur()},
+        listName:"iOS 7 blur",
+        titleName:"iOS 7 Blur",
+        sliderConfiguration:.disabled,
+        sliderUpdateCallback: nil,
+        filterOperationType:.singleInput
+    ),
     FilterOperation(
         filter:{SwirlDistortion()},
         listName:"Swirl",
