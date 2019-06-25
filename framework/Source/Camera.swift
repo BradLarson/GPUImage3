@@ -59,7 +59,8 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
     public let targets = TargetContainer()
     public var delegate: CameraDelegate?
     public let captureSession:AVCaptureSession
-    let inputCamera:AVCaptureDevice!
+    public var orientation:ImageOrientation?
+    public let inputCamera:AVCaptureDevice!
     let videoInput:AVCaptureDeviceInput!
     let videoOutput:AVCaptureVideoDataOutput!
     var videoTextureCache: CVMetalTextureCache?
@@ -81,9 +82,10 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
     var framesSinceLastCheck = 0
     var lastCheckTime = CFAbsoluteTimeGetCurrent()
     
-    public init(sessionPreset:AVCaptureSession.Preset, cameraDevice:AVCaptureDevice? = nil, location:PhysicalCameraLocation = .backFacing, captureAsYUV:Bool = true) throws {
+    public init(sessionPreset:AVCaptureSession.Preset, cameraDevice:AVCaptureDevice? = nil, location:PhysicalCameraLocation = .backFacing, orientation:ImageOrientation? = nil, captureAsYUV:Bool = true) throws {
         self.location = location
-        
+        self.orientation = orientation
+
         self.captureSession = AVCaptureSession()
         self.captureSession.beginConfiguration()
         
@@ -208,7 +210,7 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
                     
                     let outputWidth:Int
                     let outputHeight:Int
-                    if self.location.imageOrientation().rotationNeeded(for:.portrait).flipsDimensions() {
+                    if (self.orientation ?? self.location.imageOrientation()).rotationNeeded(for:.portrait).flipsDimensions() {
                         outputWidth = bufferHeight
                         outputHeight = bufferWidth
                     } else {
@@ -218,8 +220,8 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
                     let outputTexture = Texture(device:sharedMetalRenderingDevice.device, orientation:.portrait, width:outputWidth, height:outputHeight)
                     
                     convertYUVToRGB(pipelineState:self.yuvConversionRenderPipelineState!, lookupTable:self.yuvLookupTable,
-                                    luminanceTexture:Texture(orientation: self.location.imageOrientation(), texture:luminanceTexture),
-                                    chrominanceTexture:Texture(orientation: self.location.imageOrientation(), texture:chrominanceTexture),
+                                    luminanceTexture:Texture(orientation: self.orientation ?? self.location.imageOrientation(), texture:luminanceTexture),
+                                    chrominanceTexture:Texture(orientation: self.orientation ?? self.location.imageOrientation(), texture:chrominanceTexture),
                                     resultTexture:outputTexture, colorConversionMatrix:conversionMatrix)
                     texture = outputTexture
                 } else {
@@ -229,7 +231,7 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
                 var textureRef:CVMetalTexture? = nil
                 let _ = CVMetalTextureCacheCreateTextureFromImage(kCFAllocatorDefault, self.videoTextureCache!, cameraFrame, nil, .bgra8Unorm, bufferWidth, bufferHeight, 0, &textureRef)
                 if let concreteTexture = textureRef, let cameraTexture = CVMetalTextureGetTexture(concreteTexture) {
-                    texture = Texture(orientation: self.location.imageOrientation(), texture: cameraTexture)
+                    texture = Texture(orientation: self.orientation ?? self.location.imageOrientation(), texture: cameraTexture)
                 } else {
                     texture = nil
                 }
