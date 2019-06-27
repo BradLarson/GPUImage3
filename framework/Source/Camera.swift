@@ -217,7 +217,7 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
                         outputWidth = bufferWidth
                         outputHeight = bufferHeight
                     }
-                    let outputTexture = Texture(device:sharedMetalRenderingDevice.device, orientation:.portrait, width:outputWidth, height:outputHeight)
+                    let outputTexture = Texture(device:sharedMetalRenderingDevice.device, orientation:.portrait, width:outputWidth, height:outputHeight, timingStyle: .videoFrame(timestamp: Timestamp(currentTime)))
                     
                     convertYUVToRGB(pipelineState:self.yuvConversionRenderPipelineState!, lookupTable:self.yuvLookupTable,
                                     luminanceTexture:Texture(orientation: self.orientation ?? self.location.imageOrientation(), texture:luminanceTexture),
@@ -231,7 +231,7 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
                 var textureRef:CVMetalTexture? = nil
                 let _ = CVMetalTextureCacheCreateTextureFromImage(kCFAllocatorDefault, self.videoTextureCache!, cameraFrame, nil, .bgra8Unorm, bufferWidth, bufferHeight, 0, &textureRef)
                 if let concreteTexture = textureRef, let cameraTexture = CVMetalTextureGetTexture(concreteTexture) {
-                    texture = Texture(orientation: self.orientation ?? self.location.imageOrientation(), texture: cameraTexture)
+                    texture = Texture(orientation: self.orientation ?? self.location.imageOrientation(), texture: cameraTexture, timingStyle: .videoFrame(timestamp: Timestamp(currentTime)))
                 } else {
                     texture = nil
                 }

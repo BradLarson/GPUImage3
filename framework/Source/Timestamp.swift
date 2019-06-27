@@ -28,6 +28,9 @@ public struct Timestamp: Comparable {
     func seconds() -> Double {
         return Double(value) / Double(timescale)
     }
+    
+    public static let zero = Timestamp(value: 0, timescale: 0, flags: .valid, epoch: 0)
+
 }
 
 public func ==(x:Timestamp, y:Timestamp) -> Bool {

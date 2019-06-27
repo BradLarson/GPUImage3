@@ -603,26 +603,26 @@ let filterOperations: Array<FilterOperationInterface> = [
 //        sliderUpdateCallback:nil,
 //        filterOperationType:.singleInput
 //    ),
-//    FilterOperation(
-//        filter:{LowPassFilter()},
-//        listName:"Low pass",
-//        titleName:"Low Pass",
-//        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.0, initialValue:0.5),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.strength = sliderValue
-//        },
-//        filterOperationType:.singleInput
-//    ),
-//    FilterOperation(
-//        filter:{HighPassFilter()},
-//        listName:"High pass",
-//        titleName:"High Pass",
-//        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.0, initialValue:0.5),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.strength = sliderValue
-//        },
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{LowPassFilter()},
+        listName:"Low pass",
+        titleName:"Low Pass",
+        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.0, initialValue:0.5),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.strength = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
+    FilterOperation(
+        filter:{HighPassFilter()},
+        listName:"High pass",
+        titleName:"High Pass",
+        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.0, initialValue:0.5),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.strength = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
 //    // TODO: Motion detector
 //
     FilterOperation(

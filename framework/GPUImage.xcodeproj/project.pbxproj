@@ -318,6 +318,12 @@
 		BC25F8A222C15E2600CBBD15 /* SoftElegance.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC25F8A022C15E2600CBBD15 /* SoftElegance.swift */; };
 		BC25F8A422C166E400CBBD15 /* iOSBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC25F8A322C166E400CBBD15 /* iOSBlur.swift */; };
 		BC25F8A522C166E400CBBD15 /* iOSBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC25F8A322C166E400CBBD15 /* iOSBlur.swift */; };
+		BC25F8A922C2B30A00CBBD15 /* ImageBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC25F8A822C2B30A00CBBD15 /* ImageBuffer.swift */; };
+		BC25F8AA22C2B30A00CBBD15 /* ImageBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC25F8A822C2B30A00CBBD15 /* ImageBuffer.swift */; };
+		BC25F8AD22C2B3F700CBBD15 /* LowPassFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC25F8AB22C2B3F600CBBD15 /* LowPassFilter.swift */; };
+		BC25F8AE22C2B3F700CBBD15 /* LowPassFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC25F8AB22C2B3F600CBBD15 /* LowPassFilter.swift */; };
+		BC25F8AF22C2B3F700CBBD15 /* HighPassFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC25F8AC22C2B3F600CBBD15 /* HighPassFilter.swift */; };
+		BC25F8B022C2B3F700CBBD15 /* HighPassFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC25F8AC22C2B3F600CBBD15 /* HighPassFilter.swift */; };
 		BC5193B12208F2CA00DD18F6 /* Pixellate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD50D521346075004EF308 /* Pixellate.swift */; };
 		BC5193B22208F2CA00DD18F6 /* Pixellate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD50D521346075004EF308 /* Pixellate.swift */; };
 		BC5193B42208F2CE00DD18F6 /* Pixellate.metal in Sources */ = {isa = PBXBuildFile; fileRef = 79DD50D82134607F004EF308 /* Pixellate.metal */; };
@@ -554,6 +560,9 @@
 		BC25F89D22C15D3A00CBBD15 /* SmoothToonFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SmoothToonFilter.swift; path = Source/Operations/SmoothToonFilter.swift; sourceTree = "<group>"; };
 		BC25F8A022C15E2600CBBD15 /* SoftElegance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SoftElegance.swift; path = Source/Operations/SoftElegance.swift; sourceTree = "<group>"; };
 		BC25F8A322C166E400CBBD15 /* iOSBlur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = iOSBlur.swift; path = Source/Operations/iOSBlur.swift; sourceTree = "<group>"; };
+		BC25F8A822C2B30A00CBBD15 /* ImageBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageBuffer.swift; path = Source/Operations/ImageBuffer.swift; sourceTree = "<group>"; };
+		BC25F8AB22C2B3F600CBBD15 /* LowPassFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LowPassFilter.swift; path = Source/Operations/LowPassFilter.swift; sourceTree = "<group>"; };
+		BC25F8AC22C2B3F600CBBD15 /* HighPassFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HighPassFilter.swift; path = Source/Operations/HighPassFilter.swift; sourceTree = "<group>"; };
 		BC7BA27320F2BD1E006B5F4B /* ShaderUniformSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShaderUniformSettings.swift; path = Source/ShaderUniformSettings.swift; sourceTree = "<group>"; };
 		BC7BA27620F2C269006B5F4B /* BrightnessAdjustment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BrightnessAdjustment.swift; path = Source/Operations/BrightnessAdjustment.swift; sourceTree = "<group>"; };
 		BC7BA27820F2C2CF006B5F4B /* BrightnessAdjustment.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; name = BrightnessAdjustment.metal; path = Source/Operations/BrightnessAdjustment.metal; sourceTree = "<group>"; };
@@ -735,6 +744,9 @@
 				7954BF602214CBE6008402A6 /* PrewittEdgeDetection.metal */,
 				BCA0C1F522BD5DFD000F3F74 /* GaussianBlur.swift */,
 				BC25F89922C158E600CBBD15 /* BoxBlur.swift */,
+				BC25F8A822C2B30A00CBBD15 /* ImageBuffer.swift */,
+				BC25F8AB22C2B3F600CBBD15 /* LowPassFilter.swift */,
+				BC25F8AC22C2B3F600CBBD15 /* HighPassFilter.swift */,
 			);
 			name = "Image processing";
 			sourceTree = "<group>";
@@ -1089,6 +1101,7 @@
 				7957438720FE3CF1001EAE0A /* HighlightsAndShadows.swift in Sources */,
 				79CB6E1A210933A60042F87B /* OverlayBlend.swift in Sources */,
 				795ECA9921ED177D000EF927 /* PolarPixellate.metal in Sources */,
+				BC25F8A922C2B30A00CBBD15 /* ImageBuffer.swift in Sources */,
 				79EB1B7A2125CC360049135E /* MissEtikateFilter.swift in Sources */,
 				795ECAC621EF97F8000EF927 /* ColorLocalBinaryPattern.swift in Sources */,
 				79CB6E17210931CD0042F87B /* NormalBlend.metal in Sources */,
@@ -1149,6 +1162,7 @@
 				79CB6E23210A08020042F87B /* SaturationBlend.metal in Sources */,
 				BC90E011229B0CCB00D2AE69 /* SolidColorGenerator.swift in Sources */,
 				795ECAB721EF8EDC000EF927 /* ChromaKey.metal in Sources */,
+				BC25F8AD22C2B3F700CBBD15 /* LowPassFilter.swift in Sources */,
 				795ECAC921EF9806000EF927 /* ColorLocalBinaryPattern.metal in Sources */,
 				BC7BA27420F2BD1E006B5F4B /* ShaderUniformSettings.swift in Sources */,
 				BC7BA27920F2C2CF006B5F4B /* BrightnessAdjustment.metal in Sources */,
@@ -1179,6 +1193,7 @@
 				793D933B20F6908A008A7A6E /* SaturationAdjustment.swift in Sources */,
 				79A81C912100F0EE00A3B43A /* OpacityAdjustment.metal in Sources */,
 				795ECA7421E903E2000EF927 /* ToonFilter.swift in Sources */,
+				BC25F8AF22C2B3F700CBBD15 /* HighPassFilter.swift in Sources */,
 				795ECAC021EF95EB000EF927 /* LocalBinaryPattern.swift in Sources */,
 				799999832226FE8F007404F2 /* KuwaharaRadius3Filter.swift in Sources */,
 				79CB6DE42108CC460042F87B /* DivideBlend.swift in Sources */,
@@ -1282,6 +1297,7 @@
 				7957438820FE3CF1001EAE0A /* HighlightsAndShadows.swift in Sources */,
 				79CB6E1B210933A60042F87B /* OverlayBlend.swift in Sources */,
 				795ECA9A21ED177D000EF927 /* PolarPixellate.metal in Sources */,
+				BC25F8AA22C2B30A00CBBD15 /* ImageBuffer.swift in Sources */,
 				79EB1B7B2125CC360049135E /* MissEtikateFilter.swift in Sources */,
 				795ECAC721EF97F8000EF927 /* ColorLocalBinaryPattern.swift in Sources */,
 				79CB6E18210931CD0042F87B /* NormalBlend.metal in Sources */,
@@ -1342,6 +1358,7 @@
 				79CB6DF7210928B80042F87B /* HueBlend.swift in Sources */,
 				BC90E012229B0CCB00D2AE69 /* SolidColorGenerator.swift in Sources */,
 				79CB6E24210A08020042F87B /* SaturationBlend.metal in Sources */,
+				BC25F8AE22C2B3F700CBBD15 /* LowPassFilter.swift in Sources */,
 				795ECAB821EF8EDC000EF927 /* ChromaKey.metal in Sources */,
 				795ECACA21EF9806000EF927 /* ColorLocalBinaryPattern.metal in Sources */,
 				793D933C20F6908A008A7A6E /* SaturationAdjustment.swift in Sources */,
@@ -1372,6 +1389,7 @@
 				79E30E6A20F10F9C005FA13C /* Passthrough.metal in Sources */,
 				79A81C922100F0EE00A3B43A /* OpacityAdjustment.metal in Sources */,
 				795ECA7521E903E2000EF927 /* ToonFilter.swift in Sources */,
+				BC25F8B022C2B3F700CBBD15 /* HighPassFilter.swift in Sources */,
 				795ECAC121EF95EB000EF927 /* LocalBinaryPattern.swift in Sources */,
 				799999842226FE8F007404F2 /* KuwaharaRadius3Filter.swift in Sources */,
 				79CB6DE52108CC460042F87B /* DivideBlend.swift in Sources */,

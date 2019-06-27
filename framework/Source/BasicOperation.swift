@@ -57,14 +57,8 @@ open class BasicOperation: ImageProcessingOperation {
         }
         
         inputTextures[fromSourceIndex] = texture
-
-        guard (!activatePassthroughOnNextFrame) else { // Use this to allow a bootstrap of cyclical processing, like with a low pass filter
-            activatePassthroughOnNextFrame = false
-            //            updateTargetsWithTexture(outputTexture) // TODO: Fix this
-            return
-        }
         
-        if (UInt(inputTextures.count) >= maximumInputs) {
+        if (UInt(inputTextures.count) >= maximumInputs) || activatePassthroughOnNextFrame {
             let outputWidth:Int
             let outputHeight:Int
             
@@ -84,7 +78,19 @@ open class BasicOperation: ImageProcessingOperation {
             
             guard let commandBuffer = sharedMetalRenderingDevice.commandQueue.makeCommandBuffer() else {return}
 
-            let outputTexture = Texture(device:sharedMetalRenderingDevice.device, orientation: .portrait, width: outputWidth, height: outputHeight)
+            let outputTexture = Texture(device:sharedMetalRenderingDevice.device, orientation: .portrait, width: outputWidth, height: outputHeight, timingStyle: .videoFrame(timestamp: .zero))
+            
+            guard (!activatePassthroughOnNextFrame) else { // Use this to allow a bootstrap of cyclical processing, like with a low pass filter
+                activatePassthroughOnNextFrame = false
+                // TODO: Render rotated passthrough image here
+                
+                removeTransientInputs()
+                textureInputSemaphore.signal()
+                updateTargetsWithTexture(outputTexture)
+                let _ = textureInputSemaphore.wait(timeout:DispatchTime.distantFuture)
+
+                return
+            }
             
             if let alternateRenderingFunction = metalPerformanceShaderPathway, useMetalPerformanceShaders {
                 var rotatedInputTextures: [UInt:Texture]
@@ -104,7 +110,18 @@ open class BasicOperation: ImageProcessingOperation {
             }
             commandBuffer.commit()
             
+            removeTransientInputs()
+            textureInputSemaphore.signal()
             updateTargetsWithTexture(outputTexture)
+            let _ = textureInputSemaphore.wait(timeout:DispatchTime.distantFuture)
+        }
+    }
+    
+    func removeTransientInputs() {
+        for index in 0..<self.maximumInputs {
+            if let texture = inputTextures[index], texture.timingStyle.isTransient() {
+                inputTextures[index] = nil
+            }
         }
     }
     
