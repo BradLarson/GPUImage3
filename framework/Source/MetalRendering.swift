@@ -84,8 +84,10 @@ func generateRenderPipelineState(device:MetalRenderingDevice, vertexFunctionName
         var uniformLookupTable:[String:(Int, MTLDataType)] = [:]
         if let fragmentArguments = reflection?.fragmentArguments {
             for fragmentArgument in fragmentArguments where fragmentArgument.type == .buffer {
-                if (fragmentArgument.bufferDataType == .struct) {
-                    for (index, uniform) in fragmentArgument.bufferStructType.members.enumerated() {
+                if
+                  (fragmentArgument.bufferDataType == .struct),
+                  let members = fragmentArgument.bufferStructType?.members.enumerated() {
+                    for (index, uniform) in members {
                         uniformLookupTable[uniform.name] = (index, uniform.dataType)
                     }
                 }
