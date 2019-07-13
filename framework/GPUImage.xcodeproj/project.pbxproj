@@ -324,6 +324,8 @@
 		BC25F8AE22C2B3F700CBBD15 /* LowPassFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC25F8AB22C2B3F600CBBD15 /* LowPassFilter.swift */; };
 		BC25F8AF22C2B3F700CBBD15 /* HighPassFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC25F8AC22C2B3F600CBBD15 /* HighPassFilter.swift */; };
 		BC25F8B022C2B3F700CBBD15 /* HighPassFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC25F8AC22C2B3F600CBBD15 /* HighPassFilter.swift */; };
+		BC25F8BB22D67A8300CBBD15 /* MovieOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC25F8BA22D67A8300CBBD15 /* MovieOutput.swift */; };
+		BC25F8BC22D67A8300CBBD15 /* MovieOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC25F8BA22D67A8300CBBD15 /* MovieOutput.swift */; };
 		BC5193B12208F2CA00DD18F6 /* Pixellate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD50D521346075004EF308 /* Pixellate.swift */; };
 		BC5193B22208F2CA00DD18F6 /* Pixellate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD50D521346075004EF308 /* Pixellate.swift */; };
 		BC5193B42208F2CE00DD18F6 /* Pixellate.metal in Sources */ = {isa = PBXBuildFile; fileRef = 79DD50D82134607F004EF308 /* Pixellate.metal */; };
@@ -563,6 +565,7 @@
 		BC25F8A822C2B30A00CBBD15 /* ImageBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageBuffer.swift; path = Source/Operations/ImageBuffer.swift; sourceTree = "<group>"; };
 		BC25F8AB22C2B3F600CBBD15 /* LowPassFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LowPassFilter.swift; path = Source/Operations/LowPassFilter.swift; sourceTree = "<group>"; };
 		BC25F8AC22C2B3F600CBBD15 /* HighPassFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HighPassFilter.swift; path = Source/Operations/HighPassFilter.swift; sourceTree = "<group>"; };
+		BC25F8BA22D67A8300CBBD15 /* MovieOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieOutput.swift; path = Source/MovieOutput.swift; sourceTree = "<group>"; };
 		BC7BA27320F2BD1E006B5F4B /* ShaderUniformSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShaderUniformSettings.swift; path = Source/ShaderUniformSettings.swift; sourceTree = "<group>"; };
 		BC7BA27620F2C269006B5F4B /* BrightnessAdjustment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BrightnessAdjustment.swift; path = Source/Operations/BrightnessAdjustment.swift; sourceTree = "<group>"; };
 		BC7BA27820F2C2CF006B5F4B /* BrightnessAdjustment.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; name = BrightnessAdjustment.metal; path = Source/Operations/BrightnessAdjustment.metal; sourceTree = "<group>"; };
@@ -808,6 +811,7 @@
 			children = (
 				79E30E7320F11DD9005FA13C /* RenderView.swift */,
 				BCCFEA6622AEEDF400C9F4CC /* PictureOutput.swift */,
+				BC25F8BA22D67A8300CBBD15 /* MovieOutput.swift */,
 			);
 			name = Outputs;
 			sourceTree = "<group>";
@@ -1068,6 +1072,7 @@
 				7957439020FE794D001EAE0A /* LuminanceRangeReduction.metal in Sources */,
 				BCA0C1F622BD5DFD000F3F74 /* GaussianBlur.swift in Sources */,
 				79CB6E35210A0ED00042F87B /* SourceOverBlend.swift in Sources */,
+				BC25F8BB22D67A8300CBBD15 /* MovieOutput.swift in Sources */,
 				795ECAA521ED2549000EF927 /* ThresholdSobelEdgeDetection.metal in Sources */,
 				7954BF462214965D008402A6 /* PinchDistortion.swift in Sources */,
 				795ECAB121ED2E58000EF927 /* ThresholdSketch.metal in Sources */,
@@ -1264,6 +1269,7 @@
 				7957439120FE794D001EAE0A /* LuminanceRangeReduction.metal in Sources */,
 				BCA0C1F722BD5DFD000F3F74 /* GaussianBlur.swift in Sources */,
 				79CB6E36210A0ED00042F87B /* SourceOverBlend.swift in Sources */,
+				BC25F8BC22D67A8300CBBD15 /* MovieOutput.swift in Sources */,
 				795ECAA621ED2549000EF927 /* ThresholdSobelEdgeDetection.metal in Sources */,
 				795ECAB221ED2E58000EF927 /* ThresholdSketch.metal in Sources */,
 				7954BF472214965D008402A6 /* PinchDistortion.swift in Sources */,
