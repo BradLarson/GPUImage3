@@ -29,9 +29,9 @@ fragment half4 prewittEdgeDetectionFragment(NearbyTexelVertexIO fragmentInput [[
     half bottomIntensity = bottomColor.r;
     half topIntensity = topColor.r;
     
-    half h = -topLeftIntensity - 2.0h * topIntensity - topRightIntensity + bottomLeftIntensity + 2.0h * bottomIntensity + bottomRightIntensity;
+    half h = -topLeftIntensity - topIntensity - topRightIntensity + bottomLeftIntensity + bottomIntensity + bottomRightIntensity;
     h = max(0.0h, h);
-    half v = -bottomLeftIntensity - 2.0h * leftIntensity - topLeftIntensity + bottomRightIntensity + 2.0h * rightIntensity + topRightIntensity;
+    half v = -bottomLeftIntensity - leftIntensity - topLeftIntensity + bottomRightIntensity + rightIntensity + topRightIntensity;
     v = max(0.0h, v);
     
     half mag = length(half2(h, v)) * uniform.edgeStrength;
