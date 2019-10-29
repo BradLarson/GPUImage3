@@ -32,8 +32,8 @@ BSD-style, with the full license available with the framework in License.txt.
 
 ## Technical requirements ##
 
-- Swift 4
-- Xcode 9.0 on Mac or iOS
+- Swift 4.2
+- Xcode 10.2 or higher on Mac or iOS
 - iOS: 9.0 or higher
 - OSX: 10.11 or higher
 
