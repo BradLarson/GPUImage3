@@ -370,16 +370,16 @@ let filterOperations: Array<FilterOperationInterface> = [
         },
         filterOperationType:.singleInput
     ),
-//    FilterOperation(
-//        filter:{AdaptiveThreshold()},
-//        listName:"Adaptive threshold",
-//        titleName:"Adaptive Threshold",
-//        sliderConfiguration:.enabled(minimumValue:1.0, maximumValue:20.0, initialValue:1.0),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.blurRadiusInPixels = sliderValue
-//        },
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{AdaptiveThreshold()},
+        listName:"Adaptive threshold",
+        titleName:"Adaptive Threshold",
+        sliderConfiguration:.enabled(minimumValue:1.0, maximumValue:20.0, initialValue:1.0),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.blurRadiusInPixels = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
 //    FilterOperation(
 //        filter:{AverageLuminanceThreshold()},
 //        listName:"Average luminance threshold",
@@ -595,14 +595,14 @@ let filterOperations: Array<FilterOperationInterface> = [
 //        })
 //    ),
 //    // TODO: Hough transform line detector
-//    FilterOperation(
-//        filter:{ColourFASTFeatureDetection()},
-//        listName:"ColourFAST feature detection",
-//        titleName:"ColourFAST Features",
-//        sliderConfiguration:.disabled,
-//        sliderUpdateCallback:nil,
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{ColourFASTFeatureDetection()},
+        listName:"ColourFAST feature detection",
+        titleName:"ColourFAST Features",
+        sliderConfiguration:.disabled,
+        sliderUpdateCallback:nil,
+        filterOperationType:.singleInput
+    ),
     FilterOperation(
         filter:{LowPassFilter()},
         listName:"Low pass",
@@ -663,17 +663,17 @@ let filterOperations: Array<FilterOperationInterface> = [
         },
         filterOperationType:.singleInput
     ),
-//    FilterOperation(
-//        filter:{TiltShift()},
-//        listName:"Tilt shift",
-//        titleName:"Tilt Shift",
-//        sliderConfiguration:.enabled(minimumValue:0.2, maximumValue:0.8, initialValue:0.5),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.topFocusLevel = sliderValue - 0.1
-//            filter.bottomFocusLevel = sliderValue + 0.1
-//        },
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{TiltShift()},
+        listName:"Tilt shift",
+        titleName:"Tilt Shift",
+        sliderConfiguration:.enabled(minimumValue:0.2, maximumValue:0.8, initialValue:0.5),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.topFocusLevel = sliderValue - 0.1
+            filter.bottomFocusLevel = sliderValue + 0.1
+        },
+        filterOperationType:.singleInput
+    ),
     FilterOperation(
         filter:{CGAColorspaceFilter()},
         listName:"CGA colorspace",
@@ -877,54 +877,54 @@ let filterOperations: Array<FilterOperationInterface> = [
         },
         filterOperationType:.singleInput
     ),
-//    FilterOperation(
-//        filter:{SphereRefraction()},
-//        listName:"Sphere refraction",
-//        titleName:"Sphere Refraction",
-//        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.0, initialValue:0.15),
-//        sliderUpdateCallback:{(filter, sliderValue) in
-//            filter.radius = sliderValue
-//        },
-//        filterOperationType:.custom(filterSetupFunction:{(camera, filter, outputView) in
-//            let castFilter = filter as! SphereRefraction
-//            
-//            // Provide a blurred image for a cool-looking background
-//            let gaussianBlur = GaussianBlur()
-//            gaussianBlur.blurRadiusInPixels = 5.0
-//            
-//            let blendFilter = AlphaBlend()
-//            blendFilter.mix = 1.0
-//            
-//            camera --> gaussianBlur --> blendFilter --> outputView
-//            camera --> castFilter --> blendFilter
-//            
-//            return blendFilter
-//        })
-//    ),
-//    FilterOperation(
-//        filter:{GlassSphereRefraction()},
-//        listName:"Glass sphere",
-//        titleName:"Glass Sphere",
-//        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.0, initialValue:0.15),
-//        sliderUpdateCallback:{(filter, sliderValue) in
-//            filter.radius = sliderValue
-//        },
-//        filterOperationType:.custom(filterSetupFunction:{(camera, filter, outputView) in
-//            let castFilter = filter as! GlassSphereRefraction
-//            
-//            // Provide a blurred image for a cool-looking background
-//            let gaussianBlur = GaussianBlur()
-//            gaussianBlur.blurRadiusInPixels = 5.0
-//            
-//            let blendFilter = AlphaBlend()
-//            blendFilter.mix = 1.0
-//            
-//            camera --> gaussianBlur --> blendFilter --> outputView
-//            camera --> castFilter --> blendFilter
-//            
-//            return blendFilter
-//        })
-//    ),
+    FilterOperation(
+        filter:{SphereRefraction()},
+        listName:"Sphere refraction",
+        titleName:"Sphere Refraction",
+        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.0, initialValue:0.15),
+        sliderUpdateCallback:{(filter, sliderValue) in
+            filter.radius = sliderValue
+        },
+        filterOperationType:.custom(filterSetupFunction:{(camera, filter, outputView) in
+            let castFilter = filter as! SphereRefraction
+            
+            // Provide a blurred image for a cool-looking background
+            let gaussianBlur = GaussianBlur()
+            gaussianBlur.blurRadiusInPixels = 5.0
+            
+            let blendFilter = AlphaBlend()
+            blendFilter.mix = 1.0
+            
+            camera --> gaussianBlur --> blendFilter --> outputView
+            camera --> castFilter --> blendFilter
+            
+            return blendFilter
+        })
+    ),
+    FilterOperation(
+        filter:{GlassSphereRefraction()},
+        listName:"Glass sphere",
+        titleName:"Glass Sphere",
+        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:1.0, initialValue:0.15),
+        sliderUpdateCallback:{(filter, sliderValue) in
+            filter.radius = sliderValue
+        },
+        filterOperationType:.custom(filterSetupFunction:{(camera, filter, outputView) in
+            let castFilter = filter as! GlassSphereRefraction
+            
+            // Provide a blurred image for a cool-looking background
+            let gaussianBlur = GaussianBlur()
+            gaussianBlur.blurRadiusInPixels = 5.0
+            
+            let blendFilter = AlphaBlend()
+            blendFilter.mix = 1.0
+            
+            camera --> gaussianBlur --> blendFilter --> outputView
+            camera --> castFilter --> blendFilter
+            
+            return blendFilter
+        })
+    ),
     FilterOperation (
         filter:{StretchDistortion()},
         listName:"Stretch",

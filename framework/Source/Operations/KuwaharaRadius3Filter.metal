@@ -270,4 +270,8 @@ fragment half4 kuwaharaRadius3Fragment(SingleInputVertexIO fragmentInput [[stage
         min_sigma2 = sigma2;
         return half4(half3(m3), 1.0);
     }
+    
+    // In the original Kuwahara filter, there was no default return value if the entire filter executes without returning
+    // To avoid a crash, a default value of the original pixel color will be returned.
+    return inputTexture.sample(quadSampler, fragmentInput.textureCoordinate);
 }
