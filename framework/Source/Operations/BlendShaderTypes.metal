@@ -58,7 +58,7 @@ half3 setsat(half3 c, half s) {
             /* b is max, r is mid, g is min */
             c.r = mid(c.g, c.r, c.b, s);
             c.b = s;
-            c.r = 0.0h;
+            c.g = 0.0h;
         }
     } else if (c.r > c.b) {
         /* g is max, r is mid, b is min */

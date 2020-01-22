@@ -14,15 +14,21 @@ public struct Position {
         self.y = y
         self.z = z
     }
+
+    public static let center = Position(0.5, 0.5)
+    public static let zero = Position(0.0, 0.0)
+}
+
+
+public struct Position2D {
+    public let x:Float
+    public let y:Float
     
-#if !os(Linux)
-    public init(point:CGPoint) {
-        self.x = Float(point.x)
-        self.y = Float(point.y)
-        self.z = nil
+    public init (_ x:Float, _ y:Float) {
+        self.x = x
+        self.y = y
     }
-#endif
-	
+    
     public static let center = Position(0.5, 0.5)
     public static let zero = Position(0.0, 0.0)
 }

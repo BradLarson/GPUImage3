@@ -19,9 +19,9 @@ typedef struct
     float2 bottomRightTextureCoordinate [[user(bottomRightTextureCoordinate)]];
 }  ColourFASTVertexIO;
 
-vertex ColourFASTVertexIO colourFASTDecriptorVertex(device packed_float2 *position [[buffer(0)]],
-                                               device packed_float2 *textureCoordinate [[buffer(1)]],
-                                               device packed_float2 *textureCoordinate2 [[buffer(2)]],
+vertex ColourFASTVertexIO colourFASTDecriptorVertex(const device packed_float2 *position [[buffer(0)]],
+                                               const device packed_float2 *textureCoordinate [[buffer(1)]],
+                                               const device packed_float2 *textureCoordinate2 [[buffer(2)]],
                                                uint vid [[vertex_id]])
 {
     ColourFASTVertexIO outputVertices;

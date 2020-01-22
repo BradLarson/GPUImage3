@@ -2,8 +2,8 @@
 #include "TexelSamplingTypes.h"
 using namespace metal;
 
-vertex NearbyTexelVertexIO nearbyTexelSampling(device packed_float2 *position [[buffer(0)]],
-                                               device packed_float2 *textureCoordinate [[buffer(1)]],
+vertex NearbyTexelVertexIO nearbyTexelSampling(const device packed_float2 *position [[buffer(0)]],
+                                               const device packed_float2 *textureCoordinate [[buffer(1)]],
                                                uint vid [[vertex_id]])
 {
     NearbyTexelVertexIO outputVertices;
