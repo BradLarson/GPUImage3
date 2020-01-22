@@ -689,7 +689,7 @@ let filterOperations: Array<FilterOperationInterface> = [
 //        titleName:"Posterize",
 //        sliderConfiguration:.enabled(minimumValue:1.0, maximumValue:20.0, initialValue:10.0),
 //        sliderUpdateCallback: {(filter, sliderValue) in
-//            (filter as! GPUImage.Posterize).colorLevels = round(Float(sliderValue))
+//            filter.colorLevels = round(Float(sliderValue))
 //        },
 //        filterOperationType:.singleInput
 //    ),

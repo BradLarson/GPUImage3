@@ -3,8 +3,8 @@
 
 using namespace metal;
 
-vertex SingleInputVertexIO oneInputVertex(device packed_float2 *position [[buffer(0)]],
-                                          device packed_float2 *texturecoord [[buffer(1)]],
+vertex SingleInputVertexIO oneInputVertex(const device packed_float2 *position [[buffer(0)]],
+                                          const device packed_float2 *texturecoord [[buffer(1)]],
                                           uint vid [[vertex_id]])
 {
     SingleInputVertexIO outputVertices;
@@ -24,9 +24,9 @@ fragment half4 passthroughFragment(SingleInputVertexIO fragmentInput [[stage_in]
     return color;
 }
 
-vertex TwoInputVertexIO twoInputVertex(device packed_float2 *position [[buffer(0)]],
-                                       device packed_float2 *texturecoord [[buffer(1)]],
-                                       device packed_float2 *texturecoord2 [[buffer(2)]],
+vertex TwoInputVertexIO twoInputVertex(const device packed_float2 *position [[buffer(0)]],
+                                       const device packed_float2 *texturecoord [[buffer(1)]],
+                                       const device packed_float2 *texturecoord2 [[buffer(2)]],
                                        uint vid [[vertex_id]])
 {
     TwoInputVertexIO outputVertices;

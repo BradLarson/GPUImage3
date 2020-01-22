@@ -5,7 +5,7 @@ public class MotionBlur: BasicOperation {
     public var blurAngle:Float = 0.0
     
     public init() {
-        super.init(fragmentFunctionName:"MotionBlurFragment", numberOfInputs:1)
+        super.init(vertexFunctionName:"motionBlurVertex", fragmentFunctionName:"motionBlurFragment", numberOfInputs:1)
     }
     
 //    override func configureFramebufferSpecificUniforms(_ inputFramebuffer:Framebuffer) {
