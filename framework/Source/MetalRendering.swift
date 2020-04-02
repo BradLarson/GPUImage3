@@ -62,12 +62,12 @@ extension MTLCommandBuffer {
     }
 }
 
-func generateRenderPipelineState(device:MetalRenderingDevice, vertexFunctionName:String, fragmentFunctionName:String, operationName:String) -> (MTLRenderPipelineState, [String:(Int, MTLDataType)]) {
-    guard let vertexFunction = device.shaderLibrary.makeFunction(name: vertexFunctionName) else {
+func generateRenderPipelineState(device:MetalRenderingDevice, vertexFunctionName:String, vertexLibraryPath: String? = nil, fragmentFunctionName:String, fragmentLibraryPath: String? = nil, operationName:String) -> (MTLRenderPipelineState, [String:(Int, MTLDataType)]) {
+    guard let vertexFunction = device.library(for: vertexLibraryPath).makeFunction(name: vertexFunctionName) else {
         fatalError("\(operationName): could not compile vertex function \(vertexFunctionName)")
     }
     
-    guard let fragmentFunction = device.shaderLibrary.makeFunction(name: fragmentFunctionName) else {
+    guard let fragmentFunction = device.library(for: fragmentLibraryPath).makeFunction(name: fragmentFunctionName) else {
         fatalError("\(operationName): could not compile fragment function \(fragmentFunctionName)")
     }
     
