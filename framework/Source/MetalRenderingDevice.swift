@@ -12,6 +12,19 @@ public class MetalRenderingDevice {
     public let commandQueue: MTLCommandQueue
     public let shaderLibrary: MTLLibrary
     public let metalPerformanceShadersAreSupported: Bool
+
+    func library(for path: String? = nil) -> MTLLibrary {
+        guard let path = path else { return shaderLibrary }
+        guard libraryMap[path] == nil else { return libraryMap[path]! }
+        do {
+            let library = try device.makeLibrary(filepath: path)
+            libraryMap[path] = library
+            return library
+        } catch {
+            fatalError("Could not load library for bundle: \(path)")
+        }
+    }
+    private var libraryMap: [String: MTLLibrary] = [:]
     
     lazy var passthroughRenderState: MTLRenderPipelineState = {
         let (pipelineState, _) = generateRenderPipelineState(device:self, vertexFunctionName:"oneInputVertex", fragmentFunctionName:"passthroughFragment", operationName:"Passthrough")
@@ -41,6 +54,7 @@ public class MetalRenderingDevice {
             let metalLibraryPath = frameworkBundle.path(forResource: "default", ofType: "metallib")!
             
             self.shaderLibrary = try device.makeLibrary(filepath:metalLibraryPath)
+            libraryMap[metalLibraryPath] = self.shaderLibrary
         } catch {
             fatalError("Could not load library")
         }

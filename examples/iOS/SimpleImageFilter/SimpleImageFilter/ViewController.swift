@@ -7,6 +7,7 @@ class ViewController: UIViewController {
 
     var picture:PictureInput!
     var filter:SaturationAdjustment!
+    var customFilter: CustomBrightnessAdjustment!
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -28,7 +29,10 @@ class ViewController: UIViewController {
         // Filtering image for display
         picture = PictureInput(image:UIImage(named:"WID-small.jpg")!)
         filter = SaturationAdjustment()
-        picture --> filter --> renderView
+        // demo for define custom filter outside GPUImage framework bundle
+        customFilter = CustomBrightnessAdjustment()
+        customFilter.brightness = 0.5
+        picture --> filter --> customFilter --> renderView
         picture.processImage()
     }
 }

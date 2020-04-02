@@ -14,6 +14,9 @@
 		BCD985BA1CA43FD5001FF01F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCD985B81CA43FD5001FF01F /* LaunchScreen.storyboard */; };
 		BCD985D51CA48F15001FF01F /* WID-small.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BCD985D41CA48F15001FF01F /* WID-small.jpg */; };
 		BCFB058C1CBF17FD009B2333 /* Assets-iOS.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCFB058B1CBF17FD009B2333 /* Assets-iOS.xcassets */; };
+		CB3611A324357214007F3C0E /* Lambeau.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CB3611A224357214007F3C0E /* Lambeau.jpg */; };
+		CB3611A5243572F9007F3C0E /* CustomBrightnessAdjustment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3611A4243572F9007F3C0E /* CustomBrightnessAdjustment.swift */; };
+		CB3611A724357309007F3C0E /* CustomBrightnessAdjustment.metal in Sources */ = {isa = PBXBuildFile; fileRef = CB3611A624357309007F3C0E /* CustomBrightnessAdjustment.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +66,9 @@
 		BCD985BB1CA43FD5001FF01F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCD985D41CA48F15001FF01F /* WID-small.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "WID-small.jpg"; path = "../../../SharedAssets/WID-small.jpg"; sourceTree = "<group>"; };
 		BCFB058B1CBF17FD009B2333 /* Assets-iOS.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Assets-iOS.xcassets"; path = "../../../SharedAssets/Assets-iOS.xcassets"; sourceTree = "<group>"; };
+		CB3611A224357214007F3C0E /* Lambeau.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Lambeau.jpg; path = ../../../SharedAssets/Lambeau.jpg; sourceTree = "<group>"; };
+		CB3611A4243572F9007F3C0E /* CustomBrightnessAdjustment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBrightnessAdjustment.swift; sourceTree = "<group>"; };
+		CB3611A624357309007F3C0E /* CustomBrightnessAdjustment.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = CustomBrightnessAdjustment.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +113,8 @@
 			children = (
 				BCD985AF1CA43FD5001FF01F /* AppDelegate.swift */,
 				BCD985B11CA43FD5001FF01F /* ViewController.swift */,
+				CB3611A4243572F9007F3C0E /* CustomBrightnessAdjustment.swift */,
+				CB3611A624357309007F3C0E /* CustomBrightnessAdjustment.metal */,
 				BCD985B31CA43FD5001FF01F /* Main.storyboard */,
 				BCD985CA1CA44005001FF01F /* Resources */,
 			);
@@ -118,6 +126,7 @@
 			children = (
 				BCFB058B1CBF17FD009B2333 /* Assets-iOS.xcassets */,
 				BCD985D41CA48F15001FF01F /* WID-small.jpg */,
+				CB3611A224357214007F3C0E /* Lambeau.jpg */,
 				BCD985B81CA43FD5001FF01F /* LaunchScreen.storyboard */,
 				BCD985BB1CA43FD5001FF01F /* Info.plist */,
 			);
@@ -167,8 +176,9 @@
 				TargetAttributes = {
 					BCD985AB1CA43FD5001FF01F = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = J2U2U9GBML;
+						DevelopmentTeam = FLBD7VX6BF;
 						LastSwiftMigration = 0940;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -177,6 +187,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -219,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCD985BA1CA43FD5001FF01F /* LaunchScreen.storyboard in Resources */,
+				CB3611A324357214007F3C0E /* Lambeau.jpg in Resources */,
 				BCD985D51CA48F15001FF01F /* WID-small.jpg in Resources */,
 				BCFB058C1CBF17FD009B2333 /* Assets-iOS.xcassets in Resources */,
 				BCD985B51CA43FD5001FF01F /* Main.storyboard in Resources */,
@@ -233,6 +245,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCD985B21CA43FD5001FF01F /* ViewController.swift in Sources */,
+				CB3611A724357309007F3C0E /* CustomBrightnessAdjustment.metal in Sources */,
+				CB3611A5243572F9007F3C0E /* CustomBrightnessAdjustment.swift in Sources */,
 				BCD985B01CA43FD5001FF01F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -377,11 +391,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = J2U2U9GBML;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = FLBD7VX6BF;
 				INFOPLIST_FILE = SimpleImageFilter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.redqueencoder.SimpleImageFilter;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sina.oasis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = oasis_dev;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};
@@ -394,7 +410,7 @@
 				DEVELOPMENT_TEAM = J2U2U9GBML;
 				INFOPLIST_FILE = SimpleImageFilter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.redqueencoder.SimpleImageFilter;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sina.oasis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;

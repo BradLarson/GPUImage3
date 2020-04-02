@@ -350,7 +350,7 @@
 		BC7BA27420F2BD1E006B5F4B /* ShaderUniformSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7BA27320F2BD1E006B5F4B /* ShaderUniformSettings.swift */; };
 		BC7BA27720F2C269006B5F4B /* BrightnessAdjustment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7BA27620F2C269006B5F4B /* BrightnessAdjustment.swift */; };
 		BC7BA27920F2C2CF006B5F4B /* BrightnessAdjustment.metal in Sources */ = {isa = PBXBuildFile; fileRef = BC7BA27820F2C2CF006B5F4B /* BrightnessAdjustment.metal */; };
-		BC7BA27B20F2C5E8006B5F4B /* OperationShaderTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = BC7BA27A20F2C5E8006B5F4B /* OperationShaderTypes.h */; };
+		BC7BA27B20F2C5E8006B5F4B /* OperationShaderTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = BC7BA27A20F2C5E8006B5F4B /* OperationShaderTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BC7BA27C20F2C5E8006B5F4B /* OperationShaderTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = BC7BA27A20F2C5E8006B5F4B /* OperationShaderTypes.h */; };
 		BC7BA28120F599DD006B5F4B /* MonochromeFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7BA28020F599DD006B5F4B /* MonochromeFilter.swift */; };
 		BC7BA28220F599DD006B5F4B /* MonochromeFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7BA28020F599DD006B5F4B /* MonochromeFilter.swift */; };
@@ -931,8 +931,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCC6AB65210E5FF600F9803A /* TexelSamplingTypes.h in Headers */,
 				BC7BA27B20F2C5E8006B5F4B /* OperationShaderTypes.h in Headers */,
+				BCC6AB65210E5FF600F9803A /* TexelSamplingTypes.h in Headers */,
 				79CB6E45210A55CB0042F87B /* BlendShaderTypes.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
