@@ -269,7 +269,7 @@
 		79CB6E3F210A106B0042F87B /* SubtractBlend.metal in Sources */ = {isa = PBXBuildFile; fileRef = 79CB6E3D210A106B0042F87B /* SubtractBlend.metal */; };
 		79CB6E41210A53CA0042F87B /* BlendShaderTypes.metal in Sources */ = {isa = PBXBuildFile; fileRef = 79CB6E40210A53C90042F87B /* BlendShaderTypes.metal */; };
 		79CB6E42210A53CA0042F87B /* BlendShaderTypes.metal in Sources */ = {isa = PBXBuildFile; fileRef = 79CB6E40210A53C90042F87B /* BlendShaderTypes.metal */; };
-		79CB6E45210A55CB0042F87B /* BlendShaderTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 79CB6E44210A55CB0042F87B /* BlendShaderTypes.h */; };
+		79CB6E45210A55CB0042F87B /* BlendShaderTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 79CB6E44210A55CB0042F87B /* BlendShaderTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79CB6E46210A55CB0042F87B /* BlendShaderTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 79CB6E44210A55CB0042F87B /* BlendShaderTypes.h */; };
 		79DD50C4213450BE004EF308 /* SwirlDistortion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD50C3213450BE004EF308 /* SwirlDistortion.swift */; };
 		79DD50C5213450BE004EF308 /* SwirlDistortion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD50C3213450BE004EF308 /* SwirlDistortion.swift */; };
@@ -377,7 +377,7 @@
 		BCC6AB60210E5E7900F9803A /* TextureSamplingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC6AB5E210E5E7900F9803A /* TextureSamplingOperation.swift */; };
 		BCC6AB62210E5ECE00F9803A /* NearbyTexelSampling.metal in Sources */ = {isa = PBXBuildFile; fileRef = BCC6AB61210E5ECE00F9803A /* NearbyTexelSampling.metal */; };
 		BCC6AB63210E5ECE00F9803A /* NearbyTexelSampling.metal in Sources */ = {isa = PBXBuildFile; fileRef = BCC6AB61210E5ECE00F9803A /* NearbyTexelSampling.metal */; };
-		BCC6AB65210E5FF600F9803A /* TexelSamplingTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = BCC6AB64210E5FF600F9803A /* TexelSamplingTypes.h */; };
+		BCC6AB65210E5FF600F9803A /* TexelSamplingTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = BCC6AB64210E5FF600F9803A /* TexelSamplingTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCC6AB66210E5FF600F9803A /* TexelSamplingTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = BCC6AB64210E5FF600F9803A /* TexelSamplingTypes.h */; };
 		BCC6AB69210E62EB00F9803A /* Convolution3x3.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC6AB68210E62EB00F9803A /* Convolution3x3.swift */; };
 		BCC6AB6A210E62EB00F9803A /* Convolution3x3.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC6AB68210E62EB00F9803A /* Convolution3x3.swift */; };
