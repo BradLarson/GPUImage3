@@ -143,7 +143,9 @@ public class MovieInput: ImageSource {
         let movieFrame = CMSampleBufferGetImageBuffer(frame)!
     
 //        processingFrameTime = currentSampleTime
-        self.process(movieFrame:movieFrame, withSampleTime:currentSampleTime)
+        autoreleasepool {
+            self.process(movieFrame:movieFrame, withSampleTime:currentSampleTime)
+        }
     }
     
     func process(movieFrame:CVPixelBuffer, withSampleTime:CMTime) {
