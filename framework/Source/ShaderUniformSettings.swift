@@ -2,40 +2,34 @@ import Foundation
 import Metal
 
 public class ShaderUniformSettings {
-    private var uniformValues:[Float] = []
-    private var uniformValueOffsets:[Int] = []
+    let uniformLookupTable:[String:Int]
+    private var uniformValues:[Float]
+    private var uniformValueOffsets:[Int]
     public var colorUniformsUseAlpha:Bool = false
     let shaderUniformSettingsQueue = DispatchQueue(
         label: "com.sunsetlakesoftware.GPUImage.shaderUniformSettings",
         attributes: [])
-    let uniformLookupTable:[String:Int]
 
-    public init(uniformLookupTable:[String:(Int, MTLDataType)]) {
+    public init(uniformLookupTable:[String:(Int, MTLStructMember)], bufferSize: Int) {
         var convertedLookupTable:[String:Int] = [:]
         
-        var orderedDatatypes = [MTLDataType](repeating:.float, count:uniformLookupTable.count)
+        var orderedOffsets = [Int](repeating: 0, count: uniformLookupTable.count)
         
-        for (key, value) in uniformLookupTable {
-            let (index, dataType) = value
+        for (key, uniform) in uniformLookupTable {
+            let (index, structMember) = uniform
             convertedLookupTable[key] = index
-            orderedDatatypes[index] = dataType
+            orderedOffsets[index] = structMember.offset/4
         }
         
         self.uniformLookupTable = convertedLookupTable
-
-        for dataType in orderedDatatypes {
-            self.appendBufferSpace(for:dataType)
-        }
+        self.uniformValues = [Float](repeating:0.0, count:bufferSize/4)
+        self.uniformValueOffsets = orderedOffsets
     }
     
     public var usesAspectRatio:Bool { get { return self.uniformLookupTable["aspectRatio"] != nil } }
     
     private func internalIndex(for index:Int) -> Int {
-        if (index == 0) {
-            return 0
-        } else {
-            return uniformValueOffsets[index - 1]
-        }
+        return uniformValueOffsets[index]
     }
     
     // MARK: -
@@ -154,37 +148,6 @@ public class ShaderUniformSettings {
     
     // MARK: -
     // MARK: Uniform buffer memory management
-    
-    func appendBufferSpace(for dataType:MTLDataType) {
-        let uniformSize:Int
-        switch dataType {
-            case .float: uniformSize = 1
-            case .float2: uniformSize = 2
-            case .float3: uniformSize = 4 // Hack to fix alignment issues
-            case .float4: uniformSize = 4
-            case .float3x3: uniformSize = 12
-            case .float4x4: uniformSize = 16
-            default: fatalError("Uniform data type of value: \(dataType.rawValue) not supported")
-        }
-        let blankValues = [Float](repeating:0.0, count:uniformSize)
-
-        let lastOffset = alignPackingForOffset(uniformSize:uniformSize, lastOffset:uniformValueOffsets.last ?? 0)
-        uniformValues.append(contentsOf:blankValues)
-        uniformValueOffsets.append(lastOffset + uniformSize)
-    }
-    
-    func alignPackingForOffset(uniformSize:Int, lastOffset:Int) -> Int {
-        let floatAlignment = (lastOffset + uniformSize) % 4
-        let previousFloatAlignment = lastOffset % 4
-        if (uniformSize > 1) && (floatAlignment != 0) && (previousFloatAlignment != 0){
-            let paddingToAlignment = 4 - floatAlignment
-            uniformValues.append(contentsOf:[Float](repeating:0.0, count:paddingToAlignment))
-            uniformValueOffsets[uniformValueOffsets.count - 1] = lastOffset + paddingToAlignment
-            return lastOffset + paddingToAlignment
-        } else {
-            return lastOffset
-        }
-    }
 
     public func restoreShaderSettings(renderEncoder:MTLRenderCommandEncoder) {
         shaderUniformSettingsQueue.sync {

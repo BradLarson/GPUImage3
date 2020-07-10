@@ -14,12 +14,12 @@ public class MetalRenderingDevice {
     public let metalPerformanceShadersAreSupported: Bool
     
     lazy var passthroughRenderState: MTLRenderPipelineState = {
-        let (pipelineState, _) = generateRenderPipelineState(device:self, vertexFunctionName:"oneInputVertex", fragmentFunctionName:"passthroughFragment", operationName:"Passthrough")
+        let (pipelineState, _, _) = generateRenderPipelineState(device:self, vertexFunctionName:"oneInputVertex", fragmentFunctionName:"passthroughFragment", operationName:"Passthrough")
         return pipelineState
     }()
 
     lazy var colorSwizzleRenderState: MTLRenderPipelineState = {
-        let (pipelineState, _) = generateRenderPipelineState(device:self, vertexFunctionName:"oneInputVertex", fragmentFunctionName:"colorSwizzleFragment", operationName:"ColorSwizzle")
+        let (pipelineState, _, _) = generateRenderPipelineState(device:self, vertexFunctionName:"oneInputVertex", fragmentFunctionName:"colorSwizzleFragment", operationName:"ColorSwizzle")
         return pipelineState
     }()
 

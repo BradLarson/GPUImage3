@@ -62,7 +62,7 @@ extension MTLCommandBuffer {
     }
 }
 
-func generateRenderPipelineState(device:MetalRenderingDevice, vertexFunctionName:String, fragmentFunctionName:String, operationName:String) -> (MTLRenderPipelineState, [String:(Int, MTLDataType)]) {
+func generateRenderPipelineState(device:MetalRenderingDevice, vertexFunctionName:String, fragmentFunctionName:String, operationName:String) -> (MTLRenderPipelineState, [String:(Int, MTLStructMember)], Int) {
     guard let vertexFunction = device.shaderLibrary.makeFunction(name: vertexFunctionName) else {
         fatalError("\(operationName): could not compile vertex function \(vertexFunctionName)")
     }
@@ -81,20 +81,22 @@ func generateRenderPipelineState(device:MetalRenderingDevice, vertexFunctionName
         var reflection:MTLAutoreleasedRenderPipelineReflection?
         let pipelineState = try device.device.makeRenderPipelineState(descriptor: descriptor, options: [.bufferTypeInfo, .argumentInfo], reflection: &reflection)
 
-        var uniformLookupTable:[String:(Int, MTLDataType)] = [:]
+        var uniformLookupTable:[String:(Int, MTLStructMember)] = [:]
+        var bufferSize: Int = 0
         if let fragmentArguments = reflection?.fragmentArguments {
             for fragmentArgument in fragmentArguments where fragmentArgument.type == .buffer {
                 if
                   (fragmentArgument.bufferDataType == .struct),
                   let members = fragmentArgument.bufferStructType?.members.enumerated() {
+                    bufferSize = fragmentArgument.bufferDataSize
                     for (index, uniform) in members {
-                        uniformLookupTable[uniform.name] = (index, uniform.dataType)
+                        uniformLookupTable[uniform.name] = (index, uniform)
                     }
                 }
             }
         }
         
-        return (pipelineState, uniformLookupTable)
+        return (pipelineState, uniformLookupTable, bufferSize)
     } catch {
         fatalError("Could not create render pipeline state for vertex:\(vertexFunctionName), fragment:\(fragmentFunctionName), error:\(error)")
     }
