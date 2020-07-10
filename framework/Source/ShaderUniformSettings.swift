@@ -10,10 +10,10 @@ public class ShaderUniformSettings {
         label: "com.sunsetlakesoftware.GPUImage.shaderUniformSettings",
         attributes: [])
 
-    public init(uniformLookupTable:[String:(Int, MTLStructMember)], bufferSize: Int) {
+    public init(uniformLookupTable:[String:(Int, MTLStructMember)], bufferSize:Int) {
         var convertedLookupTable:[String:Int] = [:]
         
-        var orderedOffsets = [Int](repeating: 0, count: uniformLookupTable.count)
+        var orderedOffsets = [Int](repeating:0, count:uniformLookupTable.count)
         
         for (key, uniform) in uniformLookupTable {
             let (index, structMember) = uniform
