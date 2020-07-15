@@ -3,9 +3,8 @@
 using namespace metal;
 
 constant half3 warmFilter = half3(0.93, 0.54, 0.0);
-
-constant half3x3 RGBtoYIQ = half3x3(0.299, 0.587, 0.114, 0.596, -0.274, -0.322, 0.212, -0.523, 0.311);
-constant half3x3 YIQtoRGB = half3x3(1.0, 0.956, 0.621, 1.0, -0.272, -0.647, 1.0, -1.105, 1.702);
+constant half3x3 RGBtoYIQ = half3x3(half3(0.299, 0.587, 0.114), half3(0.596, -0.274, -0.322), half3(0.212, -0.523, 0.311));
+constant half3x3 YIQtoRGB = half3x3(half3(1.0, 0.956, 0.621), half3(1.0, -0.272, -0.647), half3(1.0, -1.105, 1.702));
 
 typedef struct
 {

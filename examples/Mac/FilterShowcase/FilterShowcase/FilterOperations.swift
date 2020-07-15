@@ -76,16 +76,16 @@ let filterOperations: Array<FilterOperationInterface> = [
         },
         filterOperationType:.singleInput
     ),
-//    FilterOperation(
-//        filter:{WhiteBalance()},
-//        listName:"White balance",
-//        titleName:"White Balance",
-//        sliderConfiguration:.enabled(minimumValue:2500.0, maximumValue:7500.0, initialValue:5000.0),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.temperature = sliderValue
-//        },
-//        filterOperationType:.singleInput
-//    ),
+    FilterOperation(
+        filter:{WhiteBalance()},
+        listName:"White balance",
+        titleName:"White Balance",
+        sliderConfiguration:.enabled(minimumValue:2500.0, maximumValue:7500.0, initialValue:5000.0),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.temperature = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
     FilterOperation(
         filter:{MonochromeFilter()},
         listName:"Monochrome",
