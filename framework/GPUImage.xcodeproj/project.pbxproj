@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F1A90B424BEC03D0029813E /* WhiteBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A81C992101015700A3B43A /* WhiteBalance.swift */; };
+		1F1A90B524BEC03D0029813E /* WhiteBalance.metal in Sources */ = {isa = PBXBuildFile; fileRef = 79A81C9C2101016100A3B43A /* WhiteBalance.metal */; };
+		1F1A90B624BEC03D0029813E /* WhiteBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A81C992101015700A3B43A /* WhiteBalance.swift */; };
+		1F1A90B724BEC03D0029813E /* WhiteBalance.metal in Sources */ = {isa = PBXBuildFile; fileRef = 79A81C9C2101016100A3B43A /* WhiteBalance.metal */; };
 		4C280F76213426D6001A985C /* Posterize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C280F75213426D6001A985C /* Posterize.swift */; };
 		4C280F77213426D6001A985C /* Posterize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C280F75213426D6001A985C /* Posterize.swift */; };
 		4C280F79213426EC001A985C /* Posterize.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4C280F78213426EC001A985C /* Posterize.metal */; };
@@ -1110,6 +1114,7 @@
 				795ECAA521ED2549000EF927 /* ThresholdSobelEdgeDetection.metal in Sources */,
 				7954BF462214965D008402A6 /* PinchDistortion.swift in Sources */,
 				795ECAB121ED2E58000EF927 /* ThresholdSketch.metal in Sources */,
+				1F1A90B424BEC03D0029813E /* WhiteBalance.swift in Sources */,
 				79DD50CD213454A2004EF308 /* Vignette.metal in Sources */,
 				BC9294AA210513DF006C8E93 /* SepiaToneFilter.swift in Sources */,
 				79DD50C4213450BE004EF308 /* SwirlDistortion.swift in Sources */,
@@ -1174,6 +1179,7 @@
 				793D934120F693AD008A7A6E /* GammaAdjustment.swift in Sources */,
 				BCCFEA6222AEEDDB00C9F4CC /* Camera.swift in Sources */,
 				79A81CA62101266600A3B43A /* HighlightAndShadowTint.swift in Sources */,
+				1F1A90B524BEC03D0029813E /* WhiteBalance.metal in Sources */,
 				79CB6E38210A0EDE0042F87B /* SourceOverBlend.metal in Sources */,
 				79CB6DD22108B3F00042F87B /* ColorDodgeBlend.swift in Sources */,
 				79EB1B6E2125C7670049135E /* LookupFilter.metal in Sources */,
@@ -1315,6 +1321,7 @@
 				795ECAA621ED2549000EF927 /* ThresholdSobelEdgeDetection.metal in Sources */,
 				795ECAB221ED2E58000EF927 /* ThresholdSketch.metal in Sources */,
 				7954BF472214965D008402A6 /* PinchDistortion.swift in Sources */,
+				1F1A90B624BEC03D0029813E /* WhiteBalance.swift in Sources */,
 				79DD50CE213454A2004EF308 /* Vignette.metal in Sources */,
 				BC9294AB210513DF006C8E93 /* SepiaToneFilter.swift in Sources */,
 				79DD50C5213450BE004EF308 /* SwirlDistortion.swift in Sources */,
@@ -1379,6 +1386,7 @@
 				793D933620F68C1B008A7A6E /* ContrastAdjustment.swift in Sources */,
 				BCCFEA6322AEEDDB00C9F4CC /* Camera.swift in Sources */,
 				79E30E6D20F118CD005FA13C /* Texture.swift in Sources */,
+				1F1A90B724BEC03D0029813E /* WhiteBalance.metal in Sources */,
 				79A81CA72101266600A3B43A /* HighlightAndShadowTint.swift in Sources */,
 				BC7BA29420F6F2CB006B5F4B /* BrightnessAdjustment.metal in Sources */,
 				79CB6E39210A0EDE0042F87B /* SourceOverBlend.metal in Sources */,
