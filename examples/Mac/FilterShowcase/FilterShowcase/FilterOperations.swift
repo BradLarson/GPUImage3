@@ -501,16 +501,16 @@ let filterOperations: Array<FilterOperationInterface> = [
         },
         filterOperationType:.singleInput
     ),
-//    FilterOperation(
-//        filter:{HarrisCornerDetector()},
-//        listName:"Harris corner detector",
-//        titleName:"Harris Corner Detector",
-//        sliderConfiguration:.enabled(minimumValue:0.01, maximumValue:0.70, initialValue:0.20),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.threshold = sliderValue
-//        },
-//        filterOperationType:.custom(filterSetupFunction:{(camera, filter, outputView) in
-//            let castFilter = filter as! HarrisCornerDetector
+    FilterOperation(
+        filter:{HarrisCornerDetector()},
+        listName:"Harris corner detector",
+        titleName:"Harris Corner Detector",
+        sliderConfiguration:.enabled(minimumValue:0.01, maximumValue:0.70, initialValue:0.20),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.threshold = sliderValue
+        },
+        filterOperationType:.custom(filterSetupFunction:{(camera, filter, outputView) in
+            let castFilter = filter as! HarrisCornerDetector
 //            // TODO: Get this more dynamically sized
 //#if os(iOS)
 //            let crosshairGenerator = CrosshairGenerator(size:Size(width:480, height:640))
@@ -518,30 +518,31 @@ let filterOperations: Array<FilterOperationInterface> = [
 //            let crosshairGenerator = CrosshairGenerator(size:Size(width:1280, height:720))
 //#endif
 //            crosshairGenerator.crosshairWidth = 15.0
-//            
-//            castFilter.cornersDetectedCallback = { corners in
-//                crosshairGenerator.renderCrosshairs(corners)
-//            }
 //
-//            camera --> castFilter
-//            
-//            let blendFilter = AlphaBlend()
-//            camera --> blendFilter --> outputView
+            castFilter.cornersDetectedCallback = { corners in
+                print(corners.count)
+//                crosshairGenerator.renderCrosshairs(corners)
+            }
+
+            camera --> castFilter
+
+            let blendFilter = GaussianBlur()
+            camera --> blendFilter --> outputView
 //            crosshairGenerator --> blendFilter
-//        
-//            return blendFilter
-//        })
-//    ),
-//    FilterOperation(
-//        filter:{NobleCornerDetector()},
-//        listName:"Noble corner detector",
-//        titleName:"Noble Corner Detector",
-//        sliderConfiguration:.enabled(minimumValue:0.01, maximumValue:0.70, initialValue:0.20),
-//        sliderUpdateCallback: {(filter, sliderValue) in
-//            filter.threshold = sliderValue
-//        },
-//        filterOperationType:.custom(filterSetupFunction:{(camera, filter, outputView) in
-//            let castFilter = filter as! NobleCornerDetector
+
+            return blendFilter
+        })
+    ),
+    FilterOperation(
+        filter:{NobleCornerDetector()},
+        listName:"Noble corner detector",
+        titleName:"Noble Corner Detector",
+        sliderConfiguration:.enabled(minimumValue:0.01, maximumValue:0.70, initialValue:0.20),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.threshold = sliderValue
+        },
+        filterOperationType:.custom(filterSetupFunction:{(camera, filter, outputView) in
+            let castFilter = filter as! NobleCornerDetector
 //            // TODO: Get this more dynamically sized
 //#if os(iOS)
 //                let crosshairGenerator = CrosshairGenerator(size:Size(width:480, height:640))
@@ -549,20 +550,21 @@ let filterOperations: Array<FilterOperationInterface> = [
 //                let crosshairGenerator = CrosshairGenerator(size:Size(width:1280, height:720))
 //#endif
 //            crosshairGenerator.crosshairWidth = 15.0
-//            
-//            castFilter.cornersDetectedCallback = { corners in
+//
+            castFilter.cornersDetectedCallback = { corners in
+                print(corners.count)
 //                crosshairGenerator.renderCrosshairs(corners)
-//            }
-//            
-//            camera --> castFilter
-//            
-//            let blendFilter = AlphaBlend()
-//            camera --> blendFilter --> outputView
+            }
+            
+            camera --> castFilter
+            
+            let blendFilter = AlphaBlend()
+            camera --> blendFilter --> outputView
 //            crosshairGenerator --> blendFilter
-//            
-//            return blendFilter
-//        })
-//    ),
+            
+            return blendFilter
+        })
+    ),
 //    FilterOperation(
 //        filter:{ShiTomasiFeatureDetector()},
 //        listName:"Shi-Tomasi feature detector",

@@ -193,7 +193,7 @@
 				TargetAttributes = {
 					BC0037B6195CA11B00B9D651 = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = J2U2U9GBML;
+						DevelopmentTeam = 3QG6M38N8P;
 						LastSwiftMigration = 0940;
 						ProvisioningStyle = Automatic;
 					};
@@ -204,6 +204,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -413,7 +414,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J2U2U9GBML;
+				DEVELOPMENT_TEAM = 3QG6M38N8P;
 				INFOPLIST_FILE = FilterShowcaseSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.redqueencoder.FilterShowcase;
@@ -431,7 +432,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J2U2U9GBML;
+				DEVELOPMENT_TEAM = 3QG6M38N8P;
 				INFOPLIST_FILE = FilterShowcaseSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.redqueencoder.FilterShowcase;
