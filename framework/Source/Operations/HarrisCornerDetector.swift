@@ -28,13 +28,16 @@ public class HarrisCornerDetector: OperationGroup {
 
     let xyDerivative = TextureSamplingOperation(fragmentFunctionName: "xyDerivative")
     let gaussianBlur = GaussianBlur()
-    var harrisCornerDetector : TextureSamplingOperation
+    var harrisCornerDetector : TextureSamplingOperation//(fragmentFunctionName : "harrisCornerDetector")
     let nonMaximumSuppression = TextureSamplingOperation(fragmentFunctionName: "nonMaxSuppression")
 
-    public init(fragmentShaderFunction:String = "harrisCornerDetector") {
-        harrisCornerDetector = TextureSamplingOperation(fragmentFunctionName : fragmentShaderFunction)
-        
+    public init(fragmentShaderFunction :String = "harrisCornerDetector") {
+        self.harrisCornerDetector = TextureSamplingOperation(fragmentFunctionName : fragmentShaderFunction)
         super.init()
+        ({blurRadiusInPixels = 2.0})()
+        ({sensitivity = 5.0})()
+        ({threshold = 0.2})()
+        
         outputImageRelay.newImageCallback = {[weak self] texture in
             if let cornersDetectedCallback = self?.cornersDetectedCallback {
                 cornersDetectedCallback(extractCornersFromImage(texture))
@@ -49,7 +52,7 @@ public class HarrisCornerDetector: OperationGroup {
 
 func extractCornersFromImage(_ texture: Texture) -> [Position] {
     
-    let startTime = CFAbsoluteTimeGetCurrent()
+//    let startTime = CFAbsoluteTimeGetCurrent()
     let imageByteSize = Int(texture.texture.height * texture.texture.width * 4)
     let rawImagePixels = UnsafeMutablePointer<UInt8>.allocate(capacity:imageByteSize)
     let region = MTLRegionMake2D(0, 0, texture.texture.width, texture.texture.height)
@@ -72,7 +75,7 @@ func extractCornersFromImage(_ texture: Texture) -> [Position] {
     }
 
     rawImagePixels.deallocate()
-    print("Harris extraction frame time: \(CFAbsoluteTimeGetCurrent() - startTime) with total corners found = \(corners.count)")
+//    print("Harris extraction frame time: \(CFAbsoluteTimeGetCurrent() - startTime) with total corners found = \(corners.count)")
     return corners
     
 }

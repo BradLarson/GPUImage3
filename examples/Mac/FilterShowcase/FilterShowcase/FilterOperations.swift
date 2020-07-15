@@ -520,13 +520,15 @@ let filterOperations: Array<FilterOperationInterface> = [
 //            crosshairGenerator.crosshairWidth = 15.0
 //
             castFilter.cornersDetectedCallback = { corners in
-                print(corners.count)
+                if corners.count > 0 {
+                    print("Found a total of \(corners.count) corners with first corner at \(corners[0])")
+                }
 //                crosshairGenerator.renderCrosshairs(corners)
             }
 
             camera --> castFilter
 
-            let blendFilter = GaussianBlur()
+            let blendFilter = GaussianBlur() // AlphaBlend()
             camera --> blendFilter --> outputView
 //            crosshairGenerator --> blendFilter
 
@@ -552,13 +554,16 @@ let filterOperations: Array<FilterOperationInterface> = [
 //            crosshairGenerator.crosshairWidth = 15.0
 //
             castFilter.cornersDetectedCallback = { corners in
-                print(corners.count)
+                if corners.count > 0 {
+                    print("Found a total of \(corners.count) corners with first corner at \(corners[0])")
+                }
+                
 //                crosshairGenerator.renderCrosshairs(corners)
             }
             
             camera --> castFilter
             
-            let blendFilter = AlphaBlend()
+            let blendFilter = GaussianBlur() // AlphaBlend()
             camera --> blendFilter --> outputView
 //            crosshairGenerator --> blendFilter
             

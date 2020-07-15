@@ -13,11 +13,11 @@ using namespace metal;
 typedef struct
 {
     float sensitivity;
-} HarrisCornerUniform;
+} NobleCornerUniform;
 
-fragment half4 harrisCornerDetector(NearbyTexelVertexIO fragmentInput [[stage_in]],
+fragment half4 nobleCornerDetector(NearbyTexelVertexIO fragmentInput [[stage_in]],
                             texture2d<half> inputTexture [[texture(0)]],
-                            constant HarrisCornerUniform& uniform [[ buffer(1) ]]) {
+                            constant NobleCornerUniform& uniform [[ buffer(1) ]]) {
     
     constexpr sampler quadSampler(coord::pixel);
     half3 derivativeElements = inputTexture.sample(quadSampler, fragmentInput.textureCoordinate).rgb;
