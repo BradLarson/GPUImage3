@@ -6,6 +6,7 @@ public class GaussianBlur: BasicOperation {
         {
             if self.useMetalPerformanceShaders, #available(iOS 9, macOS 10.13, *) {
                 internalMPSImageGaussianBlur = MPSImageGaussianBlur(device: sharedMetalRenderingDevice.device, sigma: blurRadiusInPixels)
+                (internalMPSImageGaussianBlur as? MPSImageGaussianBlur)?.edgeMode = .clamp
             } else {
                 fatalError("Gaussian blur not yet implemented on pre-MPS OS versions")
 //                uniformSettings["convolutionKernel"] = convolutionKernel
