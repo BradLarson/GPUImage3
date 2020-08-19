@@ -97,6 +97,25 @@ public class ShaderUniformSettings {
             }
         }
     }
+    
+    public subscript(key:String) -> Position2D {
+        get {
+            // TODO: Fix this
+            return Position2D(0.0, 0.0)
+        }
+        
+        set(newValue) {
+            shaderUniformSettingsQueue.async {
+                let floatArray = newValue.toFloatArray()
+                guard let index = self.uniformLookupTable[key] else {fatalError("Tried to access value of missing uniform: \(key), make sure this is present and used in your shader.")}
+                var currentIndex = self.internalIndex(for:index)
+                for floatValue in floatArray {
+                    self.uniformValues[currentIndex] = floatValue
+                    currentIndex += 1
+                }
+            }
+        }
+    }
 
     public subscript(key:String) -> Size {
         get {
@@ -231,6 +250,12 @@ extension Position:UniformConvertible {
         } else {
             return [self.x, self.y]
         }
+    }
+}
+
+extension Position2D:UniformConvertible {
+    public func toFloatArray() -> [Float] {
+        return [self.x, self.y]
     }
 }
 
