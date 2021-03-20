@@ -64,6 +64,7 @@ public class ShaderUniformSettings {
                 let floatArray:[Float]
                 guard let index = self.uniformLookupTable[key] else {fatalError("Tried to access value of missing uniform: \(key), make sure this is present and used in your shader.")}
                 let startingIndex = self.internalIndex(for:index)
+
                 if self.colorUniformsUseAlpha {
                     floatArray = newValue.toFloatArrayWithAlpha()
                     self.uniformValues[startingIndex] = floatArray[0]
@@ -185,13 +186,25 @@ public class ShaderUniformSettings {
             return lastOffset
         }
     }
+    
+    func setUniformStride(byCountOfFloats count: Int) {
+        if uniformValues.count < count {
+            print("shader uniforms count less than stride: \(uniformValues.count) < \(count)")
+            uniformValues.append(contentsOf: [Float](repeating: 0.0, count:count - uniformValues.count))
+            
+        } else if uniformValues.count > count {
+            print("shader uniforms count greater than stride: \(uniformValues.count) > \(count)")
+        } else {
+            print("shader uniforms stride equals.")
+        }
+    }
 
     public func restoreShaderSettings(renderEncoder:MTLRenderCommandEncoder) {
         shaderUniformSettingsQueue.sync {
             guard (uniformValues.count > 0) else { return }
             
             let uniformBuffer = sharedMetalRenderingDevice.device.makeBuffer(bytes: uniformValues,
-                                                                             length: uniformValues.count * MemoryLayout<Float>.size,
+                                                                             length: uniformValues.count * MemoryLayout<Float>.stride,
                                                                              options: [])!
             renderEncoder.setFragmentBuffer(uniformBuffer, offset: 0, index: 1)
         }

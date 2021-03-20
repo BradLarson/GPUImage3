@@ -11,5 +11,7 @@ public class Vignette: BasicOperation {
         ({color = Color.black})()
         ({start = 0.3})()
         ({end = 0.75})()
+        
+        uniformSettings.setUniformStride(byCountOfFloats: 12)
     }
 }
