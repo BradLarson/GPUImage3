@@ -9,5 +9,7 @@ public class PinchDistortion: BasicOperation {
         ({radius = 0.5})()
         ({scale = 0.5})()
         ({center = Position.center})()
+        
+        uniformSettings.setUniformStride(byCountOfFloats: 6)
     }
 }
