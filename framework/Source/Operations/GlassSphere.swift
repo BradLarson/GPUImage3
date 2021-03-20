@@ -10,6 +10,7 @@ public class GlassSphereRefraction: BasicOperation {
         ({refractiveIndex = 0.71})()
         ({center = Position.center})()
         
+        uniformSettings.setUniformStride(byCountOfFloats: 6)
 //        self.backgroundColor = Color(red:0.0, green:0.0, blue:0.0, alpha:0.0)
     }
 }

@@ -9,5 +9,7 @@ public class BulgeDistortion: BasicOperation {
         ({radius = 0.25})()
         ({scale = 0.5})()
         ({center = Position.center})()
+        
+        uniformSettings.setUniformStride(byCountOfFloats: 6)
     }
 }

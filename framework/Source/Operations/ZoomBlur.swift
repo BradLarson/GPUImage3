@@ -7,5 +7,7 @@ public class ZoomBlur: BasicOperation {
         
         ({blurSize = 1.0})()
         ({blurCenter = Position.center})()
+        
+        uniformSettings.setUniformStride(byCountOfFloats: 4)
     }
 }
