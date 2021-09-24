@@ -62,7 +62,7 @@ extension MTLCommandBuffer {
     }
 }
 
-func generateRenderPipelineState(device:MetalRenderingDevice, vertexFunctionName:String, fragmentFunctionName:String, operationName:String) -> (MTLRenderPipelineState, [String:(Int, MTLDataType)]) {
+func generateRenderPipelineState(device: MetalRenderingDevice, vertexFunctionName: String, fragmentFunctionName: String, operationName: String) -> (MTLRenderPipelineState, ShaderUniformSettings) {
     guard let vertexFunction = device.shaderLibrary.makeFunction(name: vertexFunctionName) else {
         fatalError("\(operationName): could not compile vertex function \(vertexFunctionName)")
     }
@@ -78,23 +78,25 @@ func generateRenderPipelineState(device:MetalRenderingDevice, vertexFunctionName
     descriptor.fragmentFunction = fragmentFunction
     
     do {
-        var reflection:MTLAutoreleasedRenderPipelineReflection?
+        var reflection: MTLAutoreleasedRenderPipelineReflection?
         let pipelineState = try device.device.makeRenderPipelineState(descriptor: descriptor, options: [.bufferTypeInfo, .argumentInfo], reflection: &reflection)
-
-        var uniformLookupTable:[String:(Int, MTLDataType)] = [:]
+        
+        var uniformLookupTable: ShaderUniformSettings.LookupTable = [:]
+        var uniformSize: Int = 0
         if let fragmentArguments = reflection?.fragmentArguments {
             for fragmentArgument in fragmentArguments where fragmentArgument.type == .buffer {
                 if
-                  (fragmentArgument.bufferDataType == .struct),
-                  let members = fragmentArgument.bufferStructType?.members.enumerated() {
+                    fragmentArgument.bufferDataType == .struct,
+                    let members = fragmentArgument.bufferStructType?.members.enumerated() {
+                    uniformSize = fragmentArgument.bufferDataSize
                     for (index, uniform) in members {
-                        uniformLookupTable[uniform.name] = (index, uniform.dataType)
+                        uniformLookupTable[uniform.name] = (index, uniform)
                     }
                 }
             }
         }
         
-        return (pipelineState, uniformLookupTable)
+        return (pipelineState, ShaderUniformSettings(uniformLookupTable: uniformLookupTable, uniformSize: uniformSize))
     } catch {
         fatalError("Could not create render pipeline state for vertex:\(vertexFunctionName), fragment:\(fragmentFunctionName), error:\(error)")
     }

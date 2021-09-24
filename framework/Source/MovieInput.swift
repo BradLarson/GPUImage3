@@ -7,7 +7,7 @@ public class MovieInput: ImageSource {
     
     var videoTextureCache: CVMetalTextureCache?
     let yuvConversionRenderPipelineState:MTLRenderPipelineState
-    var yuvLookupTable:[String:(Int, MTLDataType)] = [:]
+    var yuvUniformSettings: ShaderUniformSettings
 
     let asset:AVAsset
     let assetReader:AVAssetReader
@@ -26,9 +26,7 @@ public class MovieInput: ImageSource {
         self.asset = asset
         self.playAtActualSpeed = playAtActualSpeed
         self.loop = loop
-        let (pipelineState, lookupTable) = generateRenderPipelineState(device:sharedMetalRenderingDevice, vertexFunctionName:"twoInputVertex", fragmentFunctionName:"yuvConversionFullRangeFragment", operationName:"YUVToRGB")
-        self.yuvConversionRenderPipelineState = pipelineState
-        self.yuvLookupTable = lookupTable
+        (self.yuvConversionRenderPipelineState, self.yuvUniformSettings) = generateRenderPipelineState(device:sharedMetalRenderingDevice, vertexFunctionName:"twoInputVertex", fragmentFunctionName:"yuvConversionFullRangeFragment", operationName:"YUVToRGB")
         let _ = CVMetalTextureCacheCreate(kCFAllocatorDefault, nil, sharedMetalRenderingDevice.device, nil, &videoTextureCache)
 
         assetReader = try AVAssetReader(asset:self.asset)
@@ -177,7 +175,7 @@ public class MovieInput: ImageSource {
             let luminanceTexture = CVMetalTextureGetTexture(concreteLuminanceTextureRef), let chrominanceTexture = CVMetalTextureGetTexture(concreteChrominanceTextureRef) {
             let outputTexture = Texture(device:sharedMetalRenderingDevice.device, orientation:.portrait, width:bufferWidth, height:bufferHeight, timingStyle:.videoFrame(timestamp:Timestamp(withSampleTime)))
             
-            convertYUVToRGB(pipelineState:self.yuvConversionRenderPipelineState, lookupTable:self.yuvLookupTable,
+            convertYUVToRGB(pipelineState:self.yuvConversionRenderPipelineState, uniformSettings:self.yuvUniformSettings,
                             luminanceTexture:Texture(orientation:.portrait, texture:luminanceTexture),
                             chrominanceTexture:Texture(orientation:.portrait, texture:chrominanceTexture),
                             resultTexture:outputTexture, colorConversionMatrix:conversionMatrix)
