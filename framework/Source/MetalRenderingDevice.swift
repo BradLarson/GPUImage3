@@ -37,10 +37,15 @@ public class MetalRenderingDevice {
         }
         
         do {
-            let frameworkBundle = Bundle(for: MetalRenderingDevice.self)
-            let metalLibraryPath = frameworkBundle.path(forResource: "default", ofType: "metallib")!
-            self.shaderLibrary = try device.makeLibrary(filepath:metalLibraryPath)
+            let frameworkBundle = Bundle.module
+            if #available(iOS 10.0, *) {
+                self.shaderLibrary = try device.makeDefaultLibrary(bundle: frameworkBundle)
+            } else {
+                let metalLibraryPath = frameworkBundle.path(forResource: "default", ofType: "metallib")!
+                self.shaderLibrary = try device.makeLibrary(filepath:metalLibraryPath)
+            }
         } catch {
+            print(error)
             fatalError("Could not load library")
         }
     }

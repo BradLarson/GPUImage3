@@ -1,4 +1,4 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.5
 
 import PackageDescription
 
@@ -17,6 +17,6 @@ let package = Package(
         .target(
             name: "GPUImage",
             path: "framework/Source",
-            resources: [.process("Metal/", localization: nil), .copy("Operations/LookupImages/")])],
+            resources: [.process("Metal/"), .copy("Operations/LookupImages/")])],
     swiftLanguageVersions: [.v4_2]
 )
