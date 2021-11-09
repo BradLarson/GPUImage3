@@ -17,6 +17,6 @@ let package = Package(
         .target(
             name: "GPUImage",
             path: "framework/Source",
-            resources: [.copy("Metal/"), .copy("Operations/LookupImages/")])],
+            resources: [.process("Metal/", localization: nil), .copy("Operations/LookupImages/")])],
     swiftLanguageVersions: [.v4_2]
 )
