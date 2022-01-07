@@ -10,7 +10,7 @@ public enum ImageOrientation {
             case (.portrait, .portraitUpsideDown): return .rotate180
             case (.portraitUpsideDown, .portrait): return .rotate180
             case (.portrait, .landscapeLeft): return .rotateCounterclockwise
-            case (.landscapeLeft, .portrait): return .rotateClockwise
+            case (.landscapeLeft, .portrait): return .rotateClockwiseAndFlipVertically
             case (.portrait, .landscapeRight): return .rotateClockwise
             case (.landscapeRight, .portrait): return .rotateCounterclockwise
             case (.landscapeLeft, .landscapeRight): return .rotate180
