@@ -14,6 +14,7 @@ fragment half4 bulgeDistortionFragment(SingleInputVertexIO fragmentInput [[stage
                                  constant BulgeDistortionUniform& uniform [[buffer(1)]])
 {
     float2 textureCoordinateToUse = float2(fragmentInput.textureCoordinate.x, ((fragmentInput.textureCoordinate.y - uniform.center.y) * uniform.aspectRatio) + uniform.center.y);
+    
     float dist = distance(uniform.center, textureCoordinateToUse);
     textureCoordinateToUse = fragmentInput.textureCoordinate;
     

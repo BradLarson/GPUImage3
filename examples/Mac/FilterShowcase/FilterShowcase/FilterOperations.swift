@@ -2,6 +2,29 @@ import GPUImage
 import QuartzCore
 
 let filterOperations: Array<FilterOperationInterface> = [
+    
+    FilterOperation (
+        filter:{DistortedEffect()},
+        listName:"DistortedEffect",
+        titleName:"DistortedEffect",
+        sliderConfiguration:.enabled(minimumValue:0.0, maximumValue:2.0, initialValue:1.0),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.time = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
+    
+    FilterOperation (
+        filter:{WaterEffect()},
+        listName:"WaterEffect",
+        titleName:"WaterEffect",
+        sliderConfiguration:.enabled(minimumValue:0.1, maximumValue:0.3, initialValue:1.0),
+        sliderUpdateCallback: {(filter, sliderValue) in
+            filter.time = sliderValue
+        },
+        filterOperationType:.singleInput
+    ),
+    
     FilterOperation (
         filter:{SaturationAdjustment()},
         listName:"Saturation",
@@ -1165,20 +1188,18 @@ let filterOperations: Array<FilterOperationInterface> = [
         filterOperationType:.blend
     ),
     
-    FilterOperation(
-        filter:{GammaAdjustment()},
-        listName:"Solid color",
-        titleName:"Solid color",
-        sliderConfiguration:.disabled,
-        sliderUpdateCallback: nil,
-        filterOperationType:.custom(filterSetupFunction:{(camera, filter, outputView) in
-            let solidColorGenerator = SolidColorGenerator(size:Size(width: 400, height: 400))
-            solidColorGenerator --> outputView
-            solidColorGenerator.renderColor(Color.red)
-//            solidColorGenerator --> (filter as! GammaAdjustment) --> outputView
-            return nil
-        })
-    ),
+  
+    
+//    FilterOperation(
+//
+//        filterOperationType:.singleInput
+//        filter:{waterEffect()},
+//        listName:"Water Effect",
+//        titleName:"Water Effect",
+//        sliderConfiguration:.enabled(minimumValue: 0, maximumValue: 1, initialValue: 0),
+//        sliderUpdateCallback: nil,
+//        filterOperationType:.singleInput
+//    ),
 
     // TODO: Poisson blend
 ]
