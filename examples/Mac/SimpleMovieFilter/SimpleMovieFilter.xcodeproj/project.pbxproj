@@ -3,40 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BC9E361D1E52595400B8604F /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BC9E36141E52594600B8604F /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BC645A1B2B815AB4007F680F /* GPUImage in Frameworks */ = {isa = PBXBuildFile; productRef = BC645A1A2B815AB4007F680F /* GPUImage */; };
 		BCC49F5C1CD5AF1D00B63EEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC49F5B1CD5AF1D00B63EEB /* AppDelegate.swift */; };
 		BCC49F611CD5AF1D00B63EEB /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCC49F5F1CD5AF1D00B63EEB /* MainMenu.xib */; };
 		BCC49F6A1CD5AF5200B63EEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCC49F691CD5AF5200B63EEB /* Assets.xcassets */; };
 		BCC49F801CD6B86600B63EEB /* sample_iPod.m4v in Resources */ = {isa = PBXBuildFile; fileRef = BCC49F7F1CD6B86600B63EEB /* sample_iPod.m4v */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		BC101ECF22458E930020D74D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC9E360C1E52594600B8604F /* GPUImage.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = BCE0BE8B20D6E2B80006E120;
-			remoteInfo = GPUImage_macOS;
-		};
-		BC9E36131E52594600B8604F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC9E360C1E52594600B8604F /* GPUImage.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BC6E7CAB1C39A9D8006DF678;
-			remoteInfo = GPUImage_macOS;
-		};
-		BC9E36171E52594600B8604F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC9E360C1E52594600B8604F /* GPUImage.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BC9E34E91E524A2200B8604F;
-			remoteInfo = GPUImage_iOS;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		BCC49F771CD5AF7C00B63EEB /* CopyFiles */ = {
@@ -45,14 +21,12 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				BC9E361D1E52595400B8604F /* GPUImage.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		BC9E360C1E52594600B8604F /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = ../../../../framework/GPUImage.xcodeproj; sourceTree = "<group>"; };
 		BCC49F581CD5AF1D00B63EEB /* SimpleMovieFilter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleMovieFilter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCC49F5B1CD5AF1D00B63EEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCC49F601CD5AF1D00B63EEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -66,21 +40,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC645A1B2B815AB4007F680F /* GPUImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BC9E360D1E52594600B8604F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				BC9E36181E52594600B8604F /* GPUImage.framework */,
-				BC9E36141E52594600B8604F /* GPUImage.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		BCC49F4F1CD5AF1D00B63EEB = {
 			isa = PBXGroup;
 			children = (
@@ -103,7 +69,6 @@
 			children = (
 				BCC49F5B1CD5AF1D00B63EEB /* AppDelegate.swift */,
 				BCC49F5F1CD5AF1D00B63EEB /* MainMenu.xib */,
-				BC9E360C1E52594600B8604F /* GPUImage.xcodeproj */,
 			);
 			name = Application;
 			path = SimpleMovieFilter;
@@ -135,9 +100,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				BC101ED022458E930020D74D /* PBXTargetDependency */,
 			);
 			name = SimpleMovieFilter;
+			packageProductDependencies = (
+				BC645A1A2B815AB4007F680F /* GPUImage */,
+			);
 			productName = SimpleMovieFilter;
 			productReference = BCC49F581CD5AF1D00B63EEB /* SimpleMovieFilter.app */;
 			productType = "com.apple.product-type.application";
@@ -163,41 +130,22 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
 			mainGroup = BCC49F4F1CD5AF1D00B63EEB;
+			packageReferences = (
+				BC645A192B815AB4007F680F /* XCLocalSwiftPackageReference "../../.." */,
+			);
 			productRefGroup = BCC49F591CD5AF1D00B63EEB /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = BC9E360D1E52594600B8604F /* Products */;
-					ProjectRef = BC9E360C1E52594600B8604F /* GPUImage.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				BCC49F571CD5AF1D00B63EEB /* SimpleMovieFilter */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		BC9E36141E52594600B8604F /* GPUImage.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = GPUImage.framework;
-			remoteRef = BC9E36131E52594600B8604F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		BC9E36181E52594600B8604F /* GPUImage.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = GPUImage.framework;
-			remoteRef = BC9E36171E52594600B8604F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		BCC49F561CD5AF1D00B63EEB /* Resources */ = {
@@ -222,14 +170,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		BC101ED022458E930020D74D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = GPUImage_macOS;
-			targetProxy = BC101ECF22458E930020D74D /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		BCC49F5F1CD5AF1D00B63EEB /* MainMenu.xib */ = {
@@ -290,7 +230,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -339,7 +279,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};
@@ -351,7 +291,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = SimpleMovieFilter/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sunsetlakesoftware.SimpleMovieFilter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
@@ -365,10 +308,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = SimpleMovieFilter/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sunsetlakesoftware.SimpleMovieFilter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};
@@ -396,6 +343,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		BC645A192B815AB4007F680F /* XCLocalSwiftPackageReference "../../.." */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../..;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BC645A1A2B815AB4007F680F /* GPUImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GPUImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BCC49F501CD5AF1D00B63EEB /* Project object */;
 }

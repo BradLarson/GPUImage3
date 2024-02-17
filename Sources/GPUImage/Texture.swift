@@ -2,6 +2,8 @@ import Foundation
 import Metal
 #if os(iOS)
 import UIKit
+#else
+import QuartzCore
 #endif
 
 public enum TextureTimingStyle {
