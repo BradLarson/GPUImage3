@@ -17,7 +17,7 @@ fragment half4 glassSphereFragment(SingleInputVertexIO fragmentInput [[stage_in]
                                 texture2d<half> inputTexture [[texture(0)]],
                                 constant GlassSphereUniform& uniform [[buffer(1)]])
 {
-    constexpr sampler quadSampler(coord::pixel);
+    constexpr sampler quadSampler;
     float2 textureCoordinateToUse = float2(fragmentInput.textureCoordinate.x, (fragmentInput.textureCoordinate.y * uniform.aspectRatio + 0.5 - 0.5 * uniform.aspectRatio));
     float distanceFromCenter = distance(uniform.center, textureCoordinateToUse);
     float checkForPresenceWithinSphere = step(distanceFromCenter, uniform.radius);
