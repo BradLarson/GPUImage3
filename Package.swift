@@ -17,6 +17,9 @@ let package = Package(
         .target(
             name: "GPUImage",
             resources: [.process("Resources")]
-        )
+        ),
+        .testTarget(
+            name: "GPUImageTests",
+            dependencies: ["GPUImage"]),
     ]
 )
