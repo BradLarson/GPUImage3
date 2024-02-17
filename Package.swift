@@ -1,11 +1,11 @@
-// swift-tools-version:5.0
+// swift-tools-version:5.5
 
 import PackageDescription
 
 let package = Package(
     name: "GPUImage",
     platforms: [
-        .macOS(.v10_11), .iOS(.v9),
+        .macOS(.v10_11), .iOS(.v10),
     ],
     products: [
         .library(
@@ -16,7 +16,7 @@ let package = Package(
     targets: [
         .target(
             name: "GPUImage",
-            path: "framework/Source",
-            exclude: ["Linux", "Operations/Shaders"])],
-    swiftLanguageVersions: [.v4_2]
+            resources: [.process("Resources")]
+        )
+    ]
 )

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -21,33 +21,9 @@
 		BC3592D51CBDDF6600DF8ACA /* lookup_miss_etikate.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3592D11CBDDF6600DF8ACA /* lookup_miss_etikate.png */; };
 		BC3592D61CBDDF6600DF8ACA /* lookup_soft_elegance_1.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3592D21CBDDF6600DF8ACA /* lookup_soft_elegance_1.png */; };
 		BC3592D71CBDDF6600DF8ACA /* lookup_soft_elegance_2.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3592D31CBDDF6600DF8ACA /* lookup_soft_elegance_2.png */; };
+		BC645A172B812E93007F680F /* GPUImage in Frameworks */ = {isa = PBXBuildFile; productRef = BC645A162B812E93007F680F /* GPUImage */; };
 		BC7F5B6F1CBEEB4F00C39D33 /* Lambeau.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BC7F5B6E1CBEEB4F00C39D33 /* Lambeau.jpg */; };
-		BC9E35E81E52587000B8604F /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BC9E35DF1E52585600B8604F /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		BC9E35DE1E52585600B8604F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC9E35D71E52585600B8604F /* GPUImage.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BC6E7CAB1C39A9D8006DF678;
-			remoteInfo = GPUImage_macOS;
-		};
-		BC9E35E21E52585600B8604F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC9E35D71E52585600B8604F /* GPUImage.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BC9E34E91E524A2200B8604F;
-			remoteInfo = GPUImage_iOS;
-		};
-		BC9E35E61E52586300B8604F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC9E35D71E52585600B8604F /* GPUImage.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = BCE0BE8B20D6E2B80006E120;
-			remoteInfo = GPUImage_macOS;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		BC1E13571C9F8338008F844F /* CopyFiles */ = {
@@ -56,7 +32,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				BC9E35E81E52587000B8604F /* GPUImage.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,12 +50,11 @@
 		BC25F89522C14CC500CBBD15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = FilterShowcase/Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BC2966B91CBDDB2F0067B9E1 /* Mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Mask.png; path = ../../SharedAssets/Mask.png; sourceTree = "<group>"; };
 		BC2966BB1CBDDB3E0067B9E1 /* WID-small.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "WID-small.jpg"; path = "../../SharedAssets/WID-small.jpg"; sourceTree = "<group>"; };
-		BC3592D01CBDDF6600DF8ACA /* lookup_amatorka.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lookup_amatorka.png; path = ../../../framework/Source/Operations/LookupImages/lookup_amatorka.png; sourceTree = "<group>"; };
-		BC3592D11CBDDF6600DF8ACA /* lookup_miss_etikate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lookup_miss_etikate.png; path = ../../../framework/Source/Operations/LookupImages/lookup_miss_etikate.png; sourceTree = "<group>"; };
-		BC3592D21CBDDF6600DF8ACA /* lookup_soft_elegance_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lookup_soft_elegance_1.png; path = ../../../framework/Source/Operations/LookupImages/lookup_soft_elegance_1.png; sourceTree = "<group>"; };
-		BC3592D31CBDDF6600DF8ACA /* lookup_soft_elegance_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lookup_soft_elegance_2.png; path = ../../../framework/Source/Operations/LookupImages/lookup_soft_elegance_2.png; sourceTree = "<group>"; };
+		BC3592D01CBDDF6600DF8ACA /* lookup_amatorka.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lookup_amatorka.png; path = ../../../Sources/GPUImage/Operations/LookupImages/lookup_amatorka.png; sourceTree = "<group>"; };
+		BC3592D11CBDDF6600DF8ACA /* lookup_miss_etikate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lookup_miss_etikate.png; path = ../../../Sources/GPUImage/Operations/LookupImages/lookup_miss_etikate.png; sourceTree = "<group>"; };
+		BC3592D21CBDDF6600DF8ACA /* lookup_soft_elegance_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lookup_soft_elegance_1.png; path = ../../../Sources/GPUImage/Operations/LookupImages/lookup_soft_elegance_1.png; sourceTree = "<group>"; };
+		BC3592D31CBDDF6600DF8ACA /* lookup_soft_elegance_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lookup_soft_elegance_2.png; path = ../../../Sources/GPUImage/Operations/LookupImages/lookup_soft_elegance_2.png; sourceTree = "<group>"; };
 		BC7F5B6E1CBEEB4F00C39D33 /* Lambeau.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Lambeau.jpg; path = ../../SharedAssets/Lambeau.jpg; sourceTree = "<group>"; };
-		BC9E35D71E52585600B8604F /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = ../../../framework/GPUImage.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC645A172B812E93007F680F /* GPUImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,18 +130,8 @@
 		BC9E35D61E52584500B8604F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BC9E35D71E52585600B8604F /* GPUImage.xcodeproj */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		BC9E35D81E52585600B8604F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				BC9E35E31E52585600B8604F /* GPUImage.framework */,
-				BC9E35DF1E52585600B8604F /* GPUImage.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,9 +149,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				BC9E35E71E52586300B8604F /* PBXTargetDependency */,
 			);
 			name = FilterShowcase;
+			packageProductDependencies = (
+				BC645A162B812E93007F680F /* GPUImage */,
+			);
 			productName = FilterShowcase;
 			productReference = BC1E133B1C9F82B4008F844F /* FilterShowcase.app */;
 			productType = "com.apple.product-type.application";
@@ -217,37 +184,17 @@
 				Base,
 			);
 			mainGroup = BC1E13321C9F82B4008F844F;
+			packageReferences = (
+				BC645A152B812E93007F680F /* XCLocalSwiftPackageReference "../../.." */,
+			);
 			productRefGroup = BC1E133C1C9F82B4008F844F /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = BC9E35D81E52585600B8604F /* Products */;
-					ProjectRef = BC9E35D71E52585600B8604F /* GPUImage.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				BC1E133A1C9F82B4008F844F /* FilterShowcase */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		BC9E35DF1E52585600B8604F /* GPUImage.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = GPUImage.framework;
-			remoteRef = BC9E35DE1E52585600B8604F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		BC9E35E31E52585600B8604F /* GPUImage.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = GPUImage.framework;
-			remoteRef = BC9E35E21E52585600B8604F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		BC1E13391C9F82B4008F844F /* Resources */ = {
@@ -283,14 +230,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		BC9E35E71E52586300B8604F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = GPUImage_macOS;
-			targetProxy = BC9E35E61E52586300B8604F /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		BC1E13421C9F82B4008F844F /* MainMenu.xib */ = {
@@ -367,7 +306,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -415,7 +354,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};
@@ -427,7 +366,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = FilterShowcase/Base.lproj/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.redqueencoder.FilterShowcase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
@@ -441,10 +383,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = FilterShowcase/Base.lproj/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.redqueencoder.FilterShowcase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};
@@ -472,6 +418,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		BC645A152B812E93007F680F /* XCLocalSwiftPackageReference "../../.." */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../..;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BC645A162B812E93007F680F /* GPUImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GPUImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BC1E13331C9F82B4008F844F /* Project object */;
 }

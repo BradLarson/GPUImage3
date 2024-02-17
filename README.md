@@ -32,10 +32,10 @@ BSD-style, with the full license available with the framework in License.txt.
 
 ## Technical requirements ##
 
-- Swift 4.2
-- Xcode 10.2 or higher on Mac or iOS
-- iOS: 9.0 or higher
-- OSX: 10.11 or higher
+- Swift 5.5
+- Xcode 13.0 or higher on Mac or iOS
+- iOS: 10.0 or higher
+- OSX: 10.13 or higher
 
 ## General architecture ##
 
@@ -47,9 +47,9 @@ Examples for usage of the framework in common applications are shown below.
 
 ## Using GPUImage in a Mac or iOS application ##
 
-To add the GPUImage framework to your Mac or iOS application, either drag the GPUImage.xcodeproj project into your application's project or add it via File | Add Files To...
-
-After that, go to your project's Build Phases and add GPUImage_iOS or GPUImage_macOS as a Target Dependency. Add it to the Link Binary With Libraries phase. Add a new Copy Files build phase, set its destination to Frameworks, and add the upper GPUImage.framework (for iOS) or lower GPUImage.framework (for Mac) to that. That last step will make sure the framework is deployed in your application bundle.
+GPUImage is provided as a Swift package. To add it to your Mac or iOS application, go to your project
+settings, choose Package Dependencies, and click the plus button. Enter this repository's URL in the
+upper-right and hit enter. GPUImage will appear as a package dependency of your project.
 
 In any of your Swift files that reference GPUImage classes, simply add
 
