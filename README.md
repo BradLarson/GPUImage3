@@ -12,7 +12,7 @@ Brad Larson
 
 http://www.sunsetlakesoftware.com
 
-[@bradlarson](http://twitter.com/bradlarson)
+[@bradlarson@hachyderm.io](https://hachyderm.io/@bradlarson)
 
 contact@sunsetlakesoftware.com
 
