@@ -1,6 +1,6 @@
+import AVFoundation
 import Cocoa
 import GPUImage
-import AVFoundation
 
 let blendImageName = "Lambeau.jpg"
 
@@ -9,20 +9,20 @@ class FilterShowcaseWindowController: NSWindowController {
     @IBOutlet var filterView: RenderView!
 
     @IBOutlet weak var filterSlider: NSSlider!
-    
-    @objc dynamic var currentSliderValue:Float = 0.5 {
+
+    @objc dynamic var currentSliderValue: Float = 0.5 {
         willSet(newSliderValue) {
-            switch (currentFilterOperation!.sliderConfiguration) {
-                case .enabled: currentFilterOperation!.updateBasedOnSliderValue(newSliderValue)
-                case .disabled: break
+            switch currentFilterOperation!.sliderConfiguration {
+            case .enabled: currentFilterOperation!.updateBasedOnSliderValue(newSliderValue)
+            case .disabled: break
             }
         }
     }
-    
+
     var currentFilterOperation: FilterOperationInterface?
-    var videoCamera:Camera!
-    lazy var blendImage:PictureInput = {
-        return PictureInput(imageName:blendImageName)
+    var videoCamera: Camera!
+    lazy var blendImage: PictureInput = {
+        return PictureInput(imageName: blendImageName)
     }()
     var currentlySelectedRow = 1
 
@@ -30,7 +30,7 @@ class FilterShowcaseWindowController: NSWindowController {
         super.windowDidLoad()
 
         do {
-            videoCamera = try Camera(sessionPreset:.hd1280x720, location:.frontFacing)
+            videoCamera = try Camera(sessionPreset: .hd1280x720, location: .frontFacing)
             videoCamera.runBenchmark = true
             videoCamera.startCapture()
         } catch {
@@ -38,58 +38,62 @@ class FilterShowcaseWindowController: NSWindowController {
         }
         self.changeSelectedRow(0)
     }
-    
-    func changeSelectedRow(_ row:Int) {
-        guard (currentlySelectedRow != row) else { return }
+
+    func changeSelectedRow(_ row: Int) {
+        guard currentlySelectedRow != row else { return }
         currentlySelectedRow = row
-        
+
         // Clean up everything from the previous filter selection first
-//        videoCamera.stopCapture()
+        //        videoCamera.stopCapture()
         videoCamera.removeAllTargets()
         currentFilterOperation?.filter.removeAllTargets()
         currentFilterOperation?.secondInput?.removeAllTargets()
-        
+
         currentFilterOperation = filterOperations[row]
         switch currentFilterOperation!.filterOperationType {
-            case .singleInput:
-                videoCamera.addTarget((currentFilterOperation!.filter))
-                currentFilterOperation!.filter.addTarget(filterView!)
-            case .blend:
-                blendImage.removeAllTargets()
-                videoCamera.addTarget((currentFilterOperation!.filter))
-                self.blendImage.addTarget((currentFilterOperation!.filter))
-                currentFilterOperation!.filter.addTarget(filterView!)
-                self.blendImage.processImage()
-            case let .custom(filterSetupFunction:setupFunction):
-                currentFilterOperation!.configureCustomFilter(setupFunction(videoCamera!, currentFilterOperation!.filter, filterView!))
+        case .singleInput:
+            videoCamera.addTarget((currentFilterOperation!.filter))
+            currentFilterOperation!.filter.addTarget(filterView!)
+        case .blend:
+            blendImage.removeAllTargets()
+            videoCamera.addTarget((currentFilterOperation!.filter))
+            self.blendImage.addTarget((currentFilterOperation!.filter))
+            currentFilterOperation!.filter.addTarget(filterView!)
+            self.blendImage.processImage()
+        case let .custom(filterSetupFunction: setupFunction):
+            currentFilterOperation!.configureCustomFilter(
+                setupFunction(videoCamera!, currentFilterOperation!.filter, filterView!))
         }
-        
+
         switch currentFilterOperation!.sliderConfiguration {
-            case .disabled:
-                filterSlider.isEnabled = false
-                //                case let .Enabled(minimumValue, initialValue, maximumValue, filterSliderCallback):
-            case let .enabled(minimumValue, maximumValue, initialValue):
-                filterSlider.minValue = Double(minimumValue)
-                filterSlider.maxValue = Double(maximumValue)
-                filterSlider.isEnabled = true
-                currentSliderValue = initialValue
+        case .disabled:
+            filterSlider.isEnabled = false
+        //                case let .Enabled(minimumValue, initialValue, maximumValue, filterSliderCallback):
+        case let .enabled(minimumValue, maximumValue, initialValue):
+            filterSlider.minValue = Double(minimumValue)
+            filterSlider.maxValue = Double(maximumValue)
+            filterSlider.isEnabled = true
+            currentSliderValue = initialValue
         }
-        
+
         videoCamera.startCapture()
     }
 
-// MARK: -
-// MARK: Table view delegate and datasource methods
-    
-    @objc func numberOfRowsInTableView(_ aTableView:NSTableView!) -> Int {
+    // MARK: -
+    // MARK: Table view delegate and datasource methods
+
+    @objc func numberOfRowsInTableView(_ aTableView: NSTableView!) -> Int {
         return filterOperations.count
     }
-    
-    @objc func tableView(_ aTableView:NSTableView!, objectValueForTableColumn aTableColumn:NSTableColumn!, row rowIndex:Int) -> AnyObject! {
-        let filterInList:FilterOperationInterface = filterOperations[rowIndex]
+
+    @objc func tableView(
+        _ aTableView: NSTableView!, objectValueForTableColumn aTableColumn: NSTableColumn!,
+        row rowIndex: Int
+    ) -> AnyObject! {
+        let filterInList: FilterOperationInterface = filterOperations[rowIndex]
         return filterInList.listName as NSString
     }
-    
+
     @objc func tableViewSelectionDidChange(_ aNotification: Notification!) {
         if let currentTableView = aNotification.object as? NSTableView {
             let rowIndex = currentTableView.selectedRow

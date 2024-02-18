@@ -1,5 +1,5 @@
 public class SubtractBlend: BasicOperation {
     public init() {
-        super.init(fragmentFunctionName:"subtractBlendFragment", numberOfInputs:2)
+        super.init(fragmentFunctionName: "subtractBlendFragment", numberOfInputs: 2)
     }
 }

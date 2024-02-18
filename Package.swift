@@ -10,7 +10,7 @@ let package = Package(
     products: [
         .library(
             name: "GPUImage",
-            targets: ["GPUImage"]),
+            targets: ["GPUImage"])
     ],
     dependencies: [],
     targets: [

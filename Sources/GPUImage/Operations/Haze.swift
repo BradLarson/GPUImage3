@@ -1,11 +1,11 @@
 public class Haze: BasicOperation {
-    public var distance:Float = 0.2 { didSet { uniformSettings["hazeDistance"] = distance } }
-    public var slope:Float = 0.0 { didSet { uniformSettings["slope"] = slope } }
-    
+    public var distance: Float = 0.2 { didSet { uniformSettings["hazeDistance"] = distance } }
+    public var slope: Float = 0.0 { didSet { uniformSettings["slope"] = slope } }
+
     public init() {
-        super.init(fragmentFunctionName:"hazeFragment", numberOfInputs:1)
-        
-        ({distance = 0.2})()
-        ({slope = 0.0})()
+        super.init(fragmentFunctionName: "hazeFragment", numberOfInputs: 1)
+
+        ({ distance = 0.2 })()
+        ({ slope = 0.0 })()
     }
 }
