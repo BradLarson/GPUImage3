@@ -34,7 +34,9 @@ public class PictureOutput: ImageConsumer {
     public func saveNextFrameToURL(_ url: URL, format: PictureFileFormat) {
         onlyCaptureNextFrame = true
         encodedImageFormat = format
-        self.url = url  // Create an intentional short-term retain cycle to prevent deallocation before next frame is captured
+        self.url = url
+        // Create an intentional short-term retain cycle to prevent deallocation
+        // before next frame is captured.
         encodedImageAvailableCallback = { imageData in
             do {
                 try imageData.write(to: self.url, options: .atomic)
@@ -75,8 +77,12 @@ public class PictureOutput: ImageConsumer {
             #if canImport(UIKit)
                 let image = UIImage(cgImage: cgImageFromBytes, scale: 1.0, orientation: .up)
                 switch encodedImageFormat {
-                case .png: imageData = image.pngData()!  // TODO: Better error handling here
-                case .jpeg: imageData = image.jpegData(compressionQuality: 0.8)!  // TODO: Be able to set image quality
+                case .png:
+                    // TODO: Better error handling here.
+                    imageData = image.pngData()!
+                case .jpeg:
+                    // TODO: Be able to set image quality.
+                    imageData = image.jpegData(compressionQuality: 0.8)!
                 }
             #else
                 let bitmapRepresentation = NSBitmapImageRep(cgImage: cgImageFromBytes)

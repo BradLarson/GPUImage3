@@ -8,7 +8,8 @@ public class BoxBlur: BasicOperation {
     public var blurRadiusInPixels: Float = 2.0 {
         didSet {
             if self.useMetalPerformanceShaders, #available(iOS 9, macOS 10.13, *) {
-                let kernelSize = roundToOdd(blurRadiusInPixels)  // MPS box blur kernels need to be odd
+                // MPS box blur kernels need to be odd.
+                let kernelSize = roundToOdd(blurRadiusInPixels)
                 internalMPSImageBox = MPSImageBox(
                     device: sharedMetalRenderingDevice.device, kernelWidth: kernelSize,
                     kernelHeight: kernelSize)

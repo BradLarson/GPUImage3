@@ -17,4 +17,4 @@ jobs:
       - name: Install
         run: brew install swift-format
       - name: Run linting
-        run: swift-format lint --recursive --parallel --strict --configuration .swift-format.json Package.swift Sources
+        run: swift-format lint --recursive --parallel --strict --configuration .swift-format.json Package.swift Sources Tests examples

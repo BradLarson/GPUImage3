@@ -7,7 +7,7 @@ class FilterListViewController: UITableViewController {
 
     // #pragma mark - Segues
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let filterInList = filterOperations[(indexPath as NSIndexPath).row]
@@ -27,12 +27,14 @@ class FilterListViewController: UITableViewController {
         return filterOperations.count
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)
+        -> UITableViewCell
+    {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        let filterInList:FilterOperationInterface = filterOperations[(indexPath as NSIndexPath).row]
+        let filterInList: FilterOperationInterface = filterOperations[
+            (indexPath as NSIndexPath).row]
         cell.textLabel?.text = filterInList.listName
         return cell
     }
 }
-

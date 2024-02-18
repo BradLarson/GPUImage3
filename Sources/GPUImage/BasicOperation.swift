@@ -91,7 +91,8 @@ open class BasicOperation: ImageProcessingOperation {
                 width: outputWidth, height: outputHeight, timingStyle: firstInputTexture.timingStyle
             )
 
-            guard !activatePassthroughOnNextFrame else {  // Use this to allow a bootstrap of cyclical processing, like with a low pass filter
+            guard !activatePassthroughOnNextFrame else {
+                // Use this to allow a bootstrap of cyclical processing, like with a low pass filter.
                 activatePassthroughOnNextFrame = false
                 // TODO: Render rotated passthrough image here
 

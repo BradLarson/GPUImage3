@@ -3,7 +3,7 @@ import GPUImage
 
 enum FilterSliderSetting {
     case disabled
-    case enabled(minimumValue:Float, maximumValue:Float, initialValue:Float)
+    case enabled(minimumValue: Float, maximumValue: Float, initialValue: Float)
 }
 
 typealias FilterSetupFunction = (Camera, ImageProcessingOperation, RenderView) -> ImageSource?
@@ -11,33 +11,38 @@ typealias FilterSetupFunction = (Camera, ImageProcessingOperation, RenderView) -
 enum FilterOperationType {
     case singleInput
     case blend
-    case custom(filterSetupFunction:FilterSetupFunction)
+    case custom(filterSetupFunction: FilterSetupFunction)
 }
 
 protocol FilterOperationInterface {
     var filter: ImageProcessingOperation { get }
-    var secondInput:ImageSource? { get }
+    var secondInput: ImageSource? { get }
     var listName: String { get }
     var titleName: String { get }
-    var sliderConfiguration: FilterSliderSetting  { get }
-    var filterOperationType: FilterOperationType  { get }
+    var sliderConfiguration: FilterSliderSetting { get }
+    var filterOperationType: FilterOperationType { get }
 
-    func configureCustomFilter(_ secondInput:ImageSource?)
-    func updateBasedOnSliderValue(_ sliderValue:Float)
+    func configureCustomFilter(_ secondInput: ImageSource?)
+    func updateBasedOnSliderValue(_ sliderValue: Float)
 }
 
 class FilterOperation<FilterClass: GPUImage.ImageProcessingOperation>: FilterOperationInterface {
-    lazy var internalFilter:FilterClass = {
+    lazy var internalFilter: FilterClass = {
         return self.filterCreationFunction()
     }()
-    let filterCreationFunction:() -> FilterClass
-    var secondInput:ImageSource?
-    let listName:String
-    let titleName:String
-    let sliderConfiguration:FilterSliderSetting
-    let filterOperationType:FilterOperationType
-    let sliderUpdateCallback: ((FilterClass, Float) -> ())?
-    init(filter:@escaping () -> FilterClass, listName: String, titleName: String, sliderConfiguration: FilterSliderSetting, sliderUpdateCallback:((FilterClass, Float) -> ())?, filterOperationType: FilterOperationType) {
+    let filterCreationFunction: () -> FilterClass
+    var secondInput: ImageSource?
+    let listName: String
+    let titleName: String
+    let sliderConfiguration: FilterSliderSetting
+    let filterOperationType: FilterOperationType
+    let sliderUpdateCallback: ((FilterClass, Float) -> Void)?
+    init(
+        filter: @escaping () -> FilterClass, listName: String, titleName: String,
+        sliderConfiguration: FilterSliderSetting,
+        sliderUpdateCallback: ((FilterClass, Float) -> Void)?,
+        filterOperationType: FilterOperationType
+    ) {
         self.listName = listName
         self.titleName = titleName
         self.sliderConfiguration = sliderConfiguration
@@ -45,17 +50,16 @@ class FilterOperation<FilterClass: GPUImage.ImageProcessingOperation>: FilterOpe
         self.sliderUpdateCallback = sliderUpdateCallback
         self.filterCreationFunction = filter
     }
-    
+
     var filter: ImageProcessingOperation {
         return internalFilter
     }
 
-    func configureCustomFilter(_ secondInput:ImageSource?) {
+    func configureCustomFilter(_ secondInput: ImageSource?) {
         self.secondInput = secondInput
     }
 
-    func updateBasedOnSliderValue(_ sliderValue:Float) {
+    func updateBasedOnSliderValue(_ sliderValue: Float) {
         sliderUpdateCallback?(internalFilter, sliderValue)
     }
 }
-
