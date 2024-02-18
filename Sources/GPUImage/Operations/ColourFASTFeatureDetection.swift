@@ -8,16 +8,20 @@
 
 // TODO: Have the blur radius and texel spacing be tied together into a general sampling distance scale factor
 public class ColourFASTFeatureDetection: OperationGroup {
-    public var blurRadiusInPixels:Float = 2.0 { didSet { boxBlur.blurRadiusInPixels = blurRadiusInPixels } }
-    
+    public var blurRadiusInPixels: Float = 2.0 {
+        didSet { boxBlur.blurRadiusInPixels = blurRadiusInPixels }
+    }
+
     let boxBlur = BoxBlur()
-    let colourFASTFeatureDescriptors = TextureSamplingOperation(vertexFunctionName:"colourFASTDecriptorVertex", fragmentFunctionName:"colourFASTDecriptorFragment", numberOfInputs:2)
+    let colourFASTFeatureDescriptors = TextureSamplingOperation(
+        vertexFunctionName: "colourFASTDecriptorVertex",
+        fragmentFunctionName: "colourFASTDecriptorFragment", numberOfInputs: 2)
     // Do I need to encode the texturer coordinants here? If so, how do I do that?
-    
+
     public override init() {
         super.init()
-        
-        self.configureGroup{input, output in
+
+        self.configureGroup { input, output in
             input --> self.colourFASTFeatureDescriptors
             input --> self.boxBlur --> self.colourFASTFeatureDescriptors --> output
         }
