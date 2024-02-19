@@ -18,7 +18,7 @@ fragment half4 chromaKeyBlendFragment(TwoInputVertexIO fragmentInput [[stage_in]
     constexpr sampler quadSampler;
     half4 textureColor = inputTexture.sample(quadSampler, fragmentInput.textureCoordinate);
     constexpr sampler quadSampler2;
-    half4 textureColor2 = inputTexture2.sample(quadSampler, fragmentInput.textureCoordinate2);
+    half4 textureColor2 = inputTexture2.sample(quadSampler2, fragmentInput.textureCoordinate2);
     
     half maskY = 0.2989h * uniform.colorToReplace.r + 0.5866h * uniform.colorToReplace.g + 0.1145h * uniform.colorToReplace.b;
     half maskCr = 0.7132h * (uniform.colorToReplace.r - maskY);
