@@ -9,7 +9,7 @@ fragment half4 hardLightBlendFragment(TwoInputVertexIO fragmentInput [[stage_in]
     constexpr sampler quadSampler;
     half4 base = inputTexture.sample(quadSampler, fragmentInput.textureCoordinate);
     constexpr sampler quadSampler2;
-    half4 overlay = inputTexture2.sample(quadSampler, fragmentInput.textureCoordinate2);
+    half4 overlay = inputTexture2.sample(quadSampler2, fragmentInput.textureCoordinate2);
     
     half ra;
     if (2.0h * overlay.r < overlay.a) {

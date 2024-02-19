@@ -9,7 +9,7 @@ fragment half4 multiplyBlendFragment(TwoInputVertexIO fragmentInput [[stage_in]]
     constexpr sampler quadSampler;
     half4 base = inputTexture.sample(quadSampler, fragmentInput.textureCoordinate);
     constexpr sampler quadSampler2;
-    half4 overlay = inputTexture2.sample(quadSampler, fragmentInput.textureCoordinate2);
+    half4 overlay = inputTexture2.sample(quadSampler2, fragmentInput.textureCoordinate2);
     
     return overlay * base + overlay * (1.0h - base.a) + base * (1.0h - overlay.a);
 }
