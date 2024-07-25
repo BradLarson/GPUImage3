@@ -168,19 +168,19 @@ Operations are currently being ported over from GPUImage 2. Here are the ones th
 
 ### Color adjustments ###
 
-- **BrightnessAdjustment**: Adjusts the brightness of the image. Described in detail <a href="http://redqueengraphics.com/2018/07/29/metal-shaders-color-adjustments/">here</a>.
+- **BrightnessAdjustment**: Adjusts the brightness of the image. Described in detail <a href="https://web.archive.org/web/20190926100846/http://redqueengraphics.com/2018/07/29/metal-shaders-color-adjustments/">here</a>.
   - *brightness*: The adjusted brightness (-1.0 - 1.0, with 0.0 as the default)
 
-- **ExposureAdjustment**: Adjusts the exposure of the image. Described in detail <a href="http://redqueengraphics.com/2018/07/29/metal-shaders-color-adjustments/">here</a>.
+- **ExposureAdjustment**: Adjusts the exposure of the image. Described in detail <a href="https://web.archive.org/web/20190926100846/http://redqueengraphics.com/2018/07/29/metal-shaders-color-adjustments/">here</a>.
   - *exposure*: The adjusted exposure (-10.0 - 10.0, with 0.0 as the default)
 
-- **ContrastAdjustment**: Adjusts the contrast of the image. Described in detail <a href="http://redqueengraphics.com/2018/07/29/metal-shaders-color-adjustments/">here</a>.
+- **ContrastAdjustment**: Adjusts the contrast of the image. Described in detail <a href="https://web.archive.org/web/20190926100846/http://redqueengraphics.com/2018/07/29/metal-shaders-color-adjustments/">here</a>.
   - *contrast*: The adjusted contrast (0.0 - 4.0, with 1.0 as the default)
 
-- **SaturationAdjustment**: Adjusts the saturation of an image. Described in detail <a href="http://redqueengraphics.com/2018/07/29/metal-shaders-color-adjustments/">here</a>.
+- **SaturationAdjustment**: Adjusts the saturation of an image. Described in detail <a href="https://web.archive.org/web/20190926100846/http://redqueengraphics.com/2018/07/29/metal-shaders-color-adjustments/">here</a>.
   - *saturation*: The degree of saturation or desaturation to apply to the image (0.0 - 2.0, with 1.0 as the default)
 
-- **GammaAdjustment**: Adjusts the gamma of an image. Described in detail <a href="http://redqueengraphics.com/2018/07/29/metal-shaders-color-adjustments/">here</a>.
+- **GammaAdjustment**: Adjusts the gamma of an image. Described in detail <a href="https://web.archive.org/web/20190926100846/http://redqueengraphics.com/2018/07/29/metal-shaders-color-adjustments/">here</a>.
   - *gamma*: The gamma adjustment to apply (0.0 - 3.0, with 1.0 as the default)
 
 - **LevelsAdjustment**: Photoshop-like levels adjustment. The minimum, middle, maximum, minOutput and maxOutput parameters are floats in the range [0, 1]. If you have parameters from Photoshop in the range [0, 255] you must first convert them to be [0, 1]. The gamma/mid parameter is a float >= 0. This matches the value from Photoshop. If you want to apply levels to RGB as well as individual channels you need to use this filter twice - first for the individual channels and then for all channels.
@@ -189,7 +189,7 @@ Operations are currently being ported over from GPUImage 2. Here are the ones th
   - *colorMatrix*: A 4x4 matrix used to transform each color in an image
   - *intensity*: The degree to which the new transformed color replaces the original color for each pixel
 
-- **RGBAdjustment**: Adjusts the individual RGB channels of an image. Described in detail <a href="http://redqueengraphics.com/2018/07/29/metal-shaders-color-adjustments/">here</a>.
+- **RGBAdjustment**: Adjusts the individual RGB channels of an image. Described in detail <a href="https://web.archive.org/web/20190926100846/http://redqueengraphics.com/2018/07/29/metal-shaders-color-adjustments/">here</a>.
   - *red*: Normalized values by which each color channel is multiplied. The range is from 0.0 up, with 1.0 as the default.
   - *green*: 
   - *blue*:
@@ -205,9 +205,9 @@ Operations are currently being ported over from GPUImage 2. Here are the ones th
 - **HueAdjustment**: Adjusts the hue of an image
   - *hue*: The hue angle, in degrees. 90 degrees by default
 
-- **ColorInversion**: Inverts the colors of an image. Described in detail <a href="http://redqueengraphics.com/2018/07/15/metal-shaders-color-inversion/">here</a>.
+- **ColorInversion**: Inverts the colors of an image. Described in detail <a href="https://web.archive.org/web/20200625173855/http://redqueengraphics.com/2018/07/15/metal-shaders-color-inversion/">here</a>.
 
-- **Luminance**: Reduces an image to just its luminance (greyscale). Described in detail <a href="http://redqueengraphics.com/2018/07/26/metal-shaders-luminance/">here</a>.
+- **Luminance**: Reduces an image to just its luminance (greyscale). Described in detail <a href="https://web.archive.org/web/20190824220816/http://redqueengraphics.com/2018/07/26/metal-shaders-luminance/">here</a>.
 
 - **MonochromeFilter**: Converts the image to a single-color version, based on the luminance of each pixel
   - *intensity*: The degree to which the specific color replaces the normal image color (0.0 - 1.0, with 1.0 as the default)
@@ -241,7 +241,7 @@ Operations are currently being ported over from GPUImage 2. Here are the ones th
 
 - **AmatorkaFilter**: A photo filter based on a Photoshop action by Amatorka: http://amatorka.deviantart.com/art/Amatorka-Action-2-121069631 . If you want to use this effect you have to add lookup_amatorka.png from the GPUImage framework/Operations/LookupImages folder to your application bundle.
 
-- **MissEtikateFilter**: A photo filter based on a Photoshop action by Miss Etikate: http://miss-etikate.deviantart.com/art/Photoshop-Action-15-120151961 . If you want to use this effect you have to add lookup_miss_etikate.png from the GPUImage framework/Operations/LookupImages folder to your application bundle.
+- **MissEtikateFilter**: A photo filter based on a Photoshop action by Miss Etikate: [http://miss-etikate.deviantart.com/art/Photoshop-Action-15-120151961](https://web.archive.org/web/20111006234940/http://miss-etikate.deviantart.com/art/Photoshop-Action-15-120151961) . If you want to use this effect you have to add lookup_miss_etikate.png from the GPUImage framework/Operations/LookupImages folder to your application bundle.
 
 - **SoftElegance**: Another lookup-based color remapping filter. If you want to use this effect you have to add lookup_soft_elegance_1.png and lookup_soft_elegance_2.png from the GPUImage framework/Operations/LookupImages folder to your application bundle.
 
