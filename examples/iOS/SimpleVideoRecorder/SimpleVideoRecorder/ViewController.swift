@@ -13,7 +13,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         do {
-            camera = try Camera(sessionPreset: .vga640x480)
+            camera = try Camera(sessionPreset: .hd4K3840x2160)
             camera.runBenchmark = true
             filter = SaturationAdjustment()
             camera --> filter --> renderView
@@ -40,7 +40,7 @@ class ViewController: UIViewController {
                 }
 
                 movieOutput = try MovieOutput(
-                    URL: fileURL, size: Size(width: 480, height: 640), liveVideo: true)
+                    URL: fileURL, size: Size(width: 2160, height: 3840), liveVideo: true)
                 //                camera.audioEncodingTarget = movieOutput
                 filter --> movieOutput!
                 movieOutput!.startRecording()

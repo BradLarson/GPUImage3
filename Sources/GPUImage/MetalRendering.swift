@@ -25,7 +25,13 @@ extension MTLCommandBuffer {
 
         renderEncoder.endEncoding()
     }
-
+    func copyTexture(from:Texture,fromSize:Size,to:Texture){
+        guard let blitEncoder = self.makeBlitCommandEncoder() else {
+            fatalError("Could not create render encoder")
+        }
+        blitEncoder.copy(from: from.texture, sourceSlice: 0, sourceLevel: 0, sourceOrigin: MTLOrigin(x: 0, y: 0, z: 0), sourceSize: MTLSize(width: Int(round(fromSize.width)), height: Int(round(fromSize.height)), depth: 1), to: to.texture, destinationSlice: 0, destinationLevel: 0, destinationOrigin: .init(x: 0, y: 0, z: 0))
+        blitEncoder.endEncoding();
+    }
     func renderQuad(
         pipelineState: MTLRenderPipelineState, uniformSettings: ShaderUniformSettings? = nil,
         inputTextures: [UInt: Texture], useNormalizedTextureCoordinates: Bool = true,
