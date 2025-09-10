@@ -184,7 +184,14 @@ public class MovieOutput: ImageConsumer, AudioEncodingTarget {
             commandBuffer?.commit()
             commandBuffer?.waitUntilCompleted()
         } else {
-            outputTexture = texture
+            let commandBuffer = sharedMetalRenderingDevice.commandQueue.makeCommandBuffer()
+            outputTexture = Texture(
+                device: sharedMetalRenderingDevice.device, orientation: .portrait,
+                width: Int(round(self.size.width)), height: Int(round(self.size.height)),
+                timingStyle: texture.timingStyle)
+            commandBuffer?.copyTexture(from: texture, fromSize: self.size, to: outputTexture)
+            commandBuffer?.commit()
+            commandBuffer?.waitUntilCompleted()
         }
 
         let region = MTLRegionMake2D(
