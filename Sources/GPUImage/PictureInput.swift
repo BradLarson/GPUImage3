@@ -11,11 +11,13 @@ public class PictureInput: ImageSource {
     var internalTexture: Texture?
     var hasProcessedImage: Bool = false
     var internalImage: CGImage?
+    let orientation: ImageOrientation
 
     public init(
         image: CGImage, smoothlyScaleOutput: Bool = false, orientation: ImageOrientation = .portrait
     ) {
         internalImage = image
+        self.orientation = orientation
     }
 
     #if canImport(UIKit)
@@ -80,7 +82,7 @@ public class PictureInput: ImageSource {
                     let imageTexture = try textureLoader.newTexture(
                         cgImage: internalImage!, options: [MTKTextureLoader.Option.SRGB: false])
                     internalImage = nil
-                    self.internalTexture = Texture(orientation: .portrait, texture: imageTexture)
+                    self.internalTexture = Texture(orientation: self.orientation, texture: imageTexture)
                     self.updateTargetsWithTexture(self.internalTexture!)
                     self.hasProcessedImage = true
                 } catch {
@@ -97,7 +99,7 @@ public class PictureInput: ImageSource {
                             fatalError("Nil texture received")
                         }
                         self.internalImage = nil
-                        self.internalTexture = Texture(orientation: .portrait, texture: texture)
+                        self.internalTexture = Texture(orientation: self.orientation, texture: texture)
                         DispatchQueue.global().async {
                             self.updateTargetsWithTexture(self.internalTexture!)
                             self.hasProcessedImage = true
